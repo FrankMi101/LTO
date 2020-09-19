@@ -1,0 +1,63 @@
+  
+Imports TCDSB.Student
+
+    Partial Class SchoolProfile
+        Inherits System.Web.UI.UserControl
+
+#Region " Web Form Designer Generated Code "
+
+        'This call is required by the Web Form Designer.
+        <System.Diagnostics.DebuggerStepThrough()> Private Sub InitializeComponent()
+
+        End Sub
+
+
+        Private Sub Page_Init(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Init
+            'CODEGEN: This method call is required by the Web Form Designer
+            'Do not modify it using the code editor.
+            InitializeComponent()
+        End Sub
+
+#End Region
+
+        Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+            'Put user code to initialize the page here
+            If Not Page.IsPostBack Then
+                '  ' ** SessionStatus.CheckExperioed()
+
+                Dim _SchoolYear As String = Session("SchoolYear")
+                Dim _Schoolcode As String = Session("SchoolCode")
+                Dim _userID As String = HttpContext.Current.User.Identity.Name
+                Dim _TeacherID As String = Session("TeacherID")
+                Dim _cPage As String = Session("mPage")
+            ' SetupList.ListDDL(Me.ddlschoolyear, "SchoolYearbyTeacher", _TeacherID)
+            If Not _SchoolYear = Nothing Then ListInitial.DDL(Me.ddlschoolyear, _SchoolYear)
+
+                Me.lblSchoolname.Text = Session("SchoolName")
+                Me.lblSchoolcode.Text = _Schoolcode
+                Me.lblOberver.Text = Session("ObservationName")
+                Me.lblTeacher.Text = Session("TeacherFirstName")
+                '  Dim FormType As String = Session("FormType")
+                'Dim _myP As String = "Schoolyear=" & _SchoolYear & "&Schoolcode=" & _Schoolcode & "&Grade=" & _Grade & "&rPage=" & _cPage  ' & "&IDs=" & FormType 'IEP00.aspx"
+                'Me.ListLink.HRef = "../BaseStudentList.aspx?" & _myP
+
+            End If
+        End Sub
+
+
+        Protected Sub ddlschoolyear_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlschoolyear.SelectedIndexChanged
+            If Not Session("SchoolYear") = Me.ddlschoolyear.SelectedValue Then
+                If Me.ddlschoolyear.SelectedValue = Session("cSchoolYear") Then
+                    Dim _userID As String = HttpContext.Current.User.Identity.Name
+                    Session("SchoolYear") = Me.ddlschoolyear.SelectedValue
+                    ' ' Common.UserProfileT.SchoolYear(_userID) = Me.ddlschoolyear.SelectedValue
+                    Page.Response.Redirect("TPA3_00.aspx")
+                Else
+                    Page.Response.Redirect("~/PDFReport/TPA_00.aspx")
+
+                End If
+
+            End If
+        End Sub
+    End Class
+ 

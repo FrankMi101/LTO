@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{67f7a08a-54bb-41b2-809c-4f8e21d7101d}</ProjectGuid>
+    <ArchitectureToolsVersion>2.0.0.0</ArchitectureToolsVersion>
+    <Name>LTO Modeling</Name>
+    <RootNamespace>LTO Modeling</RootNamespace>
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
+  <ItemGroup>
+    <Content Include="HR Select Interview Candidate.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="HR Select Interview Candidate.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>HR Select Interview Candidate.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="LTO Hiring Process level 3.vsd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO HR Process.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO HR Process.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LTO HR Process.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="LTO Position Status.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO Position Status.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LTO Position Status.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="LTO Process All.classdiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO Process All.classdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LTO Process All.classdiagram</DependentUpon>
+    </Content>
+    <Content Include="LTO Process Workflow.vsd">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO Teacher Apply.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LTO Teacher Apply.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LTO Teacher Apply.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="HR Posting New Position.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="HR Posting New Position.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>HR Posting New Position.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Principal interview and Recommendation.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Principal interview and Recommendation.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Principal interview and Recommendation.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="three days calculate">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="threeDaysCalculate.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="threeDaysCalculate.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>threeDaysCalculate.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Top Process.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Top Process.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Top Process.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\Form100 Push.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\Form100 Push.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\Form100 Push.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\LTO All.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\LTO All.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\LTO All.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Hiring Staff.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Hiring Staff.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\LTO Level 1 Hiring Staff.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Principal.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Principal.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\LTO Level 1 Principal.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Teacher.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\LTO Level 1 Teacher.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\LTO Level 1 Teacher.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case 2\Open Postion Process.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case 2\Open Postion Process.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case 2\Open Postion Process.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\4th Round Posting.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\4th Round Posting.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\4th Round Posting.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\HR Confirm for Hiring.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\HR Confirm for Hiring.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\HR Confirm for Hiring.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\HR Posting a new Position.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\HR Posting a new Position.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\HR Posting a new Position.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\HR Select Interview candidate list.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\HR Select Interview candidate list.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\HR Select Interview candidate list.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\LTO All.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\LTO All.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\LTO All.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\LTO Login User.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\LTO Login User.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\LTO Login User.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\LTO Teacher Apply open Position use case.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\LTO Teacher Apply open Position use case.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\LTO Teacher Apply open Position use case.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\LTO.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\LTO.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\LTO.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\Principal Interview and Recommendation.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\Principal Interview and Recommendation.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\Principal Interview and Recommendation.usecasediagram</DependentUpon>
+    </Content>
+    <Content Include="User Case\Principal Request new open position.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="User Case\Principal Request new open position.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>User Case\Principal Request new open position.usecasediagram</DependentUpon>
+    </Content>
+    <Folder Include="ModelDefinition\" />
+    <Content Include="ModelDefinition\LTO Modeling.uml">
+      <SubType>Content</SubType>
+    </Content>
+    <Folder Include="Activities" />
+    <Folder Include="User Case 2" />
+    <Folder Include="User Case" />
+  </ItemGroup>
+  <ItemGroup>
+    <Validate Include="DependencyValidation1.layerdiagram">
+      <SubType>Content</SubType>
+    </Validate>
+    <Validate Include="DependencyValidation1.layerdiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>DependencyValidation1.layerdiagram</DependentUpon>
+    </Validate>
+    <Validate Include="DependencyValidation1.layerdiagram.suppressions">
+      <SubType>Content</SubType>
+      <DependentUpon>DependencyValidation1.layerdiagram</DependentUpon>
+    </Validate>
+  </ItemGroup>
+</Project>

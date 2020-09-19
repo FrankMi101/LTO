@@ -1,0 +1,47 @@
+﻿ 
+.FrameTopLeft4
+ {  width:5px;
+	background-image:url(../images/message1_top_l.bmp);
+ 	}
+ .FrameTopMiddle4
+ {  width:100%;
+	background-image:url(../images/message1_top_m.bmp);
+  	}	
+        
+  .FrameTopRight4
+ {  width:5px;
+	background-image:url(../images/message1_top_r.bmp);
+ 	}	
+          
+ .FrameBottomLeft4
+ { width: 5px; 
+	background-image:url(../images/message1_bot_l.bmp);
+	}
+.FrameBottomMiddle4
+ {  width:100%;
+	background-image:url(../images/message1_bot_m.bmp);
+  	}	
+        
+  .FrameBottomRight4
+ {  width:5px;
+	background-image:url(../images/message1_bot_r.bmp);
+ 	}	
+ .FrameBodyLeft4
+ { width:5px; 
+	background-image:url(../images/message1_body_l.bmp);
+	}
+.FrameBodyMiddle4
+ {  width:100%;
+	background-image:url(../images/message_body_m.bmp);
+  	}	
+        
+  .FrameBodyRight4
+ {  width:5px;
+	background-image:url(../images/message1_body_r.bmp);
+ 	}
+ 	
+ .SupportTable td {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 10px;
+            color:#870e0e;
+        } 	 

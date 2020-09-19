@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="761c2277-acd8-45e3-bc55-941287ba5777" name="HR Confirm for Hiring" linkedPackageId="e5541f03-180f-429f-bed2-e0b5985f765d" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="de3df57b-0b2c-47fc-8786-03008230301c" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a0fa917b-7072-4fd6-a587-774b5d6d1f7d">
+          <propertyInstance Id="c737bf3a-5ae8-4f47-9e56-6f6cfce52acb" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5fcc2681-523b-4749-817a-3a9fbaa845ae">
+          <propertyInstance Id="d61c6c86-74f2-4be9-ba1b-9177feb34c88" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e9c3e2fa-06bb-43bc-8292-e44be08d01e1">
+          <propertyInstance Id="ac84b6b4-3f58-468d-96ea-2ec1679c9922" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="32e72c37-50c0-40f1-96e3-be61ccf02154" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="afa9c82b-327e-4300-b2f5-9849fbb6b8ef">
+          <propertyInstance Id="e9625874-5a57-43a3-b6b9-d0b30e77556b" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e8aef8a8-5e45-4242-b391-da7b7faabc25">
+          <propertyInstance Id="243f3282-0d71-4c62-9856-e7927f7a43f4" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7fd66a4a-6b97-445a-87f6-3441088984ea">
+          <propertyInstance Id="6d1ac571-75a4-4f12-879f-9e6cb8789159" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="50e9e675-2c93-4aea-b394-c7a1ae4d8bfa">
+          <propertyInstance Id="9d0c4598-544e-4f79-9523-82963be90dba" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d1e25cd8-79d9-460d-8dc4-54975f1386af">
+          <propertyInstance Id="aac31242-9f88-48e1-b20a-3509ecf240e2" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c7872e1b-51fd-4564-8ff3-31fd6e2d37e2">
+          <propertyInstance Id="a08afcf1-b2e2-4893-bee3-b0e9169637bb" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4e137885-532b-45bc-bae4-e9d97a6d38db">
+          <propertyInstance Id="9de9edec-b767-4645-842f-aa27028f68ae" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="efea77b6-c150-46fe-9052-a9432391b282" name="HR Hiring Manage Confirm for Hiring " isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="0daf0160-9e46-42e8-8f11-b9dc1b68b8df">
+            <elementDefinition Id="b33c5172-ab77-4106-bafb-1abe3edae173" />
+            <body>Searc by:
+    School Area,
+    Panel,
+    School,
+    Posting Status,
+    Posting date
+    Title
+    Level and LTO/POP</body>
+            <annotatedElements>
+              <useCaseMoniker Id="20ad273e-79c6-43a6-ad0d-0339d1f04a19" LastKnownName="Browser all recommended position" />
+            </annotatedElements>
+          </comment>
+          <comment Id="ef556d1c-04b3-4c82-93d0-62f18a22d416">
+            <elementDefinition Id="79ff89e3-7a55-430a-83ad-3faa8b8c693b" />
+            <body>SO officer and school Principal who the applicant has applied the position's school.</body>
+            <annotatedElements>
+              <useCaseMoniker Id="50d73d08-d57f-4f1d-aba3-b9d385a93495" LastKnownName="Email notification" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="32ac9c73-e464-4706-a077-1ae4f76d84bc" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="8e1c3290-b740-4cc5-9e89-0511b4e2e84b" name="Hiring Manager" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c0ce34e4-b402-4ff3-a354-2ae3078d67de" />
+        <targetEnds>
+          <association Id="732d847c-06ae-4947-b1d1-d1a5370129b7" isDerived="false" sourceEndRoleName="Hiring Manager" targetEndRoleName="Browser all recommended position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="20ad273e-79c6-43a6-ad0d-0339d1f04a19" LastKnownName="Browser all recommended position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2787c2cc-ddd2-42ea-965f-b386155f0597" name="Hiring Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="802201ac-d7bb-4355-976e-fadb737069d3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8e646e39-cbcb-4fb6-bfda-48a5552c3868" name="Browser all recommended position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ed2c8816-eaf9-4cec-a71b-04a36beeadad" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="22babe2b-0ad7-4d27-8922-56d7c986c9ed" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="20ad273e-79c6-43a6-ad0d-0339d1f04a19" name="Browser all recommended position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="022c1034-3d3e-4c42-ac84-9ec173f0f608" />
+        <targetEnds>
+          <association Id="cb49ca65-938e-431b-bda2-077ee9d8429f" isDerived="false" sourceEndRoleName="Browser all recommended position" targetEndRoleName="Open a recommend detail" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="cab9cfd9-4f10-479f-b964-0317561f592b" LastKnownName="Open a recommend detail" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a49a9884-18be-408d-80e9-7e6f55013eeb" name="Browser all recommended position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6d8092b3-e6d5-403c-867e-327cc37c1dd9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="db524f55-44f0-42aa-b9fa-ae3273fd05ab" name="Open a recommend detail" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a1983cc6-cc8c-4b5b-ba96-94d20a052c2c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fc8d3c22-9f4e-4eb2-aa24-315d8b3035d5" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="cab9cfd9-4f10-479f-b964-0317561f592b" name="Open a recommend detail" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="eae2d0ad-0427-43a9-9216-5cba74fff95d" />
+        <additions>
+          <include Id="790abe62-e6c4-4a6c-a0d5-bbde49f5510c">
+            <useCaseMoniker Id="b6e6cb61-5c27-4280-9257-4f224f7704a2" LastKnownName="Confirm Hire" />
+            <elementDefinition Id="46f59f62-dec1-4d3e-bcdf-d9af774ae538" />
+          </include>
+          <include Id="163f5329-2d46-4e0e-b134-0091dcba054d">
+            <useCaseMoniker Id="bfbf5747-6c38-4b09-a306-1ac965706669" LastKnownName="Revoke a confirm" />
+            <elementDefinition Id="507ead8f-9891-4897-a417-40ac52b19d37" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="b6e6cb61-5c27-4280-9257-4f224f7704a2" name="Confirm Hire" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="086ec186-f4ac-462e-af7c-65045053ac47" />
+        <targetEnds>
+          <association Id="c0f72387-ae62-4a7a-9116-c9ecb2a02012" isDerived="false" sourceEndRoleName="Confirm Hire" targetEndRoleName="Email notification" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="50d73d08-d57f-4f1d-aba3-b9d385a93495" LastKnownName="Email notification" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2ab5e3b2-faf8-4d50-9aa7-dc464dc58545" name="Confirm Hire" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="880712fe-f95d-4ef6-a1cb-ab6459634a28" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="841ebcb4-5170-4b00-90f4-0e824f56faa2" name="Email notification" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a9238376-5b27-4ac3-b3e7-f54bad6d206b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8390468e-7cab-48c6-b92a-cdd37e7f546b" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="bfbf5747-6c38-4b09-a306-1ac965706669" name="Revoke a confirm" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="74f90738-152b-4d12-bf91-84fa71e9ac72" />
+        <targetEnds>
+          <association Id="2371e13c-9dd5-4523-aa82-81ce252b20fb" isDerived="false" sourceEndRoleName="Revoke a confire" targetEndRoleName="Email notification" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="50d73d08-d57f-4f1d-aba3-b9d385a93495" LastKnownName="Email notification" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e8c35b30-690e-4809-9654-b7fe8a5606a9" name="Revoke a confire" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0cddea5e-be69-435e-9e1d-92fee2a05402" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4b942086-b76a-4e0c-a5dc-a81a5c7b0bf4" name="Email notification" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="7877f2f7-c25e-4fca-b89b-ea71ff8d7335" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="a89a2f64-2433-4018-b85c-508192bc14b6" />
+          </association>
+        </targetEnds>
+        <extendedCases>
+          <extend Id="7dbf360e-14f7-4210-892d-581fcbbe7126">
+            <useCaseMoniker Id="8fe5a317-bde7-40b7-a6a8-46f88955589a" LastKnownName="re open the posting" />
+            <elementDefinition Id="110a9f53-3e1d-4c03-9108-b65598aa7809" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="50d73d08-d57f-4f1d-aba3-b9d385a93495" name="Email notification" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dd0f94cb-6ccd-4c3c-b256-621d972b41c3" />
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="8fe5a317-bde7-40b7-a6a8-46f88955589a" name="re open the posting" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="77ae9e5a-e856-44b5-9aa9-8e5a1eb0c395" />
+        <subjects>
+          <subsystemMoniker Id="efea77b6-c150-46fe-9052-a9432391b282" LastKnownName="HR Hiring Manage Confirm for Hiring " />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="e5541f03-180f-429f-bed2-e0b5985f765d" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="b951b5b2-f803-4c21-b1f8-725588d95905">
+        <profileInstance Id="4ffc0423-7864-4317-bd23-7a6842ea4d28" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="da4c4417-d0c0-4ff7-852d-bbb70a7f19d8">
+        <profileInstance Id="b06df885-9233-41b1-b7e3-cddbdf5667c3" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="68606ece-9df1-4cc9-b211-32664a8ebc67">
+        <profileInstance Id="508fbdfe-6184-4cb4-8926-0f1234f2a5e2" name="CSharpProfile">
+          <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+        </profileInstance>
+        <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4de6a567-3b56-455f-80cd-febc9f8da646">
+        <profileInstance Id="6fbb538c-dacf-44e7-bb6d-5a37f7f6b2e8" name="TextTemplateBindings">
+          <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+        </profileInstance>
+        <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

@@ -1,0 +1,9 @@
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\obj\Release\AppOperate_Integration_Test.csprojAssemblyReference.cache
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\obj\Release\AppOperate_Integration_Test.csproj.CoreCompileInputs.cache
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\bin\Release\AppOperate_Integration_Test.dll.config
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\bin\Release\AppOperate_Integration_Test.dll
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\bin\Release\AppOperate_Integration_Test.pdb
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\obj\Release\AppOperate_Integration_Test.csproj.CopyComplete
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\obj\Release\AppOperate_Integration_Test.dll
+C:\Users\mif\Source\Workspaces\LTO\LTO463\AppOperate_Integration_Test\obj\Release\AppOperate_Integration_Test.pdb

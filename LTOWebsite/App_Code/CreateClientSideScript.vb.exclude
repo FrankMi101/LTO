@@ -1,0 +1,1142 @@
+ 
+Public Class CreateClientSideScript
+    Public Shared Sub CreateMessageAlert(ByRef aspxPage As System.Web.UI.Page, _
+                          ByVal strMessage As String, ByVal strKey As String)
+        Dim strScript As String = "<script language=JavaScript>alert('" _
+                                            & strMessage & "')</script>"
+
+        If (Not aspxPage.ClientScript.IsStartupScriptRegistered(strKey)) Then
+            ' aspxPage.RegisterStartupScript(strKey, strScript)()
+        End If
+    End Sub
+    'Call separate class, passing page reference, to register Client Script:
+    ' CreateClientSideScript.CreateMessageAlert(Me, strMessage, "strKey1")
+    Public Shared Sub CreateConfirmBox(ByRef btn As WebControls.Button, _
+                                     ByVal strMessage As String)
+        btn.Attributes.Add("onclick", "return confirm('" & strMessage & "');")
+    End Sub
+End Class
+
+Public Class SetScript
+    Public Shared Sub SetLinkSpell(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCheck As HtmlTextArea, ByVal myCode As String)
+        Dim conTrolID As String = myTextCheck.ID
+        LinkControl.HRef = "javascript:SpellingCheck('" & _cUltrtab & conTrolID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkGoal(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCheck As HtmlTextArea, ByVal myCode As String)
+        Dim conTrolID As String = myTextCheck.ID
+        LinkControl.HRef = "javascript:GetGoal('" & _cUltrtab & conTrolID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkSearch(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCheck As HtmlTextArea, ByVal myCode As String)
+        Dim conTrolID As String = myTextCheck.ID
+        LinkControl.HRef = "javascript:GetCopy('" & _cUltrtab & conTrolID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkComment(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCheck As HtmlTextArea, ByVal myCode As String)
+        Dim conTrolID As String = myTextCheck.ID
+        LinkControl.HRef = "javascript:GetComments('" & _cUltrtab & conTrolID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkCalendar(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCheck As HtmlInputControl, ByVal _X As String, ByVal _Y As String)
+        Dim conTrolID As String = myTextCheck.ID
+        LinkControl.HRef = "javascript:GetDate('" & _cUltrtab & conTrolID & "','" & _X & "','" & _Y & "')"
+        '  href = "javascript:GetDate('UltraWebTab1__ctl3_ctl00_dateSignatureP','200','300')"
+    End Sub
+    Public Shared Sub SetLinkIdentify(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlInputControl, ByVal myTextSP As HtmlInputControl, ByVal myDateSP As HtmlInputControl, ByVal myTextST As HtmlInputControl, ByVal myDateST As HtmlInputControl)
+        '  Dim conTrolID As String = myText.ID
+        Dim Sign_P As String = myTextSP.ID
+        Dim Date_P As String = myDateSP.ID
+        Dim Sign_T As String = myTextST.ID
+        Dim Date_T As String = myDateST.ID
+        Dim _onClick As String = "javascript:IdentifyUser('" & _cUltrtab & Sign_P & "','" & _cUltrtab & Date_P & "','" & _cUltrtab & Sign_T & "','" & _cUltrtab & Date_T & "')"
+        LinkControl.Attributes.Add("onclick", _onClick)
+
+        ' javascript:IdentifyUser('UltraWebTab1__ctl3__ctl0_txtSignatureP','UltraWebTab1__ctl3__ctl0_dateSignatureP','UltraWebTab1__ctl3__ctl0_txtSignatureT','UltraWebTab1__ctl3__ctl0_dateSignatureT')
+    End Sub
+    Public Shared Sub SetLinkIdentify2(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal LinkControl As HtmlAnchor, ByVal myTextCtl As HtmlInputControl, ByVal myDateCtl As HtmlInputControl)
+        Dim conTrolID As String = myTextCtl.ID
+        Dim conTrolID2 As String = myDateCtl.ID
+        Dim conIimg As String = LinkControl.ID
+        LinkControl.HRef = "javascript:IdentifyUserO2('" & _cUltrtab & conTrolID & "','" & _cUltrtab & conIimg & "','" & _cUltrtab & conTrolID2 & "')"
+        '    href = "javascript:IdentifyUserO2('UltraWebTab1__ctl3_ctl00_txtSignatureT','UltraWebTab1__ctl3_ctl00_ImgTeacher','UltraWebTab1__ctl3_ctl00_dateSignatureT')"
+    End Sub
+    Public Shared Sub SetmyTextonEvent(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal lenth As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _countID As String = myCount.ID
+        Dim _onkeypress As String = "javascript:DisableMenu('TAMenuID')"
+        Dim _onkeydown As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & _cUltrtab & _countID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & _cUltrtab & _controlID & "','" & mycode & "')"
+        '    Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycode & "')"
+        myControl.Attributes.Add("onkeypress", _onkeypress)  'btn1.Attributes.Add("OnClick", "return confirm_Cancel();")
+        myControl.Attributes.Add("onkeydown", _onkeydown)
+        myControl.Attributes.Add("ondblclick", _ondblclick)
+        '   myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextonEvent1(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal lenth As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _countID As String = myCount.ID
+        Dim _onkeypress As String = "javascript:DisableMenu('TAMenuID')"
+        Dim _onkeydown As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & Left(_cUltrtab, 8) & _countID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & _cUltrtab & _controlID & "','" & mycode & "')"
+        '    Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycode & "')"
+        myControl.Attributes.Add("onkeypress", _onkeypress)  'btn1.Attributes.Add("OnClick", "return confirm_Cancel();")
+        myControl.Attributes.Add("onkeydown", _onkeydown)
+        myControl.Attributes.Add("ondblclick", _ondblclick)
+        '   myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextonEvent2(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As TextBox, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal lenth As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _countID As String = myCount.ID
+        Dim _onkeypress As String = "javascript:DisableMenu2('TAMenuID','" & _cUltrtab & _controlID & "')"
+        Dim _onkeydown As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & _cUltrtab & _countID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & _cUltrtab & _controlID & "','" & mycode & "')"
+        '    Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycode & "')"
+        myControl.Attributes.Add("onkeypress", _onkeypress)  'btn1.Attributes.Add("OnClick", "return confirm_Cancel();")
+        myControl.Attributes.Add("onkeydown", _onkeydown)
+        myControl.Attributes.Add("ondblclick", _ondblclick)
+        '   myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextRead(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal mycType As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycType & "')"
+        myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextRead2(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As TextBox, ByVal mycType As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycType & "')"
+        myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetCheckP(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myCheck As CheckBox, ByVal myObjControl As String, ByVal mySourceText As String)
+        '   Dim _Role As String = HttpContext.Current.Session("UserRole")
+        '  Dim _controlID As String = myCheck.ID
+        Dim _onclick As String = "javascript:CheckedP('" & _cUltrtab & myCheck.ID & "','" & _cUltrtab & myObjControl & "','" & mySourceText & "')"
+        myCheck.Attributes.Add("onclick", _onclick)
+    End Sub
+End Class
+Public Class SetScript3
+    Public Shared Sub IndicatorText(ByRef cPage As Page, ByVal pageID As String, ByVal myLable As Object, ByVal _txtID As String)
+        Dim _myLab As String = myLable.ClientID
+        Dim _onmouseover As String = "javascript:ShowHelp('Show','" & _txtID & "','" & _myLab & "')"
+        Dim _onmouseout As String = "javascript:ShowHelp('Hide','" & _txtID & "','" & _myLab & "')"
+        myLable.Attributes.Add("onmouseover", _onmouseover)
+        ' myLable.Attributes.Add("onmouseout", _onmouseout)
+    End Sub
+
+    Public Shared Sub SetCheckPInitial(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCheck As CheckBox, ByVal mySource As HtmlInputHidden)
+        Dim _myTextID As String = myControl.ClientID  'CheckedP(myCheck,myText,mySource)
+        Dim _myCheckID As String = myCheck.ClientID   'CheckedP(myCheck,myText,mySource)
+        Dim _mySourceID As String = mySource.ClientID   'CheckedP(myCheck,myText,mySource)
+        Dim _onclick As String = "javascript:CheckedP('" & _myCheckID & "','" & _myTextID & "','" & _mySourceID & "')"
+
+        myCheck.Attributes.Add("onclick", _onclick)
+    End Sub
+    Public Shared Sub SetmyTextonEvent1(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal lenth As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _controlID As String = myControl.ID
+        Dim _countID As String = myCount.ID
+        '    Dim _onkeypress As String = "javascript:DisableMenu('TAMenuID')"
+        Dim _onkeydown As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & Left(_cUltrtab, 8) & _countID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & _cUltrtab & _controlID & "','" & mycode & "')"
+        Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycode & "')"
+        '   myControl.Attributes.Add("onkeypress", _onkeypress)  'btn1.Attributes.Add("OnClick", "return confirm_Cancel();")
+        myControl.Attributes.Add("onkeydown", _onkeydown)
+        myControl.Attributes.Add("ondblclick", _ondblclick)
+        myControl.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetTextonEvent(ByRef cPage As Page, ByVal pageID As String, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & _TextID & "','" & mycode & "','" & _CountID & "','" & _length & "')"
+        Dim _onmouseover As String = "javascript:DisableTextBox('" & _TextID & "')"
+        Dim _onchange As String = "javascript:SaveTextBoxbyPostback(Form1);"
+        Dim _onunload As String = "javascript:setTreeMenuImages();"
+        '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+        '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+        myText.Attributes.Add("onkeydown", _onkeydown)
+        myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        myText.Attributes.Add("onchange", _onchange)
+        '   myText.Attributes.Add("onunload", _onunload)
+        '    myText.Attributes.Add("onfocus", _onfocus)
+        ' myText.Attributes.Add("onfocusout", _onlosefocus)
+    End Sub
+    Public Shared Sub SetTextonEvent2(ByRef cPage As Page, ByVal pageID As String, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        '  Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & _TextID & "','" & mycode & "','" & _CountID & "','" & _length & "')"
+        Dim _onmouseover As String = "javascript:DisableTextBox('" & _TextID & "')"
+        Dim _onchange As String = "javascript:SaveTextBoxbyPostback(Form1);"
+        '     Dim _onunload As String = "javascript:setTreeMenuImages();"
+        Dim _onfocusout As String = "javascript:SaveTextBoxbyPostbackMe(Form1);"
+        '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+        '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+        ' myText.Attributes.Add("onkeydown", _onkeydown)
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        myText.Attributes.Add("onchange", _onchange)
+        myText.Attributes.Add("onfocusout", _onfocusout)
+
+    End Sub
+
+    Public Shared Sub SetAreaCount(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        myText.Attributes.Add("onkeydown", _onkeydown)
+    End Sub
+
+    Public Shared Sub SetTextCount(ByRef cPage As Page, ByVal pageID As String, ByVal myText As TextBox, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = HttpContext.Current.Session("UserRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        myText.Attributes.Add("onkeydown", _onkeydown)
+    End Sub
+    Public Shared Sub SetLinkSpell(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        myLink.HRef = "javascript:SpellingCheck('" & _TextID & "','" & myCode & "')"
+    End Sub
+
+    Public Shared Sub SetLinkTips(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetTips3('Tips','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkTLCP(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetTLCP('Comments','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkComment(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetComments3('Comments','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkSmartGoal(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetSmartGoal3('Goal','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkIndicators(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetIndicators3('Indicator','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkFramework2(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myType As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetFramework3('" + myType + "','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkFramework(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetFramework3('Framework','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkCopy(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetCopy3('Research','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkGoal(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetGoals3('Goals','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkSearch(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        myLink.Visible = False
+
+        'Dim _TextID As String = pageID & myText.ID
+        'Dim _CountID As String = pageID & myCount.ID
+        'myLink.HRef = "javascript:GetCopy3('Research','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+
+    End Sub
+
+    Public Shared Sub SetLinkCalendar(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlInputControl, ByVal _X As String, ByVal _Y As String)
+        Dim _TextID As String = pageID & myText.ID
+        myLink.HRef = "javascript:GetDatePoP3('" & _TextID & "','" & _X & "','" & _Y & "')"
+    End Sub
+
+    Public Shared Sub SetLinkHelp(ByRef cPage As Page, ByVal Category As String, ByVal myLink As HtmlAnchor, ByVal myCode As String)
+        myLink.HRef = "javascript:openHelpPage('" & Category & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkDDLEdit(ByRef cPage As Page, ByVal pageID As String, ByVal myLabel As Label, ByVal myCode As String)
+        myLabel.Text = "<A href=" + """" + "javascript:openDDLEdit('" & myCode & "')" & """" & ">" + myLabel.Text + "</A>"
+    End Sub
+
+    Public Shared Sub SetEnableOtherTextbox(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As Object, ByVal checkValue As String)
+        Dim _Role As String = HttpContext.Current.Session("UserWorkRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+        Dim _onChange As String = "javascript:EnableTextBox('" & _TextID & "','" & _listID & "','" & checkValue & "')"
+        myList.Attributes.Add("onclick", _onChange)
+    End Sub
+
+    Public Shared Sub SetmyTextRead(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myType As String)
+        Dim _Role As String = HttpContext.Current.Session("UserWorkRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _onmouseover As String = "javascript:DisableMyText('" & _TextID & "','" & _Role & "','" & myType & "')"
+        myText.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextReadStep(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myType As String, ByVal myStep As String)
+        Dim _Role As String = HttpContext.Current.Session("UserWorkRole")
+        Dim _TextID As String = pageID & myText.ID
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & _TextID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        myText.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetLinkIdentify(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal LinkTeacher As HtmlAnchor, ByVal imgTeacher As Object, ByVal _linkSpell As HtmlAnchor)
+        Dim _TextID As String = pageID & myText.ID
+        Dim imgTeacherID As String = pageID & imgTeacher.ID
+        Dim imgSpell As String = pageID & _linkSpell.ID
+        LinkTeacher.HRef = " javascript:IdentifyUserO3('" & _TextID & "','" & imgTeacherID & "','" & imgSpell & "')"
+    End Sub
+
+    Public Shared Sub SetLinkVerifyUser(ByRef cPage As Page, ByVal pageID As String, ByVal LinkTeacher As HtmlAnchor, _
+                                        ByVal signP As Object, ByVal dateP As Object, ByVal signT As Object, ByVal dateT As Object)
+        Dim _signP As String = pageID & signP.ID
+        Dim _dateP As String = pageID & dateP.ID
+        Dim _signT As String = pageID & signT.ID
+        Dim _dateT As String = pageID & dateT.ID
+        LinkTeacher.HRef = " javascript:VerifyUser('" & _signP & "','" & _dateP & "','" & _signT & "','" & _dateT & "')"
+    End Sub
+
+    Public Shared Sub SetLinkVerifyUserT(ByRef cPage As Page, ByVal pageID As String, ByVal LinkTeacher As HtmlAnchor, _
+                                          ByVal signP As Object, ByVal dateP As Object, ByVal signT As Object, ByVal dateT As Object)
+        Dim _signP As String = pageID & signP.ID
+        Dim _dateP As String = pageID & dateP.ID
+        Dim _signT As String = pageID & signT.ID
+        Dim _dateT As String = pageID & dateT.ID
+        LinkTeacher.HRef = " javascript:VerifyUserT('" & _signP & "','" & _dateP & "','" & _signT & "','" & _dateT & "')"
+    End Sub
+    Public Shared Sub SetListClickgetValue(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As Object)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+        Dim _onChange As String = "javascript:getCompentencyToText('" & _TextID & "','" & _listID & "')"
+        myList.Attributes.Add("onclick", _onChange)
+    End Sub
+    Public Shared Sub SetListClickgetValue2(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As CheckBoxList, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText('" & _TextID & "','" & _chkItem & "','" & _chkCode & "')"))
+            index = index + 1
+            If _chkCode = _CompentencyID Then
+                item.Text = "<b>" + item.Text + "</b>"
+            Else
+                item.Text = Replace(item.Text, "<b>", "")
+                item.Text = Replace(item.Text, "</b>", "")
+            End If
+        Next
+    End Sub
+    Public Shared Sub SetListClickgetValue3(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As CheckBoxList, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText1('" & _chkCode & "','" & _chkItem & "')"))
+            Dim _S As String = "<A Title='Retrieve Satisfactory Compentency' href=""javascript:getCompentencyToText2('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','S')" & """><IMG  src='../Images/Face_P.gif' border='0'></A> "
+            Dim _U As String = "<A Title='Retrieve Unsatisfactory Compentency' href=""javascript:getCompentencyToText2('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','U')" & """><IMG  src='../Images/Face_N.gif' border='0'></A> "
+            Dim _Log As String = "<A Title='Click on eLog to view Evidence Log' href=""javascript:getCompentencyToText1('" & _chkCode & "','" & _chkItem & "')" & """><IMG  src='../Images/eLog.bmp' border='0'></A> "
+            item.Text = _S & _U & item.Text & _Log
+
+            index = index + 1
+            'If _chkCode = _CompentencyID Then
+            '    Dim _S As String = "<A Title='Satisfactory' href='javascript:getCompentencyToText1('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','S')" & "'><IMG  src='../Images/HelpS.bmp' border='0'> S</A> "
+            '    Dim _U As String = "<A Title='Unsatisfactory' href='javascript:getCompentencyToText1('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','U')" & "'><IMG  src='../Images/Light1.bmp' border='0'> Uns</A> "
+            '    item.Text = "<b>" + item.Text + "</b>" & _S & _U
+
+            'Else
+            '    item.Text = Replace(item.Text, "<b>", "")
+            '    item.Text = Replace(item.Text, "</b>", "")
+            'End If
+        Next
+    End Sub
+    Public Shared Sub SetListClickgetValue4(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As CheckBoxList, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText0('" & _chkCode & "','" & _chkItem & "')"))
+            If item.Value = _CompentencyID Then
+                item.Text = "<FONT color='#3300ff' >" + item.Text + " </FONT>"
+                Dim _seleCompetency2 = HttpContext.Current.Session("SelectComtency2")
+                If _seleCompetency2 = "1" Then
+                    item.Text = Replace(item.Text, "src='../Images/Face_P.gif' border='0'", "src='../Images/Face_P.gif' border='2'")
+                    item.Text = Replace(item.Text, "border='1'", "border='0'")
+                    item.Text = Replace(item.Text, "Retrieve Satisfactory Competency", "Satisfactory Competency Selected")
+                    item.Text = Replace(item.Text, "Unsatisfactory Competency Selected", "Retrieve Unsatisfactory Competency")
+
+                End If
+                If _seleCompetency2 = "2" Then
+                    item.Text = Replace(item.Text, "src='../Images/Face_N.gif' border='0'", "src='../Images/Face_N.gif' border='2'")
+                    item.Text = Replace(item.Text, "border='1'", "border='0'")
+                    item.Text = Replace(item.Text, "Satisfactory Competency Selected", "Retrieve Satisfactory Competency")
+                    item.Text = Replace(item.Text, "Retrieve Unsatisfactory Competency", "Unsatisfactory Competency Selected")
+                End If
+
+                ' item.Text = Replace(item.Text, "border='0'", "border='2'")
+            Else
+                item.Text = Replace(item.Text, "<FONT color='#3300ff' >", "")
+                item.Text = Replace(item.Text, "</FONT>", "")
+                item.Text = Replace(item.Text, "border='2'", "border='1'")
+            End If
+            index = index + 1
+        Next
+
+
+
+    End Sub
+
+    Public Shared Sub SetLinkUndoSignOff(ByRef cPage As Page, ByVal pageID As String, ByVal LinkCtl As HtmlAnchor, _
+                                          ByVal signText As Object, ByVal dateText As Object)
+        Dim _signP As String = pageID & signText.ID
+        Dim _dateP As String = pageID & dateText.ID
+        LinkCtl.HRef = " javascript:UndoSignOff3('" & _signP & "','" & _dateP & "')"
+    End Sub
+
+    Public Shared Sub SetTextFocusIn(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myCount As HtmlInputText, ByVal mySpell As HtmlAnchor, ByVal myComment As HtmlAnchor, ByVal myGoal As HtmlAnchor, ByVal myTips As HtmlAnchor, ByVal mycode As String, ByVal _length As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _spellID As String = pageID & mySpell.ID
+        Dim _commentID As String = pageID & myComment.ID
+        Dim _GoalID As String = pageID & myGoal.ID
+        Dim _TipID As String = pageID & myTips.ID
+        Dim _onfocus As String = "javascript:setTextFocus('" & _length & "','" & _TextID & "','" & _CountID & "','" & _spellID & "','" & _commentID & "','" & _GoalID & "','" & _TipID & "','" & mycode & "')"
+        myText.Attributes.Add("onfocus", _onfocus)
+    End Sub
+
+    Public Shared Sub SetListItemsLinkMouseOver(ByRef cPage As Page, ByVal pageID As String, ByVal myObj As Object)
+
+        Dim index As Integer = 0
+        Dim chbControl As String = myObj.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _overCSS As String = "LinkMouseOver"
+        Dim _outCSS As String = "LinkNormal"
+        Dim item As ListItem
+        For Each item In myObj.Items
+            _chkItem = chbControl & "_" & index.ToString
+            index = index + 1
+            item.Attributes.Add("onmouseover", String.Format("javascript:setLink('" & _chkItem & "','" & _overCSS & "')"))
+            item.Attributes.Add("onmouseout", String.Format("javascript:setLink('" & _chkItem & "','" & _outCSS & "')"))
+        Next
+        'myObj.Attributes.Add("onmouseover", String.Format("javascript:setLink(" & myObj & ",'" & _cSSover & "')"))
+        'myObj.Attributes.Add("onmouseout", String.Format("javascript:setLink(" & myObj & ",'" & _cSSout & "')"))
+
+    End Sub
+End Class
+
+ 
+Public Class SetScript4
+    Public Shared Sub SetCheckPInitial(ByVal myControl As HtmlTextArea, ByVal myCheck As CheckBox, ByVal mySource As HtmlInputHidden)
+        Dim _onclick As String = "javascript:CheckedP('" & myCheck.ClientID & "','" & myControl.ClientID & "','" & mySource.ClientID & "')"
+        myCheck.Attributes.Add("onclick", _onclick)
+    End Sub
+    Public Shared Sub SetCheckPInitial(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCheck As CheckBox, ByVal mySource As HtmlInputHidden)
+        Dim _myTextID As String = myControl.ClientID  'CheckedP(myCheck,myText,mySource)
+        Dim _myCheckID As String = myCheck.ClientID   'CheckedP(myCheck,myText,mySource)
+        Dim _mySourceID As String = mySource.ClientID   'CheckedP(myCheck,myText,mySource)
+        Dim _onclick As String = "javascript:CheckedP('" & _myCheckID & "','" & _myTextID & "','" & _mySourceID & "')"
+
+        myCheck.Attributes.Add("onclick", _onclick)
+    End Sub
+    Public Shared Sub SetmyTextonEvent1(ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myfield As String, ByVal mycode As String, ByVal lenth As String)
+        Dim _Role As String = WorkingProfile.UserRole
+
+        Dim _onkeypress As String = "javascript:setTextCount('" & lenth & "','" & myControl.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & myControl.ClientID & "','" & myCount.ClientID & "')"
+        Dim _onmouseover As String = "javascript:DisableMyText('" & myControl.ClientID & "','" & _Role & "','" & myfield & mycode & "')"
+        Dim _onfocus As String = "javascript:setTextFocus('" & myControl.ClientID & "','" & myfield & "','" & mycode & "')"
+        myControl.Attributes.Add("onkeypress", _onkeypress)
+        myControl.Attributes.Add("ondblclick", _ondblclick)
+        myControl.Attributes.Add("onmouseover", _onmouseover)
+        myControl.Attributes.Add("onfocus", _onfocus)
+    End Sub
+    Public Shared Sub SetmyTextonEvent1(ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myfield As String, ByVal mycode As String, ByVal lenth As String, ByVal myFlag As HtmlInputHidden)
+        Dim _Role As String = WorkingProfile.UserRole
+
+        Dim _onkeypress As String = "javascript:setTextCount('" & lenth & "','" & myControl.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:openBigTextPage('" & myControl.ClientID & "','" & myCount.ClientID & "')"
+        Dim _onmouseover As String = "javascript:DisableMyText('" & myControl.ClientID & "','" & _Role & "','" & myfield & mycode & "')"
+        Dim _onfocus As String = "javascript:setTextFocus('" & myControl.ClientID & "','" & myfield & "','" & mycode & "')"
+        Dim _onchange As String = "javascript:SetCellTextChangeFlag('" & myFlag.ClientID & "')"
+
+        myControl.Attributes.Add("onchange", _onchange)
+        myControl.Attributes.Add("onkeypress", _onkeypress)
+        '  myControl.Attributes.Add("ondblclick", _ondblclick)
+        myControl.Attributes.Add("onmouseover", _onmouseover)
+        myControl.Attributes.Add("onfocus", _onfocus)
+    End Sub
+
+
+    Public Shared Sub SetTextonEvent(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal _length As String)
+
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & myCode & "','" & myCount.ClientID & "','" & _length & "')"
+        Dim _onmouseover As String = "javascript:DisableTextBox('" & myText.ClientID & "')"
+        Dim _onchange As String = "javascript:setTextChange();"
+        ' myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        myText.Attributes.Add("onkeydown", _onchange)
+
+        '  Dim _onunload As String = "javascript:setTreeMenuImages();"
+        '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+        '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+        ' myText.Attributes.Add("onkeydown", _onkeydown)
+        '   myText.Attributes.Add("onunload", _onunload)
+        '    myText.Attributes.Add("onfocus", _onfocus)
+        ' myText.Attributes.Add("onfocusout", _onlosefocus)
+    End Sub
+    Public Shared Sub SetTextonEventWithMenuAction(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal _length As String, ByVal myType As String, ByVal myStep As String, ByVal myMenuID As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextCount2('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "','" & myMenuID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & myCode & "','" & myCount.ClientID & "','" & _length & "')"
+        Dim _onpaste As String = "javascript:setTextChange();"
+        '  Dim _disablemenu As String = "javascript:DisableLeftMenuandTab('" & myMenuID & "')"
+        myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onkeydown", _onkeypress)
+        myText.Attributes.Add("onpaste", _onpaste)
+        '   myText.Attributes.Add("onkeyup", _disablemenu)
+        ' myText.Attributes.Add("onchange", _disablemenu)
+        '   myText.Attributes.Add("onblur", _lostfocus)
+
+
+    End Sub
+    Public Shared Sub SetTextonEventWithMenuAction(ByVal myText As TextBox, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal _length As String, ByVal myType As String, ByVal myStep As String, ByVal TreeID As String, ByVal ListBarID As String, ByVal TabID As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & myCode & "','" & myCount.ClientID & "','" & _length & "')"
+        Dim _onpaste As String = "javascript:setTextChange();"
+        Dim _disablemenu As String = "javascript:DisableLeftMenuandTab('" & TreeID & "','" & ListBarID & "','" & TabID & "')"
+        Dim _lostfocus As String = "javascript:EnableLeftMenuandTab('" & TreeID & "','" & ListBarID & "','" & TabID & "')"
+        myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onkeydown", _onkeypress)
+        myText.Attributes.Add("onpaste", _onpaste)
+        myText.Attributes.Add("onkeyup", _disablemenu)
+        ' myText.Attributes.Add("onchange", _disablemenu)
+        '   myText.Attributes.Add("onblur", _lostfocus)
+
+
+    End Sub
+    Public Shared Sub SetTextonEvent(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal _length As String, ByVal myType As String, ByVal myStep As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & myCode & "','" & myCount.ClientID & "','" & _length & "')"
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        Dim _onchange As String = "javascript:setTextChange();"
+        'Dim _ondatabinding As String = "javascript:getDefaultComments('" & myText.ClientID & "','" & myCode & "')"
+        Dim _onpaste As String = "javascript:setTextChange();"
+        Dim _MenuScript As String = "javascript:DisableMenu()"
+
+        myText.Attributes.Add("ondblclick", _ondblclick)
+        '   myText.Attributes.Add("onmouseover", _onmouseover)
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        myText.Attributes.Add("onpaste", _onpaste)
+        '  myText.Attributes.Add("onkeydown", _onchange)
+        ' myText.Attributes.Add("ondatabinding", _ondatabinding)
+
+
+    End Sub
+    Public Shared Sub SetTextonEvent1(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal _length As String, ByVal myType As String, ByVal myStep As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _onchange As String = "javascript:setTextChange()"
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        ' Dim _onblur As String = "javascript:SaveTextBoxbyPostbackMe2(Form1);"
+
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        myText.Attributes.Add("onchange", _onchange)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        '    myText.Attributes.Add("onblur", _onblur)
+        '  myText.Attributes.Add("onkeydown", _onchange)
+
+    End Sub
+    Public Shared Sub SetTextonEvent1(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal _length As String, ByVal myType As String, ByVal myStep As String, ByVal myFlag As HtmlInputHidden)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _onchange As String = "javascript:SetCellTextChangeFlag('" & myFlag.ClientID & "')"
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        ' Dim _onblur As String = "javascript:SaveTextBoxbyPostbackMe2(Form1);"
+
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        '  myText.Attributes.Add("onchange", _onchange)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        '    myText.Attributes.Add("onblur", _onblur)
+        myText.Attributes.Add("onkeydown", _onchange)
+
+    End Sub
+
+    Public Shared Sub SetTextonEvent4(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal _length As String, ByVal myType As String, ByVal myStep As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onkeypress As String = "javascript:setTextLines('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+        Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & myCode & "','" & myCount.ClientID & "','" & _length & "')"
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        Dim _onchange As String = "javascript:setTextChange()" '"javascript:SaveTextBoxbyPostback(Form1);" 
+        ' Dim _onunload As String = "javascript:setTreeMenuImages();"
+
+        'Dim _onfocusout As String = "javascript:SaveTextBoxbyPostbackMe(Form1);"
+        '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+        '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+        '  myText.Attributes.Add("onfocusout", _onfocusout)
+
+        '    myText.Attributes.Add("ondblclick", _ondblclick)
+        myText.Attributes.Add("onmouseover", _onmouseover)
+        '    myText.Attributes.Add("onchange", _onchange)
+        myText.Attributes.Add("onkeypress", _onkeypress)
+        myText.Attributes.Add("onkeydown", _onchange)
+
+    End Sub
+
+
+    'Public Shared Sub SetmyTextonEvent1(ByRef cPage As Page, ByVal _cUltrtab As String, ByVal myControl As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal lenth As String)
+    '    Dim _Role As String =  WorkingProfile.UserRole
+    '    Dim _controlID As String = myControl.ID
+    '    Dim _countID As String = myCount.ID
+    '    '    Dim _onkeypress As String = "javascript:DisableMenu('TAMenuID')"
+    '    '   Dim _onkeydown As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & Left(_cUltrtab, 8) & _countID & "')"
+    '    '  myControl.Attributes.Add("onkeydown", _onkeydown)
+
+    '    Dim _onkeypress As String = "javascript:setTextCount('" & lenth & "','" & _cUltrtab & _controlID & "','" & Left(_cUltrtab, 8) & _countID & "')"
+    '    Dim _ondblclick As String = "javascript:openBigTextPage('" & _cUltrtab & _controlID & "','" & mycode & "')"
+    '    Dim _onmouseover As String = "javascript:DisableMyText('" & _cUltrtab & _controlID & "','" & _Role & "','" & mycode & "')"
+    '    myControl.Attributes.Add("onkeypress", _onkeypress)  'btn1.Attributes.Add("OnClick", "return confirm_Cancel();")
+    '    myControl.Attributes.Add("ondblclick", _ondblclick)
+    '    myControl.Attributes.Add("onmouseover", _onmouseover)
+    'End Sub
+
+    'Public Shared Sub SetTextonEvent1(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal _length As String, ByVal myType As String, ByVal myStep As String, ByVal myFlag As HtmlInputHidden)
+    '    Dim _Role As String =  WorkingProfile.UserRole
+    '    Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+    '    Dim _onchange As String = "javascript:SetCellTextChangeFlag('" & myFlag.ClientID & "')"
+    '    Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+    '    ' Dim _onblur As String = "javascript:SaveTextBoxbyPostbackMe2(Form1);"
+
+    '    myText.Attributes.Add("onkeypress", _onkeypress)
+    '    myText.Attributes.Add("onchange", _onchange)
+    '    myText.Attributes.Add("onmouseover", _onmouseover)
+    '    '    myText.Attributes.Add("onblur", _onblur)
+
+    'End Sub
+    'Public Shared Sub SetTextonEvent1(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+
+    '    Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+    '    Dim _onmouseover As String = "javascript:DisableTextBox('" & _TextID & "')"
+    '    '  Dim _onchange As String = "javascript:SaveTextBoxbyPostback(Form1);"
+    '    Dim _onfocusout As String = "javascript:SaveTextBoxbyPostbackMe(Form1);"
+    '    myText.Attributes.Add("onmouseover", _onmouseover)
+    '    '  myText.Attributes.Add("onchange", _onchange)
+    '    myText.Attributes.Add("onfocusout", _onfocusout)
+    '    myText.Attributes.Add("onkeypress", _onkeypress)
+
+    'End Sub
+    'Public Shared Sub SetTextonEvent2(ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+
+    '    '        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+    '    Dim _onkeypress As String = "javascript:setTextCount('" & _length & "','" & myText.ClientID & "','" & myCount.ClientID & "')"
+    '    Dim _ondblclick As String = "javascript:TextEditBigPage('" & myText.ClientID & "','" & mycode & "','" & myCount.ClientID & "','" & _length & "')"
+    '    Dim _onmouseover As String = "javascript:DisableTextBox('" & myText.ClientID & "')"
+    '    '       Dim _onchange As String = "javascript:SaveTextBoxbyPostback(Form1);"
+    '    '       Dim _onunload As String = "javascript:setTreeMenuImages();"
+    '    '      Dim _onfocusout As String = "javascript:SaveTextBoxbyPostbackMe(Form1);"
+    '    '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+    '    '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+    '    ' myText.Attributes.Add("onkeydown", _onkeydown)
+    '    '   myText.Attributes.Add("onchange", _onchange)
+    '    '  myText.Attributes.Add("onfocusout", _onfocusout)
+    '    myText.Attributes.Add("ondblclick", _ondblclick)
+    '    myText.Attributes.Add("onmouseover", _onmouseover)
+    '    myText.Attributes.Add("onkeypress", _onkeypress)
+
+    'End Sub
+
+
+    'Public Shared Sub SetTextonEvent4(ByRef cPage As Page, ByVal pageID As String, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+    '    Dim _Role As String =  WorkingProfile.UserRole
+    '    Dim _TextID As String = pageID & myText.ID
+    '    Dim _CountID As String = pageID & myCount.ID
+    '    '  Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+    '    Dim _onkeypress As String = "javascript:setTextLines('" & _length & "','" & _TextID & "','" & _CountID & "')"
+    '    Dim _onkeydown As String = "javascript:setTextLines('" & _length & "','" & _TextID & "','" & _CountID & "')"
+
+    '    Dim _ondblclick As String = "javascript:TextEditBigPage('" & _TextID & "','" & mycode & "','" & _CountID & "','" & _length & "')"
+    '    Dim _onmouseover As String = "javascript:DisableTextBox('" & _TextID & "')"
+    '    Dim _onchange As String = "javascript:SaveTextBoxbyPostback(Form1);"
+    '    Dim _onunload As String = "javascript:setTreeMenuImages();"
+    '    Dim _onfocusout As String = "javascript:SaveTextBoxbyPostbackMe(Form1);"
+    '    '    Dim _onfocus As String = "javascript:setTextChangeSaveON('" & _TextID & "')"
+    '    '   Dim _onlosefocus As String = "javascript:SaveTextBoxbyPostback(Form1,'" & _TextID & "')"
+    '    ' myText.Attributes.Add("onkeydown", _onkeydown)
+    '    myText.Attributes.Add("ondblclick", _ondblclick)
+    '    myText.Attributes.Add("onmouseover", _onmouseover)
+    '    ' myText.Attributes.Add("onchange", _onchange)
+    '    '  myText.Attributes.Add("onfocusout", _onfocusout)
+    '    myText.Attributes.Add("onkeypress", _onkeypress)
+
+    'End Sub
+
+    Public Shared Sub SetAreaCount(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        myText.Attributes.Add("onkeydown", _onkeydown)
+    End Sub
+
+    Public Shared Sub SetTextCount(ByRef cPage As Page, ByVal pageID As String, ByVal myText As TextBox, ByVal myCount As HtmlInputText, ByVal mycode As String, ByVal _length As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _onkeydown As String = "javascript:setTextCount('" & _length & "','" & _TextID & "','" & _CountID & "')"
+        myText.Attributes.Add("onkeydown", _onkeydown)
+    End Sub
+
+    Public Shared Sub SetLinkSpell(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellSpellingCheck()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkSpell(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:SpellingCheckLog('" & myText.ClientID & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkSpell(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:SpellingCheck('" & myText.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkSpell(ByVal myLink As HtmlAnchor, myForm As String, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:SpellingCheck('" & myForm & "','" & myText.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkSpell(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        myLink.HRef = "javascript:SpellingCheck('" & _TextID & "','" & myCode & "')"
+    End Sub
+
+    Public Shared Sub SetLinkTips(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetTips3('Tips','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkTips(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellTIPs()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkTips(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:GetTips3('Tips','" & myText.ClientID & "','" & myCount.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkComment(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetComments3('Comments','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkComment(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellComments3()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkComment(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:GetComments3('Comments','" & myText.ClientID & "','" & myCount.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellRecover()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover(ByVal myLink As HtmlAnchor, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellRecover()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCode As String, ByVal myImg As HtmlImage, ByVal _Title As String)
+        myLink.HRef = "javascript:GetRecover('Recover','" & myText.ClientID & "','" & myCode & "','" & _Title & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage, ByVal _Title As String)
+        myLink.HRef = "javascript:GetRecover('Recover','" & myText.ClientID & "','" & myCode & "','" & _Title & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecoverQA(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage, ByVal _Title As String)
+        myLink.HRef = "javascript:GetRecoverQA('Recover','" & myText.ClientID & "','" & myCode & "','" & _Title & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover4(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage, ByVal _Title As String)
+        myLink.HRef = "javascript:GetRecover4('Recover','" & myText.ClientID & "','" & myCode & "','" & _Title & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkRecover5(ByVal myLink As HtmlAnchor, ByVal myText As Object, ByVal myCode As String, ByVal myImg As HtmlImage, ByVal _Title As String)
+        myLink.HRef = "javascript:GetRecover5('Recover','" & myText.ClientID & "','" & myCode & "','" & _Title & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkTitle(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage, ByVal myPage As String, ByVal myItem As String)
+        myLink.HRef = "javascript:openHelpPage('" + myPage + "','" & myItem & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkCopy(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetCopy3('Research','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkCopy(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:GetCopy3('Research','" & myText.ClientID & "','" & myCount.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkGoal(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        myLink.HRef = "javascript:GetGoals3('Goals','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkGoal(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:GetGoals3('Goals','" & myText.ClientID & "','" & myCount.ClientID & "','" & myCode & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkGoal(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage)
+        myLink.HRef = "javascript:CellGoals3()"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkSearch(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String)
+        myLink.Visible = False
+        'Dim _TextID As String = pageID & myText.ID
+        'Dim _CountID As String = pageID & myCount.ID
+        'myLink.HRef = "javascript:GetCopy3('Research','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkSearch(ByVal myLink As HtmlAnchor, ByVal myText As HtmlTextArea, ByVal myCount As HtmlInputText, ByVal myCode As String, ByVal myImg As HtmlImage)
+        myLink.Visible = False
+        'Dim _TextID As String = pageID & myText.ID
+        'Dim _CountID As String = pageID & myCount.ID
+        'myLink.HRef = "javascript:GetCopy3('Research','" & _TextID & "','" & _CountID & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetButtonBehaivourEnabledMenu(ByVal myButton As Button, ByVal TreeID As String, ByVal ListBarID As String, ByVal TabID As String)
+        SetImageMouseAction(myButton)
+        Dim _onsave As String = "javascript:EnableLeftMenuandTab('" & TreeID & "','" & ListBarID & "','" & TabID & "')"
+        myButton.Attributes.Add("onclick", _onsave)
+    End Sub
+
+    Public Shared Sub SetButtonBehaivour(ByVal myImg As HtmlImage)
+        SetImageMouseAction(myImg)
+    End Sub
+    Public Shared Sub SetButtonBehaivour(ByVal myButton As Button)
+        SetImageMouseAction(myButton)
+    End Sub
+    Public Shared Sub SetButtonBehaivour(ByVal myButton As HyperLink)
+        SetImageMouseAction(myButton)
+    End Sub
+    Public Shared Sub SetButtonBehaivour(ByVal myButton As Button, ByVal myText As Object, ByVal myCode As String)
+        Dim spellAction As String = "javascript:SpellingCheck('" & myText.ClientID & "','" & myCode & "')"
+        myButton.Attributes.Add("onclick", spellAction)
+        SetImageMouseAction(myButton)
+    End Sub
+    Public Shared Sub SetButtonBehaivour(ByVal myButton As Button, ByVal TPAItem As String, ByVal Item As String, ByVal menuTree As String, ByVal action As String)
+        ' myButton.Attributes.Add("onclick", "javascript:setMenuTreeNodeFucus('" & TPAItem & "','" & Item & "','" & action & " ','" & menuTree & "')") 'UltraWebListbar1ctl01UltraWebTree2')")
+        SetImageMouseAction(myButton)
+    End Sub
+    Public Shared Sub SetMenuImg(ByVal panelimg As HtmlImage)
+        panelimg.Attributes.Add("onclick", "javascript:Panel()") '  onmousemove ="javascript:PanelChange()" onmouseout ="javascript:PanelReturn()"
+        SetImageMouseAction(panelimg, "II")
+    End Sub
+    Public Shared Sub SetLinkCalendar(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myText As HtmlInputControl, ByVal _X As String, ByVal _Y As String)
+        Dim _TextID As String = pageID & myText.ID
+        myLink.HRef = "javascript:GetDatePoP3('" & _TextID & "','" & _X & "','" & _Y & "')"
+    End Sub
+    Public Shared Sub SetLinkCalendar(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage, ByVal myText As HtmlInputControl, ByVal _X As String, ByVal _Y As String)
+        myLink.HRef = "javascript:GetDatePoP3('" & myText.ID & "','" & _X & "','" & _Y & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkCalendar2(ByRef cPage As Page, ByVal pageID As String, ByVal myLink As HtmlAnchor, ByVal myTextID As String, ByVal myText2ID As String, ByVal _X As String, ByVal _Y As String)
+        myLink.HRef = "javascript:GetDatePoP4('" & myTextID & "','" & myText2ID & "','" & _X & "','" & _Y & "')"
+    End Sub
+    Public Shared Sub SetLinkCalendar2(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage, ByVal myTextID As String, ByVal myText2ID As String, ByVal _X As String, ByVal _Y As String)
+        myLink.HRef = "javascript:GetDatePoP4('" & myTextID & "','" & myText2ID & "','" & _X & "','" & _Y & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkCalendar2(ByVal myLink As HtmlAnchor, ByVal myImg As HtmlImage, ByVal myDateID As String)
+        myLink.HRef = "javascript:ShowCalendar('" & myDateID & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+    Public Shared Sub SetLinkHelp(ByRef cPage As Page, ByVal Category As String, ByVal myLink As HtmlAnchor, ByVal myCode As String)
+        myLink.HRef = "javascript:openHelpPage('" & Category & "','" & myCode & "')"
+    End Sub
+    Public Shared Sub SetLinkDDLEdit(ByRef cPage As Page, ByVal pageID As String, ByVal myLabel As Label, ByVal myCode As String)
+        myLabel.Text = "<A href=" + """" + "javascript:openDDLEdit('" & myCode & "')" & """" & ">" + myLabel.Text + "</A>"
+    End Sub
+
+    Private Shared Sub SetImageMouseAction(ByVal myImg As HtmlImage, ByVal type As String)
+        ' This function has been replaced with CSS 
+        'If type = "I" Then
+        '    myImg.Attributes.Add("onmouseover", "javascript:setFont(" & myImg.ID & " ,'FontBold')")
+        '    myImg.Attributes.Add("onmouseout", "javascript:setFont(" & myImg.ID & " ,'FontNormal')")
+        'Else
+        '    myImg.Attributes.Add("onmouseover", "javascript:PanelChange('over')")
+        '    myImg.Attributes.Add("onmouseout", "javascript:PanelChange('out')")
+
+        'End If
+    End Sub
+    Private Shared Sub SetImageMouseAction(ByVal myButton As Object)
+        ' This function has been replaced with CSS 
+        'myButton.Attributes.Add("onmouseover", "javascript:setFont(" & myButton.ID & ",'ButtonMouseOver')")
+        'myButton.Attributes.Add("onmouseout", "javascript:setFont(" & myButton.ID & ",'ButtonNormal')")
+    End Sub
+
+
+
+    Public Shared Sub SetEnableOtherTextbox(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As Object, ByVal checkValue As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+        Dim _onChange As String = "javascript:EnableTextBox('" & _TextID & "','" & _listID & "','" & checkValue & "')"
+        myList.Attributes.Add("onclick", _onChange)
+    End Sub
+
+    Public Shared Sub SetmyTextRead(ByVal myText As Object, ByVal myType As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onmouseover As String = "javascript:DisableMyText('" & myText.ClientID & "','" & _Role & "','" & myType & "')"
+        myText.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextRead(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myType As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _TextID As String = pageID & myText.ID
+        Dim _onmouseover As String = "javascript:DisableMyText('" & _TextID & "','" & _Role & "','" & myType & "')"
+        myText.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    Public Shared Sub SetmyTextReadStep(ByVal myText As Object, ByVal myType As String, ByVal myStep As String)
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _onmouseover As String = "javascript:DisableMyTextStep('" & myText.ClientID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+        myText.Attributes.Add("onmouseover", _onmouseover)
+    End Sub
+    'Public Shared Sub SetmyTextReadStep(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myType As String, ByVal myStep As String)
+    '    Dim _Role As String =  WorkingProfile.UserRole
+    '    Dim _TextID As String = pageID & myText.ID
+    '    Dim _onmouseover As String = "javascript:DisableMyTextStep('" & _TextID & "','" & _Role & "','" & myType & "','" & myStep & "')"
+    '    myText.Attributes.Add("onmouseover", _onmouseover)
+    'End Sub
+    Public Shared Sub SetLinkIdentify(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal LinkTeacher As HtmlAnchor, ByVal imgTeacher As Object, ByVal _linkSpell As HtmlAnchor)
+        Dim _TextID As String = pageID & myText.ID
+        Dim imgTeacherID As String = pageID & imgTeacher.ID
+        Dim imgSpell As String = pageID & _linkSpell.ID
+        LinkTeacher.HRef = " javascript:IdentifyUserO3('" & _TextID & "','" & imgTeacherID & "','" & imgSpell & "')"
+    End Sub
+    Public Shared Sub SetLinkIdentify(ByVal myText As Object, ByVal LinkTeacher As HtmlAnchor, ByVal imgTeacher As Object, ByVal linkSpell As HtmlAnchor)
+
+        LinkTeacher.HRef = " javascript:IdentifyUserO3('" & myText.ClientID & "','" & imgTeacher.ClientID & "','" & linkSpell.ClientID & "')"
+        SetImageMouseAction(imgTeacher, "I")
+    End Sub
+
+    Public Shared Sub SetLinkVerifyUser(ByRef cPage As Page, ByVal pageID As String, ByVal LinkTeacher As HtmlAnchor, _
+                                        ByVal signP As Object, ByVal dateP As Object, ByVal signT As Object, ByVal dateT As Object)
+
+        LinkTeacher.HRef = " javascript:VerifyUser('" & signP.ID & "','" & dateP.ID & "','" & signT.ID & "','" & dateT.ID & "')"
+    End Sub
+    Public Shared Sub SetLinkVerifyUser(ByVal LinkTeacher As HtmlAnchor, ByVal myImg As HtmlImage, _
+                                       ByVal signP As Object, ByVal dateP As Object, ByVal signT As Object, ByVal dateT As Object)
+
+        LinkTeacher.HRef = " javascript:VerifyUser('" & signP.ClientID & "','" & dateP.ClientID & "','" & signT.ClientID & "','" & dateT.ClientID & "')"
+        SetImageMouseAction(myImg, "I")
+
+    End Sub
+    Public Shared Sub SetLinkVerifyUserTab(ByVal LinkTeacher As HtmlAnchor, ByVal myImg As HtmlImage, ByVal myTab As String)
+        LinkTeacher.HRef = " javascript:IdentifyUserOLog('" & myTab & "','" & myImg.ClientID & "')"
+        SetImageMouseAction(myImg, "I")
+
+    End Sub
+
+    Public Shared Sub SetLinkVerifyUserT(ByVal LinkTeacher As HtmlAnchor, ByVal myImg As HtmlImage, _
+                                          ByVal signP As Object, ByVal dateP As Object, ByVal signT As Object, ByVal dateT As Object)
+
+        LinkTeacher.HRef = " javascript:VerifyUserT('" & signP.ID & "','" & dateP.ID & "','" & signT.ID & "','" & dateT.ID & "')"
+        SetImageMouseAction(myImg, "I")
+
+    End Sub
+    Public Shared Sub SetListClickgetValue(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As Object)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+        Dim _onChange As String = "javascript:getCompentencyToText('" & _TextID & "','" & _listID & "')"
+        myList.Attributes.Add("onclick", _onChange)
+    End Sub
+    Public Shared Sub SetListClickgetValue2(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As CheckBoxList, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText('" & _TextID & "','" & _chkItem & "','" & _chkCode & "')"))
+            index = index + 1
+            If _chkCode = _CompentencyID Then
+                item.Text = "<b>" + item.Text + "</b>"
+            Else
+                item.Text = Replace(item.Text, "<b>", "")
+                item.Text = Replace(item.Text, "</b>", "")
+            End If
+        Next
+    End Sub
+    Public Shared Sub SetListClickgetValue3(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As CheckBoxList, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText1('" & _chkCode & "','" & _chkItem & "')"))
+            Dim _S As String = "<A Title='Retrieve Satisfactory Compentency' href=""javascript:getCompentencyToText2('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','S')" & """><IMG  src='../Images/Face_P.gif' border='0'></A> "
+            Dim _U As String = "<A Title='Retrieve Unsatisfactory Compentency' href=""javascript:getCompentencyToText2('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','U')" & """><IMG  src='../Images/Face_N.gif' border='0'></A> "
+            Dim _Log As String = "<A Title='Click on eLog to view Evidence Log' href=""javascript:getCompentencyToText1('" & _chkCode & "','" & _chkItem & "')" & """><IMG  src='../Images/eLog.bmp' border='0'></A> "
+            item.Text = _S & _U & item.Text & _Log
+
+            index = index + 1
+            'If _chkCode = _CompentencyID Then
+            '    Dim _S As String = "<A Title='Satisfactory' href='javascript:getCompentencyToText1('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','S')" & "'><IMG  src='../Images/HelpS.bmp' border='0'> S</A> "
+            '    Dim _U As String = "<A Title='Unsatisfactory' href='javascript:getCompentencyToText1('" & _TextID & "','" & _chkItem & "','" & _chkCode & "','U')" & "'><IMG  src='../Images/Light1.bmp' border='0'> Uns</A> "
+            '    item.Text = "<b>" + item.Text + "</b>" & _S & _U
+
+            'Else
+            '    item.Text = Replace(item.Text, "<b>", "")
+            '    item.Text = Replace(item.Text, "</b>", "")
+            'End If
+        Next
+    End Sub
+    Public Shared Sub SetListClickgetValue4(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myList As Object, ByVal _CompentencyID As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _listID As String = pageID & myList.ID
+
+        ' Dim myList As CheckBoxList = Me.chbCompetency
+        Dim index As Integer = 0
+        Dim chbControl As String = myList.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _chkCode As String = ""
+        Dim item As ListItem
+        For Each item In myList.Items
+            _chkItem = chbControl & "_" & index.ToString
+            _chkCode = item.Value
+            item.Attributes.Add("onclick", String.Format("javascript:getCompentencyToText0('" & _chkCode & "','" & _chkItem & "')"))
+            If item.Value = _CompentencyID Then
+                item.Text = "<FONT color='#3300ff' >" + item.Text + " </FONT>"
+                Dim _seleCompetency2 = HttpContext.Current.Session("SelectComtency2")
+                If _seleCompetency2 = "1" Then
+                    item.Text = Replace(item.Text, "src='../Images/Face_P.gif' border='0'", "src='../Images/Face_P.gif' border='2'")
+                    '  item.Text = Replace(item.Text, "src='../Images/Face_P.gif' border='0'", "src='../Images/Face_P.gif' border='2'")
+                    item.Text = Replace(item.Text, "border='1'", "border='0'")
+                    item.Text = Replace(item.Text, "Retrieve Satisfactory Competency", "Satisfactory Competency Selected")
+                    item.Text = Replace(item.Text, "Unsatisfactory Competency Selected", "Retrieve Unsatisfactory Competency")
+                    item.Text = Replace(item.Text, "src='../Images/Face_N.gif' border='2'", "src='../Images/Face_N.gif' border='0'")
+                End If
+                If _seleCompetency2 = "2" Then
+                    item.Text = Replace(item.Text, "src='../Images/Face_N.gif' border='0'", "src='../Images/Face_N.gif' border='2'")
+                    ' item.Text = Replace(item.Text, "src='../Images/Face_N.gif' border='0'", "src='../Images/Face_N.gif' border='2'")
+                    item.Text = Replace(item.Text, "border='1'", "border='0'")
+                    item.Text = Replace(item.Text, "Satisfactory Competency Selected", "Retrieve Satisfactory Competency")
+                    item.Text = Replace(item.Text, "Retrieve Unsatisfactory Competency", "Unsatisfactory Competency Selected")
+                    item.Text = Replace(item.Text, "src='../Images/Face_P.gif' border='2'", "src='../Images/Face_P.gif' border='0'")
+                End If
+
+                ' item.Text = Replace(item.Text, "border='0'", "border='2'")
+            Else
+                item.Text = Replace(item.Text, "<FONT color='#3300ff' >", "")
+                item.Text = Replace(item.Text, "</FONT>", "")
+                item.Text = Replace(item.Text, "border='2'", "border='1'")
+            End If
+            index = index + 1
+        Next
+
+
+
+    End Sub
+
+    Public Shared Sub SetLinkUndoSignOff(ByRef cPage As Page, ByVal pageID As String, ByVal LinkCtl As HtmlAnchor, _
+                                          ByVal signText As Object, ByVal dateText As Object)
+        Dim _signP As String = pageID & signText.ID
+        Dim _dateP As String = pageID & dateText.ID
+        LinkCtl.HRef = " javascript:UndoSignOff3('" & _signP & "','" & _dateP & "')"
+    End Sub
+    Public Shared Sub SetLinkUndoSignOff(ByVal LinkCtl As HtmlAnchor, ByVal myImg As HtmlImage, ByVal signText As Object, ByVal dateText As Object)
+        LinkCtl.HRef = " javascript:UndoSignOff3('" & signText.ID & "','" & dateText.ID & "')"
+        SetImageMouseAction(myImg, "I")
+    End Sub
+
+    Public Shared Sub SetTextFocusIn(ByRef cPage As Page, ByVal pageID As String, ByVal myText As Object, ByVal myCount As HtmlInputText, ByVal mySpell As HtmlAnchor, ByVal myComment As HtmlAnchor, ByVal myGoal As HtmlAnchor, ByVal myTips As HtmlAnchor, ByVal mycode As String, ByVal _length As String)
+        Dim _TextID As String = pageID & myText.ID
+        Dim _CountID As String = pageID & myCount.ID
+        Dim _spellID As String = pageID & mySpell.ID
+        Dim _commentID As String = pageID & myComment.ID
+        Dim _GoalID As String = pageID & myGoal.ID
+        Dim _TipID As String = pageID & myTips.ID
+        Dim _onfocus As String = "javascript:setTextFocus('" & _length & "','" & _TextID & "','" & _CountID & "','" & _spellID & "','" & _commentID & "','" & _GoalID & "','" & _TipID & "','" & mycode & "')"
+        myText.Attributes.Add("onfocus", _onfocus)
+    End Sub
+    Public Shared Sub SetTextFocusIn(ByVal myText As Object, ByVal myCount As HtmlInputText, ByVal myRecover As HtmlAnchor, ByVal mySpell As HtmlAnchor, ByVal myComment As HtmlAnchor, ByVal myGoal As HtmlAnchor, ByVal myTips As HtmlAnchor, ByVal myCode As String, ByVal _length As String)
+        Dim _TextID As String = myText.ClientID
+        Dim _CountID As String = myCount.ClientID
+        Dim _spellID As String = mySpell.ClientID
+        Dim _commentID As String = myComment.ClientID
+        Dim _GoalID As String = myGoal.ClientID
+        Dim _TipID As String = myTips.ClientID
+        Dim _RecoverID As String = myRecover.ClientID
+        Dim _onfocus As String = "javascript:setTextFocus('" & _length & "','" & _TextID & "','" & _CountID & "','" & _RecoverID & "','" & _spellID & "','" & _commentID & "','" & _GoalID & "','" & _TipID & "','" & myCode & "')"
+        myText.Attributes.Add("onfocus", _onfocus)
+    End Sub
+    Public Shared Sub SetTextFocusIn(ByVal myText As Object, ByVal myCode As String)
+        Dim _TextID As String = myText.ClientID
+        Dim _onfocus As String = "javascript:TextCellFocus('" & myText.ClientID & "','" & myCode & "')"
+        myText.Attributes.Add("onfocus", _onfocus)
+    End Sub
+
+    Public Shared Sub SetListItemsLinkMouseOver(ByRef cPage As Page, ByVal pageID As String, ByVal myObj As Object)
+
+        Dim index As Integer = 0
+        Dim chbControl As String = myObj.ClientID.ToString()
+        Dim _chkItem As String = ""
+        Dim _overCSS As String = "LinkMouseOver"
+        Dim _outCSS As String = "LinkNormal"
+        Dim item As ListItem
+        For Each item In myObj.Items
+            _chkItem = chbControl & "_" & index.ToString
+            index = index + 1
+            item.Attributes.Add("onmouseover", String.Format("javascript:setLink('" & _chkItem & "','" & _overCSS & "')"))
+            item.Attributes.Add("onmouseout", String.Format("javascript:setLink('" & _chkItem & "','" & _outCSS & "')"))
+        Next
+        'myObj.Attributes.Add("onmouseover", String.Format("javascript:setLink(" & myObj & ",'" & _cSSover & "')"))
+        'myObj.Attributes.Add("onmouseout", String.Format("javascript:setLink(" & myObj & ",'" & _cSSout & "')"))
+
+    End Sub
+End Class

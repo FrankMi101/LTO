@@ -1,0 +1,13 @@
+﻿.LeftBar
+{
+	border-right: silver 1px outset;
+	border-top: silver 1px outset;
+	z-index: 100;
+	left: -199;
+	border-left: silver 1px outset;
+	border-bottom: silver 1px outset;
+	position: absolute;
+	top: 88px;
+	height: 150px;
+	width: 200px;
+}

@@ -1,0 +1,104 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Hired Confirm Notification</title>
+     
+</head>
+<body>
+
+
+    <table id="tblContent" style="width: 750px; border: outset lightgrey 0pt">
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+
+                <div style="text-align: center">
+                    <h2>Hired Confirm Notification </h2>
+                </div>
+                <div id="EmailBody">
+                    Dear
+                    <span style=" font-weight bolder">{{PrincipalNameSTR}}  </span>
+                    <br />
+                    <br />
+                    This is to confirm the following:
+                    <table border="1" style="width:700px">
+                        <tr>
+                            <td style="width:150px">Posting Number:</td>
+                            <td style="width:150px">{{PostingNumberSTR}}</td>
+                            <td style="width:150px">Posting Round</td>
+                            <td style="width:70px">{{PostingCycleSTR}}</td>
+                            <td style="width:80px;text-align:right; ">BTC:</td>
+                            <td style="width:100px">{{BTCSTR}}</td>
+                        </tr>
+                        <tr>
+                            <td>LTO Awarded To:</td>
+                            <td colspan="3">{{TeacherNameSTR}}</td>
+                            <td style="text-align:right; ">PID:</td>
+                            <td>{{TeacherCPNumSTR}}</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="3"></td>
+                            <td style="text-align:right; ">OT PRNR:</td>
+                            <td>{{TeacherOTPrnrSTR}}</td>
+                        </tr>
+                        <tr>
+                            <td>Position Title:</td>
+                            <td colspan="5">{{PositionTitleSTR}}</td>
+                        </tr>
+                        <tr>
+                            <td>Grade/Subject:</td>
+                            <td colspan="5">{{QualificationSTR}}</td>
+                        </tr>
+                        <tr>
+                            <td>School:</td>
+                            <td colspan="5">{{PositionSchoolSTR}}</td>
+
+                        </tr>
+                        <tr>
+                            <td>LTO Will Start On:</td>
+                            <td colspan="5">{{PositionStartDateSTR}} </td>
+                        </tr>
+                        <tr>
+                            <td> LTO End Date:</td>
+                            <td colspan="5"> {{PositionEndDateSTR}} </td>
+                        </tr>
+
+                    </table>
+
+                    {{AbsentTeacherSection}}
+
+
+
+
+                    {{WeeklyScheduleSTR}}
+                    <br />
+                    {{timeTable}}
+                    {{multiSchool}}
+
+                    <br />
+                </div>
+
+
+                <br />
+                <!--<span style="font-weight:bolder"> {{ConfirmPersonSTR}}</span>-->
+                <br />  Academic Services:
+                <br />
+                <span> {{DateTimeSTR}}</span>
+
+                <br />
+                {{EmailTOSTR}}
+                <br />
+                {{EmailCCSTR}}
+                <br />
+                {{EmailBCCSTR}}
+            </td>
+        </tr>
+
+    </table>
+ 
+
+</body>
+</html>

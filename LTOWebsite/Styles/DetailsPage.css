@@ -1,0 +1,95 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/message_body_m.bmp);
+}
+
+.editcell {
+    background-color: papayawhip;
+    font-family: Arial;
+    font-size: x-small;
+}
+
+.editcellLock {
+    background-color: aliceblue;
+    font-family: Arial;
+    font-size: x-small;
+    pointer-events: none;
+}
+
+.editcellAllow {
+    background-color: papayawhip;
+    font-family: Arial;
+    font-size: x-small;
+}
+
+td {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-small;
+}
+
+.auto-style2 {
+    height: 14px;
+}
+
+.auto-style3 {
+    text-align: right;
+    vertical-align: top;
+    height: 14px;
+}
+
+.enabaledBton {
+    display: block;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.disabaledBton {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+#RepostingDIV {
+    font-family: Arial;
+    font-size: small;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: url(../images/BlueDIVList.png);
+    border: 3px outset skyblue;
+}
+
+#lblNoticeDate {
+    width: 123px;
+}
+
+#lblRemainderDate {
+    width: 131px;
+}
+
+.ButonHidden {
+    display: none;
+}
+
+.noWrap {
+    text-wrap: avoid;
+    text-align: right;
+}
+
+#F100TimeTable table, #F100MultipleSchool table {
+    width: 100%;
+}
+
+#F100TimeTable td, #F100MultipleSchool td {
+    border: 1px solid papayawhip;
+}
+
+#F100TimeTable th, #F100MultipleSchool th {
+    font-weight: 800;
+    border: 1px solid papayawhip;
+}
+
+.PositionDescription {
+     border: 1px solid papayawhip;
+}

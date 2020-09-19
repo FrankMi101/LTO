@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="09f6c495-4bab-4129-bb67-3ef59d1d644e" name="LTO" linkedPackageId="9a7c5a73-7a90-4645-9fe7-97e3f7453071" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="0899c3eb-2428-456b-8740-f6ce36de6057">
+      <elementDefinition Id="47cada97-bcbb-4fd8-bdcc-fc594ad9e049" />
+      <body>Request a new open position
+
+Review position interview candidate list
+
+Make a hire recommendation </body>
+      <annotatedElements>
+        <actorMoniker Id="cd15f82b-a23e-4eac-8cd2-ce5bc73f0fe0" LastKnownName="School Principal" />
+      </annotatedElements>
+    </comment>
+    <comment Id="3ab52693-c62d-4c51-b67e-849cf1a489ea">
+      <elementDefinition Id="c74904b5-bc9f-4a97-99cc-6ddebc55b852" />
+      <body>Browser all available open postion list
+Apply a open position
+view my applied position histroy list</body>
+      <annotatedElements>
+        <actorMoniker Id="ab757887-a144-4638-b7cc-c8c1d1ff90ab" LastKnownName="LTO Teacher" />
+      </annotatedElements>
+    </comment>
+    <comment Id="26d779dd-a65f-497c-9dd1-5d7f83dbe5b0">
+      <elementDefinition Id="4bea8796-0633-41da-a081-69f943269ae9" />
+      <body>review open position 
+posting the position 
+     add new open position
+     cancel posting postion
+     re posting  a position
+select position interview candidate by position
+comfire a position hering recommendation
+cancel a hired comfirm
+export hired position list to EXCEL file
+</body>
+      <annotatedElements>
+        <actorMoniker Id="a22c8a83-f6ac-4f6e-9503-6dca1c855efc" LastKnownName="Hiring Staff" />
+        <actorMoniker Id="93420d75-f154-487d-a3a4-adfd59c2e227" LastKnownName="Hiring Manager" />
+      </annotatedElements>
+    </comment>
+    <comment Id="019889d1-7868-465a-aa47-83749514617b">
+      <elementDefinition Id="ed6f52d2-05b3-4e33-8817-b40a2d5060c0" />
+      <body>Only apply 3rd posting LTO Assignments and 3rd posting POP position </body>
+      <annotatedElements>
+        <actorMoniker Id="7a8a1355-e182-427a-92a5-e63d1d5b59fe" LastKnownName="Roster" />
+      </annotatedElements>
+    </comment>
+    <comment Id="68c32757-ef0f-4a21-9033-f9ec27a49857">
+      <elementDefinition Id="3367b8a7-1aae-49e9-afcb-9d5fb7a3af92" />
+      <body>School Principals changes synconize with SAP system.
+
+LTO/POP application need correct new school principal, but SAP system does not make changes until Sept. 1st. So, application need handle those school principal changes. 
+
+ </body>
+      <annotatedElements>
+        <actorMoniker Id="93420d75-f154-487d-a3a4-adfd59c2e227" LastKnownName="Hiring Manager" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="81b6f2b9-8a8f-4524-bd6c-df0393c176d3" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="8b6aec9c-ef0a-4e09-bfa9-e11e46bd28a5">
+          <propertyInstance Id="cd4f8e38-56b5-4b43-b42e-800bae12171c" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3e24f332-56ad-441d-a7ed-8512d2833d49">
+          <propertyInstance Id="5b14b55d-9a37-433e-a0da-68a9f9652861" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="af2a5928-954f-42d1-82e9-9252f501a518">
+          <propertyInstance Id="00610b00-9c1b-4a48-a14c-f379cbeca2bd" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="6cda5269-bb64-41ca-a425-f5a8d896ab94" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="9c822610-c83b-4609-bc7b-251cd083d286">
+          <propertyInstance Id="8b344907-21ea-4f21-9b36-4cfb2a787e41" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d847afd4-0c22-48d7-96d4-6c53ba0510bc">
+          <propertyInstance Id="bbdf6ca8-faab-41ff-86d4-bdf9e31d2356" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="448100a3-81df-445a-a273-c82381489718">
+          <propertyInstance Id="27dd5ea6-23a9-43d8-8ad8-90e5d72cd375" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="bf3dc358-0518-498e-b6b9-a546bf370e97">
+          <propertyInstance Id="b294e8ac-34a6-4883-aab4-40d28ed3f8b5" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e151dd6b-66d2-4251-b76c-cc8fb2ceb0f9">
+          <propertyInstance Id="29b15668-844d-4875-858f-aa11e2d21214" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e24f5d6c-f7ac-4c44-8650-50a9fb18e79c">
+          <propertyInstance Id="523602ad-0dd4-492a-b4c8-d48f638c71b3" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fdd0cf4b-5218-4197-8afc-7bb92653e705">
+          <propertyInstance Id="d7291cf3-7f93-4b8f-b342-8f241bc9e538" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" name="LTO Hiring Process" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="048734ca-4697-4bf3-980f-3dc45d4b8ad6">
+            <elementDefinition Id="e8256914-333f-401b-a67c-56ce7ef6439b" />
+            <body>1. Request New Open Position proposal  (School Principal)
+2. Approve and Publish the Open Position ( HR Staff)
+3. Apply Open Position ( LTO Teacher)
+4. Choose interview Candidate (HR hire Staff) 
+5.Interview Result Comments (School Principal)
+6. Review the interview and Recommendations (HR Staff)
+7.Decision make and Notice the Hired (HR hire Staff)
+</body>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="d6c40fe4-3278-469b-9824-8f38376e6505" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="ab757887-a144-4638-b7cc-c8c1d1ff90ab" name="LTO Teacher" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="95cab365-ca7c-485c-8f6a-678bcd2a3add" />
+        <targetEnds>
+          <association Id="18fb86ad-38fc-40be-a483-74c7a4d66e22" isDerived="false" sourceEndRoleName="LTO Teacher" targetEndRoleName="LTO Hiring Process" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" LastKnownName="LTO Hiring Process" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="db9ad147-3c65-4f86-a388-3403088c7ea5" name="LTO Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f9b91fb6-58ba-42c4-8cfa-99e8de8f18d3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a54553cf-fee3-491c-9364-25ecd08e2c6c" name="LTO Hiring Process" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="ab976f52-e35e-47e6-8b5d-1b9969c42c4d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="751844d8-fe16-4ad4-8710-387e7cb2f1a0" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a22c8a83-f6ac-4f6e-9503-6dca1c855efc" name="Hiring Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="93a97b0e-ac20-49fb-9840-d8ec885874ca" />
+        <targetEnds>
+          <association Id="ac9bc577-915a-4d2c-9114-d1075e98d649" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="LTO Hiring Process" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" LastKnownName="LTO Hiring Process" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cb78b531-eb1f-4d3f-a0a8-f29d1f88fc16" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5d4971ca-7415-4b16-a2d4-58f3cd63199a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3f9783c3-78e0-4540-8368-73dc37038bf7" name="LTO Hiring Process" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="bc16f7a6-b1c1-4682-84b9-2c7431caf507" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="0deb27d1-56ce-4555-966b-bd10473d18cc" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="93420d75-f154-487d-a3a4-adfd59c2e227" name="Hiring Manager" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c0ce34e4-b402-4ff3-a354-2ae3078d67de" />
+        <targetEnds>
+          <association Id="bd191907-ec2c-4ea2-8139-5e16f21a7513" isDerived="false" sourceEndRoleName="Hiring Manager" targetEndRoleName="LTO Hiring Process" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" LastKnownName="LTO Hiring Process" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="279931a4-56a8-4e1b-8880-0853acb21e1d" name="Hiring Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5bf0e033-6541-49b7-bf9a-6e264897f1e9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f533ac44-14e0-4e45-9b08-4921562f644d" name="LTO Hiring Process" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="339c3dd9-bd86-46e3-a874-59e84766ba1e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b6487d0f-539f-4bdb-8186-380d5d04cd5c" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="cd15f82b-a23e-4eac-8cd2-ce5bc73f0fe0" name="School Principal" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f6572cb-8f3a-43e7-9777-4d9a6130eff8" />
+        <targetEnds>
+          <association Id="2269815f-e99f-437c-b89f-32ffe165d933" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="LTO Hiring Process" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" LastKnownName="LTO Hiring Process" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c2339efc-23b5-48b5-aa9e-6868680d7b7d" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9ba39e78-f07c-455e-8a5c-bad74c630fc1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bd68bb82-0d8b-4ec9-ab10-6d827dcd649a" name="LTO Hiring Process" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4db15c59-b066-46b9-b410-75f35658cedc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="102ab281-afbf-4a64-82dc-f01c1775910a" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="7a8a1355-e182-427a-92a5-e63d1d5b59fe" name="Roster" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="91878d6d-a396-4dfe-b72c-d03c8588c324" />
+        <targetEnds>
+          <association Id="54b53265-aa3c-4b81-8f01-fe41552ae659" isDerived="false" sourceEndRoleName="Roster" targetEndRoleName="LTO Hiring Process" isLeaf="false" isAbstract="false">
+            <subsystemMoniker Id="b5e567f2-07e6-42f7-ac77-61b8b7276b44" LastKnownName="LTO Hiring Process" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="22ac1bad-d204-4522-a186-934d9a66e904" name="Roster" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c8d5a228-deb4-46c8-a9d1-a6640a2dcc17" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e762331f-b94c-42f0-a448-823f3779826f" name="LTO Hiring Process" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="cf6ab66b-b8cb-41a9-a674-abdcd23d5916" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9d7f55c3-260d-4d03-866b-b6ff5d6d9d57" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="9a7c5a73-7a90-4645-9fe7-97e3f7453071" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="984184dd-d7f5-41c7-b29a-27815cea9a26">
+        <profileInstance Id="ec437029-bf03-43fc-b879-79721e69da40" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4563cbec-000d-4de5-bb85-966098130455">
+        <profileInstance Id="dafe39b8-72b5-40a8-9cca-a53641ef6b78" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="cd7c02b6-9b3e-4c52-8428-85a64df00a90">
+        <profileInstance Id="12d9f7f2-377d-4418-aa70-63f8ea512028" name="CSharpProfile">
+          <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+        </profileInstance>
+        <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="3ed96b62-0db5-4a4c-acd6-67d2ccf649c5">
+        <profileInstance Id="26735d97-c07c-4f09-ab7e-5b44fae8bc5d" name="TextTemplateBindings">
+          <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+        </profileInstance>
+        <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

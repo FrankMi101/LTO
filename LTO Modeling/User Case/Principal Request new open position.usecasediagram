@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="bcd7bf5f-3464-4586-ad91-70784185a4ed" name="Principal Request new open position" linkedPackageId="233b79a0-b23b-4504-b88a-c5e346151cf2" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="44de843d-39bd-42cd-9875-6c8d29c2fc9a" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="371f47d0-5c02-4efc-aac5-6be1e17733ab">
+          <propertyInstance Id="431ccea5-724b-4cd7-b7cc-266457c2f686" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3dd7cc63-71f7-4d53-8ab7-fcadeff51329">
+          <propertyInstance Id="3ab9fb78-f1ed-4a0d-87ec-60e03ad06f82" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="78e066a7-fd52-4d3b-bc99-3fd56472ca10">
+          <propertyInstance Id="bc905762-6541-46d4-9a44-aeae4bf7d58e" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="80b73006-560f-43ad-a626-c3edc07bbe7e" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="02d6a088-4b17-4abe-85a4-cecef8069eef">
+          <propertyInstance Id="c9eb71b2-f6ff-485f-9d70-6de0a655ddc5" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a7832e7b-01b9-4b48-a1ec-e1aee613be30">
+          <propertyInstance Id="cf848466-469a-4b20-ad8f-0fc79b885dc0" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="790ef6b5-5fd6-45fb-8aad-4f2436dc546d">
+          <propertyInstance Id="5a40483c-f746-455d-9889-c5734f008f73" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e295c208-ca01-4e34-9f63-725bad740e2f">
+          <propertyInstance Id="9876cba8-352b-4058-84b8-86bae931d6e7" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="922c25b9-8130-48f8-9288-bb6a9e66fe09">
+          <propertyInstance Id="04d3a0cc-21a0-4fa3-9d1b-03e6486720e4" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7ba6dd66-668f-49ec-a294-1df498cd94b1">
+          <propertyInstance Id="2e781196-674f-4d6e-9b18-f7dd6f37ea4e" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e24949b7-61c2-48b1-8349-6e427acbfb6f">
+          <propertyInstance Id="2bfa6b4b-bbaf-4723-ab19-d72c84a02489" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="fd30720b-2343-40e4-9d71-986080b41379" name="School Principal Request a open positioni" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="bc3507b0-9e29-426b-81a6-0bfd4273c3f8">
+            <elementDefinition Id="3f669ba4-fabc-4efd-a05d-6ce78021cc92" />
+            <body>New open Position Form:
+
+1. Positon Title
+2. Position school information:
+    School Name:
+    School Principal:
+    Start Time:
+3. Postion Level
+4. Postion Qualification 
+5. Position Description
+6. Position Full/Part time
+7. Position Start Date 
+8. Position End Date
+9. Applicant Contact inforation
+</body>
+            <annotatedElements>
+              <useCaseMoniker Id="db15b69f-4cc2-4bc1-81e2-a44187906864" LastKnownName="Open Position Request Form" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="e7afe9bf-4241-4a50-b51c-e9fc6a683ebf" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d9207774-6b84-4b83-b225-f1ae0c0b8ee4" name="School Principal" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f6572cb-8f3a-43e7-9777-4d9a6130eff8" />
+        <targetEnds>
+          <association Id="baa4c9d5-5c08-440f-86f8-bbae636df411" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="Browser all my school open position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9fa4af36-3e7a-4c0d-96e7-359b056f8d36" LastKnownName="Browser all my school open position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a3838d54-1771-41b8-82b8-a8cdbb4935ab" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="08b3ba22-5f2f-42e3-b558-41e59064222c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b4e7c644-66e8-4040-a011-30a64f9c5493" name="Browser all my school open position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="16b48c0c-c6eb-416e-946f-efa5b0cc6c75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="722f884b-b1c6-450a-a43d-c7eb918566be" />
+          </association>
+          <association Id="b045f112-58e0-4c18-a1d3-b23dd435d45b" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="Add new open position request" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="77e897c5-2ae6-4dc3-a497-1ed718a46d01" LastKnownName="Add new open position request" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="589104ca-027a-438d-bb44-3939271fed04" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6cabc100-5a6b-447a-a0b4-4689ceb7245e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fdee0be1-7875-4cdf-a3be-9f0e8d1a29a7" name="Add new open position request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="790cdd69-f032-4e58-aa06-5a9f05ed2edc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="758d4c71-b8c8-4b74-a098-9ef758d09dab" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="9fa4af36-3e7a-4c0d-96e7-359b056f8d36" name="Browser all my school open position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="79065a49-15c8-4281-8399-e7f9e9015c9e" />
+        <targetEnds>
+          <association Id="9cd8086a-33ea-4375-9689-00d938f8ab54" isDerived="false" sourceEndRoleName="Browser all my school open position" targetEndRoleName="Open Position Request Form" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="db15b69f-4cc2-4bc1-81e2-a44187906864" LastKnownName="Open Position Request Form" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e4819d6c-a937-46f6-ab60-bda7609f6be3" name="Browser all my school open position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="817e550b-311a-46c7-8edd-d5eeabface24" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="57a7f3b6-8af8-449b-88b4-0f7e25009c12" name="Open Position Request Form" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1dc519ca-f4b5-4c45-970f-fa8a03b6c3f2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="ad942a21-01a4-4c36-bc05-7a6c42599f0b" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="db15b69f-4cc2-4bc1-81e2-a44187906864" name="Open Position Request Form" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f0635816-e244-4065-b7fc-f53ad3343c88" />
+        <additions>
+          <include Id="f9439720-c67d-4706-b866-554c347c6daf">
+            <useCaseMoniker Id="795a2009-3e1c-447d-9396-95992b07c2eb" LastKnownName="Request a open postion" />
+            <elementDefinition Id="6f52f3b4-ef8a-47a5-8668-a759683a364a" />
+          </include>
+          <include Id="8d8c47db-6b8b-4d3a-a9f6-0c2cf81ae0f2">
+            <useCaseMoniker Id="0777785f-7f44-40a4-8781-6d2a155005b1" LastKnownName="Cancel a request" />
+            <elementDefinition Id="6f52a731-4cb3-47a5-a9d3-26dd3757f94a" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="77e897c5-2ae6-4dc3-a497-1ed718a46d01" name="Add new open position request" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e82a517f-67ec-4904-beb2-05ce14829f91" />
+        <targetEnds>
+          <association Id="cfe236e6-225b-4989-87ab-6680e736d231" isDerived="false" sourceEndRoleName="Add new open position request" targetEndRoleName="Open Position Request Form" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="db15b69f-4cc2-4bc1-81e2-a44187906864" LastKnownName="Open Position Request Form" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1d2428cc-ade2-47f0-81fe-d88d7f182418" name="Add new open position request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a25302c3-fb63-401e-8d04-8fe7301b1f3c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="6cc60bcf-c18f-49a6-bef5-48973673944b" name="Open Position Request Form" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9cd5d6e2-41c3-4207-9749-f5aa078eba79" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="333ad134-2c49-494f-9aa4-78d494b8f3dd" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="795a2009-3e1c-447d-9396-95992b07c2eb" name="Request a open postion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f4b26c53-0636-4c4c-a5d1-78cd100567f0" />
+        <additions>
+          <include Id="a70a709f-7265-4c4f-a89b-b44d342ad8bb">
+            <useCaseMoniker Id="0c2faf17-1cad-4d5b-bbd5-56861c28ac50" LastKnownName="Email Notification to HR" />
+            <elementDefinition Id="aac661cc-e228-4c3e-ae38-746141946f82" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="0777785f-7f44-40a4-8781-6d2a155005b1" name="Cancel a request" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a6c2612a-0968-430e-8736-e220f1d5806a" />
+        <additions>
+          <include Id="0f670325-0588-47b5-88a2-7179a9daaaee">
+            <useCaseMoniker Id="0c2faf17-1cad-4d5b-bbd5-56861c28ac50" LastKnownName="Email Notification to HR" />
+            <elementDefinition Id="8e1de52f-611e-4ed4-9d24-5bea3cd0a3a2" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="0c2faf17-1cad-4d5b-bbd5-56861c28ac50" name="Email Notification to HR" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="02527388-36df-4188-8a9a-610a718d757f" />
+        <subjects>
+          <subsystemMoniker Id="fd30720b-2343-40e4-9d71-986080b41379" LastKnownName="School Principal Request a open positioni" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="1044fb17-083e-48a6-afd6-24268d094903" name="Hiring Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="93a97b0e-ac20-49fb-9840-d8ec885874ca" />
+        <targetEnds>
+          <association Id="83166ce9-5345-4a18-b1c1-c04c75c443b3" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Add new open position request" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="77e897c5-2ae6-4dc3-a497-1ed718a46d01" LastKnownName="Add new open position request" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="07107802-6bf3-42e9-9e1f-066fdb5883e0" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9fc029bc-a29a-4b95-95fc-7b4c34e8e6aa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b9ebf4a2-44d9-40d7-a5e1-01ee8b9a83c7" name="Add new open position request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b079734f-131d-48ad-9eeb-4691b5e60e98" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8cc90436-71b1-4de8-aca3-71fd0d29ee3b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="233b79a0-b23b-4504-b88a-c5e346151cf2" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="2a86f1ed-8370-41f3-b8e5-cc92127e210e">
+        <profileInstance Id="206f74c8-8bde-4181-a4fe-ca903c7f44d5" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="537794ce-9380-4cc6-8f87-f7ceaddd97cb">
+        <profileInstance Id="27a4fccb-27b3-48c0-a8d3-c2f99241cce5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="317a5210-b581-4ace-8d8b-a75d3ae9d7a8">
+        <profileInstance Id="ae346636-1a05-49d5-b908-080afd2ca960" name="CSharpProfile">
+          <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+        </profileInstance>
+        <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="8d41dbd4-5afe-41f6-8330-c45a211d0935">
+        <profileInstance Id="2b4ccc75-8108-4854-ac20-694d6166639e" name="TextTemplateBindings">
+          <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+        </profileInstance>
+        <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

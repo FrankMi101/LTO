@@ -1,0 +1,118 @@
+﻿
+.TextBG
+{
+    background: #FFFFC0;
+    font-size: x-small;
+    font-family: Arial;
+    color: Blue;
+}
+.TextBGReadonly
+{
+    background: WhiteSmoke;
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+}
+BUTTON
+{
+    font-style: normal;
+    font-weight: bold;
+}
+.FontBold
+{
+    font-weight: bold;
+    border-style: groove;
+    border-width: 1px;
+}
+.FontNormal
+{
+    font-weight: normal;
+    border-width: 0px;
+    border-style: groove;
+}
+.ButtonMouseOver
+{
+    font-weight: normal;
+  /*  border-width: 1px;
+    border-style: groove;
+    font-size: small;
+    color: Purple;
+    background: WhiteSmoke;
+    border-color: Purple;
+    text-decoration: underline;*/
+}
+.ButtonNormal
+{
+    font-weight: normal;
+  /*  border-width: 1px;
+    border-style: groove;
+    font-size: small;
+    color: Purple;
+    border-color: Blue;
+    background: WhiteSmoke;
+    text-decoration: none;*/
+}
+.LinkNormal
+{
+    font-weight: normal;
+    font-size: small;
+    color: Black;
+    text-decoration: none;
+}
+.LinkMouseOver
+{
+    font-weight: normal;
+    font-size: small;
+    color: Purple;
+    text-decoration: underline;
+}
+
+A.ArtLink
+{
+    color: #666666;
+    text-decoration: none;
+}
+A.ArtLink:hover
+{
+    color: #666666;
+    text-decoration: underline;
+}
+
+#FunctionLink img
+{
+    margin: 2px;
+    border: 0px;
+}
+#FunctionLink img:hover
+{
+    border: 1px solid purple;
+    margin: 1px;
+    background-color: Navy;
+}
+
+/*  #FunctionButton input
+        {margin: 2px;
+         border:0px;
+        
+            }*/
+#FunctionButton input:hover
+{
+    /*border: 1px solid purple;          margin: 1px; */
+    text-decoration: underline;
+    color: Purple;
+}
+.TableFont1 img
+{
+    margin: 2px;
+    border: 0px;
+}
+.TableFont1 img:hover
+{
+    border: 1px solid purple;
+    margin: 1px;
+    background-color: Navy;
+}
+.printIcon
+        { border-width: 1px;
+          border-color: Purple;
+        }

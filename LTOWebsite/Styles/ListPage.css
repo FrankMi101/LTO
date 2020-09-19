@@ -1,0 +1,53 @@
+﻿body {
+    height: 100%;
+    width: 100%;
+    background-image: url(../images/message_body_m.bmp);
+}
+
+table {
+    height: 100%;
+    width: 100%;
+}
+
+td {
+    font-family: Arial, sans-serif;
+    font-size: x-small;
+}
+
+
+table tbody tr:nth-child(odd) {
+    background-color: aliceblue;
+}
+
+.loading {
+    font-size: large;
+}
+
+
+#GridView1 td {
+    border: 1px solid #e1d9d9;
+}
+
+
+#GridView3 td {
+    border: 1px solid #e1d9d9;
+}
+#GridView2 th {
+    border: 1px solid #e1d9d9;
+}
+
+#DivRoot {
+    width: 99.9%;
+    height: 100%;
+    overflow:auto;
+}
+ 
+
+
+#btnSearch, #btApplicant, #Button1, .GoButton {
+    background-color: dodgerblue;
+    color: white;
+    font-weight: 600;
+    height: 22px;
+    width: 40px;
+}

@@ -1,0 +1,88 @@
+﻿
+
+.TextBG
+{
+	background: #FFFFC0;
+	font-size: x-small ; 
+	font-family: Arial ;
+	color : Blue  ;
+	
+	}
+.TextRG
+{
+	background:#CCFFFF;
+	font-size: x-small ; 
+	font-family: Arial ;
+	color : Blue  ;
+	
+	}	
+.TextBGReadonly
+{
+	background: WhiteSmoke;
+	font-size: x-small ; 
+	font-family: Arial ;
+	color :  Black   ;
+	
+} 
+
+.TPA3Titel 
+{
+	font-weight:bold ;
+	font-size:small ; 
+	font-family:Arial ;
+    color :Green  ;
+ } 
+.TPA3Titel2 
+{
+	font-weight:bold ;
+	font-size:small ; 
+	font-family:Arial ;
+    color : Red   ;
+ } 
+.TPA3Help 
+{
+	font-weight:normal ;
+	font-style:italic  ;
+	font-size:x-small  ; 
+	font-family:Arial ;
+    color: Green  ;
+ } 
+ .TPA3Help2 
+{
+	font-weight:normal ;
+	font-style:italic  ;
+	font-size:x-small  ; 
+	font-family:Arial ;
+    color: Red  ;
+ } 
+.TPA3Context 
+{
+	font-weight: normal ;
+	font-size:xx-small  ; 
+	font-family:Arial ;
+    color :Black  ;
+ } 
+ .TextCellreadonlyBG
+ { background: transport;  
+	}
+ .TextCellEditBG
+ {
+   background-image:  url(images/myTextEditBG_yellow.bmp);
+	}	
+	
+
+.goalTitle
+{   
+   font-weight:bold ;
+   border-width:2px;
+   border-style:outset ;
+   background-color:#1E6BE7 ;
+   color:White;
+  
+ } 
+ .ListNoBorder
+{   
+   border-width:0px;
+    background-color:Transparent  ;
+   border-style:solid ;
+ } 

@@ -1,0 +1,41 @@
+﻿
+.editArea {
+    background-color: lemonchiffon;
+}
+
+.inactive {
+    pointer-events: none;
+    background-color: #ddd;
+    background: #ddd;
+}
+
+.inputFiled {
+    font-weight: 400;
+}
+
+.custom-combobox {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-combobox-toggle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin-left: -1px;
+    padding: 0;
+}
+
+.custom-combobox-input {
+    margin: 0;
+    padding: 5px 10px;
+    background-color: #ffffcc;
+}
+
+input.ng-invalid {
+    background-color: #ffffcc;
+}
+
+input.ng-valid {
+    background-color: white;
+}

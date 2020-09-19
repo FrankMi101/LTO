@@ -1,0 +1,46 @@
+﻿
+table {
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+    height: 100%;
+    width: 100%;
+    border-width: 0;
+}
+
+.TableBlank {
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+    height: 100%;
+    width: 100%;
+    border-width: 0;
+    background-image: url(../images/message_body_m.bmp);
+}
+
+.TableFont1 {
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+}
+
+.TableFont1B {
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+    background-image: url(../images/MessageLB.bmp);
+}
+
+.TableFont2 {
+    font-size: xx-small;
+    font-family: Arial;
+    color: Black;
+}
+
+.TableTab {
+    font-size: xx-small;
+    font-family: Arial;
+    border: solid;
+    border-top: 0px;
+    border-width: thin;
+}

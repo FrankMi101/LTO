@@ -1,0 +1,56 @@
+body
+{
+}
+
+.clsDragWindow
+{
+	border:solid 2px #000000;
+	background-color:#666666;
+	filter:alpha( opacity=40 );
+	position:absolute;
+	display:none;
+}
+.clsSeatUnavailableDragWindow
+{
+	border-right: #000000 2px;
+	border-top: #000000 2px;
+	display: none;
+	filter: alpha( opacity=100 );
+	border-left: #000000 2px;
+	border-bottom: #000000 2px;
+	position: absolute;
+	background-color: transparent;
+}
+.studentInfoWindow
+{
+	border-right: sandybrown thick double;
+	padding-right: 10px;
+	border-top: sandybrown thick double;
+	display: none;
+	padding-left: 10px;
+	filter: alpha( opacity=100 );
+	padding-bottom: 10px;
+	overflow: auto;
+	border-left: sandybrown thick double;
+	color: black;
+	padding-top: 10px;
+	border-bottom: sandybrown thick double;
+	position: absolute;
+	background-color: aliceblue;
+}
+
+.SpecimenLoc
+{
+	font-weight: bold;
+	font-size: 10pt;
+	font-family: tahoma;
+	text-align: center;
+}
+
+.WaterMarkBackGround
+{
+	background-attachment: scroll;
+	background-image: url(images/demo.gif);
+	background-repeat: repeat;
+	background-color: transparent;
+}

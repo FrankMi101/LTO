@@ -1,0 +1,89 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reject Request posting Notification </title>
+</head>
+<body>
+
+
+    <table id="tblContent" style="width: 750px; border: outset lightgrey 0pt">
+        <tr>
+            <td>
+                <div style="text-align: center">
+                    <h2> Your Posting Has Been Rejected:</h2>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <br />
+                <b> Due To: </b> <br />
+                <span style="text-decoration: underline; font-weight: bolder"> [RejectReasonSTR]       </span>
+               
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div id="EmailBody">
+                    <br />
+                    Dear   <span style="font-weight: bolder">[PrincipalNameSTR]  </span>:
+                    <br />
+                    <br />
+                    Please note your request to post an [PositionTypeSTR] for (
+                    <span style="text-decoration: underline; font-weight: bolder">[PositionTitleSTR] </span>
+                    ) has rejected.    <br />
+
+                    If you have any questions, please contact [PositionOwnerSTR]
+                    <br />
+
+
+                    <br />
+                    <table border="1" style="width:750px">
+                        <tr>
+                            <td style="width:160px">Posting Number:</td>
+                            <td style="width:300px">[PostingNumberSTR]</td>
+                            <td style="width:100px;text-align:right;">BTC:</td>
+                            <td style="width:150px">[BTCSTR]</td>
+                        </tr>
+                        <tr><td>Position Title:         </td><td colspan="3">[PositionTitleSTR]       </td></tr>
+                        <tr><td>Position Description:   </td><td colspan="3">[PositionDescriptionSTR] </td></tr>
+                        <tr><td>Position Start Date:    </td><td colspan="3">[PositionStartDateSTR]   </td></tr>
+                        <tr><td>Position End Date:      </td><td colspan="3">[PositionEndDateSTR]     </td></tr>
+                        <tr><td>Position School:        </td><td colspan="3">[SchoolNameSTR]          </td></tr>
+                        <tr><td>Teacher being Replaced:  </td><td colspan="3">[TeacherBeReplacedSTR]    </td></tr>
+                    </table>
+
+                    <br />
+                    <br />
+                    [timeTable]
+                    [multiSchool]
+                    <br />
+                </div>
+                <br />
+            
+
+
+                <br />
+                <br />
+                Academic Services:<br />
+                <br />
+                [DateTimeSTR]<br />
+                <br />
+                <!-- <span style="font-size: 10pt">Note: Please reply back!.</span></td>--> 
+                
+                [EmailTOSTR]
+                <br />
+                [EmailCCSTR]
+                <br />
+                [EmailBCCSTR]
+
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+</body>
+</html>

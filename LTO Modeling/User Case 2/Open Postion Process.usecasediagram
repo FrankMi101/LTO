@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="5680eda8-2f67-4820-b8f8-a33141e10112" name="Open Postion Process" linkedPackageId="174708e9-d183-4749-a00a-9119d32174fd" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="764f7ec1-b91a-456f-a2a1-1038b2282041" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1cc24061-0670-4fb8-808f-f5b80dab550c">
+          <propertyInstance Id="56600f3e-70ee-4365-8e19-3e9754a55c83" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fb9fb521-a319-40dc-8611-1f9adf53886d">
+          <propertyInstance Id="54d2529e-098b-4adc-912b-444f3436d841" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b5906288-7150-4649-b0e1-2c0d07353192">
+          <propertyInstance Id="f35577f0-22e7-4fa2-a3c5-d412696cd527" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="3c99d598-452f-4ce2-b057-0de054c3b4f8" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fc5f1b12-71c1-4762-b706-504e23b7c676">
+          <propertyInstance Id="b9808e88-8b77-408c-a20b-ffe9f2a3a885" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="7cb41735-ca3b-43aa-b561-9b5b18007299">
+          <propertyInstance Id="97f07bad-3009-4b90-8a66-1a9ea86c9f10" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="21716dfc-cba4-4ce9-ae0f-1adb9211686c">
+          <propertyInstance Id="07ec4c65-29b6-41c0-9993-10fd4a02a7ca" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3f87f851-4502-4260-8fa3-ffcb54b23ce7">
+          <propertyInstance Id="78827af5-9ebf-4f1c-9195-846f2a84a3b1" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="72fa93d8-6665-46ad-9c4f-e94061cff198">
+          <propertyInstance Id="d3af59aa-7e18-476e-b15e-870cb2668f38" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="930e659b-f702-4e03-9323-cc55ad2b0de1">
+          <propertyInstance Id="8f0939fc-e6bf-4611-97e7-01434b8b40be" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5932ecb5-eee5-4c39-9c59-566c99f02d70">
+          <propertyInstance Id="d8348902-1d7f-42ab-849d-ea2e5419e8f5" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="56248054-b90d-4227-b26d-a09fef7b9c1d">
+      <profileInstance Id="2710f162-7bb9-4d23-903a-73ac2387314a" name="CSharpProfile">
+        <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+      </profileInstance>
+      <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="6adacc1a-b760-4b31-ac02-1e68a7adc701">
+      <profileInstance Id="a5dde437-e504-4ed0-a97c-57750e3be134" name="TextTemplateBindings">
+        <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+      </profileInstance>
+      <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="f3d28542-2a9e-4175-b0ed-0038d2f1d803" name="School Principal" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f6572cb-8f3a-43e7-9777-4d9a6130eff8" />
+        <targetEnds>
+          <association Id="b2176bee-3f93-4f61-ad09-387159f6a6f4" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="Request New Open Position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="d411e04c-f534-49f1-95e4-b8634c27d05f" LastKnownName="Request New Open Position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4b2dc22d-45c3-474e-913c-b499da90a107" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="5544b62f-b10b-49ef-9d5d-f9f9092a391d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="284637d7-c728-4051-ae4b-024e7afbe800" name="Request New Open Position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0e0bcc0f-e0d7-46d5-9315-7d4765f6771a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="85132897-0346-4aa9-a36f-4857359e3abf" />
+          </association>
+          <association Id="c9877b32-afb1-4e57-bb59-9f6659bf4cf8" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="Interview Recommondation" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="736d884a-3e58-4551-b02e-9b776223944b" LastKnownName="Interview Recommondation" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d344227-003f-4909-8555-1ffff50f757d" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="73cc35af-a7dd-47bc-98e0-6bc87deab8f8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="f278cacc-78d3-42f6-bc40-6910d8a5bf64" name="Interview Recommondation" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f4cb4a25-c0cb-4396-9a3e-f71442dd5d8c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d2aac6fe-abdd-415b-a061-86a0d48d3c90" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d411e04c-f534-49f1-95e4-b8634c27d05f" name="Request New Open Position" isAbstract="false" isLeaf="false">
+        <referencesInternal>
+          <reference Id="8436ffff-c04e-44e0-9bbe-195f492b87fb" handle="%tfs02.tcdsb.org\SIS2#39637ab5-8611-43d5-b21c-89bc6d01332a$1716$1694" tag="Work Item Reference">
+            <elementDefinition Id="c424f9b0-8b29-42c8-8f7a-61b4f9f0722e" />
+          </reference>
+        </referencesInternal>
+        <elementDefinition Id="95ef9d05-6821-4520-a972-0f05a7ff2145" />
+        <generalsInternal>
+          <generalization Id="e06c9789-642d-4c76-8fe1-ad1eabce5ba9" isSubstitutable="false">
+            <useCaseMoniker Id="6a77c4b1-8b9f-4f36-ae93-16bec97d8070" LastKnownName="Publish Open Postion" />
+            <elementDefinition Id="d20602cf-ad2b-424d-89e7-7024b873d56d" />
+          </generalization>
+        </generalsInternal>
+        <targetEnds>
+          <association Id="69b31ebd-8f12-42d5-a7b5-f9287d9bb238" isDerived="false" sourceEndRoleName="Request New Open Position" targetEndRoleName="Request New Postion List" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="2ab418fb-6e24-4f54-860c-641352ced63d" LastKnownName="Request New Postion List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d3560b30-c3dc-4dcc-9210-20df26221714" name="Request New Open Position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="1072e0c5-e99d-4d39-b4c5-83cb2f5e22ce" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="02070894-b62f-4bc2-9abc-467d7cda7639" name="Request New Postion List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="0fc9f5ab-33ab-46a6-9fc6-a2512e41382b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8f03f419-80bf-40cc-ae64-8d2d92231757" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="2ab418fb-6e24-4f54-860c-641352ced63d" name="Request New Postion List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f23adc4e-8fdf-4c17-876a-0b6c2e2197b2" />
+        <suppliersInternal>
+          <dependency Id="3bbba282-289f-4cd9-9d9f-e0bea4c557eb">
+            <useCaseMoniker Id="b4dd8e12-1e03-47e3-968f-e10586511f2b" LastKnownName="Review new  postion, adjustment, approve the Request" />
+            <elementDefinition Id="340ab4b0-fb0d-489d-982f-d58fe8b7519f" />
+          </dependency>
+        </suppliersInternal>
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b4dd8e12-1e03-47e3-968f-e10586511f2b" name="Review new  postion, adjustment, approve the Request" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ee57aa26-d10b-4c2e-ad9a-16de23868dfd" />
+        <targetEnds>
+          <association Id="4ee0890e-3e1e-4edd-beab-643195ffb44a" isDerived="false" sourceEndRoleName="Review new  postion, adjustment, approve the Request" targetEndRoleName="Approvied open position List" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="0318c65d-6c29-47ce-8792-30202fb8f1a3" LastKnownName="Approvide open position List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c64ed12f-05a2-4a1f-a166-9be68d3c3881" name="Review new  postion, adjustment, approve the Request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="14853e86-cc55-4e9a-b9f1-aa862f5b8fb8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="75209a7e-18e3-47d9-945d-b35d73ced744" name="Approvied open position List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4bb9cef7-da32-4e83-806a-42f1825f0b64" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="aecc9ac0-fd4a-4091-80b7-86ef8e4f94c4" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="86479c1d-4865-43d9-9931-56947b978dda" name="Hiring Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="93a97b0e-ac20-49fb-9840-d8ec885874ca" />
+        <targetEnds>
+          <association Id="2b50be2c-8468-4986-a3e8-0d54577d0da1" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Publish Open Postion" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="6a77c4b1-8b9f-4f36-ae93-16bec97d8070" LastKnownName="Publish Open Postion" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="00a51541-a037-4234-a501-0df1b99420fd" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="cc098d79-6abe-4ce0-9ac5-b1c72ca5ea7a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="484d0099-cd6f-4a79-a4d4-8f0dd739e394" name="Publish Open Postion" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="51064df8-ce10-4633-bab2-44f2b6dec81a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="df3deefd-ced9-4814-905c-2e03c5998a4e" />
+          </association>
+          <association Id="bbe9282f-093f-47e7-9fb8-151d6924c34b" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Review new  postion, adjustment, approve the Request" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="b4dd8e12-1e03-47e3-968f-e10586511f2b" LastKnownName="Review new  postion, adjustment, approve the Request" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8c7f4355-0de8-45b6-8086-8e74806e2724" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="41988eba-bc9f-4026-81a5-eb3f174eae28" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c0bd7467-5b4e-4624-8b70-d02bf574502f" name="Review new  postion, adjustment, approve the Request" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="34812a1a-b241-443e-ba48-b79f74361904" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="017f68c4-4e8e-4bcf-9f7c-cc8bd411463b" />
+          </association>
+          <association Id="9842a512-90f6-4959-916b-dbbfaf5b6705" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Select Interview  Candidate List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="95c8ecd8-1602-4aae-9b03-3b89b13ed628" LastKnownName="Select Interview  Candidate List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a8d2bde6-4123-4a46-b768-d55b03e65940" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="429fd7ab-93ff-4a4c-bb2f-588a41907d18" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="18e3581b-6538-4b1f-85a5-040ed080c411" name="Select Interview  Candidate List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9528b5e1-44a7-43c1-9430-5dc0532713a2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="625dfb46-9688-4183-90d5-ab8868a921f2" />
+          </association>
+          <association Id="83856334-a69e-4c28-a08e-59acf1d88fd3" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Hired Approved" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dfc2a3d7-40e9-4875-a846-6e1ca2fe8fbb" LastKnownName="Hired Approved" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1497c78a-0a4e-4834-8194-6ac6c3852331" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8ba32be4-2705-4e9e-a064-834928152c49" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fef9f9c9-3efc-44f6-ac20-a8e772e75122" name="Hired Approved" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1e963c8f-e8ad-42b1-a5fc-6bea4de79457" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="9c18e9e0-f0ca-44c5-a4c3-af250221f03b" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="0318c65d-6c29-47ce-8792-30202fb8f1a3" name="Approvide open position List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cef97028-fb70-43b9-8203-723323a3fc82" />
+        <suppliersInternal>
+          <dependency Id="989c54b3-44f3-4f2a-a8fa-a5790f9ffb85">
+            <useCaseMoniker Id="6a77c4b1-8b9f-4f36-ae93-16bec97d8070" LastKnownName="Publish Open Postion" />
+            <elementDefinition Id="5dbaf31b-4845-4fae-9069-7eba18905a36" />
+          </dependency>
+        </suppliersInternal>
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6a77c4b1-8b9f-4f36-ae93-16bec97d8070" name="Publish Open Postion" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a5133608-190f-4cfa-931a-04d4c76d77db" />
+        <targetEnds>
+          <association Id="9b6e1483-865c-4f07-9a29-8f8f4de2a928" isDerived="false" sourceEndRoleName="Request New Open Position" targetEndRoleName="Request New Postion List" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="385e1844-8d73-4aec-8dc0-4e8e65c34d9f" LastKnownName="Published Postion List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e6a1eaa4-fb09-4dfd-8c36-df3368d5e106" name="Request New Open Position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="9322aa2b-55cc-408a-8ca7-899dac58bc46" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="96dd756a-7d57-43d2-adbf-ee6bdfdcabe8" name="Request New Postion List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="32048cc0-9ba0-47ee-9a87-86ac78cf2031" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f7254ffe-f516-478b-adef-e99ae12bf337" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="385e1844-8d73-4aec-8dc0-4e8e65c34d9f" name="Published Postion List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0fb27f28-7f10-49f6-a7fd-e3a8113fed15" />
+        <suppliersInternal>
+          <dependency Id="90602041-5ab8-460b-895f-bb9d3e7b71b7">
+            <useCaseMoniker Id="89116020-952b-4685-bcf6-041f392f9df8" LastKnownName="Available Open  Positon List" />
+            <elementDefinition Id="3cbd581a-6a81-475b-956b-31f56e9c92c4" />
+          </dependency>
+        </suppliersInternal>
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="899688c9-97e6-4f84-aa9c-79f59a6a9a9e" name="LTO Teacher" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="95cab365-ca7c-485c-8f6a-678bcd2a3add" />
+        <targetEnds>
+          <association Id="c6015cc7-1f2f-475f-b780-e1c9770a0348" isDerived="false" sourceEndRoleName="LTO Teacher" targetEndRoleName="Available Open  Positon List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="89116020-952b-4685-bcf6-041f392f9df8" LastKnownName="Available Open  Positon List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e8015cd6-e5d8-4768-a340-2fb40e30ffe2" name="LTO Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="80d2c750-4af6-49be-8b77-35a850db904a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1877d0e7-594a-4128-9102-c12d53e1b93b" name="Available Open  Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="49f9cbec-59e7-4e55-817f-f8119f908b6d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b1108484-b352-4fff-ae23-343365676b80" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="89116020-952b-4685-bcf6-041f392f9df8" name="Available Open  Positon List" isAbstract="false" isLeaf="false">
+        <referencesInternal>
+          <reference Id="e57b1fad-c440-4810-b3fc-95c89d7c9b0d" handle="%tfs02\SIS2#39637ab5-8611-43d5-b21c-89bc6d01332a$1683$1680$1686" tag="Work Item Reference">
+            <elementDefinition Id="48554075-0650-4a7e-8097-7a06d4d38732" />
+          </reference>
+        </referencesInternal>
+        <elementDefinition Id="3cce325f-6e58-4512-8f4c-586ffdcdc219" />
+        <targetEnds>
+          <association Id="8dc52f15-9cc0-48d4-8089-9a7f0e3cde5b" isDerived="false" sourceEndRoleName="Available Open  Positon List" targetEndRoleName="Applicant List" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="4926ea20-a80c-4138-843e-8882ff085e89" LastKnownName="Applicant List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="21bdd35c-612b-44c3-84a1-00123b728262" name="Available Open  Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="366bcef0-6f62-494f-9005-80873a28245c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4992d46b-f108-482a-a77f-58c931444294" name="Applicant List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f00d13ed-23bb-4f73-b9a5-fa8e895b6986" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="934e53fd-3957-4773-9835-f7950a6bd323" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="4926ea20-a80c-4138-843e-8882ff085e89" name="Applicant List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="54a3a67d-e6e3-46bc-8f7e-617ba3ea44c0" />
+        <suppliersInternal>
+          <dependency Id="446fde96-89d2-4d5a-9f53-c4e25e4f2b5a">
+            <useCaseMoniker Id="95c8ecd8-1602-4aae-9b03-3b89b13ed628" LastKnownName="Select Interview  Candidate List" />
+            <elementDefinition Id="da564ffe-528d-4fb0-af1c-977bfcd4c457" />
+          </dependency>
+        </suppliersInternal>
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="95c8ecd8-1602-4aae-9b03-3b89b13ed628" name="Select Interview  Candidate List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c46891a-35d8-41a8-8dc2-443d33535e17" />
+        <targetEnds>
+          <association Id="bbc38c24-a0cd-41f2-92e7-a17f9c56bc8d" isDerived="false" sourceEndRoleName="Select Interview  Candidate List" targetEndRoleName="Interview canadidate List" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="f785275e-0932-43c2-9241-4c50fc51fa3b" LastKnownName="Interview canadidate List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d567417-45a2-471a-94f8-75c1e1193912" name="Select Interview  Candidate List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="ba4f737b-df14-44c8-9305-7cd14de25b68" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50d01d15-5f38-4e95-887d-b5f1e934e638" name="Interview canadidate List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1d610b80-211a-4140-89b3-853c6e6a7a93" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c34b350c-827c-4b5b-b375-e11ec7fa64f5" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="f785275e-0932-43c2-9241-4c50fc51fa3b" name="Interview canadidate List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b105641e-1230-452e-838d-bbdb8aa75587" />
+        <suppliersInternal>
+          <dependency Id="3ef9d28d-5131-4845-aa80-3c63d026c92d">
+            <useCaseMoniker Id="736d884a-3e58-4551-b02e-9b776223944b" LastKnownName="Interview Recommondation" />
+            <elementDefinition Id="f84fe26c-c40f-458a-bcd7-2f0eb6fa9515" />
+          </dependency>
+        </suppliersInternal>
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="c19671a8-fbdf-4375-acd8-746c2cb0e2ab" name="Interview Results" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5b2b30b9-cdac-495a-a735-192c13d24554" />
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="736d884a-3e58-4551-b02e-9b776223944b" name="Interview Recommondation" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="73e8ff6c-6ecb-43e2-9321-f86492591aa6" />
+        <targetEnds>
+          <association Id="a950fda4-0de2-44c5-8e10-6f652e1bc950" isDerived="false" sourceEndRoleName="Interview Recommondation" targetEndRoleName="Interview Results" isLeaf="false" isAbstract="false">
+            <artifactMoniker Id="c19671a8-fbdf-4375-acd8-746c2cb0e2ab" LastKnownName="Interview Results" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="51c6072c-36cd-4dc3-9d16-5348f859b687" name="Interview Recommondation" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="227a4ad9-4907-4387-a847-b40471a53bcf" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d49841e6-06d0-4451-8bd0-267ea893a6f3" name="Interview Results" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="37e61cc0-d266-4ba3-9404-076d83c4671a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7ae05bd5-db73-41ce-ac73-3d697d930620" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="dfc2a3d7-40e9-4875-a846-6e1ca2fe8fbb" name="Hired Approved" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="40c9ebf2-5b45-4de2-8b5e-bf47df04dda6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <artifact Id="631588b1-0b94-4def-9229-28ab22b4809a" name="New hired List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9ad09366-a2c0-4494-b3ad-ae52d40367dd" />
+      </artifact>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="a7dca7d1-56ee-42c2-b155-2c9f4abc6c11" name="Hiring Manager" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c0ce34e4-b402-4ff3-a354-2ae3078d67de" />
+        <targetEnds>
+          <association Id="7b7788e7-5c13-4579-87fb-f3d72c4f460e" isDerived="false" sourceEndRoleName="Hiring Manager" targetEndRoleName="Hired Approved" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="dfc2a3d7-40e9-4875-a846-6e1ca2fe8fbb" LastKnownName="Hired Approved" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="eed1ac1a-7aeb-4600-b372-28aa2fa2eddc" name="Hiring Manager" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6cd84546-0d2a-4bb7-9b83-417534a7f1b6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="20e20910-af72-4b28-810c-275b09156346" name="Hired Approved" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="e61ecba3-5e30-4c0b-8c06-5060084a9df5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c38be89d-a69b-44be-b057-879176763dcb" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="174708e9-d183-4749-a00a-9119d32174fd" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="3e7c1b19-97d7-47ad-9ad1-5618d43f0fec">
+        <profileInstance Id="e64e3f1d-40b1-4bdb-8646-5320d799a202" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="04ed4dc9-f24a-4d88-9b71-8df120dcd944">
+        <profileInstance Id="01fd756f-7e48-4e4c-bb99-97fa432ff3f5" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

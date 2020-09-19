@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="36e17cfc-5997-49dd-a1bd-9372e807b4ae" name="HR Posting a new Position" linkedPackageId="f61cdc87-4362-45db-810e-d807dea15ff3" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="94742905-065a-4c2d-ad61-bae5a168c265">
+      <elementDefinition Id="c6364e00-e47a-4ba1-8210-7f2fc49434b1" />
+      <annotatedElements>
+        <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="e2128ac2-8643-47a1-b1ea-aead8e1e47b9" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4bccfb7d-d518-4141-beb5-171230876db6">
+          <propertyInstance Id="65cc0c84-daab-422d-a430-5d6e0c1c83b4" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b05780ce-96e7-4ae1-9f41-80a46ecadc78">
+          <propertyInstance Id="d3d03ac8-8678-4f44-9585-b519371768fa" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="40f88798-749d-4e3a-a09b-807bb1b59c4b">
+          <propertyInstance Id="3b7f42dd-fa56-438d-967d-99a5435ccee7" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="c9a5b716-eb13-4006-9573-c639890a48d5" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c2d0f017-a4d1-4775-8a80-2ba92488f4c1">
+          <propertyInstance Id="4b763ea3-3379-4963-802e-9f207c579931" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1267fe4f-9fe5-4479-8907-caa4c08e3a56">
+          <propertyInstance Id="75ff33a1-f8dd-4c91-a4f2-a6aaef463a58" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="cc322bfb-8820-4743-a3c3-adb0c225b0e4">
+          <propertyInstance Id="71746b31-fcc7-4892-8b81-c50d68c82dce" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="ed65575e-9591-4fdd-b119-5148ab341f05">
+          <propertyInstance Id="0ee31107-9171-4c5e-831c-687caf1568c5" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="26c2408a-da5f-47f5-a3f0-17cb0244cf91">
+          <propertyInstance Id="b2fe764e-d70d-4092-91c5-f9b5ef7ce801" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="6169f533-959f-46f0-8fce-6c12b28cc6a3">
+          <propertyInstance Id="31587e0f-b166-4ec1-b713-3c3a89edd948" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="61f0bec0-a30a-4a8b-81f3-7e7ab7728d17">
+          <propertyInstance Id="ee5c0521-ea65-4ffa-83dd-b0b881900a96" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" name="HR Posting a new Position" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="53d9b5ab-55b4-4c51-a2de-dc0c6c282e1d">
+            <elementDefinition Id="d1d0d3ab-ac4b-47ab-bd00-a6b13eb99479" />
+            <body>Posting date
+Apply Deadline
+Position qualifications
+Posting comments
+Position FTE</body>
+            <annotatedElements>
+              <useCaseMoniker Id="27640668-12fd-4580-b13c-c101a0fcdf78" LastKnownName="open a Position Detail" />
+            </annotatedElements>
+          </comment>
+          <comment Id="3a51bfed-5f9e-42ec-bd1d-426f2f3faca1">
+            <elementDefinition Id="84eb2144-4109-41f9-8782-d9de8f5307bf" />
+            <body>Searc by:
+    School Area,
+    Panel,
+    School,
+    Posting Status,
+    Posting date
+    Title
+    Level and LTO/POP</body>
+            <annotatedElements>
+              <useCaseMoniker Id="943b03f9-c88a-4bd3-b715-e4730da6073a" LastKnownName="Browser all unposting position" />
+            </annotatedElements>
+          </comment>
+          <comment Id="5f1bf081-6a69-4949-ac0a-88544419f1d6">
+            <elementDefinition Id="8d138a1c-bf4b-40b0-95d5-d9a0cdd3c216" />
+            <body>when posting a position, track the posting around number. 1,2,3,... 
+when the posting cycle is 3, then postion will open for the LTO Rosters </body>
+            <annotatedElements>
+              <useCaseMoniker Id="e1cf288b-4946-4fbe-bdcb-8a3536c36f07" LastKnownName="Re Posting a Position" />
+            </annotatedElements>
+          </comment>
+          <comment Id="d894d75c-ba44-4e88-88b8-cd2e60b7dccf">
+            <elementDefinition Id="142ede1a-0e61-4984-9272-8b58a477086e" />
+            <body>when re posting a position,  notify the school principal by email notification.</body>
+            <annotatedElements>
+              <useCaseMoniker Id="e1cf288b-4946-4fbe-bdcb-8a3536c36f07" LastKnownName="Re Posting a Position" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="0a927c60-6110-48e4-827e-10573f3c8a55" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="d20af2a4-f93d-44d8-9b1b-5b927af9cd99" name="Hiring Staff" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="93a97b0e-ac20-49fb-9840-d8ec885874ca" />
+        <targetEnds>
+          <association Id="294a2719-1920-4c35-802c-86337a0ae0d9" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Browser all unposting position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="943b03f9-c88a-4bd3-b715-e4730da6073a" LastKnownName="Browser all unposting position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="163256ce-63e9-4e14-8c89-5ab1b65b4b7e" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="683e7b2d-ba64-4cf9-823e-b8bb4a95dcf2" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3a768d11-7eec-4d2e-8abb-99a99b11e206" name="Browser all unposting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="44b3defd-49fd-4b4c-be82-e6d6a306c5e3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d367f40f-a076-4e86-b38c-f88441fe5444" />
+          </association>
+          <association Id="6c428949-3335-4491-b426-11e2a4449d49" isDerived="false" sourceEndRoleName="Hiring Staff" targetEndRoleName="Browser all Posting Position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="3afd77e2-142f-4e32-ba75-f6034788e8e6" LastKnownName="Browser all Posting Position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="04a4c50f-989a-46cc-94d4-c0fcfcb6e053" name="Hiring Staff" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="09090801-5b15-46c4-aa97-1df144861bc8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="02d2593c-e5ed-4eab-a999-3473614b6329" name="Browser all Posting Position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2859a0cb-b818-4393-891c-174289f567c0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="64c558b9-ed2d-48fe-9b67-40cafad36eb8" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="943b03f9-c88a-4bd3-b715-e4730da6073a" name="Browser all unposting position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="44b5cff7-30e1-4fee-b1c3-2282230cb79e" />
+        <targetEnds>
+          <association Id="370873c7-eb7d-49d2-82fc-fef3b1fce7eb" isDerived="false" sourceEndRoleName="Browser all unposting position" targetEndRoleName="open a Position Detail" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="27640668-12fd-4580-b13c-c101a0fcdf78" LastKnownName="open a Position Detail" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1fb8d9d7-9e61-4945-9c55-b661c07d703a" name="Browser all unposting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="07938e32-314b-4aec-8ec7-bcddb622d604" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="7357e6fb-5ed4-4d38-b2e5-eb8f47cd2de0" name="open a Position Detail" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1d20557e-eddd-4063-8cb5-f2ede5e2d79b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="66417552-9991-4f16-9186-105015af4f22" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="27640668-12fd-4580-b13c-c101a0fcdf78" name="open a Position Detail" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7950d479-51b8-48ff-b0f2-975772c8852b" />
+        <additions>
+          <include Id="809e0390-9205-408f-bb56-c1fdc31e663c">
+            <useCaseMoniker Id="19ffab1c-6358-4ded-b0b5-33c50474d1b8" LastKnownName="Posting a Position" />
+            <elementDefinition Id="aeaf6ae8-4b00-412b-82d6-ab510de06a58" />
+          </include>
+          <include Id="d1a661a8-14e0-40fd-af62-28b387a1ec67">
+            <useCaseMoniker Id="e1cf288b-4946-4fbe-bdcb-8a3536c36f07" LastKnownName="Re Posting a Position" />
+            <elementDefinition Id="e5cbc3d7-d2d9-4abf-bc1e-5b921c29077f" />
+          </include>
+          <include Id="efd7d9ae-ffeb-40d9-83c7-65932c075c52">
+            <useCaseMoniker Id="f32a8ff5-3ec4-4e1a-aaa7-d0cd3d55db87" LastKnownName="Cancel a posting" />
+            <elementDefinition Id="ccf33b21-c402-431d-be48-2718c04f2495" />
+          </include>
+          <include Id="f1d07fea-738d-4159-89aa-2e600150caac">
+            <useCaseMoniker Id="09a287cd-e5b7-431c-aff9-743eb88d2eaf" LastKnownName="send Remainder Email" />
+            <elementDefinition Id="b9fb9f59-5f79-49b4-bf36-471c80b934ca" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="3afd77e2-142f-4e32-ba75-f6034788e8e6" name="Browser all Posting Position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="89a46f61-7c0e-4010-bee3-34bfd49e6711" />
+        <targetEnds>
+          <association Id="24bf747a-a302-4ace-8ea7-9704c7017299" isDerived="false" sourceEndRoleName="Browser all Posting Position" targetEndRoleName="open a Position Detail" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="27640668-12fd-4580-b13c-c101a0fcdf78" LastKnownName="open a Position Detail" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="2653d7a4-6e50-4ead-99db-592e1478a007" name="Browser all Posting Position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a83299aa-ec06-4dbd-bcbb-840d9c414c1e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3a7cbfed-8ccb-490a-a8a1-475eb75306d5" name="open a Position Detail" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="22fbbafa-fd7c-44d2-a892-efe3d4b8fd79" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="da4126bd-44e3-499f-9b19-cbd81a7961c9" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="19ffab1c-6358-4ded-b0b5-33c50474d1b8" name="Posting a Position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="772e9b52-2dfa-4b1a-9652-253ffb413c3a" />
+        <extendedCases>
+          <extend Id="c0a91582-7ec0-4bda-bcb4-1fd59a88f09a">
+            <useCaseMoniker Id="82bc0aef-2841-4bac-8aef-dd04b523bdbb" LastKnownName="Combine a Multiple school Position" />
+            <elementDefinition Id="70ae88b5-2b6d-43d1-a97e-e0fb66f34f35" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e1cf288b-4946-4fbe-bdcb-8a3536c36f07" name="Re Posting a Position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="24b995f6-e751-4dc9-a8d6-a34a7552ea6a" />
+        <extendedCases>
+          <extend Id="17efdde2-f8a1-4f0f-afbb-4f696c1b0588">
+            <useCaseMoniker Id="82bc0aef-2841-4bac-8aef-dd04b523bdbb" LastKnownName="Combine a Multiple school Position" />
+            <elementDefinition Id="e088351f-961a-4951-8568-17da9c753340" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="f32a8ff5-3ec4-4e1a-aaa7-d0cd3d55db87" name="Cancel a posting" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ddbc807d-d736-41ef-a46c-c42da60dbefc" />
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="82bc0aef-2841-4bac-8aef-dd04b523bdbb" name="Combine a Multiple school Position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="12f2e307-3295-4cdc-b6d9-a6cbb07ad603" />
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="09a287cd-e5b7-431c-aff9-743eb88d2eaf" name="send Remainder Email" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3e7ad85c-6eb9-40ea-912a-9ba71c9bf692" />
+        <subjects>
+          <subsystemMoniker Id="eb12f532-81b2-4944-b6c0-29cb3f585be6" LastKnownName="HR Posting a new Position" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="f61cdc87-4362-45db-810e-d807dea15ff3" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="453aace8-8074-4dde-acf4-2b328c77b430">
+        <profileInstance Id="d4a01910-a353-4cab-9a1a-0e3dfe1e0521" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d14e36d7-fb34-4d7c-b828-01524ae2b394">
+        <profileInstance Id="8a2593b0-aa4b-447f-b949-a26ed8b54566" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="4422e874-bebf-4adc-915f-473f20ccd960">
+        <profileInstance Id="817b773b-678a-4738-b67e-d1e43818954b" name="CSharpProfile">
+          <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+        </profileInstance>
+        <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="bb704f19-ffc5-49f8-b345-b30abcafe4ea">
+        <profileInstance Id="5839c1de-5b64-415c-aee5-57935b144baa" name="TextTemplateBindings">
+          <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+        </profileInstance>
+        <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

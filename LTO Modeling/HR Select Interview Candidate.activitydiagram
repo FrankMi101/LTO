@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="b89714f7-ee23-4f8c-b849-e867d2e77e61" name="HR Select Interview Candidate" linkedPackageId="6caa7984-d38d-4d40-bf70-44087c5f9c13" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <ownedCommentsInternal>
+    <comment Id="91840d91-ff3d-4a67-af5b-91a907d55d11">
+      <elementDefinition Id="867249bd-07d5-4bbd-96c9-5e228272c344" />
+      <body>Select top 5 best interview candidates</body>
+      <annotatedElements>
+        <decisionNodeMoniker Id="e6e104e1-b5d2-40c2-979f-155023304f08" LastKnownName="Decision1" />
+      </annotatedElements>
+    </comment>
+    <comment Id="9f28f1dc-4996-44db-b763-5c5ef9685b2a">
+      <elementDefinition Id="4b01645a-6c31-4045-90be-b8f88b4c1ce2" />
+      <body>If select interview candidate done</body>
+      <annotatedElements>
+        <decisionNodeMoniker Id="0668bb98-352f-4ffe-aba3-c577b0a9d4b9" LastKnownName="Decision2" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="db6fa50d-9617-4ce8-861f-df3865b8263d" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="79e67de3-b1c6-4317-b939-68ac6db1c615">
+          <propertyInstance Id="3bc1241f-1017-4a53-9600-5ee469d07947" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="31b08649-39ff-484c-9d28-8b2df3b2dfe6">
+          <propertyInstance Id="cb104f2a-89b8-4132-931c-fd70e925263c" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="384b4f90-fb91-4519-9c28-48fbc17d8052">
+          <propertyInstance Id="91b01acd-1eec-42fb-884c-8d98ef3cec13" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="6471b435-6b81-45e3-ae33-23328b6d5e08" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="05fd195f-f8bf-4532-a0ea-e56ba268a972">
+          <propertyInstance Id="cdf1969a-9252-42a6-b720-652f9afd09e1" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="5f05c334-bf8a-4d63-beaa-633722e08527">
+          <propertyInstance Id="c959aac1-40f7-42bf-9ce9-d3860ad64982" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="48474060-5e7b-4d8e-82e8-8cbae275a2ba">
+          <propertyInstance Id="deabbf06-e387-4bf7-bd56-09b529f825f8" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="b2a24d4a-3080-4e94-9e4a-a1a3c1457ad7">
+          <propertyInstance Id="646c119b-f041-4b0b-a60a-ef27b943d194" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c508788e-a540-4f65-ba99-bdc90da16977">
+          <propertyInstance Id="aadbd009-af24-4e68-841e-5e82da7e387e" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="46ba3140-706e-47b2-a482-4d53aaa5dece">
+          <propertyInstance Id="0e25e77e-bdf5-4075-83ac-54858c53698a" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="35280ad5-3ea2-48a3-8c17-9f4afe786223">
+          <propertyInstance Id="ca479f8a-9025-4053-bb33-9960c3677f8a" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="e0843d10-deec-499e-96b5-95ab1c9043d5">
+      <profileInstance Id="20b2de7c-4b28-4527-b19c-f8da84e7554e" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="f5c5e951-0cea-4795-8cb1-16e2c4ab9693">
+      <profileInstance Id="96b5eb74-5c00-4483-b941-599e74051ddc" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="a01bbc32-0c7c-43f7-bb62-1d1e0739c8f1">
+      <profileInstance Id="ed348f17-b50c-4c45-817a-f61014638b48" name="CSharpProfile">
+        <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+      </profileInstance>
+      <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="1f117800-cb0e-4430-92d5-75ab9219d8e1">
+      <profileInstance Id="8ff53b2b-d70a-44b3-a753-58e28790dcbc" name="TextTemplateBindings">
+        <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+      </profileInstance>
+      <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="43d17e29-5648-493f-8c0f-479740472a1f" name="HR Select Interview Candidate" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="0bfd2cd2-1b55-4558-b90d-4fe8ecb3d31d" />
+        <nodes>
+          <initialNode Id="c4b45a7d-2d8e-413e-904e-777ca3fa6cee" name="Initial1" isLeaf="false">
+            <elementDefinition Id="73205974-3e0f-4094-a4b5-070feb24dd28" />
+            <flowNodeTargets>
+              <controlFlow Id="64bc2974-e2fe-408f-8c4d-0eda36bd7ef6" isLeaf="false">
+                <opaqueActionMoniker Id="dab4c37c-c5d9-4911-b8fb-b9884122f1da" LastKnownName="Browser Avail Posted open  position" />
+                <elementDefinition Id="156c0e99-cc5d-4c3a-9ed3-1d905e6a3346" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="dab4c37c-c5d9-4911-b8fb-b9884122f1da" name="Browser Avail Posted open  position" isLeaf="false">
+            <elementDefinition Id="c0fdecad-3507-4b72-9033-54a9ed112731" />
+            <flowNodeTargets>
+              <controlFlow Id="6c5143bd-ae14-4e50-b988-ca864f079427" isLeaf="false">
+                <opaqueActionMoniker Id="b6139917-0b54-4ac1-b7bc-2784f6631f6e" LastKnownName="Select a position open all applicants list" />
+                <elementDefinition Id="d7794a44-a94a-478f-8717-1869c26bc063" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="b6139917-0b54-4ac1-b7bc-2784f6631f6e" name="Select a position open all applicants list" isLeaf="false">
+            <elementDefinition Id="bd81ca60-f76f-4e8a-99e1-b04403de0cc4" />
+            <flowNodeTargets>
+              <controlFlow Id="c388c8d2-479d-471d-9275-16f43e289ebf" isLeaf="false">
+                <opaqueActionMoniker Id="0f4c15d1-dbc7-45bf-a4ac-6c3f66751d02" LastKnownName="Browser All applicant for the Position" />
+                <elementDefinition Id="13c9ece2-f1fa-4338-a81b-2dd3633d670b" />
+              </controlFlow>
+              <controlFlow Id="a5c9c7f3-a8ae-4c47-831b-bdf9b0395ed1" isLeaf="false">
+                <decisionNodeMoniker Id="0668bb98-352f-4ffe-aba3-c577b0a9d4b9" LastKnownName="Decision2" />
+                <elementDefinition Id="6030d6bb-7bd4-4b3d-9529-0d71dc37a55e" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="0f4c15d1-dbc7-45bf-a4ac-6c3f66751d02" name="Browser All applicant for the Position" isLeaf="false">
+            <elementDefinition Id="2ebc0677-d238-4121-90fd-17130a6dc67c" />
+            <flowNodeTargets>
+              <controlFlow Id="c1d57b4c-3459-4468-b57e-e41af143242c" isLeaf="false">
+                <opaqueActionMoniker Id="539c6e67-376c-4b3b-80e1-208016d55083" LastKnownName="Select a Applicant to open Applicant detail" />
+                <elementDefinition Id="b32da353-7ab1-4ada-ae3e-2b7c8fbfcda4" />
+              </controlFlow>
+              <controlFlow Id="96ef0da3-b697-4842-8c3b-ebe154f574dc" isLeaf="false">
+                <activityFinalNodeMoniker Id="6c6dd959-00ff-4c41-b7bc-16afb049fffa" LastKnownName="ActivityFinal3" />
+                <elementDefinition Id="449dc6f8-dc8d-4b49-8598-6f0b1838ba40" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="539c6e67-376c-4b3b-80e1-208016d55083" name="Select a Applicant to open Applicant detail" isLeaf="false">
+            <elementDefinition Id="fd3c92c0-cfa2-48a9-8bdf-2b1c3a9eac12" />
+            <flowNodeTargets>
+              <controlFlow Id="02590790-9a94-461b-884b-7873bee73eb7" isLeaf="false">
+                <opaqueActionMoniker Id="36ee6def-ffaa-4609-b122-42f53d78053c" LastKnownName="Selecting for interview " />
+                <elementDefinition Id="2c426421-7b45-4fab-b26a-a1ed453f34c6" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="36ee6def-ffaa-4609-b122-42f53d78053c" name="Selecting for interview " isLeaf="false">
+            <elementDefinition Id="a3e0b906-9917-418c-88e6-47622f5e5d14" />
+            <flowNodeTargets>
+              <controlFlow Id="8d3e0d8d-d835-40f5-a57b-d7c0f314cc7b" isLeaf="false">
+                <opaqueActionMoniker Id="ddcb20bb-bd87-4a3f-bb9a-48f62d641e8f" LastKnownName="Close Applicat Detail" />
+                <elementDefinition Id="34a6cc1f-121a-4fcd-9767-aa7e3c026f9f" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="ddcb20bb-bd87-4a3f-bb9a-48f62d641e8f" name="Close Applicat Detail" isLeaf="false">
+            <elementDefinition Id="8af0812b-f40c-45d6-bfcf-35b26656c05b" />
+            <flowNodeTargets>
+              <controlFlow Id="bbd88ffd-ea56-4f22-917a-b220dcab5301" isLeaf="false">
+                <decisionNodeMoniker Id="e6e104e1-b5d2-40c2-979f-155023304f08" LastKnownName="Decision1" />
+                <elementDefinition Id="34fe76e1-9bd3-4005-8335-051304574377" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="e6e104e1-b5d2-40c2-979f-155023304f08" name="Decision1" isLeaf="false">
+            <elementDefinition Id="c82618ce-61dc-4c6f-8c79-238af8b9f6df" />
+            <flowNodeTargets>
+              <controlFlow Id="8fdb64c5-e43d-4aa2-93b3-0ec6b0fcce07" isLeaf="false">
+                <opaqueActionMoniker Id="539c6e67-376c-4b3b-80e1-208016d55083" LastKnownName="Select a Applicant to open Applicant detail" />
+                <elementDefinition Id="73f31dee-5e69-4d02-b4fd-448e5ee03d68" />
+              </controlFlow>
+              <controlFlow Id="67f3d65d-7320-437e-80ce-508f34f25554" isLeaf="false">
+                <activityFinalNodeMoniker Id="c5386f2b-1372-4314-9605-d657ae9241f3" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="09212b21-1c1f-4fb8-ae6c-351b9aa24a7c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode Id="c5386f2b-1372-4314-9605-d657ae9241f3" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="1155ea98-a96f-4282-af91-11a932e9661e" />
+          </activityFinalNode>
+          <decisionNode Id="0668bb98-352f-4ffe-aba3-c577b0a9d4b9" name="Decision2" isLeaf="false">
+            <elementDefinition Id="e538a4ec-fbf9-4403-be1f-a71f1923c21b" />
+            <flowNodeTargets>
+              <controlFlow Id="86cf7ca3-021b-4595-8631-2f9fe1683772" isLeaf="false">
+                <opaqueActionMoniker Id="7f1da126-a8d1-40ac-878a-337f3d310bfd" LastKnownName="Send email notification to Principal" />
+                <elementDefinition Id="5fbfcd1b-d58f-4c83-8af3-49b0e1286fdd" />
+              </controlFlow>
+              <controlFlow Id="4cb2f307-2da5-452f-8e41-cc9f7e373700" isLeaf="false">
+                <activityFinalNodeMoniker Id="6c6dd959-00ff-4c41-b7bc-16afb049fffa" LastKnownName="ActivityFinal3" />
+                <elementDefinition Id="cffc68b3-4e2f-4075-81f1-940f022c5ee6" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="7f1da126-a8d1-40ac-878a-337f3d310bfd" name="Send email notification to Principal" isLeaf="false">
+            <elementDefinition Id="ac77a76f-6650-4205-9cd2-15980267da8f" />
+            <flowNodeTargets>
+              <controlFlow Id="525d9f83-5092-4570-b52f-74ef6b084410" isLeaf="false">
+                <activityFinalNodeMoniker Id="311248b3-70db-453f-8090-22ea594c2909" LastKnownName="ActivityFinal2" />
+                <elementDefinition Id="fa5745a3-f818-4084-ae77-d0878f75b5c0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="311248b3-70db-453f-8090-22ea594c2909" name="ActivityFinal2" isLeaf="false">
+            <elementDefinition Id="792f6af7-9d09-4f70-b3c5-26686752fb10" />
+          </activityFinalNode>
+          <activityFinalNode Id="6c6dd959-00ff-4c41-b7bc-16afb049fffa" name="ActivityFinal3" isLeaf="false">
+            <elementDefinition Id="384c8279-4b81-4bb4-9d6d-a8745405cb85" />
+          </activityFinalNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="6caa7984-d38d-4d40-bf70-44087c5f9c13" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+  </package>
+</activityRootModel>

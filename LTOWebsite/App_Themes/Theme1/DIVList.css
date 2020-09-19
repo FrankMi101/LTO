@@ -1,0 +1,117 @@
+﻿ 
+ 
+.FrameTopLeft
+ {  width:9px;
+	background-image:url(images/message1_top_l.bmp);
+ 	}
+ .FrameTopMiddle
+ {  width:100%;
+	background-image:url(images/message1_top_m.bmp);
+  	}	
+        
+  .FrameTopRight
+ {  width:8px;
+	background-image:url(images/message1_top_r.bmp);
+ 	}	
+          
+ .FrameBottomLeft
+ { width: 9px; 
+	background-image:url(images/message1_bot_l.bmp);
+	}
+.FrameBottomMiddle
+ {  width:100%;
+	background-image:url(images/message1_bot_m.bmp);
+  	}	
+        
+  .FrameBottomRight
+ {  width:8px;
+	background-image:url(images/message1_bot_r.bmp);
+ 	}	
+ .FrameBodyLeft
+ { width:10px; 
+	background-image:url(images/message1_body_l.bmp);
+	}
+.FrameBodyMiddle
+ {  width:100%;
+	background-image:url(images/blueDIVList.png);
+  	}	
+        
+  .FrameBodyRight
+ {  width:8px;
+	background-image:url(images/message1_body_r.bmp);
+ 	}
+ 	
+.bubble {
+	border: 2px solid #fbaa21;
+	padding: 5px;
+	Z-INDEX: 10; 	BACKGROUND: #fff url(images/blueDIVList.png); 
+LEFT: 569px; 
+	WIDTH: 100px; 	POSITION: absolute; TOP: 115px;
+}
+
+.bubbleS {
+	POSITION: absolute; 
+	BORDER-RIGHT: #fbaa21 2px solid; 
+	BORDER-TOP: #fbaa21 2px solid; 
+	BORDER-LEFT: #fbaa21 2px solid; 
+	BORDER-BOTTOM: #fbaa21 2px solid; 
+	PADDING-RIGHT: 3px; 
+	PADDING-LEFT: 3px; 
+	PADDING-BOTTOM: 3px; 
+	PADDING-TOP: 3px; 
+	Z-INDEX: 10;  
+	BACKGROUND: #fff; 
+	WIDTH: 160px; 
+	height: 50px; 
+	font-size:xx-small ;
+ }
+ 
+.show {
+	DISPLAY: block
+}
+.hide {
+	DISPLAY: none
+}	
+ 
+ .bubbleS1 {
+	POSITION: absolute; 
+	BORDER-RIGHT: #fbaa21 2px solid; 
+	BORDER-TOP: #fbaa21 2px solid; 
+	BORDER-LEFT: #fbaa21 2px solid; 
+	BORDER-BOTTOM: #fbaa21 2px solid; 
+	PADDING-RIGHT: 3px; 
+	PADDING-LEFT: 3px; 
+	PADDING-BOTTOM: 3px; 
+	PADDING-TOP: 3px; 
+	Z-INDEX: 10;  
+	BACKGROUND: #fff; 
+	WIDTH: 200px; 
+	height: 100px; 
+	TOP: 210px; 
+	left:620px; 
+} 	
+
+#PrientListDIV a
+{ font-size: x-small;
+    } 
+
+.TablePopList
+{
+   background-image: url(images/MessageB.bmp);
+    font-size: small;
+    font-family: Arial; 
+    height : 100%;
+	width : 100%;
+ } 
+.TablePopList img
+{
+    border-width: 1px ;
+    border-style: none;
+ 
+ }        
+.TablePopList img:hover
+{
+    border: 1px solid purple;
+    margin: -2px;
+    background-color: Navy;
+} 

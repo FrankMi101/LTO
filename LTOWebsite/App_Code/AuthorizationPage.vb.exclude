@@ -1,0 +1,46 @@
+Imports AppOperate
+
+Public Class AuthorizationPage
+    Inherits System.Web.UI.Page
+
+    Public Shared Sub ShowAuthorizationPage(Optional ByVal ErrorMSG As String = "System experierence some techinical difficulty, please contact HelpDesk for help.")
+
+        Dim errorPage As String
+        errorPage = ""
+        'errorPage = "<%@ Register TagPrefix='uc1' TagName='header' Src='inc/header.ascx %>"
+        errorPage += "<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'>"
+        errorPage += "<HTML>"
+        errorPage += "<HEAD>"
+        errorPage += "<title>ErrPage</title>"
+        errorPage += "</HEAD>"
+        errorPage += "<body topmargin='0' leftmargin='0' rightmargin='0'>"
+
+        errorPage += "<DIV align='center'><table id='table112' height='100%'><tr><td><TABLE id=table13 width='350px' cellpadding='8'>"
+        errorPage += "<tr><td align='center'><img src='images/smallTCDSB-logo.gif' border='0'></img></td></tr>"
+        errorPage += "<tr><td align='center'><b>You are not authorized to access this application.</b></td></tr>"
+        errorPage += "<tr><td align='center'><b>Please contact student system term for permission and/or approval.</B></td></tr>"
+        errorPage += "</TABLE></tr></td></TABLE></DIV>"
+
+        errorPage += "</body>"
+        errorPage += "</html>"
+
+        HttpContext.Current.Response.Write(errorPage)
+        HttpContext.Current.Response.End()
+    End Sub
+    Public Shared Sub CheckUserPermission(ByVal _user As String)
+        Dim applName As String = WebConfigValue.AppNameS ' .applicationNameS
+        Dim dPage As String = WebConfigValue.DefaultPage
+        Dim permission As String = "Update"   '  TCDSB.Student.Security.PagePermission(_user, applName, dPage)   ' SecurityControlDC.GetPermission(DBCon.cn, txtUsername.Text)
+        'Select Case permission.ToUpper
+        '    Case "READ", "UPDATE", "SUPER"
+        '        Session("Permission") = permission
+        '    Case Else
+        '        Session("Permission") = "Deny"
+        '        AuthorizationPage.ShowAuthorizationPage()
+        '        Exit Sub
+        'End Select
+    End Sub
+
+End Class
+
+

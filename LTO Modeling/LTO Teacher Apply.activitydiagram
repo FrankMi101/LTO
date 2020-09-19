@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm12="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="62a02d8c-ab55-499d-8ae7-f26343e929ef" name="LTO Teacher Apply" linkedPackageId="2c477dc1-50cb-4cd9-bc89-0b9f2f4db390" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="ccc8ad77-4236-4e65-b197-331b4a151fd3" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a4a0d3af-0da3-46d7-8989-5bc3ca362348">
+          <propertyInstance Id="f764f6b6-1882-4734-b5b4-18e51feb6a9c" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="3c151142-2466-4e51-8cde-48957f27efdf">
+          <propertyInstance Id="5b551aad-d3eb-411e-84df-112002211b89" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="23159ba1-2fb2-439e-873a-6f4c72916da4">
+          <propertyInstance Id="10dea712-7bda-4cd6-8fcf-b8edd79e36f0" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="f862d654-fb18-45f4-89e0-373d3019d36a" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="39654f02-3498-4d13-a0cc-f4806cfcf5db">
+          <propertyInstance Id="33828c90-3241-4451-a3fa-39feab263826" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="47386542-3b17-47a9-a780-b9f65a6d36ab">
+          <propertyInstance Id="4bbcf120-4060-4708-abff-087a0f336ffa" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="e4aecf6a-b7da-4b2c-8559-03fa38287535">
+          <propertyInstance Id="cdd7d338-bf19-414e-b14b-5423fc988ce4" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1947e57b-e892-4fda-b1ce-db233b43c762">
+          <propertyInstance Id="94f80080-ee5c-4f1f-a97f-8e6c6fe80327" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="79ab4e42-bfe4-4fce-b0e7-f177870f71b3">
+          <propertyInstance Id="f1f7f3eb-96e6-4b4e-a839-c1d7b5c58df0" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="915ef182-7900-4035-ba6a-e380550b05fa">
+          <propertyInstance Id="786401a5-95e3-48ee-8667-4407eaa0610d" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1c6e56b8-5cda-4eea-8375-2ad590969903">
+          <propertyInstance Id="422c59b4-5f35-4fbd-95b2-30406ff03bd5" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="04f6e6e6-1d7e-42d5-ae47-e70a449a345b">
+      <profileInstance Id="a2a23adb-6892-4545-8a23-69db0ba58d93" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="4c69c032-54c9-4739-9694-d41a502122e5">
+      <profileInstance Id="83ab1d4f-7993-4543-be97-35654acc9958" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="eabfafb0-77a0-4ab5-9184-438d29b0c970">
+      <profileInstance Id="db286db6-a349-487e-81dc-ce2021981fd7" name="CSharpProfile">
+        <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+      </profileInstance>
+      <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="44ef0d11-2908-476f-9aac-b22b940a6b35">
+      <profileInstance Id="3e0d1d4a-9e87-4c72-98b7-6ec33d053963" name="TextTemplateBindings">
+        <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+      </profileInstance>
+      <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="fa5e2c41-f5d0-4d99-ab32-87993c52c151" name="LTO Teacher Apply" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="1cf03930-6f7c-4715-96da-2712fbcd51e6" />
+        <nodes>
+          <initialNode Id="36777985-1aa1-4ad4-8dba-a8a666fbd548" name="Initial1" isLeaf="false">
+            <elementDefinition Id="4e31e469-179d-4e42-8d82-023c03c356be" />
+            <flowNodeTargets>
+              <controlFlow Id="caf28b09-b649-4124-9373-3fafbfa39077" isLeaf="false">
+                <opaqueActionMoniker Id="43790fc5-cbf4-41f3-a065-93fb5c47e280" LastKnownName="Borwser all available open Position " />
+                <elementDefinition Id="eeafb059-0647-4166-9417-c1dcecf252ac" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="43790fc5-cbf4-41f3-a065-93fb5c47e280" name="Borwser all available open Position " isLeaf="false">
+            <elementDefinition Id="b97c5145-6702-4c48-86b9-79b71ca859e0" />
+            <flowNodeTargets>
+              <controlFlow Id="2b9b3ea9-e06e-49ea-90e1-197ae3f2956d" isLeaf="false">
+                <opaqueActionMoniker Id="b7338a14-868c-47c1-ad6c-52f17195dab4" LastKnownName="OPen Position detail" />
+                <elementDefinition Id="c8fabaec-12d0-4b3c-95df-2aeb13aa410c" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="b7338a14-868c-47c1-ad6c-52f17195dab4" name="OPen Position detail" isLeaf="false">
+            <elementDefinition Id="8cbe6a55-4265-4cd8-9a7d-191ddfa8b31e" />
+            <flowNodeTargets>
+              <controlFlow Id="cc07d76b-cd18-4078-ba76-ddba6c7dfbd4" isLeaf="false">
+                <opaqueActionMoniker Id="7e085410-fc86-412e-9918-76e38868dee5" LastKnownName="Confirm Apply" />
+                <elementDefinition Id="c21cbfe1-9954-46e3-9236-1b27e9146f8a" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="7e085410-fc86-412e-9918-76e38868dee5" name="Confirm Apply" isLeaf="false">
+            <elementDefinition Id="908e3530-9134-43a6-8732-e623b3017f1e" />
+            <flowNodeTargets>
+              <controlFlow Id="eb19eabf-dfcd-468e-bc75-b5870b10bd6d" isLeaf="false">
+                <opaqueActionMoniker Id="cd436725-ee0f-4df2-bd07-bdcc6461602e" LastKnownName="Sent email notification" />
+                <elementDefinition Id="eb188570-cbac-4ab3-a6c2-9ff803bbdedf" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="cd436725-ee0f-4df2-bd07-bdcc6461602e" name="Sent email notification" isLeaf="false">
+            <elementDefinition Id="7619a8b9-ea26-4f08-8224-9ca99931e215" />
+            <flowNodeTargets>
+              <controlFlow Id="2aab3cad-aad6-4a5e-8be8-9c032c79e0fd" isLeaf="false">
+                <opaqueActionMoniker Id="6421f9b3-20ef-436b-b82f-ec530ef700fd" LastKnownName="Close " />
+                <elementDefinition Id="1e4e4cc9-3c07-4806-8e58-bed5b8a55122" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="6421f9b3-20ef-436b-b82f-ec530ef700fd" name="Close " isLeaf="false">
+            <elementDefinition Id="873c56d3-6073-4eb0-971a-1bf34e99fa8d" />
+            <flowNodeTargets>
+              <controlFlow Id="90776f40-1678-4f56-8797-d1170b8d205a" isLeaf="false">
+                <activityFinalNodeMoniker Id="7d8ca249-912b-4223-b837-9b3f5e6bbf28" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="0d70e525-f5aa-4627-8a76-19447736e781" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="7d8ca249-912b-4223-b837-9b3f5e6bbf28" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="b5068bb0-931b-49d0-9fb8-2f5ab2481a3b" />
+          </activityFinalNode>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="2c477dc1-50cb-4cd9-bc89-0b9f2f4db390" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+  </package>
+</activityRootModel>

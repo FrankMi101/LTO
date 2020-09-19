@@ -1,0 +1,64 @@
+﻿Imports System.ServiceModel
+Imports System.ServiceModel.Activation
+Imports System.ServiceModel.Web
+<ServiceContract(Namespace:="LTOPositionDeadLine")>
+<AspNetCompatibilityRequirements(RequirementsMode:=AspNetCompatibilityRequirementsMode.Allowed)>
+Public Class GetDeadLineDate
+
+    ' To use HTTP GET, add <WebGet()> attribute. (Default ResponseFormat is WebMessageFormat.Json)
+    ' To create an operation that returns XML,
+    '     add <WebGet(ResponseFormat:=WebMessageFormat.Xml)>,
+    '     and include the following line in the operation body:
+    '         WebOperationContext.Current.OutgoingResponse.ContentType = "text/xml"
+
+    <OperationContract()>
+    Public Sub DoWork()
+        ' Add your operation implementation here
+    End Sub
+
+    <OperationContract()> _
+    Public Function myDate(ByVal schoolyear As String, ByVal datepublish As String) As String
+
+        Try
+            Dim deadlineDate As String = TCDSB.Student.PositionDetails.GetDeadlineDate2("mif", schoolyear, datepublish)
+            Return deadlineDate
+
+        Catch ex As Exception
+
+            Return "Failed"
+        End Try
+
+
+    End Function
+    <OperationContract()>
+    Public Function SelectInterview(ByVal schoolyear As String, ByVal PositionID As String, ByVal CPNum As String, ByVal Action As String) As String
+
+        Try
+            Dim UserID As String = HttpContext.Current.User.Identity.Name
+            Dim SelectResult As String = TCDSB.Student.PositionDetails.SelectInterview(UserID, schoolyear, PositionID, CPNum, Action)
+            Return SelectResult
+        Catch ex As Exception
+
+            Return "Failed"
+        End Try
+
+
+    End Function
+
+    <OperationContract()>
+    Public Function saveInterviewData(ByVal schoolyear As String, ByVal PositionID As String, ByVal CPNum As String, ByVal myKey As String, ByVal operateField As String, ByVal _Value As String) As String
+
+        Try
+            Dim UserID As String = HttpContext.Current.User.Identity.Name
+            Dim successful As String = TCDSB.Student.PositionDetails.RecommandforHiringbyItem(UserID, schoolyear, PositionID, CPNum, operateField, _Value)
+
+            Return successful
+
+        Catch ex As Exception
+
+            Return "Failed"
+        End Try
+
+
+    End Function
+End Class

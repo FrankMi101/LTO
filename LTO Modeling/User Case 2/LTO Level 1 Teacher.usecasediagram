@@ -1,0 +1,364 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="7172ddfa-33b1-4988-823b-0dd4a1f08fd0" name="LTO Level 1 Teacher" linkedPackageId="dc74373b-16c4-4308-8490-0d3b4e7ca509" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <ownedCommentsInternal>
+    <comment Id="0c32c5a6-26f7-4c36-ac82-fdfc7e108e41">
+      <elementDefinition Id="062d9d49-c0a9-4d68-8ca3-b670559f8560" />
+      <body>Search a open position 
+by area, 
+by qualification, 
+by school
+Based on login user Profile show the list</body>
+      <annotatedElements>
+        <useCaseMoniker Id="1e10a43a-8936-4647-b080-9d0b45cdf1c8" LastKnownName="Available Open  Positon List" />
+      </annotatedElements>
+    </comment>
+    <comment Id="42721532-fe8c-44eb-8814-f02989d53a99">
+      <elementDefinition Id="ddbd9d06-6c89-47aa-9f4d-50558ff9611f" />
+      <body>Applicant comments
+Contact inforamtion:
+Home Phone 
+Cell Phone
+Email.
+</body>
+      <annotatedElements>
+        <useCaseMoniker Id="9147906c-077e-4ba5-9b43-cb425721c800" LastKnownName="Apply and Confirm" />
+      </annotatedElements>
+    </comment>
+    <comment Id="7ab21072-3b22-47ae-bfaf-dbb2e30f015b">
+      <elementDefinition Id="04f367cb-c31b-44da-9145-b6b82354e7b1" />
+      <body>Application Form:
+1. Positon Title
+2. Potion school information:
+	School Name:
+	School Principal:
+	Start Date:
+	Start Time:
+3. Postion Level
+4. Postion Qualification
+5. Position Description
+6. Position Start Date and End Date
+7. Applicant Contact inforation
+</body>
+      <annotatedElements>
+        <useCaseMoniker Id="f72c8652-2eed-4564-9121-f7aa4b251984" LastKnownName="Chose and View Detail" />
+      </annotatedElements>
+    </comment>
+    <comment Id="bc02ce71-d23d-492d-9ef5-5fa6faf33edb">
+      <elementDefinition Id="b110d386-97b5-48d1-a454-aa7251b3ae9d" />
+      <body>only Teacher in LTO Teacher List can login to this application.
+
+if the teacher awarded a POP Postion and the Position FTE is 1.00 .the Teacher no long login this application.</body>
+      <annotatedElements>
+        <actorMoniker Id="b21b9ce9-bd0c-4e9d-bf6c-41b60e71365e" LastKnownName="LTO Teacher" />
+      </annotatedElements>
+    </comment>
+    <comment Id="06e62718-aa07-4c03-aa6e-be7dbe66963c">
+      <elementDefinition Id="cb6625fb-ebca-4905-a5ff-7ff60a3659cb" />
+      <body>Only 3rd round posting available for the Roster</body>
+      <annotatedElements>
+        <actorMoniker Id="4cf32af1-aa0d-45aa-8908-b95b1d3afa4c" LastKnownName="Roster" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="65632f46-3767-4208-92f1-9b623a691ddf" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="d920aa2f-4d73-4b20-be77-bb33c8f7b527">
+          <propertyInstance Id="18abeb37-dbec-41c5-a0aa-3cdccd1dc52c" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="84c12e74-6667-4fda-9029-b81d0bb014de">
+          <propertyInstance Id="8597419c-4ccf-4951-82fe-47d80346d1a2" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="131f6907-6807-4355-a49b-1dd129c80b77">
+          <propertyInstance Id="750b1bc0-77c0-479a-8d5e-ff1e3bfbc44f" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="29d5584b-bbbe-4ab7-9584-7798e29c62fb" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="51cbdc44-1d87-4364-80f6-4d7d7aac09c0">
+          <propertyInstance Id="ead720d7-a0b7-4aaa-bd7b-1b63a6b07edb" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="807c2576-1573-4a70-a7dd-1c95785c2601">
+          <propertyInstance Id="be58aac1-b97b-4bcc-9083-c0679aaf23f4" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="eee5c73d-55df-48ca-aea1-55ca42430b9d">
+          <propertyInstance Id="05b56c48-32bf-4dda-bbb4-d1770111aec0" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="169b270c-4928-4b78-939e-bdef32d1f1dd">
+          <propertyInstance Id="614c8936-4777-472e-94a2-4e5a5dcbd330" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="0e49a0fd-b011-457e-99c1-d372597c84d4">
+          <propertyInstance Id="37a4b451-f14b-472b-ba11-96579e54f3c8" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="1bd01fc9-1c6d-403e-aa2c-5295025e7d41">
+          <propertyInstance Id="9d88557c-9314-44bb-ab81-f996f7a9620a" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="916299f0-0fd9-4b55-a886-a9ad5efac882">
+          <propertyInstance Id="f631d551-70b5-438b-85b2-6e3240aed83a" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="b21b9ce9-bd0c-4e9d-bf6c-41b60e71365e" name="LTO Teacher" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="95cab365-ca7c-485c-8f6a-678bcd2a3add" />
+        <targetEnds>
+          <association Id="8b10997e-94d4-4952-8461-0b6f659aa44d" isDerived="false" sourceEndRoleName="LTO Teacher" targetEndRoleName="Available Open  Positon List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1e10a43a-8936-4647-b080-9d0b45cdf1c8" LastKnownName="Available Open  Positon List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a36fe24d-78b7-4c2f-b37b-6bcee53d61cc" name="LTO Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="80d2c750-4af6-49be-8b77-35a850db904a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cce70c10-f5a1-4f75-8d48-c2aec403dc69" name="Available Open  Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="49f9cbec-59e7-4e55-817f-f8119f908b6d" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b1108484-b352-4fff-ae23-343365676b80" />
+          </association>
+          <association Id="8d156c95-d2a8-42a4-aff7-ab047a604af2" isDerived="false" sourceEndRoleName="LTO Teacher" targetEndRoleName="My Applied Positon List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="48229c5a-5ed5-4a17-a235-5119102824d8" LastKnownName="My Applied Positon List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="24d1103b-f051-44de-8c77-6890b1cef90a" name="LTO Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3b2f2734-6694-47de-8607-34efd563d2c5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="23b4cdc0-4857-4097-9dda-5b57773b9304" name="My Applied Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="18eac14a-9f27-420a-9c3a-d88d6e405e41" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f7a78414-6daa-4acf-9d37-28e5a3b8f4ec" />
+          </association>
+          <association Id="9e4b2a24-f0aa-46c6-93d0-669a6987306f" isDerived="false" sourceEndRoleName="LTO Teacher" targetEndRoleName="New open Position to me" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="88aea7d8-9c53-4208-93fc-d9dd63d3612e" LastKnownName="New open Position to me" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0735d689-b583-4258-b429-9d8c2aff3ade" name="LTO Teacher" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f374ba55-76c7-47c1-9193-d159aadffa85" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b8104568-7889-4be8-b5e2-c1ec47283d29" name="New open Position to me" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="b2f0ff0d-756f-42b2-8388-c4be1a4205a7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7b5960d6-e0ba-485a-a299-e38cc86e88c3" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1e10a43a-8936-4647-b080-9d0b45cdf1c8" name="Available Open  Positon List" isAbstract="false" isLeaf="false">
+        <referencesInternal>
+          <reference Id="d443d07c-b277-4794-ac9d-cf1adecac341" handle="%tfs02\SIS2#39637ab5-8611-43d5-b21c-89bc6d01332a$1683$1680$1686" tag="Work Item Reference">
+            <elementDefinition Id="48554075-0650-4a7e-8097-7a06d4d38732" />
+          </reference>
+        </referencesInternal>
+        <elementDefinition Id="3cce325f-6e58-4512-8f4c-586ffdcdc219" />
+        <extendedCases>
+          <extend Id="4410716a-f330-4939-8e1e-0d68a448df83">
+            <useCaseMoniker Id="b65bc5aa-b14a-49f9-b202-90739c206838" LastKnownName="view School  Location on Google Map" />
+            <elementDefinition Id="e729f363-47f1-47a6-a6ef-aad410ed4932" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include Id="2658be1d-ef36-4740-b7f7-a79f6eeda21d">
+            <useCaseMoniker Id="f72c8652-2eed-4564-9121-f7aa4b251984" LastKnownName="Chose and View Detail" />
+            <elementDefinition Id="99a92135-9f1b-4ee4-aee8-77587415aedb" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f72c8652-2eed-4564-9121-f7aa4b251984" name="Chose and View Detail" isAbstract="false" isLeaf="false">
+        <referencesInternal>
+          <reference Id="43067205-91a3-49d4-97dc-5d82d75414f8" handle="%tfs02\SIS2#39637ab5-8611-43d5-b21c-89bc6d01332a$1684$1681" tag="Work Item Reference">
+            <elementDefinition Id="dae04b82-2b37-48a9-a8e7-e758730e0ac4" />
+          </reference>
+        </referencesInternal>
+        <elementDefinition Id="fb3e3a59-ba17-40d1-bcff-21d722a48add" />
+        <additions>
+          <include Id="2138e6a3-5c8a-4b8a-ae42-07a513f0685b">
+            <useCaseMoniker Id="9147906c-077e-4ba5-9b43-cb425721c800" LastKnownName="Apply and Confirm" />
+            <elementDefinition Id="ba9fda24-e220-4cb9-a61f-285c8867993b" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9147906c-077e-4ba5-9b43-cb425721c800" name="Apply and Confirm" isAbstract="false" isLeaf="false">
+        <referencesInternal>
+          <reference Id="cf991ca6-255d-40b3-aafe-4ff128ef266b" handle="%tfs02\SIS2#39637ab5-8611-43d5-b21c-89bc6d01332a$1685$1682" tag="Work Item Reference">
+            <elementDefinition Id="e66a7059-7f8a-41cd-bba4-18214f32d5c4" />
+          </reference>
+        </referencesInternal>
+        <elementDefinition Id="639cbf43-7143-4fa7-8842-7d68f9e57267" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b65bc5aa-b14a-49f9-b202-90739c206838" name="view School  Location on Google Map" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a9c77d30-f6bf-4539-ad04-bbc776ff5874" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="48229c5a-5ed5-4a17-a235-5119102824d8" name="My Applied Positon List" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0b6aafbe-a788-4893-ba48-c288e3600d1c" />
+        <targetEnds>
+          <association Id="89925aa2-de31-402a-89ca-c44cc0b462aa" isDerived="false" sourceEndRoleName="My Applied Positon List" targetEndRoleName="Chose and View Detail (No Apply action)" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="256e0c8a-107c-412e-93c8-134176d3d2f5" LastKnownName="Chose and View Detail (No Apply action)" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="99097928-58bc-4e5e-bf5f-bd524de507c7" name="My Applied Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="63d94d0b-7be6-4f3a-bce9-03bd5fcabf72" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="85cca3f8-9280-4c20-8600-2736c0e69456" name="Chose and View Detail (No Apply action)" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="dbc40bfa-f5d1-4855-9516-a0b5e7daee3f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="86adf2e9-085a-40d8-92e5-27bc1921491f" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="88aea7d8-9c53-4208-93fc-d9dd63d3612e" name="New open Position to me" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a50daf0c-c27c-4f50-bdab-8574b857b0ef" />
+        <targetEnds>
+          <association Id="1d26726f-cbc0-4016-99f3-799813f09f0d" isDerived="false" sourceEndRoleName="New open Position to me" targetEndRoleName="Chose and View Detail" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="f72c8652-2eed-4564-9121-f7aa4b251984" LastKnownName="Chose and View Detail" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1b560fd6-7335-4c40-b32e-8e8a19dd4076" name="New open Position to me" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="a64b3109-9a31-435b-90ad-ecfe541e85e3" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1fa96386-673c-4e9e-8a7c-e55fb61502a0" name="Chose and View Detail" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="97c7fc01-8e89-47da-b519-597959f2f9e5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="31b439dc-f3fa-4f65-93bd-05faea52ea3c" />
+          </association>
+        </targetEnds>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="256e0c8a-107c-412e-93c8-134176d3d2f5" name="Chose and View Detail (No Apply action)" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b2f588a7-8927-40f0-9713-d09a2ee2bf74" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4cf32af1-aa0d-45aa-8908-b95b1d3afa4c" name="Roster" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="67f429ab-f114-4dc8-8621-1c839fe35bd8" />
+        <targetEnds>
+          <association Id="d246e631-34fd-4db7-a8cf-de5aed00d5e2" isDerived="false" sourceEndRoleName="Roster" targetEndRoleName="Available Open  Positon List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="1e10a43a-8936-4647-b080-9d0b45cdf1c8" LastKnownName="Available Open  Positon List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="730fe7f2-2495-4937-9c9a-267f7b3f1df7" name="Roster" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="25174ea4-4164-4db6-bdf4-f773ba511138" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="00573b7c-3e43-491c-a9a9-c5f6ad522988" name="Available Open  Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="524de14d-55c6-4d9c-a772-ceed09a21dea" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="757b1327-546d-4ed2-83f0-19e02d530da0" />
+          </association>
+          <association Id="a016cf79-abc1-4f03-8d9b-49ab9eef02ad" isDerived="false" sourceEndRoleName="Roster" targetEndRoleName="My Applied Positon List" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="48229c5a-5ed5-4a17-a235-5119102824d8" LastKnownName="My Applied Positon List" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="103cd21a-7273-4605-bd52-c298e3882349" name="Roster" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="087d9420-4b4a-4b5f-b053-95c544b3db1e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="485bf7cc-6c00-46a8-a5e5-b72e6b0f0bf6" name="My Applied Positon List" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fff948bc-560f-42d3-97f2-e369ae09c97e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c56af0a0-ed60-4031-b219-079e16b3fb6f" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="dc74373b-16c4-4308-8490-0d3b4e7ca509" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+    <profileInstances>
+      <packageHasProfileInstances Id="1f749795-ec1c-46ab-b7c9-f0dc8f01d35f">
+        <profileInstance Id="0ea80277-a7c4-4897-a510-db509c8f3868" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="0133ba80-7978-4736-9e84-9bd773d41550">
+        <profileInstance Id="77053177-2af7-4822-9812-c0f39de6fc1d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="d0df5d4b-5c5f-4c58-aa1c-2ef6430e0082">
+        <profileInstance Id="1f894113-5779-49e8-9627-21db777dd506" name="CSharpProfile">
+          <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+        </profileInstance>
+        <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="3aac18e3-1e56-4537-bbda-8d28cc846ebc">
+        <profileInstance Id="0875f634-8053-4a30-973f-48d64ca5a884" name="TextTemplateBindings">
+          <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+        </profileInstance>
+        <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

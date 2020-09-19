@@ -1,0 +1,94 @@
+﻿
+tableH2
+{
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.CellStyle
+{
+    font-size: x-small;
+    font-family: Arial;
+    color: Black;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #e6e6fa;
+}
+.HeaderApp
+{
+    color: #cc0033;
+    font-weight: bold;
+}
+.HeaderCuver
+{
+    background-image: url(images/curve2.bmp);
+}
+
+.MenuB
+{
+    background-image: url(images/BlueExplorer.BMP);
+}
+.LinkTD
+{
+    background-image: url(images/BlueExplorer.BMP);
+}
+
+textarea
+{
+    width: 99%;
+    height: 100%;
+    font-family: Arial;
+    font-size: small;
+}
+
+A:link
+{
+    text-decoration: none;
+    color: black;
+}
+A:visited
+{
+    text-decoration: none;
+    color: #333399;
+}
+A:active
+{
+    text-decoration: none;
+    color: #333399;
+}
+A:hover
+{
+    text-decoration: underline;
+    color: #3333cc;
+}
+th
+{
+    border: 0 none Gray;
+}
+
+.pageTitelTab
+{ 
+    }
+.QuidingQuestionProfile ul li 
+{ color:Green ;
+  font-size:xx-small;
+  
+    }
+ .TabBody
+        {
+            border: 1px solid #006699;
+            border-top: 0px none blue;
+        }
+ 
+  img {
+            border-width:0;
+            border-style:none;
+        }
+ .midtitle {
+          text-align:right ;
+          vertical-align: middle ;
+          text-wrap:avoid;
+        }
+        

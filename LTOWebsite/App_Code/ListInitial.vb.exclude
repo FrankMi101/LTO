@@ -1,0 +1,107 @@
+
+
+Public Class ListInitial
+    Public Shared Sub SchoolList(ByVal myDDL As DropDownList, ByVal myDDL1 As DropDownList, ByVal _value As String)
+        Try
+
+            myDDL1.ClearSelection()
+            myDDL.ClearSelection()
+            '  myDDL1.Items(0).Selected = True
+            '    myDDL.Items(0).Selected = True
+            Dim _item As ListItem
+            For Each _item In myDDL1.Items
+                If _item.Value = _value Then
+                    _item.Selected = True
+                    '  _sCode = _value
+                    Exit For
+                End If
+            Next
+            Dim _item1 As ListItem
+            For Each _item1 In myDDL.Items
+                If _item1.Value = _value Then
+                    _item1.Selected = True
+                    Exit For
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+    End Sub
+    Public Shared Sub SelectOption(ByVal myDDL As HtmlControls.HtmlSelect, ByVal _value As String)
+        ' myDDL.ClearSelection()
+        Dim _item As ListItem
+        For Each _item In myDDL.Items
+            If _item.Value = _value Then
+                _item.Selected = True
+                Exit For
+            End If
+        Next
+
+
+    End Sub
+    Public Shared Sub DDL(ByVal myDDL As DropDownList, ByVal _value As String)
+        myDDL.ClearSelection()
+        Dim _item As ListItem
+        For Each _item In myDDL.Items
+            If _item.Value = _value Then
+                _item.Selected = True
+                Exit For
+            End If
+        Next
+
+
+    End Sub
+    Public Shared Sub ListL(ByVal myDDL As ListBox, ByVal _value As String)
+        myDDL.ClearSelection()
+        Dim _item As ListItem
+        For Each _item In myDDL.Items
+            If _item.Value = _value Then
+                _item.Selected = True
+                Exit For
+            End If
+        Next
+    End Sub
+    Public Shared Sub CBL(ByVal myDDL As CheckBoxList, ByVal _value As String)
+        myDDL.ClearSelection()
+        Dim _item As ListItem
+        For Each _item In myDDL.Items
+            If _item.Value = _value Then
+                _item.Selected = True
+                Exit For
+            End If
+        Next
+    End Sub
+    Public Shared Sub RBL(ByVal myDDL As RadioButtonList, ByVal _value As String)
+        Try
+            myDDL.ClearSelection()
+            Dim _item As ListItem
+            For Each _item In myDDL.Items
+                If _item.Value = _value Then
+                    _item.Selected = True
+                    Exit Sub
+                End If
+            Next
+            myDDL.Items(0).Selected = True
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+    Public Shared Sub RBL2(ByVal myDDL As RadioButtonList, ByVal _value As String)
+        Try
+            myDDL.ClearSelection()
+            Dim _item As ListItem
+            For Each _item In myDDL.Items
+                If _item.Value = _value Then
+                    _item.Selected = True
+                    Exit Sub
+                End If
+            Next
+        Catch ex As Exception
+
+        End Try
+
+    End Sub
+End Class
+
+ 

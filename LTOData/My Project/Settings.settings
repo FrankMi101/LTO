@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="TCDSB_Student_SLIPData_ReportingWebServiceR2_ReportExecutionService" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://webservice.tcdsb.org:80/ReportServer/ReportExecution2005.asmx</Value>
+    </Setting>
+    <Setting Name="TCDSB_Student_SLIPData_PublishDocToSP_PublishDocToSP" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://webservice.tcdsb.org/DocumentToSPSite/PublishDocToSP.asmx</Value>
+    </Setting>
+    <Setting Name="TCDSB_Student_SLIPData_PublishDocumentToSPSite_PublishDocToSP" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://webservice.tcdsb.org/DocumentToSPSite/PublishDocToSP.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

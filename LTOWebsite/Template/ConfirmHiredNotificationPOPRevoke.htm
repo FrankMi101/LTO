@@ -1,0 +1,70 @@
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Revoke Hired Confirm Notification</title>
+</head>
+<body>
+
+
+    <table id="tblContent" style="width: 750px; border: outset lightgrey 0pt">
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+
+                <div style="text-align: center">
+                    <h2>Revoke Hired Confirm Notification </h2>
+                </div>
+                <div id="EmailBody">
+                    Dear
+                    <span style=" font-weight:bolder">{{PrincipalNameSTR}}  </span>
+                    <br />
+                    <br />
+                    This email confirm that {{TeacherNameSTR}} has been revoked
+                    from the {{PositionTitleSTR}} at {{PositionSchoolSTR}} by {{DateTimeSTR}}.
+
+
+
+                    <br />
+                    <br />
+                    * Revoke Reason: <span style="text-decoration: underline; font-weight: bolder">{{RevokeReasonSTR}}</span>   <br />
+                    * Position Qualification: <span style="text-decoration: underline; font-weight: bolder">{{QualificationSTR}}</span>   <br />
+                    * Position Description: <span style="text-decoration: underline; font-weight: bolder">{{PositionDescriptionSTR}}</span>   <br />
+                    * Position Posted at: <span style="text-decoration: underline; font-weight: bolder">{{PositionPostedSTR}}</span> <br />
+                    * Position FTE: <span style="text-decoration: underline; font-weight:bolder">{{BTCSTR}} </span> <br />
+                    * Posting Number: <span style="text-decoration: underline; font-weight:bolder">{{PostingNumberSTR}} </span> <br />
+                    * Posting Round: <span style="text-decoration: underline; font-weight:bolder">{{PostingCycleSTR}} </span> <br />
+
+                    <br />
+                    <br />
+
+                    <br />
+                </div>
+                <br />
+                {{FormReminderLine}}
+
+
+                <br />
+                <br />
+                <span style="font-weight:bolder"> {{ConfirmPersonSTR}}</span>
+                <br />     Academic Services:<br />
+
+                <span> {{DateTimeSTR}}</span>
+                <br />
+
+                {{EmailTOSTR}}
+                <br />
+                {{EmailCCSTR}}
+                <br />
+                {{EmailBCCSTR}}
+            </td>
+        </tr>
+
+    </table>
+
+
+
+
+</body>
+</html>

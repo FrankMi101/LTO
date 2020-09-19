@@ -1,0 +1,1919 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WebTest Name="WebTest1" Id="74d1e4d5-ea58-4b51-86fe-57a52536acbc" Owner="" Priority="2147483647" Enabled="True" CssProjectStructure="" CssIteration="" Timeout="0" WorkItemIds="" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010" Description="" CredentialUserName="" CredentialPassword="" PreAuthenticate="True" Proxy="default" StopOnError="False" RecordedResultFile="WebTest1.040bda67-ebfa-46ca-8c54-71e82dfd3663.rec.webtestresult" ResultsLocale="">
+  <Items>
+    <Request Method="GET" Guid="9230b475-9cac-4152-96ef-f08c04cd30af" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto" ThinkTime="3" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/TEST/LTO/logon.aspx?ReturnUrl=%2ftest%2flto" ReportingName="" IgnoreHttpStatusCode="False">
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractHiddenFields, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="1" DisplayName="Extract Hidden Fields" Description="Extract all hidden fields from the response and place them into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="Required" Value="True" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam1.ReturnUrl" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?ReturnUrl=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractFormField, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam1.txtDomain" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="Name" Value="txtDomain" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+            <RuleParameter Name="Index" Value="0" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractFormField, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam2.btnLogin" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="Name" Value="btnLogin" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+            <RuleParameter Name="Index" Value="0" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="POST" Guid="66f4f7a3-2fc4-46ca-a786-7a2cae62dfa8" Version="1.1" Url="https://webt01.tcdsb.org:8443/TEST/LTO/logon.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/TEST/LTO/logon.aspx?ReturnUrl=%2ftest%2flto" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam25.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="5" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam29.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam4771.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="ReturnUrl" Value="%2ftest%2flto" RecordedValue="%2ftest%2flto" CorrelationBinding="{{QueryStringParam1.ReturnUrl}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+      <FormPostHttpBody>
+        <FormPostParameter Name="__EVENTTARGET" Value="{{$HIDDEN1.__EVENTTARGET}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTARGUMENT" Value="{{$HIDDEN1.__EVENTARGUMENT}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATE" Value="{{$HIDDEN1.__VIEWSTATE}}" RecordedValue="/wEPDwUJNTc4MTk5ODU0ZGTWkCLxbeZoQuzgjlgxXMxbgP9UTHDym61FuOi5dlqP1w==" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATEGENERATOR" Value="{{$HIDDEN1.__VIEWSTATEGENERATOR}}" RecordedValue="34BAFD22" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTVALIDATION" Value="{{$HIDDEN1.__EVENTVALIDATION}}" RecordedValue="/wEdAAU73dTweZ097UTFIyzvqQMGYPNRdSlGDjh7ClJg//QI/lSuwa0QLRIqrvZxhRCPowd2NvjHOkq5wKoqN6Aim8WGop4oRunf14dz2Zt2+QKDEGHKSFTLWUQxUjLi3cmzfOwqb6z9FPxd+6355fLpeIXV" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="txtDomain" Value="CEC" RecordedValue="CEC" CorrelationBinding="{{FormPostParam1.txtDomain}}" UrlEncode="True" />
+        <FormPostParameter Name="txtUsername" Value="mif" RecordedValue="mif" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="txtPassword" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="btnLogin" Value="Login" RecordedValue="Login" CorrelationBinding="{{FormPostParam2.btnLogin}}" UrlEncode="True" />
+        <FormPostParameter Name="txtResolution" Value="1680x1050" RecordedValue="1680x1050" CorrelationBinding="" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="caf1c427-b994-43a1-bffa-e14e58f1be39" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOHRStaffs/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="0" RecordedValue="0" CorrelationBinding="{{QueryStringParam25.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="1c7ddbb0-467a-40b7-851e-fbfe9ac7f23d" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOHRStaffs/WelcomePage.aspx" ThinkTime="3" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="57580441-e7d7-40b5-834c-613b6f257b68" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Default_role.aspx" ThinkTime="2" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractHiddenFields, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="1" DisplayName="Extract Hidden Fields" Description="Extract all hidden fields from the response and place them into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="Required" Value="True" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractFormField, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam3.rblRole" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="Name" Value="rblRole_1" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+            <RuleParameter Name="Index" Value="1" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="POST" Guid="d58d946a-2d71-4dc7-9b25-36b0b9ddd2d3" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Default_role.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/Default_role.aspx" />
+      </Headers>
+      <FormPostHttpBody>
+        <FormPostParameter Name="__EVENTTARGET" Value="rblRole$1" RecordedValue="rblRole$1" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTARGUMENT" Value="{{$HIDDEN1.__EVENTARGUMENT}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__LASTFOCUS" Value="{{$HIDDEN1.__LASTFOCUS}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATE" Value="{{$HIDDEN1.__VIEWSTATE}}" RecordedValue="/wEPDwUKLTk4MjcwMzAxNg9kFgICAw9kFgICAQ9kFgICAQ9kFgICAQ9kFgJmD2QWAgIBDxBkZBYBAgRkZKE5NNwRzoNSLvq9W5DNKS2FquecJ1+LwVMCg5C4snNV" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATEGENERATOR" Value="{{$HIDDEN1.__VIEWSTATEGENERATOR}}" RecordedValue="93B620C7" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTVALIDATION" Value="{{$HIDDEN1.__EVENTVALIDATION}}" RecordedValue="/wEdAAq2s7mlZFkuRV5afSfFRE9LHl/Cq2y0OHZWFjtbqu5T1O/Y4YVHomr0yskewrw+W3YJf+TXa2xFCEHJVLsvdbKPReuqXO+qUM4Ap+a17U9MoI1ltOeuQ6pWwvX5IxijgTTO3OwVxL03VopsPKkDGZ8rvH4XYgFWq03mCf0HZfWvt+Facf07/t/kN2Ytfg4+PBWQRBPCD0C4OSDcbju0RFUDMaS208vMlc0fxqyzcCBSC+FrrvBbeT2O/FmRT5vIEik=" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="rblRole" Value="LTOTeacher" RecordedValue="LTOTeacher" CorrelationBinding="{{FormPostParam3.rblRole}}" UrlEncode="True" />
+        <FormPostParameter Name="UserRoleID" Value="{{$HIDDEN1.UserRoleID}}" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="e474fdf8-22b1-4761-9092-2f92c7819d0d" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/#" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/TEST/LTO/logon.aspx?ReturnUrl=%2ftest%2flto" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam28.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam4819.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="2" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="GET" Guid="c0cace3d-afad-4e58-8eaf-1e6a5468f34a" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam37.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="3" RecordedValue="3" CorrelationBinding="{{QueryStringParam28.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="47b82e27-81f9-4ee2-a945-237b8a2fa0c8" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="118ad1ab-e18f-4610-a3b6-7d3d67343991" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="4" RecordedValue="4" CorrelationBinding="{{QueryStringParam29.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="7fb5fd58-d365-4cc8-9106-d6ea7291acd1" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList_Applied.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="36517043-0f01-437f-912a-5502ea62a45e" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam4790.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="3" RecordedValue="3" CorrelationBinding="{{QueryStringParam37.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="387ff3f0-b2db-42d2-8021-763b101dfa96" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="2abcbdbf-1f00-469d-8da5-bfef7ebea667" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx#" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam38.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam117.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="GET" Guid="e7040aac-d1a6-4ed4-b120-e4d61c0354f0" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx?pID=LTOTeachers/ApplyPosition.aspx&amp;SchoolYear=20152016&amp;SchoolCode=0267&amp;PositionID=4543&amp;SchoolName=St. Benedict Catholic School" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="LTOTeachers/ApplyPosition.aspx" RecordedValue="LTOTeachers/ApplyPosition.aspx" CorrelationBinding="{{QueryStringParam38.pID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0267" RecordedValue="0267" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4543" RecordedValue="4543" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="St.%20Benedict%20Catholic%20School" RecordedValue="St.%20Benedict%20Catholic%20School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="cb93294b-0ff9-433e-a418-c64ce5c4eb2e" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam186.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam187.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam188.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam215.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam216.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam217.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam218.SchoolName" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolName=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="LTOTeachers/ApplyPosition.aspx" RecordedValue="LTOTeachers/ApplyPosition.aspx" CorrelationBinding="{{QueryStringParam117.pID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0267" RecordedValue="0267" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4543" RecordedValue="4543" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="St.+Benedict+Catholic+School" RecordedValue="St.+Benedict+Catholic+School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="51098ac0-bf68-4a91-b5b1-5d1eeb9a7fa2" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx?SchoolYear=20152016&amp;PositionID=4543&amp;SchoolCode=0267&amp;SchoolName=St. Benedict Catholic School" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam186.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4543" RecordedValue="4543" CorrelationBinding="{{QueryStringParam187.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0267" RecordedValue="0267" CorrelationBinding="{{QueryStringParam188.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="St.%20Benedict%20Catholic%20School" RecordedValue="St.%20Benedict%20Catholic%20School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="104ef4a6-238b-43f1-be62-846fddd32d1b" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="3" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam4.__VIEWSTATE" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam5.__VIEWSTATEGENERATOR" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam6.__EVENTVALIDATION" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="2" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam7.TextPositionID" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="3" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam8.TextStatus" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="4" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam9.TextArea" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="5" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam10.TextSchool" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="6" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam11.textPrincipal" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="8" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam12.textPhonenumber" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="9" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam13.TextPositionTitle" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="10" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam14.TextPostionLevel" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="11" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam15.TextApplyEndDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="12" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam16.TextStartDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="13" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam17.TextEndDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="14" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam18.TextHomePhone" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="15" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam19.TexteMail" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="16" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam20.TextCellPhone" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="17" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam21.HiddenFieldApply" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="18" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam22.hfTeacherName" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="19" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam23.hfPositionType" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="20" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam24.HiddenFieldAction" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="21" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam25.hfSchoolyear" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="22" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam26.hfCPNnum" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="23" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam27.hfFTEPosition" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="24" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam28.hfFTECurrent" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="25" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam29.btnApply" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="26" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam219.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam220.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam221.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam222.SchoolName" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolName=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam215.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4543" RecordedValue="4543" CorrelationBinding="{{QueryStringParam216.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0267" RecordedValue="0267" CorrelationBinding="{{QueryStringParam217.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="St.+Benedict+Catholic+School" RecordedValue="St.+Benedict+Catholic+School" CorrelationBinding="{{QueryStringParam218.SchoolName}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="POST" Guid="2f2ea588-9538-4375-9e7f-cb47e3cbe5c1" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="3" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx?SchoolYear=20152016&amp;PositionID=4543&amp;SchoolCode=0267&amp;SchoolName=St. Benedict Catholic School" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam17.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam302.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam219.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4543" RecordedValue="4543" CorrelationBinding="{{QueryStringParam220.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0267" RecordedValue="0267" CorrelationBinding="{{QueryStringParam221.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="St.+Benedict+Catholic+School" RecordedValue="St.+Benedict+Catholic+School" CorrelationBinding="{{QueryStringParam222.SchoolName}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+      <FormPostHttpBody>
+        <FormPostParameter Name="__VIEWSTATE" Value="{{FormPostParam4.__VIEWSTATE}}" RecordedValue="/wEPDwUKLTM3ODQ3NTI4NQ9kFgICAw9kFgwCHw8PFgIeBFRleHRlZGQCRQ8PFgIfAGVkZAJHDw8WAh8AZWRkAkkPDxYCHwAFCUZURTogMC4wMGRkAksPDxYCHwAFCjIwMTUvMTAvMTlkZAJNDw8WAh8ABQoyMDE1LzEwLzE5ZGRkntakb6GS1cSn8DEGkHiqiNfihCHYl0VKN0Rximb9Yhs=" CorrelationBinding="{{FormPostParam4.__VIEWSTATE}}" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATEGENERATOR" Value="{{FormPostParam5.__VIEWSTATEGENERATOR}}" RecordedValue="3E67778B" CorrelationBinding="{{FormPostParam5.__VIEWSTATEGENERATOR}}" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTVALIDATION" Value="{{FormPostParam6.__EVENTVALIDATION}}" RecordedValue="/wEdAB4ybMEMc7xrBHvZlfzKHa7nNRg+xb6A2BKCTvGdVQ12bH4Iwe0MP7SvWlnaEQbhYlco2EZ4sD9CxULsXxRUnF6H9di3WrzGGK1JwcOxPEh7UI2opGT0fPYCJ+QABz28MH4DFBrxQDuxSD98vpDAuujP28f8mjkGHDajjH+AfZfQquZ75nIH9dB0oh5EyWxWis0TZL4JYAWjSA+gevo6/yYUYYaGMsD4vP7kgxa+rg534u1Idp4TVIv+cDlFnb1cCkqO1p/vBYTPCPd5G9WnwyKcf6p7DhTy7n2Araf9JtjC5e1TTZTjbeACPdDfwwezwx2EqLZ8A/Ha1yyYVrpr/0bg9+/mE2bhWKa9fEW31zlWIh0pbzU8ULgfsYh8GZuRJZTyc1NH3UmmRFua2saxjR/EkxBjsXkX8R/W68ruo24t7XqjzIyrB/AgmcbIkGKaNVWPtSpnDWXC4EwH6z6mr0oM1NuYouCVfCmCACMcXXorPZL2i6OYnKaaITQYWZ+NSgtHq2sd45b2UHVkQ8w22W1MKEzIWTltAT/9/51ljel6qMgfl6asgwZJSPQNDjl+kbNwBnNv6VYoNnwQlCPJDfuKpTRa2zIwwNMm1HHDgzwoFPjrd+6AhBFz9xIwRXGyYSifnADBpqcogvGd6i3QX5lokV5wr0zW+zfA1ThPIe7yiQ==" CorrelationBinding="{{FormPostParam6.__EVENTVALIDATION}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionID" Value="{{FormPostParam7.TextPositionID}}" RecordedValue="4543" CorrelationBinding="{{FormPostParam7.TextPositionID}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStatus" Value="{{FormPostParam8.TextStatus}}" RecordedValue="Close" CorrelationBinding="{{FormPostParam8.TextStatus}}" UrlEncode="True" />
+        <FormPostParameter Name="TextArea" Value="{{FormPostParam9.TextArea}}" RecordedValue="Area 01A. Della" CorrelationBinding="{{FormPostParam9.TextArea}}" UrlEncode="True" />
+        <FormPostParameter Name="TextSchool" Value="{{FormPostParam10.TextSchool}}" RecordedValue="St. Benedict Catholic School" CorrelationBinding="{{FormPostParam10.TextSchool}}" UrlEncode="True" />
+        <FormPostParameter Name="TextAddress" Value="2202 Kipling Ave Toronto ON M9W 4K9" RecordedValue="2202 Kipling Ave Toronto ON M9W 4K9" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="textPrincipal" Value="{{FormPostParam11.textPrincipal}}" RecordedValue="Tony Martire" CorrelationBinding="{{FormPostParam11.textPrincipal}}" UrlEncode="True" />
+        <FormPostParameter Name="textPhonenumber" Value="{{FormPostParam12.textPhonenumber}}" RecordedValue="(416)393-5267 " CorrelationBinding="{{FormPostParam12.textPhonenumber}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStartTime" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionTitle" Value="{{FormPostParam13.TextPositionTitle}}" RecordedValue="Vocal Music/Instrumental/physical education" CorrelationBinding="{{FormPostParam13.TextPositionTitle}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPostionLevel" Value="{{FormPostParam14.TextPostionLevel}}" RecordedValue="Primary and Junior Divisions" CorrelationBinding="{{FormPostParam14.TextPostionLevel}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPostionQualification" Value="Instrumental Music;&#xD;&#xA;Vocal Music;&#xD;&#xA;" RecordedValue="Instrumental Music;&#xD;&#xA;Vocal Music;&#xD;&#xA;" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionDescription" Value="Mother Cabrini 60%&#xD;&#xA;St. Benedict 40%" RecordedValue="Mother Cabrini 60%&#xD;&#xA;St. Benedict 40%" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextApplyEndDate" Value="{{FormPostParam15.TextApplyEndDate}}" RecordedValue="2015/11/18 23:59:00" CorrelationBinding="{{FormPostParam15.TextApplyEndDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStartDate" Value="{{FormPostParam16.TextStartDate}}" RecordedValue="2015/10/28" CorrelationBinding="{{FormPostParam16.TextStartDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextEndDate" Value="{{FormPostParam17.TextEndDate}}" RecordedValue="2016/11/18" CorrelationBinding="{{FormPostParam17.TextEndDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextComemnts" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextHomePhone" Value="{{FormPostParam18.TextHomePhone}}" RecordedValue="4162228282" CorrelationBinding="{{FormPostParam18.TextHomePhone}}" UrlEncode="True" />
+        <FormPostParameter Name="TexteMail" Value="{{FormPostParam19.TexteMail}}" RecordedValue="mif@tcdsb.org" CorrelationBinding="{{FormPostParam19.TexteMail}}" UrlEncode="True" />
+        <FormPostParameter Name="TextCellPhone" Value="{{FormPostParam20.TextCellPhone}}" RecordedValue="4167055883" CorrelationBinding="{{FormPostParam20.TextCellPhone}}" UrlEncode="True" />
+        <FormPostParameter Name="HiddenFieldApply" Value="{{FormPostParam21.HiddenFieldApply}}" RecordedValue="Applied" CorrelationBinding="{{FormPostParam21.HiddenFieldApply}}" UrlEncode="True" />
+        <FormPostParameter Name="hfTeacherName" Value="{{FormPostParam22.hfTeacherName}}" RecordedValue="Mi, Chengwei" CorrelationBinding="{{FormPostParam22.hfTeacherName}}" UrlEncode="True" />
+        <FormPostParameter Name="hfPositionType" Value="{{FormPostParam23.hfPositionType}}" RecordedValue="LTO" CorrelationBinding="{{FormPostParam23.hfPositionType}}" UrlEncode="True" />
+        <FormPostParameter Name="HiddenFieldAction" Value="{{FormPostParam24.HiddenFieldAction}}" RecordedValue="No" CorrelationBinding="{{FormPostParam24.HiddenFieldAction}}" UrlEncode="True" />
+        <FormPostParameter Name="hfSchoolyear" Value="{{FormPostParam25.hfSchoolyear}}" RecordedValue="20152016" CorrelationBinding="{{FormPostParam25.hfSchoolyear}}" UrlEncode="True" />
+        <FormPostParameter Name="hfCPNnum" Value="{{FormPostParam26.hfCPNnum}}" RecordedValue="00012811" CorrelationBinding="{{FormPostParam26.hfCPNnum}}" UrlEncode="True" />
+        <FormPostParameter Name="hfFTEPosition" Value="{{FormPostParam27.hfFTEPosition}}" RecordedValue="1.00" CorrelationBinding="{{FormPostParam27.hfFTEPosition}}" UrlEncode="True" />
+        <FormPostParameter Name="hfFTECurrent" Value="{{FormPostParam28.hfFTECurrent}}" RecordedValue="0.00" CorrelationBinding="{{FormPostParam28.hfFTECurrent}}" UrlEncode="True" />
+        <FormPostParameter Name="btnApply" Value="{{FormPostParam29.btnApply}}" RecordedValue="Apply Position" CorrelationBinding="{{FormPostParam29.btnApply}}" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="9c5f409b-29fb-4d80-9c64-57cceb59a395" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx#" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam223.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam297.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam409.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="2" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+    </Request>
+    <Request Method="GET" Guid="df07144f-4792-481a-bf30-80d020baa0da" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx?pID=LTOTeachers/ApplyPosition.aspx&amp;SchoolYear=20152016&amp;SchoolCode=0251&amp;PositionID=4555&amp;SchoolName=Canadian Martyrs Catholic School" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="LTOTeachers/ApplyPosition.aspx" RecordedValue="LTOTeachers/ApplyPosition.aspx" CorrelationBinding="{{QueryStringParam223.pID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam17.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4555" RecordedValue="4555" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="Canadian%20Martyrs%20Catholic%20School" RecordedValue="Canadian%20Martyrs%20Catholic%20School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="8d7f4039-518a-4400-8b39-85d7f358e857" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam363.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam364.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam365.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam396.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam397.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam398.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam399.SchoolName" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolName=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="LTOTeachers/ApplyPosition.aspx" RecordedValue="LTOTeachers/ApplyPosition.aspx" CorrelationBinding="{{QueryStringParam297.pID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam302.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4555" RecordedValue="4555" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="Canadian+Martyrs+Catholic+School" RecordedValue="Canadian+Martyrs+Catholic+School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="c4a82a44-d2f7-4069-9f52-81cf62d783d5" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx?SchoolYear=20152016&amp;PositionID=4555&amp;SchoolCode=0251&amp;SchoolName=Canadian Martyrs Catholic School" ReportingName="" IgnoreHttpStatusCode="False">
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam363.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4555" RecordedValue="4555" CorrelationBinding="{{QueryStringParam364.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="{{QueryStringParam365.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="Canadian%20Martyrs%20Catholic%20School" RecordedValue="Canadian%20Martyrs%20Catholic%20School" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="4576b001-5935-4d13-995c-1bad0bbd5dfc" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="26" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <ExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam30.__VIEWSTATE" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam31.__VIEWSTATEGENERATOR" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="1" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam32.__EVENTVALIDATION" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="2" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam33.TextPositionID" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="3" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam34.TextStatus" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="4" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam35.TextArea" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="5" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam36.TextSchool" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="6" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam37.textPrincipal" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="8" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam38.textPhonenumber" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="9" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam39.TextPositionTitle" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="10" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam40.TextPostionLevel" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="11" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam41.TextPositionDescription" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="24" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam42.TextApplyEndDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="12" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam43.TextStartDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="13" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam44.TextEndDate" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="14" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam45.TextHomePhone" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="15" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam46.TexteMail" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="16" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam47.TextCellPhone" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="17" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam48.HiddenFieldApply" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="18" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam49.hfTeacherName" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="19" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam50.hfPositionType" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="20" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam51.HiddenFieldAction" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="21" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam52.hfSchoolyear" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="22" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam53.hfCPNnum" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="23" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam54.hfFTEPosition" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="24" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam55.hfFTECurrent" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; /&gt;&#xD;" />
+            <RuleParameter Name="Index" Value="25" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="FormPostParam56.btnApply" DisplayName="Extract Text" Description="Extract text from the response and place it into the test context.">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="lue=&quot;" />
+            <RuleParameter Name="EndsWith" Value="&quot; id=" />
+            <RuleParameter Name="Index" Value="26" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </ExtractionRules>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam400.SchoolYear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolYear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam401.PositionID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;PositionID=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam402.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam403.SchoolName" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolName=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam396.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4555" RecordedValue="4555" CorrelationBinding="{{QueryStringParam397.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="{{QueryStringParam398.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="Canadian+Martyrs+Catholic+School" RecordedValue="Canadian+Martyrs+Catholic+School" CorrelationBinding="{{QueryStringParam399.SchoolName}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="POST" Guid="6b4a0c4a-d5b6-4e8b-adcf-4c0caa85153d" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx" ThinkTime="4" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPosition.aspx?SchoolYear=20152016&amp;PositionID=4555&amp;SchoolCode=0251&amp;SchoolName=Canadian Martyrs Catholic School" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam14.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolYear" Value="20152016" RecordedValue="20152016" CorrelationBinding="{{QueryStringParam400.SchoolYear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="PositionID" Value="4555" RecordedValue="4555" CorrelationBinding="{{QueryStringParam401.PositionID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="{{QueryStringParam402.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolName" Value="Canadian+Martyrs+Catholic+School" RecordedValue="Canadian+Martyrs+Catholic+School" CorrelationBinding="{{QueryStringParam403.SchoolName}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+      <FormPostHttpBody>
+        <FormPostParameter Name="__VIEWSTATE" Value="{{FormPostParam30.__VIEWSTATE}}" RecordedValue="/wEPDwUKLTM3ODQ3NTI4NQ9kFgICAw9kFgwCHw8PFgIeBFRleHRlZGQCRQ8PFgIfAGVkZAJHDw8WAh8AZWRkAkkPDxYCHwAFCUZURTogMC4wMGRkAksPDxYCHwAFCjIwMTUvMTAvMTlkZAJNDw8WAh8ABQoyMDE1LzEwLzE5ZGRkntakb6GS1cSn8DEGkHiqiNfihCHYl0VKN0Rximb9Yhs=" CorrelationBinding="{{FormPostParam30.__VIEWSTATE}}" UrlEncode="True" />
+        <FormPostParameter Name="__VIEWSTATEGENERATOR" Value="{{FormPostParam31.__VIEWSTATEGENERATOR}}" RecordedValue="3E67778B" CorrelationBinding="{{FormPostParam31.__VIEWSTATEGENERATOR}}" UrlEncode="True" />
+        <FormPostParameter Name="__EVENTVALIDATION" Value="{{FormPostParam32.__EVENTVALIDATION}}" RecordedValue="/wEdAB4ybMEMc7xrBHvZlfzKHa7nNRg+xb6A2BKCTvGdVQ12bH4Iwe0MP7SvWlnaEQbhYlco2EZ4sD9CxULsXxRUnF6H9di3WrzGGK1JwcOxPEh7UI2opGT0fPYCJ+QABz28MH4DFBrxQDuxSD98vpDAuujP28f8mjkGHDajjH+AfZfQquZ75nIH9dB0oh5EyWxWis0TZL4JYAWjSA+gevo6/yYUYYaGMsD4vP7kgxa+rg534u1Idp4TVIv+cDlFnb1cCkqO1p/vBYTPCPd5G9WnwyKcf6p7DhTy7n2Araf9JtjC5e1TTZTjbeACPdDfwwezwx2EqLZ8A/Ha1yyYVrpr/0bg9+/mE2bhWKa9fEW31zlWIh0pbzU8ULgfsYh8GZuRJZTyc1NH3UmmRFua2saxjR/EkxBjsXkX8R/W68ruo24t7XqjzIyrB/AgmcbIkGKaNVWPtSpnDWXC4EwH6z6mr0oM1NuYouCVfCmCACMcXXorPZL2i6OYnKaaITQYWZ+NSgtHq2sd45b2UHVkQ8w22W1MKEzIWTltAT/9/51ljel6qMgfl6asgwZJSPQNDjl+kbNwBnNv6VYoNnwQlCPJDfuKpTRa2zIwwNMm1HHDgzwoFPjrd+6AhBFz9xIwRXGyYSifnADBpqcogvGd6i3QX5lokV5wr0zW+zfA1ThPIe7yiQ==" CorrelationBinding="{{FormPostParam32.__EVENTVALIDATION}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionID" Value="{{FormPostParam33.TextPositionID}}" RecordedValue="4555" CorrelationBinding="{{FormPostParam33.TextPositionID}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStatus" Value="{{FormPostParam34.TextStatus}}" RecordedValue="Open" CorrelationBinding="{{FormPostParam34.TextStatus}}" UrlEncode="True" />
+        <FormPostParameter Name="TextArea" Value="{{FormPostParam35.TextArea}}" RecordedValue="Area 06J. Shanahan" CorrelationBinding="{{FormPostParam35.TextArea}}" UrlEncode="True" />
+        <FormPostParameter Name="TextSchool" Value="{{FormPostParam36.TextSchool}}" RecordedValue="Canadian Martyrs Catholic School" CorrelationBinding="{{FormPostParam36.TextSchool}}" UrlEncode="True" />
+        <FormPostParameter Name="TextAddress" Value="520 Plains Rd Toronto ON M4C 2Z1" RecordedValue="520 Plains Rd Toronto ON M4C 2Z1" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="textPrincipal" Value="{{FormPostParam37.textPrincipal}}" RecordedValue="Donato Di Paolo" CorrelationBinding="{{FormPostParam37.textPrincipal}}" UrlEncode="True" />
+        <FormPostParameter Name="textPhonenumber" Value="{{FormPostParam38.textPhonenumber}}" RecordedValue="(416)393-5251 " CorrelationBinding="{{FormPostParam38.textPhonenumber}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStartTime" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionTitle" Value="{{FormPostParam39.TextPositionTitle}}" RecordedValue="ELL/Empowered Teacher" CorrelationBinding="{{FormPostParam39.TextPositionTitle}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPostionLevel" Value="{{FormPostParam40.TextPostionLevel}}" RecordedValue="Primary Division" CorrelationBinding="{{FormPostParam40.TextPostionLevel}}" UrlEncode="True" />
+        <FormPostParameter Name="TextPostionQualification" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextPositionDescription" Value="{{FormPostParam41.TextPositionDescription}}" RecordedValue="1.00" CorrelationBinding="{{FormPostParam41.TextPositionDescription}}" UrlEncode="True" />
+        <FormPostParameter Name="TextApplyEndDate" Value="{{FormPostParam42.TextApplyEndDate}}" RecordedValue="2015/11/19 23:59:00" CorrelationBinding="{{FormPostParam42.TextApplyEndDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextStartDate" Value="{{FormPostParam43.TextStartDate}}" RecordedValue="2015/11/16" CorrelationBinding="{{FormPostParam43.TextStartDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextEndDate" Value="{{FormPostParam44.TextEndDate}}" RecordedValue="2016/12/16" CorrelationBinding="{{FormPostParam44.TextEndDate}}" UrlEncode="True" />
+        <FormPostParameter Name="TextComemnts" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="True" />
+        <FormPostParameter Name="TextHomePhone" Value="{{FormPostParam45.TextHomePhone}}" RecordedValue="4162228282" CorrelationBinding="{{FormPostParam45.TextHomePhone}}" UrlEncode="True" />
+        <FormPostParameter Name="TexteMail" Value="{{FormPostParam46.TexteMail}}" RecordedValue="mif@tcdsb.org" CorrelationBinding="{{FormPostParam46.TexteMail}}" UrlEncode="True" />
+        <FormPostParameter Name="TextCellPhone" Value="{{FormPostParam47.TextCellPhone}}" RecordedValue="4167055883" CorrelationBinding="{{FormPostParam47.TextCellPhone}}" UrlEncode="True" />
+        <FormPostParameter Name="HiddenFieldApply" Value="{{FormPostParam48.HiddenFieldApply}}" RecordedValue="Applied" CorrelationBinding="{{FormPostParam48.HiddenFieldApply}}" UrlEncode="True" />
+        <FormPostParameter Name="hfTeacherName" Value="{{FormPostParam49.hfTeacherName}}" RecordedValue="Mi, Chengwei" CorrelationBinding="{{FormPostParam49.hfTeacherName}}" UrlEncode="True" />
+        <FormPostParameter Name="hfPositionType" Value="{{FormPostParam50.hfPositionType}}" RecordedValue="LTO" CorrelationBinding="{{FormPostParam50.hfPositionType}}" UrlEncode="True" />
+        <FormPostParameter Name="HiddenFieldAction" Value="{{FormPostParam51.HiddenFieldAction}}" RecordedValue="No" CorrelationBinding="{{FormPostParam51.HiddenFieldAction}}" UrlEncode="True" />
+        <FormPostParameter Name="hfSchoolyear" Value="{{FormPostParam52.hfSchoolyear}}" RecordedValue="20152016" CorrelationBinding="{{FormPostParam52.hfSchoolyear}}" UrlEncode="True" />
+        <FormPostParameter Name="hfCPNnum" Value="{{FormPostParam53.hfCPNnum}}" RecordedValue="00012811" CorrelationBinding="{{FormPostParam53.hfCPNnum}}" UrlEncode="True" />
+        <FormPostParameter Name="hfFTEPosition" Value="{{FormPostParam54.hfFTEPosition}}" RecordedValue="1.00" CorrelationBinding="{{FormPostParam54.hfFTEPosition}}" UrlEncode="True" />
+        <FormPostParameter Name="hfFTECurrent" Value="{{FormPostParam55.hfFTECurrent}}" RecordedValue="0.00" CorrelationBinding="{{FormPostParam55.hfFTECurrent}}" UrlEncode="True" />
+        <FormPostParameter Name="btnApply" Value="{{FormPostParam56.btnApply}}" RecordedValue="Apply Position" CorrelationBinding="{{FormPostParam56.btnApply}}" UrlEncode="True" />
+      </FormPostHttpBody>
+    </Request>
+    <Request Method="GET" Guid="32fcfc1e-5abd-4142-8005-7f3d3fc14290" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx#" ReportingName="" IgnoreHttpStatusCode="False" />
+    <Request Method="GET" Guid="bb84a51f-e650-4827-9ffa-dd8dcf054e4c" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/Loading2.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam12.SchoolCode" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?SchoolCode=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="LTOTeachers/LocationMap.aspx" RecordedValue="LTOTeachers/LocationMap.aspx" CorrelationBinding="{{QueryStringParam409.pID}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="{{QueryStringParam14.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="40fac0cb-b02b-4d48-ac7b-2aeb8f7220f6" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/LocationMap.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <DependentRequests>
+        <Request Method="GET" Guid="14d75c54-14eb-40b6-940a-1341d6ff8f98" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+          <Headers>
+            <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/LocationMap.aspx?SchoolCode=0251" />
+          </Headers>
+          <QueryStringParameters>
+            <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="action" Value="apiboot2" RecordedValue="apiboot2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="e" Value="10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_0,11_14_U,11_15_0,11_16_0" RecordedValue="10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_0,11_14_U,11_15_0,11_16_0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+            <QueryStringParameter Name="rt" Value="main.9" RecordedValue="main.9" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+          </QueryStringParameters>
+        </Request>
+      </DependentRequests>
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam410.f" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?f=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam411.source" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;source=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam412.hl" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;hl=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam413.q" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;q=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam414.sll" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;sll=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam415.ie" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;ie=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam416.hnear" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;hnear=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam417.t" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;t=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam418.ll" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;ll=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam419.z" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;z=" />
+            <RuleParameter Name="EndsWith" Value="&amp;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam420.output" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="&amp;amp;output=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="SchoolCode" Value="0251" RecordedValue="0251" CorrelationBinding="{{QueryStringParam12.SchoolCode}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="05041edb-84ce-41c7-af7a-55395358b5de" Version="1.1" Url="https://maps.google.ca/maps" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/LocationMap.aspx?SchoolCode=0251" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="f" Value="q" RecordedValue="q" CorrelationBinding="{{QueryStringParam410.f}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="source" Value="s_q" RecordedValue="s_q" CorrelationBinding="{{QueryStringParam411.source}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="hl" Value="en" RecordedValue="en" CorrelationBinding="{{QueryStringParam412.hl}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="geocode" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="q" Value="M4C+4B3" RecordedValue="M4C+4B3" CorrelationBinding="{{QueryStringParam413.q}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="aq" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="sll" Value="43.6980580,-79.3193988" RecordedValue="43.6980580,-79.3193988" CorrelationBinding="{{QueryStringParam414.sll}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="sspn" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="ie" Value="UTF8" RecordedValue="UTF8" CorrelationBinding="{{QueryStringParam415.ie}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="hq" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="hnear" Value="Toronto,+Ontario+M4C+4B3" RecordedValue="Toronto,+Ontario+M4C+4B3" CorrelationBinding="{{QueryStringParam416.hnear}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="t" Value="m" RecordedValue="m" CorrelationBinding="{{QueryStringParam417.t}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="ll" Value="43.6980580,-79.3193988" RecordedValue="43.6980580,-79.3193988" CorrelationBinding="{{QueryStringParam418.ll}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="spn" Value="" RecordedValue="" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="z" Value="14" RecordedValue="14" CorrelationBinding="{{QueryStringParam419.z}}" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="output" Value="embed" RecordedValue="embed" CorrelationBinding="{{QueryStringParam420.output}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="5ed1ff1b-a899-42ae-9084-867ad99fd018" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="apiboot2" RecordedValue="apiboot2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="main.6" RecordedValue="main.6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="ab74105c-0fa1-4d74-a1de-8a4355564e58" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="apiboot2" RecordedValue="apiboot2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="firstmap.34" RecordedValue="firstmap.34" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="082ca03f-37ae-4c11-8e82-e05fc3814606" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="true" RecordedValue="true" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="visreq.172" RecordedValue="visreq.172" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="85007db8-0352-4e85-a0ba-66230c2e8b31" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/ViewportInfoService.GetViewportInfo" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1m6" RecordedValue="1m6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1m2" RecordedValue="1m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.64944297186254" RecordedValue="1d43.64944297186254" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.40239515872434" RecordedValue="2d-79.40239515872434" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2m2" RecordedValue="2m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.7456281248429" RecordedValue="1d43.7456281248429" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.2348468277263" RecordedValue="2d-79.2348468277263" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2u14" RecordedValue="2u14" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="4sen" RecordedValue="4sen" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="5e0" RecordedValue="5e0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="6sm%40329000000" RecordedValue="6sm%40329000000" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="7b0" RecordedValue="7b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="8e0" RecordedValue="8e0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="9b0" RecordedValue="9b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="11e289" RecordedValue="11e289" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._z1u5ej" RecordedValue="_xdc_._z1u5ej" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="463" RecordedValue="463" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="fe9bc1b1-fd28-4dc5-abc5-d237ca7934c1" Version="1.1" Url="https://maps.google.com/maps/gen_204" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="target" Value="api" RecordedValue="api" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="ev" Value="api_viewport" RecordedValue="api_viewport" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="cad" Value="host:www.google.com,v:23,r:1,mt:m,c:43.697902%2C-79.319231,sp:0.03103x0.05493,size:640x500,relsize:iframe,token:9el77s7e06,client:google-maps-embed,src:apiv3,ts:50f6ot" RecordedValue="host:www.google.com,v:23,r:1,mt:m,c:43.697902%2C-79.319231,sp:0.03103x0.05493,size:640x500,relsize:iframe,token:9el77s7e06,client:google-maps-embed,src:apiv3,ts:50f6ot" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="cbb5cb11-db19-4c98-b67d-57b6509a0c74" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="true" RecordedValue="true" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="visres.446" RecordedValue="visres.446" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="1ffea8ec-19a2-4168-9787-d6a865f4710a" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="true" RecordedValue="true" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="firsttile.473" RecordedValue="firsttile.473" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="7eea9ce3-324e-4b14-99ba-bd701dee1e0a" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="true" RecordedValue="true" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="visuallycomplete.473" RecordedValue="visuallycomplete.473" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="161716e1-c0a2-4ee7-ac32-019f7dc4d5e7" Version="1.1" Url="https://www.google.com/maps/vt" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pb" Value="!1m4!1m3!1i14!2i4580!3i5975!1m4!1m3!1i14!2i4581!3i5975!1m4!1m3!1i14!2i4582!3i5975!1m4!1m3!1i14!2i4583!3i5975!1m4!1m3!1i14!2i4580!3i5976!1m4!1m3!1i14!2i4580!3i5977!1m4!1m3!1i14!2i4581!3i5976!1m4!1m3!1i14!2i4581!3i5977!1m4!1m3!1i14!2i4582!3i5976!1m4!1m3!1i14!2i4582!3i5977!1m4!1m3!1i14!2i4583!3i5976!1m4!1m3!1i14!2i4583!3i5977!2m3!1e0!2sm!3i329228777!2m16!1e2!2sspotlight!5i1!8m12!2m7!1s0x89d4cc443a037bcf%3A0xafe10fd7b85f2d9c!2sEast+York%2C+ON+M4C+4B3%2C+Canada!4m2!3d43.6976157!4d-79.318917!5e1!6b1!10sEast+York%2C+ON+M4C+4B3!13m1!14b1!14b1!3m14!2sen!3sUS!5e289!12m4!1e52!2m2!1sentity_class!2s1!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e3" RecordedValue="!1m4!1m3!1i14!2i4580!3i5975!1m4!1m3!1i14!2i4581!3i5975!1m4!1m3!1i14!2i4582!3i5975!1m4!1m3!1i14!2i4583!3i5975!1m4!1m3!1i14!2i4580!3i5976!1m4!1m3!1i14!2i4580!3i5977!1m4!1m3!1i14!2i4581!3i5976!1m4!1m3!1i14!2i4581!3i5977!1m4!1m3!1i14!2i4582!3i5976!1m4!1m3!1i14!2i4582!3i5977!1m4!1m3!1i14!2i4583!3i5976!1m4!1m3!1i14!2i4583!3i5977!2m3!1e0!2sm!3i329228777!2m16!1e2!2sspotlight!5i1!8m12!2m7!1s0x89d4cc443a037bcf%3A0xafe10fd7b85f2d9c!2sEast+York%2C+ON+M4C+4B3%2C+Canada!4m2!3d43.6976157!4d-79.318917!5e1!6b1!10sEast+York%2C+ON+M4C+4B3!13m1!14b1!14b1!3m14!2sen!3sUS!5e289!12m4!1e52!2m2!1sentity_class!2s1!12m1!1e47!12m3!1e37!2m1!1ssmartmaps!4e3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="6bb11a31-f34a-4378-baa7-fbca7cf5755c" Version="1.1" Url="https://fonts.gstatic.com/s/roboto/v15/Hgo13k-tfSpn0qi1SFdUfT8E0i7KZn-EPnyo3HZu7kw.woff" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="385e2f71-6a4a-43b0-9933-06e1b76ba875" Version="1.1" Url="https://fonts.gstatic.com/s/roboto/v15/2UX7WLTfW3W8TclTUvlFyQ.woff" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="dd31ebce-a0d2-4bcc-8f88-b9bc2d8365b6" Version="1.1" Url="https://fonts.gstatic.com/s/roboto/v15/RxZJdnzeo3R5zSexge8UUT8E0i7KZn-EPnyo3HZu7kw.woff" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="5623488d-74b8-43e5-a53b-0d36d055de29" Version="1.1" Url="https://fonts.gstatic.com/s/roboto/v15/d-6IYplOFocCacKzxwXSOD8E0i7KZn-EPnyo3HZu7kw.woff" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="cab6d688-33e6-4466-ae5b-18eb30419cfa" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="false" RecordedValue="false" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="visreq.225" RecordedValue="visreq.225" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="fa110341-abb7-46fb-a8fb-d9ebff7b728d" Version="1.1" Url="https://maps.google.com/maps/gen_204" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="target" Value="api" RecordedValue="api" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="ev" Value="api_maprft" RecordedValue="api_maprft" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="cad" Value="host:www.google.com,v:23,r:1,client:google-maps-embed,t:577,Ee:1,src:apiv3,token:9el77s7e06,ts:50f74t" RecordedValue="host:www.google.com,v:23,r:1,client:google-maps-embed,t:577,Ee:1,src:apiv3,token:9el77s7e06,ts:50f74t" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="a5fb7750-672f-4ef7-a273-488bac2804e4" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/ViewportInfoService.GetViewportInfo" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1m6" RecordedValue="1m6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1m2" RecordedValue="1m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.637826265385186" RecordedValue="1d43.637826265385186" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.3977534090235" RecordedValue="2d-79.3977534090235" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2m2" RecordedValue="2m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.75478741134982" RecordedValue="1d43.75478741134982" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.23928992094238" RecordedValue="2d-79.23928992094238" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2u10" RecordedValue="2u10" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="4sen" RecordedValue="4sen" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="5e2" RecordedValue="5e2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="7b0" RecordedValue="7b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="8e0" RecordedValue="8e0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="9b0" RecordedValue="9b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="11e289" RecordedValue="11e289" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._g656ht" RecordedValue="_xdc_._g656ht" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="102197" RecordedValue="102197" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="635ef563-ad54-468a-8371-5576b74cc960" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="false" RecordedValue="false" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="firsttile.331" RecordedValue="firsttile.331" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="5fb27a71-a917-40d2-b048-687828bf6120" Version="1.1" Url="https://csi.gstatic.com/csi" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="v" Value="2" RecordedValue="2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="s" Value="mapsapi3" RecordedValue="mapsapi3" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="v3v" Value="23.0" RecordedValue="23.0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="action" Value="map" RecordedValue="map" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="firstMap" Value="false" RecordedValue="false" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="libraries" Value="geometry%2Csearch" RecordedValue="geometry%2Csearch" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="e" Value="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" RecordedValue="google-maps-embed,10_1_0,10_2_0,11_1_0,11_4_0,11_5_0,11_6_E,11_7_0,11_8_0,11_9_0,11_10_0,11_11_0,11_12_0,11_13_1,11_14_U,11_15_0,11_16_0,mob:n,hdpi:n,staticmapsize:y,webp:n" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="rt" Value="visres.378" RecordedValue="visres.378" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="c75aaa08-4104-4495-a1b0-8c4b3a5d6110" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1shttps%3A%2F%2Fwww.google.com%2Fmaps%2Fembed%3Forigin%3Dmfe%26pb%3D!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C%2B4B3!5e0!6i14!3m1!1sen!5m1!1sen" RecordedValue="1shttps%3A%2F%2Fwww.google.com%2Fmaps%2Fembed%3Forigin%3Dmfe%26pb%3D!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C%2B4B3!5e0!6i14!3m1!1sen!5m1!1sen" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2sgoogle-maps-embed" RecordedValue="2sgoogle-maps-embed" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._oprqnz" RecordedValue="_xdc_._oprqnz" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="111272" RecordedValue="111272" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="5c2ac5ec-2f7e-4722-90f2-677e2b84f642" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/ViewportInfoService.GetViewportInfo" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1m6" RecordedValue="1m6" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1m2" RecordedValue="1m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.637826265385186" RecordedValue="1d43.637826265385186" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.3977534090235" RecordedValue="2d-79.3977534090235" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2m2" RecordedValue="2m2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="1d43.75478741134982" RecordedValue="1d43.75478741134982" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2d-79.23928992094238" RecordedValue="2d-79.23928992094238" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2u10" RecordedValue="2u10" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="4sen" RecordedValue="4sen" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="5e2" RecordedValue="5e2" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="7b0" RecordedValue="7b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="8e0" RecordedValue="8e0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="9b0" RecordedValue="9b0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="11e289" RecordedValue="11e289" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._g656ht" RecordedValue="_xdc_._g656ht" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="102197" RecordedValue="102197" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="f2a5c3dc-5f70-49e4-9f4f-a8b64de31450" Version="1.1" Url="https://maps.google.com/maps/gen_204" ThinkTime="3" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="target" Value="api" RecordedValue="api" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="ev" Value="api_maprft" RecordedValue="api_maprft" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="cad" Value="host:www.google.com,v:23,r:1,client:google-maps-embed,t:1211,smni:8,src:apiv3,token:9el77s7e06,ts:50f7mg" RecordedValue="host:www.google.com,v:23,r:1,client:google-maps-embed,t:1211,smni:8,src:apiv3,token:9el77s7e06,ts:50f7mg" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="0de20c40-62da-481a-8edb-d26eabb61c11" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/AuthenticationService.Authenticate" ThinkTime="2" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/LocationMap.aspx?SchoolCode=0251" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1shttps%3A%2F%2Fwebt01.tcdsb.org%3A8443%2Ftest%2Flto%2FLTOTeachers%2FLocationMap.aspx%3FSchoolCode%3D0251" RecordedValue="1shttps%3A%2F%2Fwebt01.tcdsb.org%3A8443%2Ftest%2Flto%2FLTOTeachers%2FLocationMap.aspx%3FSchoolCode%3D0251" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="4sAIzaSyCnmtu8PZSh57V0NYxcz5qMTYrxBKsZa9A" RecordedValue="4sAIzaSyCnmtu8PZSh57V0NYxcz5qMTYrxBKsZa9A" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._n3lvmg" RecordedValue="_xdc_._n3lvmg" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="97952" RecordedValue="97952" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="548927d6-e1a6-448a-af2c-3b5b821d65b6" Version="1.1" Url="https://maps.googleapis.com/maps/api/js/QuotaService.RecordEvent" ThinkTime="4" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://www.google.com/maps/embed?origin=mfe&amp;pb=!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C+4B3!5e0!6i14!3m1!1sen!5m1!1sen" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="" Value="1shttps%3A%2F%2Fwww.google.com%2Fmaps%2Fembed%3Forigin%3Dmfe%26pb%3D!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C%2B4B3!5e0!6i14!3m1!1sen!5m1!1sen" RecordedValue="1shttps%3A%2F%2Fwww.google.com%2Fmaps%2Fembed%3Forigin%3Dmfe%26pb%3D!1m13!1m8!1m3!1d23076.807254609677!2d-79.3193988!3d43.698058!3m2!1i1024!2i768!4f13.1!2m1!1sM4C%2B4B3!5e0!6i14!3m1!1sen!5m1!1sen" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="2sgoogle-maps-embed" RecordedValue="2sgoogle-maps-embed" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="5e0" RecordedValue="5e0" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="6u1" RecordedValue="6u1" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="" Value="7s50fb72" RecordedValue="7s50fb72" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="callback" Value="_xdc_._v7sxis" RecordedValue="_xdc_._v7sxis" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+        <QueryStringParameter Name="token" Value="116111" RecordedValue="116111" CorrelationBinding="" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="c8496ec4-5a18-4306-9e96-39b3e9a0cfd7" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="4" RecordedValue="4" CorrelationBinding="{{QueryStringParam4771.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="90a95c5c-904f-40bf-be43-f593cb744439" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList_Applied.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="9ef4fc51-fd06-41cc-8607-17a83e6ce433" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <CorrelationExtractionRules>
+        <ExtractionRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ExtractText, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" VariableName="QueryStringParam4827.pID" DisplayName="" Description="">
+          <RuleParameters>
+            <RuleParameter Name="StartsWith" Value="?pID=" />
+            <RuleParameter Name="EndsWith" Value="&quot;" />
+            <RuleParameter Name="Index" Value="0" />
+            <RuleParameter Name="IgnoreCase" Value="False" />
+            <RuleParameter Name="UseRegularExpression" Value="False" />
+            <RuleParameter Name="HtmlDecode" Value="True" />
+            <RuleParameter Name="Required" Value="False" />
+          </RuleParameters>
+        </ExtractionRule>
+      </CorrelationExtractionRules>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="3" RecordedValue="3" CorrelationBinding="{{QueryStringParam4790.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="7901fa27-2c21-4cab-9480-21771a4b0bb5" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="55436a61-100e-4a26-8126-72dab45b259d" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="5" RecordedValue="5" CorrelationBinding="{{QueryStringParam4819.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="a4a36568-de01-4102-9c92-e5040d12606d" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyProfile.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="258a8e22-5782-4f7c-a26f-d11ec81d2511" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/Loading.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+      <QueryStringParameters>
+        <QueryStringParameter Name="pID" Value="3" RecordedValue="3" CorrelationBinding="{{QueryStringParam4827.pID}}" UrlEncode="False" UseToGroupResults="False" />
+      </QueryStringParameters>
+    </Request>
+    <Request Method="GET" Guid="228cd987-20aa-49e9-b244-e44f4ea44da7" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/LTOTeachers/ApplyPositionList.aspx" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False">
+      <Headers>
+        <Header Name="Referer" Value="https://webt01.tcdsb.org:8443/test/lto/" />
+      </Headers>
+    </Request>
+    <Request Method="GET" Guid="01856a51-b223-4ab5-8971-13f06fc83b9f" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/TemplateXLS/Long%20Term%20Occasional%20Teachers%20List.pdf" ThinkTime="2" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False" />
+    <Request Method="GET" Guid="b3a35edc-68bb-464b-a4ec-6784bcabfc59" Version="1.1" Url="https://webt01.tcdsb.org:8443/test/lto/TemplateXLS/Long%20Term%20Occasional%20Teachers%20List.pdf" ThinkTime="0" Timeout="300" ParseDependentRequests="True" FollowRedirects="True" RecordResult="True" Cache="False" ResponseTimeGoal="0" Encoding="utf-8" ExpectedHttpStatusCode="0" ExpectedResponseUrl="" ReportingName="" IgnoreHttpStatusCode="False" />
+  </Items>
+  <ValidationRules>
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidateResponseUrl, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response URL" Description="Validates that the response URL after redirects are followed is the same as the recorded response URL.  QueryString parameters are ignored." Level="Low" ExectuionOrder="BeforeDependents" />
+    <ValidationRule Classname="Microsoft.VisualStudio.TestTools.WebTesting.Rules.ValidationRuleResponseTimeGoal, Microsoft.VisualStudio.QualityTools.WebTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" DisplayName="Response Time Goal" Description="Validates that the response time for the request is less than or equal to the response time goal as specified on the request.  Response time goals of zero will be ignored." Level="Low" ExectuionOrder="AfterDependents">
+      <RuleParameters>
+        <RuleParameter Name="Tolerance" Value="0" />
+      </RuleParameters>
+    </ValidationRule>
+  </ValidationRules>
+</WebTest>

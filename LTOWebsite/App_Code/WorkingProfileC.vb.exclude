@@ -1,0 +1,311 @@
+Imports System.Web.Configuration
+Imports System.Net.Mail
+'Imports TCDSB.Student
+Imports AppOperate
+Public Class WorkingProfileClass
+    Private Shared _loginstatus As String
+    Private Shared _userid As String
+    Private Shared _userrole As String
+    Private Shared _loginrole As String
+    Private Shared _username As String
+    Private Shared _userposition As String
+    Private Shared _usercpnum As String
+    Private Shared _schoolyear As String
+    Private Shared _schoolyearper As String
+    Private Shared _schoolyearcurrent As String
+    Private Shared _schoolname As String
+    Private Shared _schoolnamebrief As String
+    Private Shared _schoolcode As String
+    Private Shared _schoolarea As String
+    Private Shared _schoolsuper As String
+    Private Shared _applicationtype As String
+    Private Shared _panel As String
+    Private Shared _searchby As String
+    Private Shared _searchbyvalue As String
+    Private Shared _searchbyvalue2 As String
+    Private Shared _workingpanel As String
+    Private Shared _responsetype As String
+    Private Shared _responsowner As String
+
+    Public ApplName As String = "LTO"
+
+    'Public Shared Property CurrentPage() As String
+    '    Get
+    '        Return HttpContext.Current.Session("currentpage")
+    '    End Get
+    '    Set(ByVal value As String)
+    '        HttpContext.Current.Session("currentpage") = value
+    '     End Set
+    'End Property
+    Public Shared Function checkAppTypebyUserID(ByVal userID As String, ByVal appID As String) As String
+        Dim rAppID As String = appID
+        '   If userID = "frijiom" Then rAppID = "LTO"  required by Mary Frijio at 2014/08/11, take out this check
+        If userID = "krasnor" Then rAppID = "POP"
+        If userID = "boreanf" Then rAppID = "POP"
+        Return rAppID
+    End Function
+
+    Public Shared Property LoginStatues(ByVal action As String) As String
+        Get
+            Return _loginstatus
+        End Get
+        Set(ByVal value As String)
+            _loginstatus = value
+            AppOperate.UserTrack.TrackInfo(UserID, action, value)
+        End Set
+    End Property
+    Public Shared Property UserID() As String
+        Get
+            If _userid = Nothing Then _userid = HttpContext.Current.User.Identity.Name
+            Return _userid
+        End Get
+        Set(ByVal value As String)
+            _userid = value
+        End Set
+    End Property
+    Public Shared Property UserRole() As String
+        Get
+            If _userrole = Nothing Then _userrole = UserTrack.TrackInfo(UserID, "UserRole")
+
+            Return _userrole
+        End Get
+        Set(ByVal value As String)
+            If value = "Design" Then value = "Admin"
+            _userrole = value
+
+            UserTrack.TrackInfo(UserID, "UserRole", value)
+        End Set
+    End Property
+    Public Shared Property LoginRole() As String
+        Get
+            If _loginrole = Nothing Then _loginrole = UserRole
+
+            Return _loginrole
+        End Get
+        Set(ByVal value As String)
+            If value = "Design" Then value = "Admin"
+            _loginrole = value
+        End Set
+    End Property
+
+    Public Shared Property UserName() As String
+        Get
+            If _username = Nothing Then _username = UserTrack.TrackInfo(UserID, "UserName")
+            Return _username
+        End Get
+        Set(ByVal value As String)
+            _username = value
+        End Set
+    End Property
+
+    Public Shared Property UserPosition() As String
+        Get
+            If _userposition = Nothing Then _userposition = UserTrack.TrackInfo(UserID, "UserPosition")
+            Return _userposition
+        End Get
+        Set(ByVal value As String)
+            _userposition = value
+        End Set
+    End Property
+    Public Shared Property UserCPNum() As String
+        Get
+            If _usercpnum = Nothing Then _usercpnum = UserTrack.TrackInfo(UserID, "CPNum")
+            Return _usercpnum
+        End Get
+        Set(ByVal value As String)
+            _usercpnum = value
+        End Set
+    End Property
+
+
+    Public Shared Property SchoolYear() As String
+        Get
+            If _schoolyear = Nothing Then _schoolyear = UserTrack.TrackInfo(UserID, "SchoolYear")
+            Return _schoolyear
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _schoolyear Then
+                    _schoolyear = value
+                    UserTrack.TrackInfo(UserID, "SchoolYear", value)
+                End If
+            End If
+        End Set
+    End Property
+    Public Shared Property SchoolYearPre() As String
+        Get
+            If _schoolyearper = Nothing Then _schoolyearper = UserTrack.TrackInfo(UserID, "pSchoolYear")
+            Return _schoolyearper
+        End Get
+        Set(ByVal value As String)
+            _schoolyearper = value
+
+        End Set
+    End Property
+    Public Shared Property SchoolYearCurrent() As String
+        Get
+            If _schoolyearcurrent = Nothing Then _schoolyearcurrent = UserTrack.TrackInfo(UserID, "cSchoolYear")
+            Return _schoolyearcurrent
+        End Get
+        Set(ByVal value As String)
+            _schoolyearcurrent = value
+        End Set
+    End Property
+
+    Public Shared Property SchoolName() As String
+        Get
+            If _schoolname = Nothing Then _schoolname = UserTrack.TrackInfo(UserID, "SchoolName")
+
+            Return _schoolname
+        End Get
+        Set(ByVal value As String)
+            _schoolname = value
+        End Set
+    End Property
+    Public Shared Property SchoolBriefName() As String
+        Get
+            Return _schoolnamebrief
+        End Get
+        Set(ByVal value As String)
+            _schoolnamebrief = value
+        End Set
+    End Property
+    Public Shared Property SchoolCode() As String
+        Get
+            If _schoolcode Is Nothing Then _schoolcode = UserTrack.TrackInfo(UserID, "SchoolCode")
+            Return _schoolcode
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _schoolcode Then
+                    _schoolcode = value
+                    UserTrack.TrackInfo(UserID, "SchoolCode", value)
+
+                End If
+            End If
+
+        End Set
+    End Property
+
+    Public Shared Property ApplicationType() As String
+        Get
+            If _applicationtype Is Nothing Then
+                If Not UserID = Nothing Then
+                    _applicationtype = UserTrack.TrackInfo(UserID, "ApplicationType")
+                End If
+            End If
+
+            Return _applicationtype
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _applicationtype Then
+                    _applicationtype = value
+                    UserTrack.TrackInfo(UserID, "ApplicationType", value)
+                End If
+            End If
+
+        End Set
+    End Property
+    Public Shared Property Panel() As String
+        Get
+            If _workingpanel Is Nothing Then _workingpanel = UserTrack.TrackInfo(UserID, "WorkingPanel")
+
+            Return _workingpanel
+        End Get
+        Set(ByVal value As String)
+            _workingpanel = value
+        End Set
+    End Property
+
+    Public Shared Property SearchBy() As String
+        Get
+            If _searchby Is Nothing Then _searchby = UserTrack.TrackInfo(UserID, "searchby")
+            Return _searchby
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _searchby Then
+                    _searchby = value
+                    UserTrack.TrackInfo(UserID, "searchby", value)
+                End If
+            End If
+
+        End Set
+
+    End Property
+    Public Shared Property SearchByValue() As String
+        Get
+            If _searchbyvalue Is Nothing Then _searchbyvalue = UserTrack.TrackInfo(UserID, "searchValue")
+            Return _searchbyvalue
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _searchbyvalue Then
+                    _searchbyvalue = value
+                    UserTrack.TrackInfo(UserID, "searchValue", value)
+                End If
+            End If
+
+        End Set
+
+    End Property
+    Public Shared Property SearchByValue2() As String
+        Get
+            If _searchbyvalue2 Is Nothing Then _searchbyvalue2 = UserTrack.TrackInfo(UserID, "searchValue2")
+            Return _searchbyvalue2
+        End Get
+        Set(ByVal value As String)
+            If Not value = Nothing Then
+                If Not value = _searchbyvalue2 Then
+                    _searchbyvalue2 = value
+                    UserTrack.TrackInfo(UserID, "searchValue2", value)
+                End If
+            End If
+
+        End Set
+
+    End Property
+
+    Public Shared Property ResponseType() As String
+        Get
+            Return _responsetype
+        End Get
+        Set(ByVal value As String)
+            _responsetype = value
+        End Set
+    End Property
+    Public Shared Property ResponseOwner() As String
+        Get
+            Return _responsowner
+        End Get
+        Set(ByVal value As String)
+            _responsowner = value
+        End Set
+    End Property
+
+    Public Shared Property SchoolArea() As String
+        Get
+            If _schoolarea = Nothing Then _schoolarea = UserTrack.SchoolProfile("SchoolArea", SchoolYear, SchoolCode)
+
+            Return _schoolarea
+        End Get
+        Set(ByVal value As String)
+            _schoolarea = value
+        End Set
+    End Property
+
+    Public Shared Property SuperArea() As String
+        Get
+            If _schoolsuper = Nothing Then _schoolsuper = UserTrack.SchoolProfile("SchoolSuper", SchoolYear, SchoolCode)
+
+            Return _schoolsuper
+        End Get
+        Set(ByVal value As String)
+            _schoolsuper = value
+        End Set
+    End Property
+
+
+End Class
+

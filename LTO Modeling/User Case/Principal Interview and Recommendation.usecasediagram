@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" xmlns:dm12="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" dslVersion="1.0.0.0" Id="6a008adf-b4d7-49a0-bbb8-23407f1a388a" name="Principal Interview and Recommendation" linkedPackageId="658c7472-05ee-47c9-b280-edb4487a1e79" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <appliedStereotypesInternal>
+    <stereotypeInstance Id="cbd8c2fb-bd59-489e-a45c-b80a3ff1bebe" name="namespace" profile="CSharpProfile">
+      <elementDefinition Id="83e4120a-bdbd-4d85-b19a-f177e6dfc531" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="47ff09c3-a786-4549-9ad2-f275af20ea74">
+          <propertyInstance Id="f4d4de69-18e0-441a-baa0-84bb225c6ec8" name="BaseName">
+            <elementDefinition Id="31daeccb-f1be-417a-b017-cb3b03caeb82" />
+          </propertyInstance>
+          <elementDefinition Id="8fcc81ae-1399-4c6c-a8e6-ff47ab3776e8" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="78392426-0301-4575-99c8-d28529486c74">
+          <propertyInstance Id="42311aa7-aac9-4884-bed9-2d10e08c929c" name="ClrAttributes">
+            <elementDefinition Id="53daf259-bc52-4257-bacb-ecb5172be1fe" />
+          </propertyInstance>
+          <elementDefinition Id="a83029ef-235f-4a64-9016-0a4b2d8ff029" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="4a5e0fd2-164f-4862-bab1-790928320093">
+          <propertyInstance Id="11777936-fc2a-4736-99e7-83856957b421" name="Usings">
+            <elementDefinition Id="9dba1b16-c1fc-4ba6-8857-9aa1ffbe66c6" />
+          </propertyInstance>
+          <elementDefinition Id="651a2659-9725-4abc-a2a6-82189b7bb9c6" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+    <stereotypeInstance Id="2742f660-b7fc-4f29-9a03-8a485a496587" name="TextTemplateBindings" profile="TextTemplateBindings">
+      <elementDefinition Id="c4b69224-8a08-4897-ba22-5d08d1331229" />
+      <propertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="c9108ca1-67d5-442e-8eee-ccfc58a34b00">
+          <propertyInstance Id="1b3c8871-a1c9-43b6-abf2-1407b7440b49" name="Alias" value="ClassTemplate|EnumTemplate|InterfaceTemplate|StructTemplate">
+            <elementDefinition Id="48f079a6-8aa9-486f-bf36-3d93cf882feb" />
+          </propertyInstance>
+          <elementDefinition Id="a1a4b15c-adf2-47a1-a6b0-ccddf713fe02" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="0b2d1a85-3230-4d1c-935e-803fd43a67ac">
+          <propertyInstance Id="952414c1-50c6-4d45-93a8-361bc0fc6298" name="TemplateFilePath" value="ClassTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\ClassTemplate.t4|EnumTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\EnumTemplate.t4|InterfaceTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\InterfaceTemplate.t4|StructTemplate=C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO 11.0\COMMON7\IDE\EXTENSIONS\MICROSOFT\ARCHITECTURE TOOLS\EXTENSIBILITY\Templates\Text\StructTemplate.t4">
+            <elementDefinition Id="5b3d572d-1e40-4e60-8c5c-b42b9c3b1b3d" />
+          </propertyInstance>
+          <elementDefinition Id="ef6a895f-abeb-46f6-b7cb-fc4c8b461144" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="a3888c19-2017-445b-bfee-97789abc3079">
+          <propertyInstance Id="bd9d0f9f-1aeb-49f5-8714-4eb1d9262eaa" name="ProjectPath" value="ClassTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|EnumTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|InterfaceTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj|StructTemplate=..\LTO ModelingLib\LTO ModelingLib.csproj">
+            <elementDefinition Id="94e44802-3fea-4676-be8e-f31b4d28c49d" />
+          </propertyInstance>
+          <elementDefinition Id="c795ec0f-356a-4ba7-a35f-9793438bbbc0" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="11e72783-7848-4c4b-9210-e3ba354d1aee">
+          <propertyInstance Id="2409252a-d01e-4899-b27f-e4ba3bc65eee" name="TargetDirectory" value="ClassTemplate=GeneratedCode\{PackageStructure}|EnumTemplate=GeneratedCode\{PackageStructure}|InterfaceTemplate=GeneratedCode\{PackageStructure}|StructTemplate=GeneratedCode\{PackageStructure}">
+            <elementDefinition Id="8f32bad5-124a-4af4-a63e-e65689a4271f" />
+          </propertyInstance>
+          <elementDefinition Id="978d5f7b-5773-4999-9ee0-7169dd531ae3" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="fa8907e3-6c18-4776-94f6-9274938534af">
+          <propertyInstance Id="04b87bb7-bd63-4066-aff6-503241319077" name="TargetName" value="ClassTemplate={Name}|EnumTemplate={Name}|InterfaceTemplate={Name}|StructTemplate={Name}">
+            <elementDefinition Id="5d85d71f-8496-4e46-909c-a4ae49d9d1df" />
+          </propertyInstance>
+          <elementDefinition Id="559a236a-9200-4e0e-ba0a-84d1f1cf5a0d" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="9b4f6650-ade2-4ada-88cd-525f7a0c0bf5">
+          <propertyInstance Id="d6adb474-aa33-4c03-b2a7-1d7da2dc2bef" name="Overwrite" value="ClassTemplate=True|EnumTemplate=True|InterfaceTemplate=True|StructTemplate=True">
+            <elementDefinition Id="6ffaffe4-dc6b-4812-9348-9d5c8f38ad98" />
+          </propertyInstance>
+          <elementDefinition Id="d5d4fe83-1dc4-4f10-b754-92d7419afe86" />
+        </stereotypeInstanceHasPropertyInstances>
+        <stereotypeInstanceHasPropertyInstances Id="80d75998-41c9-48cf-8261-3b69b5855eee">
+          <propertyInstance Id="e6b05c7c-e9d5-4f11-b7e1-4108254aa99b" name="Parameters">
+            <elementDefinition Id="50cceecf-1afa-41c1-9c08-4dde71c5d678" />
+          </propertyInstance>
+          <elementDefinition Id="11dfcdde-8df2-4f07-a1f6-2a8ffaa08c9a" />
+        </stereotypeInstanceHasPropertyInstances>
+      </propertyInstances>
+    </stereotypeInstance>
+  </appliedStereotypesInternal>
+  <profileInstances>
+    <packageHasProfileInstances Id="b41ac246-c7bc-44ac-bd03-c55cda18f9d1">
+      <profileInstance Id="38708274-0fd7-4d72-87ca-3e52324ad1c5" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="ee094b60-f12c-405a-9f02-ce0e35487ea1">
+      <profileInstance Id="8aee323a-4ae8-40b6-985d-12fde21470ce" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="ae6b9d4b-344f-412f-94b2-62f3e452bf15">
+      <profileInstance Id="9cfc888b-0163-4046-afb7-aa88abc1a29e" name="CSharpProfile">
+        <elementDefinition Id="6817ffed-7917-4167-a247-194b18ed36e1" />
+      </profileInstance>
+      <elementDefinition Id="aa29c329-bd0b-41e0-bce9-b2cf181010c6" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="c6c7ac1b-cd22-45a2-b5f2-0e5bb8bcadb0">
+      <profileInstance Id="19b76470-b338-4f4f-ae67-40a827175d72" name="TextTemplateBindings">
+        <elementDefinition Id="93c10414-b3f1-4bbf-ae26-bc19ce428013" />
+      </profileInstance>
+      <elementDefinition Id="227ef079-103b-453f-9445-1905287d99af" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" name="Principal Interview candidate and make recommendation" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <ownedCommentsInternal>
+          <comment Id="42a88c0d-a718-4fc8-98bc-137941d1550f">
+            <elementDefinition Id="cc58a079-efad-4673-b35f-f15f00293f36" />
+            <body>Search a open position 
+
+by Posting status, 
+by Position Type </body>
+            <annotatedElements>
+              <useCaseMoniker Id="68ab4990-1675-472e-8088-768020d5ceee" LastKnownName="Browser all my school posting position" />
+            </annotatedElements>
+          </comment>
+        </ownedCommentsInternal>
+        <elementDefinition Id="f2d81d14-78c3-4c56-bff0-172de0f3e62c" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4bb2010c-2a78-4705-815a-b829888c23d1" name="School Principal" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="1f6572cb-8f3a-43e7-9777-4d9a6130eff8" />
+        <targetEnds>
+          <association Id="0019bbf2-8c5a-4a83-87da-0e56266925c4" isDerived="false" sourceEndRoleName="School Principal" targetEndRoleName="Browser all posting position" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="68ab4990-1675-472e-8088-768020d5ceee" LastKnownName="Browser all my school posting position" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4e0c4818-4be4-4fd5-b964-58335aa5be01" name="School Principal" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="24ba29cc-19ff-4400-bdb6-77047e04bb39" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d414f13e-7f7f-453a-8218-54cbf8f0ddf2" name="Browser all posting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="976e9be2-32d1-4a21-9556-29a091c8a69c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="fb3e7dc6-9943-4afe-ade6-9c83d31aa2b9" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="68ab4990-1675-472e-8088-768020d5ceee" name="Browser all my school posting position" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="faf63092-5fdf-4d2a-bb63-ca13637ed162" />
+        <targetEnds>
+          <association Id="dbadc3fe-c1c5-47c3-8fa9-31b480fee21c" isDerived="false" sourceEndRoleName="Browser all posting position" targetEndRoleName="select a Position Borwser all interview candidate list" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e98afad0-238b-4be5-af8b-d458e766ecf7" LastKnownName="select a Position Borwser all interview candidate list" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="5325d780-3cbc-4ba4-8281-d06db24ccb36" name="Browser all posting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="13435e72-f066-4440-ac3b-e6570716afe0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="b36b3c79-9853-4336-a419-76bfae551fc5" name="select a Position Borwser all interview candidate list" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="a7bc4c19-d7d4-43a3-8328-38ea56d62b80" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c796c9d5-9d7d-455a-9d4a-961ae7cb334e" />
+          </association>
+          <association Id="6b753c44-dae6-442b-a2e1-38c75d5257f9" isDerived="false" sourceEndRoleName="Browser all posting position" targetEndRoleName="Request more interview candidate" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="73259b0c-90f0-46f3-93a9-e97c6f396b48" LastKnownName="Request more interview candidate" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="849f09c9-6152-4ce8-b9b4-3519c7bf9f9a" name="Browser all posting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c42ee020-407a-425a-82f9-278ba969237e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="20785b4a-088e-4e19-8d8c-53a9e69cb5bb" name="Request more interview candidate" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="8247efc3-8b76-478e-bbe8-974ef96ffa75" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e7548003-8483-4638-b8e0-c75324d83e40" />
+          </association>
+          <association Id="ea87dab3-84af-4518-922e-cd5f6dc704f3" isDerived="false" sourceEndRoleName="Browser all posting position" targetEndRoleName="Review Posting Details" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e04809df-366a-4080-bfb4-e26d3c3a7303" LastKnownName="Review Posting Details" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="bc6b149d-8601-4113-8837-83cf32fea5b9" name="Browser all posting position" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="32555be9-d4c5-4909-98fc-40c46c1a5c31" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c78ba93e-3173-4dd4-b682-2caaa4ce8205" name="Review Posting Details" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5e3a0569-296e-4255-bd2e-e61f5a071694" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="c365ab64-69ec-466c-bccf-be4221126427" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e98afad0-238b-4be5-af8b-d458e766ecf7" name="select a Position Borwser all interview candidate list" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7ab03548-65b0-4863-a14a-4635eb1e9482" />
+        <targetEnds>
+          <association Id="ac4111cd-c3de-4867-bbe1-4823ada33261" isDerived="false" sourceEndRoleName="select a Position Borwser all interview candidate list" targetEndRoleName="open Interview Page" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="186f41c6-439d-45fa-8189-db829f157795" LastKnownName="open Interview Page" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3d8f5c45-0cbe-4e5a-82e9-eb3bb5a5b6ca" name="select a Position Borwser all interview candidate list" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b36c06ee-226c-43cd-8455-5ed20fc593f7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8258c5d9-31b1-47a7-961c-19bea3f38f7c" name="open Interview Page" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2139cee6-b8d5-468b-88cf-f13bca47825f" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6a07c52f-7a33-4be4-ac48-e7b86786dd4c" />
+          </association>
+        </targetEnds>
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="186f41c6-439d-45fa-8189-db829f157795" name="open Interview Page" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="54afd8ec-32f3-42b3-bcca-382664b9fcae" />
+        <additions>
+          <include Id="7251bde2-f529-4713-bf37-a97acc101925">
+            <useCaseMoniker Id="e0e132b3-9f59-4dd1-b674-213c41e1a86e" LastKnownName="Recommend for hiring" />
+            <elementDefinition Id="2e5bb2c6-810d-4524-9326-b18eb68f86d6" />
+          </include>
+          <include Id="036265c3-a73b-465c-ba9e-dad34c107865">
+            <useCaseMoniker Id="786ee38b-b944-4cb5-91e3-bbf9a1ccfc29" LastKnownName="Revoke a recommdation" />
+            <elementDefinition Id="7518e3c8-8db1-4cc5-8831-004558c4a849" />
+          </include>
+          <include Id="30547a63-72cf-445c-9fdb-e5036199aa7b">
+            <useCaseMoniker Id="c0a95a34-5261-45bd-a540-e4492cbac6d3" LastKnownName="Interview Result" />
+            <elementDefinition Id="e5f51a7b-0efd-42f0-9991-db57508ed4bf" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e0e132b3-9f59-4dd1-b674-213c41e1a86e" name="Recommend for hiring" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b8f9e288-3a26-48c1-818a-c1b0017c1847" />
+        <additions>
+          <include Id="f2cd40d6-e5eb-44a3-ba4b-339866db358d">
+            <useCaseMoniker Id="04597f40-0979-45fc-94ea-75d1ce121efb" LastKnownName="Notify HR" />
+            <elementDefinition Id="7c3b4ece-27a0-4943-90a5-b39b86ea15aa" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="786ee38b-b944-4cb5-91e3-bbf9a1ccfc29" name="Revoke a recommdation" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5ad6b8b0-7ff0-43bf-9b11-9715765f0228" />
+        <additions>
+          <include Id="47a5312e-d99d-4745-8fdf-d077b852bded">
+            <useCaseMoniker Id="04597f40-0979-45fc-94ea-75d1ce121efb" LastKnownName="Notify HR" />
+            <elementDefinition Id="001c1a3e-ca8b-42b3-a132-87daf2c75045" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="04597f40-0979-45fc-94ea-75d1ce121efb" name="Notify HR" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bb530479-6b72-4463-bf00-9d56ec9a1c11" />
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="73259b0c-90f0-46f3-93a9-e97c6f396b48" name="Request more interview candidate" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="af40765d-8fdb-4cbb-a76f-abc5137c64c6" />
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="e04809df-366a-4080-bfb4-e26d3c3a7303" name="Review Posting Details" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="937c28e6-d772-484a-9049-0ff440fc73fa" />
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="c0a95a34-5261-45bd-a540-e4492cbac6d3" name="Interview Result" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9df20fd8-4128-4520-9ed2-30a4d6833cd4" />
+        <subjects>
+          <subsystemMoniker Id="37b53fed-7f3c-4f73-b0a2-138e0f8e3c72" LastKnownName="Principal Interview candidate and make recommendation" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+  </packagedElements>
+  <package Id="658c7472-05ee-47c9-b280-edb4487a1e79" name="LTO Modeling">
+    <elementDefinition Id="6fb4a41a-75b1-456a-be48-12a46b3a5ae0" />
+  </package>
+</useCaseModelRoot>

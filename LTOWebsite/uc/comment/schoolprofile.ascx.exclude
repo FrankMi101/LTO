@@ -1,0 +1,61 @@
+<%@ Control Language="vb" AutoEventWireup="false" Inherits=" SchoolProfile"
+    CodeFile="SchoolProfile.ascx.vb" %>
+<table style="height: 22px" cellspacing="0" cellpadding="0" width="100%" align="left"
+    border="0">
+    <tr>
+        <td width="90%" valign="top" align="left">
+            <table style="height: 22px" cellspacing="0" cellpadding="0" width="100%" align="left"
+                border="0">
+                <tr>
+                    <td nowrap>
+                        <font face="Arial" color="blue" size="2"><strong>School Year:</strong></font></td>
+                    <td nowrap>
+                        <asp:DropDownList ID="ddlschoolyear" runat="server" ForeColor="Blue" Width="82px"
+                            Font-Bold="True" AutoPostBack="True">
+                        </asp:DropDownList>
+                    </td>
+                    <td style="width: 43px" nowrap align="left">
+                        <font face="Arial" color="blue" size="2"><strong>School</strong></font></td>
+                    <td nowrap align="center">
+                        <asp:Label ID="lblSchoolcode" runat="server" ForeColor="Blue" Font-Names="Arial"
+                            Font-Size="X-Small" Width="40px" Font-Bold="True" Font-Underline="True" Font-Italic="true" >code</asp:Label></td>
+                    <td nowrap align="left" width="100%">
+                        <asp:Label ID="lblSchoolname" runat="server" ForeColor="Blue" Font-Names="Arial" Font-Italic="true" 
+                            Font-Size="X-Small" Width="100%" Font-Bold="True" Font-Underline="True">name</asp:Label>
+                        
+                    </td>
+                    <td width="8px">
+                        &nbsp;&nbsp;
+                    </td>
+                    <td width="100px">
+                        <font face="Arial" color="blue" size="2"><strong>Teacher:</strong></font> 
+                    </td>
+                      <td width="8px">
+                        &nbsp;&nbsp;</td>
+                    <td align="left">
+                        <asp:Label ID="lblTeacher" runat="server" ForeColor="Blue" Font-Italic="true" Font-Names="Arial"
+                            Font-Size="X-Small" Width="130px" Font-Bold="True" Font-Underline="True">name</asp:Label>
+                    
+                    </td>
+                    <td width="8px">
+                        &nbsp;&nbsp;</td>
+                    <td width="100px">
+                        <font face="Arial" color="blue" size="2"><strong>Observer:</strong></font></td>
+                        <td width="8px">
+                        &nbsp;&nbsp;</td>
+                    <td align="left">
+                    
+                        <asp:Label ID="lblOberver" runat="server" ForeColor="Blue" Font-Names="Arial" Font-Italic="true" 
+                            Font-Size="X-Small" Width="150px" Font-Bold="True" Font-Underline="True">name</asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </td>
+        <%--<td width="2%" valign="top" align="right" nowrap>
+            <a id="HelpLink0101" title="Go on line Help" href="javascript:openHelpPageAll('IEP','Page0101')"
+                runat="server">
+                <img id="Imghelp0101" title="Go on line Help" height="24" alt="" src="../images/HelpBB.bmp"
+                    width="24" border="0" name="Imghelp0101" runat="server"></a>
+        </td>--%>
+    </tr>
+</table>
