@@ -283,7 +283,7 @@
                 var iHeigh = (window.innerheigh > 0) ? window.innerheigh : screen.height;
 
                 var vLeft = (iWidth / 2) - (vWidth / 2) - 50;
-                var vTop = (screen.height / 2) - (vHeight / 2) - 50;
+                var vTop = (screen.height / 2) - (vHeight / 2) - 40;
                 $("#PositionDetailFrame", parent.document).attr('src', goPage);
                 $("#popPagetitle", parent.document).text(pTitle);
                 $("#hfInvokePageFrom", parent.document).val("LTOPrincipals/RequestList2.aspx");      //val("LTOPrincipals/RequestPostingList.aspx");

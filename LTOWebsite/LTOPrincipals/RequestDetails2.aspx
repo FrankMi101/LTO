@@ -120,7 +120,7 @@
 
 
                         <%--<asp:Label ID="lblTeacherName" runat="server" Text=""> </asp:Label>--%>
-                        <input id="lblTeacherName" runat="server" value="" autocomplete="off" style="height: 17px; width: 150px" class="inputFiled editArea" required />
+                        <input id="lblTeacherName" runat="server" value="" autocomplete="off" style="height: 17px; width: 120px" class="inputFiled editArea" required />
 
                         <%-- <div id="comboboxDIV" runat="server">
                             <asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="120px" CssClass="editArea" Visible="false"></asp:DropDownList>
@@ -467,13 +467,20 @@
         if (requestStatus == "Posted") {
             alert("The Position has been posted. Changes won't save !!! ");
         }
+        $("#lblTeacherName").focus(function (ev) {
+            var ev = window.event;
+            var vTop = $('#lblTeacherName').offset().top - 10;   
+            var vLeft = $('#lblTeacherName').offset().left - 10;  
 
-        $("#lblTeacherName").click(function (e) {
+            ShowSelectTeacherList(vTop, vLeft, "Click");
+        });
+
+        $("#lblTeacherName").click(function (ev) {
             var ev = window.event;
             var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
             var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
 
-            ShowSelectTeacherList(vTop, vLeft, "Click");
+         //   ShowSelectTeacherList(vTop, vLeft, "Click");
         });
 
         $("#lblTeacherName").keyup(function (e) {
