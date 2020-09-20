@@ -14,86 +14,95 @@ namespace DataAccess.Common
 
         public static List<T> ListofT<T>(string sp, Parameters<T> parameter)
         {
-            {// T will be class type. such are School, person, Staff and so on. 
-                using (IDbConnection connection = new SqlConnection(conSTR))
-                {
-                    var tlist = connection.Query<T>(sp, parameter).ToList();
-                    return tlist;
-                }
-            }
+            return MyDapper.EasyDataAccess<T>.ListOfT(sp, parameter);
+            //{ // T will be class type. such are School, rson, Staff and so on. 
+            //    using (IDbConnection connection = new SqlConnection(conSTR))
+            //    {
+            //        var tlist = connection.Query<T>(sp, parameter).ToList();
+            //        return tlist;
+            //    }
+            //}
 
         }
         public static List<T> ListofT<T>(string sp, object parameter)
         {
-            {// T will be class type. such are School, person, Staff and so on. 
-                using (IDbConnection connection = new SqlConnection(conSTR))
-                {
-                    var tlist = connection.Query<T>(sp, parameter).ToList();
-                    return tlist;
-                }
-            }
+            return MyDapper.EasyDataAccess<T>.ListOfT(sp, parameter);
+
+            //{// T will be class type. such are School, person, Staff and so on. 
+            //    using (IDbConnection connection = new SqlConnection(conSTR))
+            //    {
+            //        var tlist = connection.Query<T>(sp, parameter).ToList();
+            //        return tlist;
+            //    }
+            //}
 
         }
         public static List<T> GetListofTypeT<T>(string sp, object parameter)
         {// T will be class type. such are School, person, Staff and so on. 
+            return MyDapper.EasyDataAccess<T>.ListOfT(sp, parameter);
+            //try
+            //{
+            //    using (IDbConnection connection = new SqlConnection(conSTR))
+            //    {
+            //        var tlist = connection.Query<T>(sp, parameter).ToList();
+            //        return tlist;
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
 
-            try
-            {
-                using (IDbConnection connection = new SqlConnection(conSTR))
-                {
-                    var tlist = connection.Query<T>(sp, parameter).ToList();
-                    return tlist;
-                }
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
+            //    throw;
+            //}
 
         }
 
         public static List<T> GetObjectList<T>(string sp, object parameter)
         {
-            using (IDbConnection connection = new SqlConnection(conSTR))
-            {
-                var mylist = connection.Query<T>(sp, parameter).ToList();
-                return mylist;
-            }
+            return MyDapper.EasyDataAccess<T>.ListOfT(sp, parameter);
+            //using (IDbConnection connection = new SqlConnection(conSTR))
+            //{
+            //    var mylist = connection.Query<T>(sp, parameter).ToList();
+            //    return mylist;
+            //}
         }
 
         public static T ValueOfT<T>(string sp, Parameters<T> parameter)
         {
-            using (IDbConnection connection = new SqlConnection(conSTR))
-            {
-                var myValue = connection.QuerySingle<T>(sp, parameter);
-                return myValue;
-            }
+            return MyDapper.EasyDataAccess<T>.ValueOfT(sp, parameter);
+
+            //using (IDbConnection connection = new SqlConnection(conSTR))
+            //{
+            //    var myValue = connection.QuerySingle<T>(sp, parameter);
+            //    return myValue;
+            //}
         }
 
         public static T ValueOfT<T>(string sp, object parameter)
         {
-            using (IDbConnection connection = new SqlConnection(conSTR))
-            {
-                //var myText = connection.QuerySingle<SingleString>(sp, parameter);
-                //return myText.MyValue;
-                var myValue = connection.QuerySingle<T>(sp, parameter);
-                return myValue;//  .MyValue;
-            }
+            return MyDapper.EasyDataAccess<T>.ValueOfT(sp, parameter);
+            //using (IDbConnection connection = new SqlConnection(conSTR))
+            //{
+            //    //var myText = connection.QuerySingle<SingleString>(sp, parameter);
+            //    //return myText.MyValue;
+            //    var myValue = connection.QuerySingle<T>(sp, parameter);
+            //    return myValue;//  .MyValue;
+            //}
         }
         public static object TextValue<T>(string sp, object parameter)
         {
-            using (IDbConnection connection = new SqlConnection(conSTR))
-            {
-                //var myText = connection.QuerySingle<SingleString>(sp, parameter);
-                //return myText.MyValue;
-                var myValue = connection.QuerySingle<T>(sp, parameter);
-                return myValue;//  .MyValue;
-            }
+            return MyDapper.EasyDataAccess<T>.ValueOfT(sp, parameter);
+            //using (IDbConnection connection = new SqlConnection(conSTR))
+            //{
+            //    //var myText = connection.QuerySingle<SingleString>(sp, parameter);
+            //    //return myText.MyValue;
+            //    var myValue = connection.QuerySingle<T>(sp, parameter);
+            //    return myValue;//  .MyValue;
+            //}
         }
         public static string TextValue(string sp, object parameter)
         {
-            return ValueOfT<string>(sp, parameter);
+            return MyDapper.EasyDataAccess<string>.ValueOfT(sp, parameter);
+          //  return ValueOfT<string>(sp, parameter);
             //using (IDbConnection connection = new SqlConnection(conSTR))
             //{
             //    //var myText = connection.QuerySingle<SingleString>(sp, parameter);
@@ -105,7 +114,8 @@ namespace DataAccess.Common
 
         public static bool BoolValue(string sp, object parameter)
         {
-            return ValueOfT<bool>(sp, parameter);
+            return MyDapper.EasyDataAccess<bool>.ValueOfT(sp, parameter);
+           // return ValueOfT<bool>(sp, parameter);
             //using (IDbConnection connection = new SqlConnection(conSTR))
             //{
             //    var result = connection.QuerySingle<bool>(sp, parameter);
@@ -116,7 +126,9 @@ namespace DataAccess.Common
 
         public static DateTime DtValue(string sp, object parameter)
         {
-            return ValueOfT<DateTime>(sp, parameter);
+            return MyDapper.EasyDataAccess<DateTime>.ValueOfT(sp, parameter);
+
+        //    return ValueOfT<DateTime>(sp, parameter);
         }
 
         //public static List<SiteTeams> GetListsold(string operate, string userID, string userRole, string schoolYear, string schoolCode)

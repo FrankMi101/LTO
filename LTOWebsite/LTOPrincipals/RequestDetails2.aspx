@@ -467,20 +467,20 @@
         if (requestStatus == "Posted") {
             alert("The Position has been posted. Changes won't save !!! ");
         }
-        $("#lblTeacherName").focus(function (ev) {
-            var ev = window.event;
-            var vTop = $('#lblTeacherName').offset().top - 10;   
-            var vLeft = $('#lblTeacherName').offset().left - 10;  
+        //$("#lblTeacherName").focus(function (ev) {
+        //    var ev = window.event;
+        //    var vTop = $('#lblTeacherName').offset().top - 10;   
+        //    var vLeft = $('#lblTeacherName').offset().left - 10;  
 
-            ShowSelectTeacherList(vTop, vLeft, "Click");
-        });
+        //    ShowSelectTeacherList(vTop, vLeft, "Click");
+        //});
 
         $("#lblTeacherName").click(function (ev) {
             var ev = window.event;
             var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
             var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
 
-         //   ShowSelectTeacherList(vTop, vLeft, "Click");
+            ShowSelectTeacherList(vTop, vLeft, "Click");
         });
 
         $("#lblTeacherName").keyup(function (e) {

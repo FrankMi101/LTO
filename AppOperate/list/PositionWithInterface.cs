@@ -1,10 +1,10 @@
 ﻿using ClassLibrary;
-using DataAccess.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading.Tasks; 
+using DataAccess.Common;
 
 namespace AppOperate
 {
@@ -25,7 +25,9 @@ namespace AppOperate
             {
                 //4th round @searchBy = PostingCycle, SearchValue1 = 4
                 string sp = "dbo.tcdsb_LTO_PositionList_TeacherApplied @Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy, @SearchValue1, @SearchValue2";
-                var list = GeneralDataAccess.GetListofTypeT<PositionApply>(sp, parameter);
+              
+             var list = GeneralDataAccess.GetListofTypeT<PositionApply>(sp, parameter);
+               
                 return list;
             }
             catch (Exception ex)
@@ -44,7 +46,8 @@ namespace AppOperate
             {
                 //4th round @searchBy = PostingCycle, SearchValue1 = 4
                 string sp = "dbo.tcdsb_LTO_PositionList_ApplicantApplying @Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy, @SearchValue1, @SearchValue2";
-                var list = GeneralDataAccess.GetListofTypeT<PositionApply>(sp, parameter);
+                 
+                  var list = GeneralDataAccess.GetListofTypeT<PositionApply>(sp, parameter);
                 return list;
             }
             catch (Exception ex)

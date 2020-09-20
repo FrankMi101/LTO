@@ -84,3 +84,5 @@ C:\Users\mif\source\repos\LTO\DataAccess\obj\Release\DataAccess.csproj.CoreCompi
 C:\Users\mif\source\repos\LTO\DataAccess\obj\Release\DataAccess.csproj.CopyComplete
 C:\Users\mif\source\repos\LTO\DataAccess\obj\Release\DataAccess.dll
 C:\Users\mif\source\repos\LTO\DataAccess\obj\Release\DataAccess.pdb
+C:\Users\mif\source\repos\LTO\DataAccess\bin\Release\MyBaseClassC.dll
+C:\Users\mif\source\repos\LTO\DataAccess\bin\Release\MyBaseClassC.pdb

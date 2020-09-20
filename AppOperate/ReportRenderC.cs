@@ -20,11 +20,11 @@ namespace AppOperate
             return para1;
         }
  
-        public static void setParameterArray(MyCommon.MyParameterRS[] _ParaArray, int X, string _Name, string _Value)
+        public static void setParameterArray(MyADO.MyParameterRS[] _ParaArray, int X, string _Name, string _Value)
         {
             try
             {
-                _ParaArray[X] = new MyCommon.MyParameterRS();
+                _ParaArray[X] = new MyADO.MyParameterRS();
                 _ParaArray[X].pName = _Name;
                 _ParaArray[X].pValue = _Value;
             }

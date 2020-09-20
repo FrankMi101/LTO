@@ -39,3 +39,9 @@ C:\Users\mif\source\repos\LTO2019\ClassLibrary\obj\Debug\ClassLibrary.csprojAsse
 C:\Users\mif\source\repos\LTO2019\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
 C:\Users\mif\source\repos\LTO2019\ClassLibrary\obj\Debug\ClassLibrary.dll
 C:\Users\mif\source\repos\LTO2019\ClassLibrary\obj\Debug\ClassLibrary.pdb
+C:\Users\mif\source\repos\LTO\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\mif\source\repos\LTO\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\mif\source\repos\LTO\ClassLibrary\obj\Debug\ClassLibrary.csprojAssemblyReference.cache
+C:\Users\mif\source\repos\LTO\ClassLibrary\obj\Debug\ClassLibrary.csproj.CoreCompileInputs.cache
+C:\Users\mif\source\repos\LTO\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\mif\source\repos\LTO\ClassLibrary\obj\Debug\ClassLibrary.pdb

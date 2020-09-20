@@ -136,3 +136,4 @@ C:\Users\mif\source\repos\LTO\AppOperate\obj\Release\AppOperate.csproj.CopyCompl
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Release\AppOperate.dll
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Release\AppOperate.pdb
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Release\AppOperate.XmlSerializers.dll
+C:\Users\mif\source\repos\LTO\AppOperate\bin\Release\MyBaseClassC.dll

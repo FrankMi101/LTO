@@ -124,3 +124,5 @@ C:\Users\mif\source\repos\LTO\AppOperate\obj\Debug\AppOperate.csproj.CoreCompile
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Debug\AppOperate.csproj.CopyComplete
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Debug\AppOperate.dll
 C:\Users\mif\source\repos\LTO\AppOperate\obj\Debug\AppOperate.pdb
+C:\Users\mif\source\repos\LTO\AppOperate\bin\Debug\MyBaseClassC.dll
+C:\Users\mif\source\repos\LTO\AppOperate\bin\Debug\MyBaseClassC.pdb

@@ -16,7 +16,8 @@ namespace AppOperate
             {
                 string sp = "dbo.tcdsb_LTO_PositionDetails_RequestbyID @SchoolYear, @PositionID";
                 var parameter = new ParameterCL() { PositionID = requestID, SchoolYear = "" };
-                List<PositionApprove> position1 = GeneralDataAccess.GetListofTypeT<PositionApprove>(sp, parameter);
+               // List<PositionApprove> position1 = CommonExcute<PositionApprove>.GeneralList(sp, parameter);
+               List<PositionApprove> position1 = GeneralDataAccess.GetListofTypeT<PositionApprove>(sp, parameter);
                 return position1;
             }
             catch (System.Exception ex)
@@ -32,7 +33,8 @@ namespace AppOperate
             {
                 string sp = "dbo.tcdsb_LTO_PositionDetails_RequestbyID @SchoolYear, @PositionID";
                 // var parameter = new ParameterCL() { PositionID = positionID, SchoolYear = "" };
-                List<PositionApprove> position1 = GeneralDataAccess.GetListofTypeT<PositionApprove>(sp, parameter);
+              //  List<PositionApprove> position1 = CommonExcute<PositionApprove>.GeneralList(sp, parameter);
+              List<PositionApprove> position1 = GeneralDataAccess.GetListofTypeT<PositionApprove>(sp, parameter);
                 return position1;
             }
             catch (System.Exception ex)
