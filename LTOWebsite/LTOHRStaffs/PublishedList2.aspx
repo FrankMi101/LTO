@@ -18,7 +18,7 @@
         body {
             height: 100%;
             width: 100%;
-            margin:1px;
+            margin: auto;
         }
 
         div {

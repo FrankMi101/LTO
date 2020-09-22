@@ -5,7 +5,7 @@ var myImg;
 function pageLoad(sender, args) {
 
     $(document).ready(function () {
-        MakeStaticHeader("GridView1", 350, 1500, 25, false, 'DivHeaderRow', 'GridView2', 'DivMainContent');
+        MakeStaticHeader("GridView1", 270, 1500, 25, false, 'DivHeaderRow', 'GridView2', 'DivMainContent');
 
         $('#GridView1 tr').mouseenter(function (event) {
             if (currentTR !== undefined) { currentTR.removeClass("highlightBoard"); }

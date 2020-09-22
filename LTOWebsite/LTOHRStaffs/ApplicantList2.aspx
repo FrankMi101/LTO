@@ -103,11 +103,11 @@
         </div>
         <div id="DivRoot"   style="width: 100%; height: 100%;">
             <div style="overflow: hidden;" id="DivHeaderRow">
-                <table id="GridView2" style="border: 1px ridge gray; width: 100%; height: 100%; background-color: white;" rules="all" cellspacing="1" cellpadding="1" borderwidth="1px">
+                <table id="GridView2" style="border: 1px ridge gray; width: 100%; height:99%; background-color: white;" rules="all" cellspacing="1" cellpadding="1" borderwidth="1px">
                 </table>
             </div>
 
-            <div style="overflow: scroll; width: 100%; height: 100%" onscroll="OnScrollDiv(this)" id="DivMainContent">
+            <div style="overflow: scroll; width: 99%; height: 100%" onscroll="OnScrollDiv(this)" id="DivMainContent">
                 <asp:GridView ID="GridView1" runat="server" CellPadding="1" Height="100%" Width="100%" GridLines="Both" AutoGenerateColumns="False" BackColor="White" BorderColor="gray" BorderStyle="Ridge" BorderWidth="1px" CellSpacing="1" EmptyDataText="No Applicants in selected position" EmptyDataRowStyle-CssClass="emptyData" ShowHeaderWhenEmpty="true">
                     <Columns>
 

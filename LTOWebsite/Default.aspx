@@ -88,7 +88,7 @@
 
             </div>
         </nav>
-        <iframe id="mainTop" runat="server" name="mainTop" class="iFrameContent" seamless="seamless" 
+        <iframe id="mainTop" runat="server" name="mainTop" class="iFrameContent" seamless="seamless"  
              src="Default_Home.aspx"></iframe>
 
          <asp:HiddenField ID="HiddenFieldBrowserVersion" runat="server" />
@@ -120,7 +120,7 @@
 
             </div>
             <div id="iFrameDIV" style="height: 93%; width: 100%;">
-                <iframe id="PositionDetailFrame" runat="server" name="PositionDetailiFrame" scrolling="auto" seamless="seamless" 
+                <iframe id="PositionDetailFrame" runat="server" name="PositionDetailiFrame" scrolling="auto" seamless="seamless"   
                     src="#"></iframe>
             </div>
             <div id="BottomClose" style="height: 22px; background-color: deepskyblue; text-align: right">
