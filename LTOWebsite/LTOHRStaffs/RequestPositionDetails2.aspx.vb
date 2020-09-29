@@ -271,6 +271,12 @@ Partial Class RequestPositionDetails2
                 'If Me.dateStart.Value = "" Then Me.dateStart.Value = Now.Date()
                 'If Me.datePublish.Value = "" Then Me.datePublish.Value = Now.Date()
             End If
+            If position.PositionState = "Close" Then
+                Me.btnUnpublish.Enabled = False
+                Me.btnRepublish.Enabled = False
+                Me.btndelete.Enabled = False
+                Me.btnSave.Enabled = False
+            End If
             SetStartandEndDate()
             '  CheeckAction()
         Catch ex As Exception

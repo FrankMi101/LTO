@@ -32,9 +32,10 @@ Partial Class RequestList2
             Dim roleShow As String = WorkingProfile.UserRole
             hfUserID.Value = HttpContext.Current.User.Identity.Name
             WorkingProfile.ApplicationType = "LTO"
-            If User.Identity.Name = "mif" Then
-                Me.ddlappType.Enabled = True
-            End If
+            'If User.Identity.Name = "mif" Then
+            'End If
+            Me.ddlappType.Enabled = True
+
             BindDDLList()
             ' Me.WebDataGrid1.Behaviors.EditingCore.BatchUpdating = True
             BindGridData(True)
@@ -152,7 +153,7 @@ Partial Class RequestList2
     End Sub
 
     Private Sub ddlappType_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlappType.SelectedIndexChanged
-        If ddlappType.SelectedValue = "TPA" Then
+        If ddlappType.SelectedValue = "TAP" Or ddlappType.SelectedValue = "TOP" Then
             WorkingProfile.ApplicationType = "LTO"
         Else
             WorkingProfile.ApplicationType = ddlappType.SelectedValue

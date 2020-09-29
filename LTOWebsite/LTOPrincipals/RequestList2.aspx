@@ -254,11 +254,12 @@
 
 <script type="text/javascript" id="igClientScript1">
     var MessageBox = $("#ElementaryMessage");
+    
     var request = {
          Operate : "Request",
          SchoolYear : $("#ddlSchoolYear").val(),
          SchoolCode : $("#ddlschoolcode").val(),
-         PositionType : $("#ddlappType").val(),
+        PositionType: $("#ddlappType").val(),       
          PositionID : 0,
          UserID : $("#hfUserID").val()
     }
@@ -307,11 +308,11 @@
         try {
 
             $("#btnNewOpen").click(function (e) {
-         
+           
                 request.Operate =  "Request";
                 request.SchoolYear =  $("#ddlSchoolYear").val();
                 request.SchoolCode = $("#ddlschoolcode").val();
-                request.PositionType =  $("#ddlappType").val();
+                request.PositionType = $("#ddlappType").val();
                 request.PositionID = 0;
                 request.UserID =  $("#hfUserID").val()  ;
            

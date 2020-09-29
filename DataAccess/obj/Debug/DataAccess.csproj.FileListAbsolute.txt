@@ -86,3 +86,5 @@ C:\Users\mif\source\repos\LTO\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\mif\source\repos\LTO\DataAccess\obj\Debug\DataAccess.pdb
 C:\Users\mif\source\repos\LTO\DataAccess\bin\Debug\MyBaseClassC.dll
 C:\Users\mif\source\repos\LTO\DataAccess\bin\Debug\MyBaseClassC.pdb
+C:\Users\mif\source\repos\LTO\DataAccess\bin\Debug\Newtonsoft.Json.dll
+C:\Users\mif\source\repos\LTO\DataAccess\bin\Debug\Newtonsoft.Json.xml

@@ -51,9 +51,7 @@ Partial Class RequestDetails2
     End Sub
     Private Sub AssiblingPage()
 
-        If WorkingProfile.ApplicationType = "TAP" Then
-            WorkingProfile.ApplicationType = "LTO"
-        End If
+
         RequiredFieldValidator2.Enabled = False
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
