@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="InterviewSignature2.aspx.vb" Inherits="InterviewSignature2" EnableTheming="true" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxtoolkit" %>
 <link href="../Styles/BubbleHelp.css" rel="stylesheet" />
 
 <!DOCTYPE html>
