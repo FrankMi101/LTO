@@ -12,5 +12,6 @@ namespace ClassLibrary
         public string UserID { get; set; }
         public string Action { get; set; }
         public string Comments { get; set; }
+        public string Document { get; set; }
     }
 }

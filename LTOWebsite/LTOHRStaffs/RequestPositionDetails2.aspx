@@ -788,6 +788,8 @@
         var minD = new Date($("#hfSchoolyearStartDate").val());
         var maxD = new Date($("#hfSchoolyearEndDate").val());
 
+        alert(minD);
+        alert(maxD);
         JDatePicker.Initial($("#dateStart"), minD, maxD, value);
         JDatePicker.Initial($("#dateEnd"), minD, maxD);
 

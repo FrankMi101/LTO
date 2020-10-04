@@ -412,7 +412,7 @@
                   <asp:RadioButtonList ID="rblResumeChose" runat="server" Font-Size="Small">
                       <asp:ListItem Value="1">Continue Apply without the Resume and Cover Letter</asp:ListItem>
                       <asp:ListItem Value="2">Go to upload the Resume and Cover Letter</asp:ListItem>
-                      <%-- <asp:ListItem Value="3">Using my most recent upload</asp:ListItem>--%>
+                      <asp:ListItem Value="3">Using my most recent upload Resume and Cover Letter</asp:ListItem>
                   </asp:RadioButtonList>
             <br />
             <div style="width: 100%; text-align: center">
@@ -519,13 +519,9 @@
                         $("#btnApply").click();
                         break;
                     case "2":
-                        // alert("schoolyear=" + parameter.SchoolYear + " CPNum=" + parameter.CPNum + " PositionID =" + parameter.PositionID);
                         openFileUpload("", parameter.SchoolYear, parameter.CPNum, parameter.PositionID);
-
                         break;
-
                     case "3":
-
                         $("#hfUsingMostRecentResume").val("Yes");
                         $("#btnApply").click();
                         break;
@@ -545,8 +541,6 @@
                 var targetItem = ev.srcElement.id;
                 var myItem = $("#" + targetItem);
                 var selectedCode = myItem.val();
-
-
 
             } catch (e) {
             }
@@ -620,7 +614,7 @@
 
         var vTop = 300;
         var vLeft = 100;
-        var vHeight = 150;
+        var vHeight = 180;
         var vWidth = 400;
         $("#ResumePrompt").css({
             top: vTop,

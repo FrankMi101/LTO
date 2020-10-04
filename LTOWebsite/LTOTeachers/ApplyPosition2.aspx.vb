@@ -394,14 +394,15 @@ Partial Class ApplyPosition2
 
 
         Dim action As String = Me.HiddenFieldApply.Value
-        paraForApply.Operate = "OCTQualification"
-        paraForApply.Comments = Me.TextComemnts.Text
-        paraForApply.SchoolYear = Page.Request.QueryString("SchoolYear")
-        paraForApply.CPNum = ddlApplicant.SelectedValue ' Page.Request.QueryString("CPNum")
-        paraForApply.PositionID = Page.Request.QueryString("PositionID")
-        paraForApply.UserID = User.Identity.Name
-        paraForApply.Action = Me.HiddenFieldApply.Value
-
+        With paraForApply
+            .Operate = "OCTQualification"
+            .Comments = Me.TextComemnts.Text
+            .SchoolYear = Page.Request.QueryString("SchoolYear")
+            .CPNum = ddlApplicant.SelectedValue ' Page.Request.QueryString("CPNum")
+            .PositionID = Page.Request.QueryString("PositionID")
+            .UserID = User.Identity.Name
+            .Action = Me.HiddenFieldApply.Value
+        End With
         Dim result = ApplyProcessExe.OCTQualfication(paraForApply) '   CommonOperationExcute.ApplyingOperation(paraForApply, "OCTQualification")
         Me.TextApplicantQualfication.Text = result
 
@@ -414,14 +415,15 @@ Partial Class ApplyPosition2
     Private Sub btnApplyOnBehalf_Click(sender As Object, e As EventArgs) Handles btnApplyOnBehalf.Click
         Me.HiddenFieldAction.Value = "Yes"
         Dim action As String = "Applied"
-        paraForApply.Operate = "AppliedOnBehalf"
-        paraForApply.Comments = Me.TextComemnts.Text
-        paraForApply.SchoolYear = Page.Request.QueryString("SchoolYear")
-        paraForApply.CPNum = Me.ddlApplicant.SelectedValue
-        paraForApply.PositionID = Page.Request.QueryString("PositionID")
-        paraForApply.UserID = User.Identity.Name
-        paraForApply.Action = action
-
+        With paraForApply
+            .Operate = "AppliedOnBehalf"
+            .Comments = Me.TextComemnts.Text
+            .SchoolYear = Page.Request.QueryString("SchoolYear")
+            .CPNum = Me.ddlApplicant.SelectedValue
+            .PositionID = Page.Request.QueryString("PositionID")
+            .UserID = User.Identity.Name
+            .Action = action
+        End With
         ' Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
         ' Dim result = CommonExcute(Of ParametersForApply).GeneralValue(SP, paraForApply) '
 
@@ -446,8 +448,9 @@ Partial Class ApplyPosition2
                 .CPNum = Page.Request.QueryString("CPNum")
                 .PositionID = Page.Request.QueryString("PositionID")
                 .UserID = User.Identity.Name
+                .Document = Me.hfUsingMostRecentResume.Value
             End With
-            Dim usingMostRecent As String = Me.hfUsingMostRecentResume.Value
+            '  Dim usingMostRecent As String = Me.hfUsingMostRecentResume.Value
             '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
             Dim result = ApplyProcessExe.Appied(paraForApply) ' CommonExcute(Of ParametersForApply).GeneralValue(SP, paraForApply) '  CommonOperationExcute.ApplyingOperation(paraForApply, action)
             If result = "Successfully" Then

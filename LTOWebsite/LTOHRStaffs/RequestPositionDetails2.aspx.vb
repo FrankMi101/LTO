@@ -322,10 +322,10 @@ Partial Class RequestPositionDetails2
 
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim positionType = WorkingProfile.ApplicationType
-        DefaultDate.SetDate(schoolyear, positionType, Me.dateStart, Me.dateEnd, Me.datePublish, Me.dateApplyStart, Me.dateDeadline)
+        DefaultDate.SetDate(schoolyear, positionType, Me.dateStart, Me.dateEnd, Me.datePublish, Me.dateApplyStart, Me.dateDeadline, hfSchoolyearStartDate, hfSchoolyearEndDate)
 
-        Me.hfSchoolyearStartDate.Value = Me.dateStart.Value
-        Me.hfSchoolyearEndDate.Value = Me.dateEnd.Value
+        'Me.hfSchoolyearStartDate.Value = Me.dateStart.Value
+        'Me.hfSchoolyearEndDate.Value = Me.dateEnd.Value
 
 
     End Sub
