@@ -20,7 +20,7 @@ Partial Class Logon
 
             '   Session("ApplicationTypeSessionValue") = Nothing
             Dim appSou = Page.Request.QueryString("appsou")
-
+            If appSou = Nothing Then appSou = "out"
             Dim userid As String = Page.Request.QueryString("userid")
             'Dim userid As String = "mif"
             ' Dim encUserId = TcdsbSymetricEncryption.GetSsoQueryString("mif")
@@ -29,46 +29,18 @@ Partial Class Logon
 
             userid = UserSymetricEncryption.GetValidatedSsoFromQueryString(userid, testing)
 
-            If userid = String.Empty Or userid = "undefined" Or appSou = "out" Then  'get UserID 
+            If (userid = Nothing Or userid = String.Empty Or userid = "undefined" Or appSou = "out") Then  'get UserID 
                 Dim sName As String = Server.MachineName
-                If sName = "0811N0009MC7LC2" Then
-                    txtUsername.Text = "mif"
-                    SetFocus1(btnLogin)
-                Else
-                    SetFocus1(txtUsername)
-                End If
+                Me.txtUsername.Focus()
+                ' SetFocus1(txtUsername)
 
                 ' ********* only works on VS. it does not work on Server ******************************** 
                 'Dim windowsCurrent = WindowsIdentity.GetCurrent()
                 'If windowsCurrent.IsAuthenticated Then
-                '    TextBox1.Text = windowsCurrent.Name
-                '    txtUsername.Text = UserSecurity.GetCurrentUserName("Name", windowsCurrent.Name)
-                '    Dim cUserRole As String = UserSecurity.Role(txtUsername.Text)
-                '    If Not (cUserRole = "Admin" Or cUserRole = "Design") Then txtUsername.ReadOnly = True
-                '    If txtUsername.Text = "mif" Then
-                '        SetFocus1(btnLogin)
-                '    Else
-                '        SetFocus1(txtPassword)
-                '    End If
-                'Else
-                '    '  Dim sName As String = Server.MachineName
-                '    SetFocus1(txtUsername)
-                'End If
                 '*******************************************************************************************
             Else
                 Me.txtUsername.Text = userid
                 Me.txtPassword.Focus()
-                '   SetFocus1(Me.txtPassword)
-                '*************************************************************************************
-                'WorkingProfile.UserID = userid
-                'Dim _Role As String = Common.UserSecurity.Role(txtUsername.Text)
-                'If _Role = "Other" Then
-                '    errorlabel.ForeColor = Color.Red
-                '    errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP") '  "Sorry, You do not have permission to run the TPA"
-                'Else
-                '    CreateAuthTicket(_Role)
-                'End If
-                '*****************************************************************************************
             End If
             Me.LabelHost.Text = System.Net.Dns.GetHostName()
             Dim cDB As String = System.Configuration.ConfigurationManager.ConnectionStrings("currentDB").ToString
@@ -89,55 +61,72 @@ Partial Class Logon
     End Sub
 
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
-        Try
-            If WebConfigurationManager.AppSettings("AuthenticateMethod") = "NameOnly" Or txtUsername.Text = "mif" Then
-                CheckTestUser()
-            Else
-                If UserSecurity.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then '  LoginIdentify.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then '  Common.LDAP_Authentication.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then
-                    Dim _Role As String = UserSecurity.Role(txtUsername.Text) '  CommonTCDSB.UserSecurity.Role(txtUsername.Text)
-                    If _Role = "Other" Then
-                        errorlabel.ForeColor = Drawing.Color.Red
-                        errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP") '  "Sorry, You do not have permission to run the TPA"
-                    ElseIf _Role = "Pending" Then
-                        errorlabel.ForeColor = Drawing.Color.Red
-                        errorlabel.Text = WebConfigurationManager.AppSettings("Pending") '  "Sorry, You do not have permission to run the TPA"
 
-                    Else
-                        CreateAuthTicket(_Role)
-                    End If
+        If AuthenticationMethod() = "NameOnly" Then
+            CheckTestUser("Verified")
+        Else
+            Try
+                Dim auth = UserSecurity.AuthenticateResult(txtDomain.Text, txtUsername.Text, txtPassword.Text)
+                If auth = "true" Then '  LoginIdentify.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then '  Common.LDAP_Authentication.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then
+                    CheckAppRole()
                 Else
-                    ' CheckTestUser() '"Authentication did not succeed. Check user name and password.")
-                    errorlabel.ForeColor = Drawing.Color.Red
-                    errorlabel.Text = WebConfigurationManager.AppSettings("LoginMessage") '"Authentication did not succeed. Check user name and password."
-
+                    CheckTestUser(auth) '"Authentication did not succeed. Check user name and password.")
                 End If
+            Catch ex As Exception
+                Dim excep = ex.Message
+                CheckTestUser(excep) '"Authentication did not succeed. Check user name and password.")
+            End Try
+        End If
 
+    End Sub
+    Private Function AuthenticationMethod() As String
+        Dim authMethod As String = WebConfigurationManager.AppSettings("AuthenticateMethod")
+        Dim sName As String = System.Net.Dns.GetHostName()
+        If authMethod = "NameOnly" Then
+            If IsProdutionServer(sName) Then authMethod = "NameOnlyFalse"
+        Else
+            If sName = "0811N0009MC7LC2" And Me.txtUsername.Text = "mif" Then authMethod = "NameOnly"
+        End If
+        Return authMethod
+    End Function
+    Private Function IsProdutionServer(ByVal sName As String) As Boolean
+        Dim appServers As String = WebConfigurationManager.AppSettings("AppServers")
+        If appServers.IndexOf(sName) > -1 Then Return True
+        Return False
+    End Function
+    Private Sub CheckTestUser(ByVal verifyResult As String)
+        If verifyResult = "Verified" Then
+            CheckAppRole()
+        Else
+            errorlabel.ForeColor = Drawing.Color.Red
+            errorlabel.Text = verifyResult ' WebConfigurationManager.AppSettings("LoginMessage")
+        End If
+    End Sub
+    Private Sub CheckAppRole()
+        Try
+            Dim userRole As String = UserSecurity.UserRole(txtUsername.Text) ' CommonTCDSB.UserSecurity.TestUserRole(Me.txtUsername.Text)
+            If userRole = "SAP Profile" Then
+                errorlabel.ForeColor = Drawing.Color.Red
+                errorlabel.Text = WebConfigurationManager.AppSettings("NotAuthorize")  ' "Your SAP Profile is not quailified the LTO position!"
+
+            ElseIf userRole = "Other" Then
+                errorlabel.ForeColor = Drawing.Color.Red
+                errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP") '"Authentication did not succeed. Check user name and password."
+            Else
+                CreateAuthTicket(userRole)
             End If
         Catch ex As Exception
-            'Dim sdk As String = ex.Message
-            ' CheckTestUser() '"Authentication did not succeed. Check user name and password.")
-        End Try
-    End Sub
-    Private Sub CheckTestUser()
-        Dim _Role As String = UserSecurity.Role(txtUsername.Text) ' CommonTCDSB.UserSecurity.TestUserRole(Me.txtUsername.Text)
-        If _Role = "Other" Then
             errorlabel.ForeColor = Drawing.Color.Red
-            errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP") '"Authentication did not succeed. Check user name and password."
-        Else
-            CreateAuthTicket(_Role)
-        End If
-        'If WebConfigurationManager.AppSettings("AuthenticateMethod") = "NameOnly" Then
-        'Else
-        '    errorlabel.ForeColor = Color.Red
-        '    errorlabel.Text = WebConfigurationManager.AppSettings("LoginMessage") '"Authentication did not succeed. Check user name and password."
-        'End If
+            errorlabel.Text = "Database Operation Failed - " + ex.Message
+        End Try
+
     End Sub
     Private Sub CreateAuthTicket(ByVal _role As String)
         Try
 
             WorkingProfile.UserID = Me.txtUsername.Text
             WorkingProfile.UserRole = _role
-            WorkingProfile.LoginRole = WorkingProfile.UserRole
+            WorkingProfile.LoginRole = _role
             WorkingProfile.LoginStatues("Login") = "OnLine"
             WorkingProfile.SchoolCode = Nothing
             WorkingProfile.SchoolName = Nothing
@@ -166,13 +155,11 @@ Partial Class Logon
             If iscookiepersistent Then
                 authCookie.Expires = authTicket.Expiration
             End If
+
             authCookie.HttpOnly = True
-
-
             Response.Cookies.Add(authCookie)
-            ' Session("UserRole") = Me.rbtRool.SelectedValue
+
             Session("ScreenResolution") = Request.Form("txtResolution")
-            '  BasePage.PageTrafficLog("SLIP", txtUsername.Text, Session("ScreenResolution"))
 
             Dim id As System.Security.Principal.GenericIdentity = New System.Security.Principal.GenericIdentity(authTicket.Name, "LdapAuthentication")
 
@@ -182,6 +169,7 @@ Partial Class Logon
             saveEnvrionment(_role)
             LogFile(Me.txtUsername.Text, txtPassword.Text, "Login")
             Response.Redirect(FormsAuthentication.GetRedirectUrl(txtUsername.Text, False), False)
+
         Catch ex As Exception
             Dim sm = ex.StackTrace
 

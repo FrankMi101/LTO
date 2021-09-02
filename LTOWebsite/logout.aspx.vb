@@ -1,8 +1,7 @@
 Imports System.web.Security
-Imports TCDSB.Student
-  
 
-    Partial Class logout
+
+Partial Class logout
         Inherits System.Web.UI.Page
 
 #Region " Web Form Designer Generated Code "

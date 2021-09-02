@@ -250,9 +250,9 @@ Partial Class NoticeToPrincipal2
     Private Function getEmailToList() As String
         Dim EmailToList As String = ""
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
+        Dim selectedPrincipalID = Me.ddlSchoolPrincipal.SelectedValue
 
-
-        EmailToList = EmailNotification.UserProfileByID("TCDSBeMailAddress", hfPrincipalID.Value)
+        EmailToList = EmailNotification.UserProfileByID("TCDSBeMailAddress", selectedPrincipalID)
         EmailToList += EmailNotification.GetMultipleSchoolEmail(schoolyear, hfSchoolCode.Value, hfPositionID.Value)
         'PositionDetails.NoticeToActingPrincipal(Me.hfSchoolyear.Value, Me.hfSchoolCode.Value, Me.hfPositionID.Value)
 
@@ -269,7 +269,7 @@ Partial Class NoticeToPrincipal2
 
 
         Dim _mTo As String = getEmailToList()
-        Dim _mFrom As String = WebConfigValue.getValuebyKey("eMailSender")
+        Dim _mFrom As String = EmailNotification.CheckFromMail(Me.hfPositionType.Value)
         Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
         _mCC = EmailNotification.CheckCCMailOwner(_mCC, Me.TextOwner.Text, User.Identity.Name)
         _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "Posting", appType, "1", Me.TextPositionTitle.Text, schoolcode)
@@ -349,7 +349,10 @@ Partial Class NoticeToPrincipal2
             End With
 
 
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
+
+            If _who = "Staff" Then
+                Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
+            End If
             Dim result = EmailNotification.SendEmail(myEmail)
         Catch ex As Exception
 
@@ -412,6 +415,5 @@ Partial Class NoticeToPrincipal2
         Return eMailFile
 
     End Function
-
 End Class
 

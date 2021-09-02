@@ -64,6 +64,11 @@ namespace AppOperate
             string sp = GetSp("Cancel");
             return CommonExcute<string>.GeneralValue(sp, parameter);
         }
+        public static string Recover(object parameter)
+        {
+            string sp = GetSp("Recover");
+            return CommonExcute<string>.GeneralValue(sp, parameter);
+        }
         public static string RePosting(object parameter)
         {
             string sp = GetSp("RePosting");
@@ -109,6 +114,8 @@ namespace AppOperate
                     return "dbo.tcdsb_LTO_PagePublish_Position" + paraPosition;
                 case "Cancel":
                     return "dbo.tcdsb_LTO_PagePublish_Operation " + parameters + ",@Comments";
+                case "Recover":
+                    return "dbo.tcdsb_LTO_PagePublish_Operation_Recover @UserID,@SchoolYear,@PostingNum,@PositionID";
                 case "RePosting":
                     return "dbo.tcdsb_LTO_PagePublish_OperationReposting" + parameters + ",@Comments,@PostingCycle,@TakeApplicant, @PostingNumber";
                 case "Delete":

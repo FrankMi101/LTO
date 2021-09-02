@@ -150,9 +150,14 @@
                                         <td style="width: 50%">
                                             <a id="A1" runat="server" href='#' style="text-decoration: none; color: Gray">Loading.....</a>
                                         </td>
+                                       
                                         <td style="width: 10%">
 
                                             <a id="aLTOTeacherList" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
+                                        </td> 
+                                        <td style="width: 10%">
+
+                                            <a id="PendingComments" runat="server" href="javascript:openHRPeningList()" >HR Pending Comments</a>
                                         </td>
                                     </tr>
                                 </table>
@@ -214,6 +219,7 @@
                                         <ItemTemplate>
                                             <asp:HyperLink ID="Link3" runat="server" Text='<%# Bind("TeacherName") %>'>  </asp:HyperLink>
                                         </ItemTemplate>
+                                           <ItemStyle Width="150px" />
                                     </asp:TemplateField>
 
 
@@ -339,6 +345,7 @@
                             <asp:HiddenField ID="hdChildFormAction" runat="server" Value="NoAction" />
                             <asp:HiddenField ID="hfInvokePageFrom" runat="server" Value="" />
                             <asp:HiddenField ID="hfUserRole" runat="server" Value="" />
+                            <asp:HiddenField ID="hfSchoolYear" runat="server" Value="" />
                         </td>
                         <td style="width: 50px; text-align: right">
                             <a id="CloseMeLink" runat="server" href="#" class="CloseMe">
@@ -362,7 +369,7 @@
 
         <div id="CommentsDIV" class="commentsHR hide boardPending" style="width: 100%;">
             <iframe id="CommentsiFrame" runat="server" name="CommentsiFrame" scrolling="no" seamless="seamless" style="height: 100%; width: 100%; border: 0px blue solid"
-                src=""></iframe>
+                src="#"></iframe>
 
         </div>
 
@@ -441,14 +448,19 @@
 
             catch (e) { }
 
-
-
         });
 
     }
 
-    function closeHRComments() {
-        $("#CommentsDIV").fadeToggle("fast");
+    function closeHRComments(commentsCount) {
+        if (commentsCount < 1000) {
+          $("#CommentsDIV").fadeToggle("fast");
+        }
+    }
+    function openHRPeningList() {
+        var sYear = $("#hfSchoolYear").val();
+        var pPage = "PDFLoading/PDFDocument_Loading.aspx?rID=HRPendingComments&yID=" + sYear ;
+        window.open(pPage, "", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=yes,resizable=yes");	      
     }
     function openHRComments(schoolyear, cpnum, pending) {
         var goPage = "LTOHRStaffs/HRPendingComments.aspx?SchoolYear=" + schoolyear + "&CPNum=" + cpnum;
@@ -466,8 +478,8 @@
         $("#CommentsDIV").css({
             top: xTop,
             left: xLeft,
-            height: 200,
-            width: 450
+            height: 300,
+            width: 500
         });
         $("#CommentsDIV").fadeToggle("fast");
     }

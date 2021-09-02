@@ -85,7 +85,7 @@ namespace AppOperate
                 case "Position":
                     return "dbo.tcdsb_LTO_PageApply_ApplyingPosition" + " @SchoolYear,@PositionID,@CPNum";
                 case "Applied":
-                    return "dbo.tcdsb_LTO_PageApply_Operation" + parameter;
+                    return "dbo.tcdsb_LTO_PageApply_Operation" + parameter +",@Document";
                 case "Rescind":
                     return "dbo.tcdsb_LTO_PageApply_Operation" + parameter;
                 case "AppliedOnBehalf":

@@ -237,7 +237,7 @@
                                     <asp:BoundField DataField="PositionTitle" HeaderText="Position Title" ItemStyle-CssClass="myTitle">
                                         <ItemStyle Width="8%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="PositionLevel" HeaderText="Mandatory Qualification">
+                                    <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                                         <ItemStyle Width="8%" />
                                     </asp:BoundField>
                                     <asp:BoundField DataField="Qualification" HeaderText="Minimum Qualification ">
@@ -266,8 +266,8 @@
                                         </ItemTemplate>
                                         <ItemStyle Width="2%" />
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="StartDate" ReadOnly="True" ItemStyle-CssClass="myDateS"  Visible="false"/>
-                                    <asp:BoundField DataField="EndDate" ReadOnly="True" ItemStyle-CssClass="myDateE"  Visible="false" />
+                                    <asp:BoundField DataField="StartDate" ReadOnly="True" ItemStyle-CssClass="myDateS"/>
+                                    <asp:BoundField DataField="EndDate" ReadOnly="True" ItemStyle-CssClass="myDateE"/>
                                 </Columns>
 
                                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />

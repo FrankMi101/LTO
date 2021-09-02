@@ -209,7 +209,7 @@
                             <asp:BoundField DataField="PositionTitle" HeaderText="Position Title" ItemStyle-CssClass="EditTitle">
                                 <ItemStyle Width="10%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="PositionLevel" HeaderText="Grade Level">
+                            <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                                 <ItemStyle Width="10%" />
                             </asp:BoundField>
 

@@ -244,7 +244,7 @@ namespace AppOperate
 
         public static void SetLists2(System.Web.UI.WebControls.ListControl myListControl, System.Web.UI.WebControls.ListControl myListControl2, object parameter)
         {
-            string sp = "dbo.tcdsb_LTO_ListSchoolsNew @Operate, @Para0, @Para1, @Para2, @Para3";
+            string sp = "dbo.tcdsb_LTO_ListSchoolsNew  @Operate, @Para0, @Para1, @Para2, @Para3";
             List<List2Item> myListData = GeneralDataAccess.GetListofTypeT<List2Item>(sp, parameter);
             AssemblingSchoolList(myListControl, myListControl2, myListData);
         }

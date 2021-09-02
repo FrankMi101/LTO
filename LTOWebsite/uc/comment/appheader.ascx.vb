@@ -71,17 +71,19 @@ Partial Class appheader
             Dim _lblStr4 As String = ""
             Dim _lblStr5 As String = "&nbsp;&nbsp;&nbsp;&nbsp;" + "  Online Users: " + CType(Application("UsersOnline"), String)
             Dim _lblStr6 As String = ""
+            Dim _lblStr7 As String = ""
             If Not HttpContext.Current.User.Identity.Name = "mif" Then _lblStr5 = ""
 
-            If Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
-                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + "<a title= 'click on the role to change the Login Role ' href='Default_role.aspx' target='mainTop'>" + WorkingProfile.UserRole + "</a>"
+            If Me.hfLoginRole.Value = "Design" Or Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
+                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + "<a title= 'click on the role to change the Login Role ' href='Default_role.aspx' target='mainTop'>" + _Role + "</a>"
             Else
-                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + WorkingProfile.UserRole
+                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + _Role
             End If
-            If Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
+            If Me.hfLoginRole.Value = "Design" Or Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
                 _lblStr6 = "   &nbsp;&nbsp; &nbsp;&nbsp;" + "<a title= 'click on the link to check the LTO/Roster List' href='Default_CheckList.aspx' target='mainTop'>" + "Check OT" + "</a>"
+                _lblStr7 = "   &nbsp;&nbsp; &nbsp;&nbsp;" + "<a title= 'click on the link to view the LTO/Roster PDF List' href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target='_blank'>" + "LTO Teacher List" + "</a>"
             End If
-            Me.Label1.Text = _lblStr1 & _lblStr2 & _lblStr4 & _lblStr5 + _lblStr6
+            Me.Label1.Text = _lblStr1 & _lblStr2 & _lblStr4 & _lblStr5 + _lblStr6 + _lblStr7
 
         Catch ex As Exception
             ' CommonTCDSB.ShowMsg .Exception(ex, Me.Page, "get User Role Profile ")

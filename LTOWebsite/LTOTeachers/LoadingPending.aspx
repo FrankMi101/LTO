@@ -24,8 +24,8 @@
                   
                  <h1  style=" color:red;" >
                      Your current status is Pending. <br /><br />
-                     You are not current eligible to apply to Long Term Assignments.  <br /> <br /> 
-                     If you have any questions, please call your HR Contact.
+                     You are not currently eligible to apply to Long Term Assignments.  <br /> <br /> 
+                     If you have any questions, please reach out to your HR Contact.
                     </h1>
                 </td>
             </tr>

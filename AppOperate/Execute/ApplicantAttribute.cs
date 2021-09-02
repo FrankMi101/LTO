@@ -32,7 +32,7 @@ namespace AppOperate
             catch (Exception ex)
             {
                 string em = ex.StackTrace;
-                throw;
+                throw new Exception();
             }
 
         }
@@ -46,7 +46,7 @@ namespace AppOperate
             catch (Exception ex)
             {
                 string em = ex.StackTrace;
-                throw;
+                throw new Exception();
             }
         }
         public static List<ResumeCoverLetter> ResumeCoverLetterList(object parameter)
@@ -85,6 +85,8 @@ namespace AppOperate
             switch (action)
             {
                 case "OTType":
+                    return "dbo.tcdsb_LTO_PageUser_Attribute" + " @SchoolYear,@Type,@ID";
+                case "Status":
                     return "dbo.tcdsb_LTO_PageUser_Attribute" + " @SchoolYear,@Type,@ID";
                 case "ApplicantProfile":
                     return "dbo.tcdsb_LTO_PageUser_ApplicantProfile" + " @UserID, @CPNum";

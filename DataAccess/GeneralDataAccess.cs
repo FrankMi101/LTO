@@ -1,5 +1,4 @@
 ﻿using ClassLibrary;
-using Dapper;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -10,7 +9,7 @@ namespace DataAccess.Common
 {
     public class GeneralDataAccess
     {
-        static string conSTR = DBConnectionHelper.ConnectionSTR();
+      //  static string conSTR = DBConnectionHelper.ConnectionSTR();
 
         public static List<T> ListofT<T>(string sp, Parameters<T> parameter)
         {

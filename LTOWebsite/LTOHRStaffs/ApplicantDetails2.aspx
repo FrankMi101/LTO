@@ -7,6 +7,10 @@
     <title>Select for interview   </title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
     <style type="text/css">
         body {
             height: 100%;
@@ -17,12 +21,12 @@
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size: x-small;
         }
+        .midtitle {
+            text-wrap:avoid;
+        }
     </style>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
-
+  
     <script type="text/jscript">
 
         function CallBackReloadParent(action, message) {
@@ -49,17 +53,17 @@
                 <tr>
                     <td> <asp:Label ID ="lblPostingNumber" runat="server" Text ="Posting Number:">   </asp:Label>  </td>
                     <td>
-                        <asp:TextBox ID="TextPositionID" runat="server" BackColor="Transparent" Width="100px"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionID" runat="server" BackColor="Transparent" Width="100px" CssClass="editcellLock"></asp:TextBox>
 
 
                     </td>
                     <td class="midtitle">Status:</td>
                     <td>
-                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="60px" CssClass="editcellLock"></asp:TextBox>
                     </td>
                     <td class="midtitle">School Area:</td>
                     <td>
-                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px"></asp:TextBox>
+                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px" CssClass="editcellLock"></asp:TextBox>
                     </td>
                 </tr>
 
@@ -67,43 +71,43 @@
                     <td>School:</td>
                     <td colspan="5">
 
-                        <asp:TextBox ID="TextSchool" runat="server" Height="20px" Width="99%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextSchool" runat="server" Height="20px" Width="99%" BackColor="Transparent" CssClass="editcellLock"></asp:TextBox>
 
                     </td>
                 </tr>
                 <tr>
                     <td>Teacher Name:</td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextTeacherName" runat="server" Height="20px" Width="200px" BackColor="Transparent" Font-Bold="true"></asp:TextBox>
+                        <asp:TextBox ID="TextTeacherName" runat="server" Height="20px" Width="200px" BackColor="Transparent" Font-Bold="true" CssClass="editcellLock"></asp:TextBox>
 
                         &nbsp;</td>
                     <td class="midtitle" colspan="2">Apply
-                        <br />
+                         
                         Date: </td>
 
                     <td>
-                        <asp:TextBox ID="TextApplyDate" runat="server" BackColor="Transparent" Width="99%"></asp:TextBox>
+                        <asp:TextBox ID="TextApplyDate" runat="server" BackColor="Transparent" Width="99%" CssClass="editcellLock"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>Date of Hired:</td>
                     <td>
-                        <asp:TextBox ID="TextHiredDate" runat="server" Height="20px" Width="100px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextHiredDate" runat="server" Height="20px" Width="100px" BackColor="Transparent" CssClass="editcellLock"></asp:TextBox>
 
                     </td>
                     <td class="midtitle">LTO Years/ Months: </td>
                     <td>
-                        <asp:TextBox ID="TextLTOYears" runat="server" Height="20px" Width="100px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextLTOYears" runat="server" Height="20px" Width="100px" BackColor="Transparent" CssClass="editcellLock"></asp:TextBox>
                     </td>
                     <td class="midtitle">OT Days:</td>
                     <td>
-                        <asp:TextBox ID="TextLTODays" runat="server" Height="20px" Width="99%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextLTODays" runat="server" Height="20px" Width="99%" BackColor="Transparent" CssClass="editcellLock"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>Position Title</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionTitle" runat="server" Height="20px" Width="99%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" runat="server" Height="20px" Width="99%" BackColor="Transparent" CssClass="editcellLock"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

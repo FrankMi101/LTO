@@ -33,7 +33,7 @@ Partial Class Default_checkList
         If Not Me.Page.IsPostBack Then
             Try
                 ddlSearchType.SelectedIndex = 0
-
+                hfSchoolYear.Value = WorkingProfile.SchoolYear
             Catch ex As Exception
 
 

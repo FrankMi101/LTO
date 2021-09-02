@@ -193,6 +193,7 @@ namespace AppOperate.Tests
             var result = EmailNotification.CheckCCMail(mCC, who, action, appType, postingCycle, positionTitle, schoolPanel);
             int resultL = result.Length;
             expect = expect.Substring(0, resultL);
+
             //Assert
            // Assert.AreEqual(expect, result, $"CC Email Address for {action} on {appType} to {who}, {result}  ");
             StringAssert.Contains(result, confirmCC, $"CC Email Address for {action} on {appType} to {who}, {result}  ");

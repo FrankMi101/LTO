@@ -7,12 +7,12 @@ function pageLoad(sender, args) {
     $(document).ready(function () {
         MakeStaticHeader("GridView1", 270, 1500, 25, false, 'DivHeaderRow', 'GridView2', 'DivMainContent');
 
-        $('#GridView1 tr').mouseenter(function (event) {
-            if (currentTR !== undefined) { currentTR.removeClass("highlightBoard"); }
-            currentTR = $(this);
-            //  $(this).addClass("highlightBoard");
-            currentTR.addClass("highlightBoard");
-        });
+        //$('#GridView1 tr').mouseenter(function (event) {
+        //    if (currentTR !== undefined) { currentTR.removeClass("highlightBoard"); }
+        //    currentTR = $(this);
+        //    //  $(this).addClass("highlightBoard");
+        //    currentTR.addClass("highlightBoard");
+        //});
 
         var hireState = $('#HiddenFieldHired').val();
         var x = 0;

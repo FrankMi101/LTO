@@ -11,6 +11,7 @@
         body {
             height: 100%;
             width: 100%;
+            margin:2px;
         }
 
         td {
@@ -40,17 +41,19 @@
             color: blue;
         }
 
-        .cursorDefault {
-            cursor: default;
-        }
-
+        
         #ResumePrompt {
             font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
             font-size: 12px;
         }
+
         .highlightButton {
-         font-weight:600;
-         color: green;
+            font-weight: 600;
+            color: green;
+        }
+
+        .readonlytext {
+            border: 1px solid #808080
         }
     </style>
     <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
@@ -112,25 +115,25 @@
                         <asp:Label ID="lblPostingNumber" runat="server">Posting Number: </asp:Label>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextPositionID" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionID" runat="server" BackColor="Transparent" Width="80px" CssClass="readonlytext"></asp:TextBox>
 
 
                     </td>
                     <td class="midtitle">Status:</td>
                     <td>
-                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="60px" CssClass="readonlytext"></asp:TextBox>
 
                     </td>
                     <td class="midtitle">School Area:</td>
                     <td>
-                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px"></asp:TextBox>
+                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px" CssClass="readonlytext"></asp:TextBox>
                     </td>
                 </tr>
 
                 <tr>
                     <td>School:</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextSchool" runat="server" Height="20px" Width="100%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextSchool" runat="server" Height="20px" Width="100%" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
 
                         <%--  <img src="../images/map.png" height="25px" width="25px" />--%>
 
@@ -139,29 +142,29 @@
                 <tr>
                     <td>Address:</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextAddress" runat="server" Height="20px" Width="100%" BackColor="Transparent"></asp:TextBox></td>
+                        <asp:TextBox ID="TextAddress" runat="server" Height="20px" Width="100%" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>School Principal:</td>
                     <td>
-                        <asp:TextBox ID="textPrincipal" runat="server" Height="20px" Width="100px" BackColor="Transparent"></asp:TextBox></td>
+                        <asp:TextBox ID="textPrincipal" runat="server" Height="20px" Width="100px" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox></td>
                     <td class="midtitle" style="width: 120px;">Phone Number:</td>
                     <td>
-                        <asp:TextBox ID="textPhonenumber" runat="server" Height="20px" Width="100px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="textPhonenumber" runat="server" Height="20px" Width="100px" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
                     </td>
                     <td class="midtitle">Start Time:</td>
                     <td>
-                        <asp:TextBox ID="TextStartTime" runat="server" Height="20px" Width="70px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextStartTime" runat="server" Height="20px" Width="70px" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td>Position Title</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionTitle" runat="server" Height="20px" Width="65%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" runat="server" Height="20px" Width="65%" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
                         Panel:
-                        <asp:TextBox ID="TextPanel" runat="server" Height="20px" Width="60px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPanel" runat="server" Height="20px" Width="60px" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
                         FTE:
-                        <asp:TextBox ID="TextFTE" runat="server" Height="20px" Width="50px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextFTE" runat="server" Height="20px" Width="50px" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox>
                     </td>
                 </tr>
                 <tr style="border: 2px solid darkcyan;">
@@ -177,21 +180,21 @@
 
                                 </td>
                                 <td colspan="2">
-                                    <asp:TextBox ID="TextPostionLevel" runat="server" Height="20px" Width="100%" BackColor="Transparent"></asp:TextBox></td>
+                                    <asp:TextBox ID="TextPostionLevel" runat="server" Height="20px" Width="100%" BackColor="Transparent" CssClass="readonlytext"></asp:TextBox></td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td style="width: 43%">Minimum Qualification</td>
-                                <td style="width: 43%">OCT Qualification</td>
+                                <td style="width: 44%">Minimum Qualification</td>
+                                <td style="width: 44%">OCT Qualification</td>
                             </tr>
                             <tr>
-                                <td>Qualification:
+                                <td>Division and Qualification:
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextPostionQualification" runat="server" Height="80px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox ID="TextPostionQualification" runat="server" Height="80px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true" CssClass="readonlytext"></asp:TextBox>
                                 </td>
                                 <td>
-                                    <asp:TextBox ID="TextApplicantQualfication" runat="server" Height="80px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox>
+                                    <asp:TextBox ID="TextApplicantQualfication" runat="server" Height="80px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true" CssClass="readonlytext"></asp:TextBox>
                                 </td>
                             </tr>
                         </table>
@@ -230,21 +233,21 @@
                         <table>
                             <tr>
                                 <td>
-                                    <asp:TextBox ID="TextApplyEndDate" runat="server" BackColor="Transparent" Width="70px"></asp:TextBox>
+                                    <asp:TextBox ID="TextApplyEndDate" runat="server" BackColor="Transparent" Width="70px" CssClass="readonlytext"></asp:TextBox>
                                 </td>
                                 <td class="midtitle" style="width: 90px;">Start Date:</td>
                                 <td>
-                                    <asp:TextBox ID="TextStartDate" runat="server" BackColor="Transparent" Width="70px"></asp:TextBox></td>
+                                    <asp:TextBox ID="TextStartDate" runat="server" BackColor="Transparent" Width="70px" CssClass="readonlytext"></asp:TextBox></td>
                                 <td class="midtitle" style="width: 90px;">End Date:</td>
                                 <td>
-                                    <asp:TextBox ID="TextEndDate" runat="server" BackColor="Transparent" Width="70px"></asp:TextBox></td>
+                                    <asp:TextBox ID="TextEndDate" runat="server" BackColor="Transparent" Width="70px" CssClass="readonlytext"></asp:TextBox></td>
                                 <td class="midtitle" style="width: 90px;">
                                     <asp:Label ID="LabelApplyDate" runat="server" Text="Apply Date:"></asp:Label></td>
                                 <td>
-                                    <asp:TextBox ID="TextApplyDate" runat="server" BackColor="Transparent" Width="70px"></asp:TextBox></td>
+                                    <asp:TextBox ID="TextApplyDate" runat="server" BackColor="Transparent" Width="70px" CssClass="readonlytext"></asp:TextBox></td>
                                 <td class="midtitle" style="width: 120px;">Posting Round: </td>
                                 <td>
-                                    <asp:TextBox ID="TextPostingCycle" runat="server" BackColor="Transparent" Width="50px"></asp:TextBox>
+                                    <asp:TextBox ID="TextPostingCycle" runat="server" BackColor="Transparent" Width="50px" CssClass="readonlytext"></asp:TextBox>
                                 </td>
                             </tr>
 
@@ -256,28 +259,32 @@
                 <tr>
                     <td>Comments:</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextComemnts" runat="server" Height="40px" TextMode="MultiLine" Width="100%" BackColor="#ffffcc"></asp:TextBox></td>
+                        <asp:TextBox ID="TextComemnts" runat="server" Height="40px" TextMode="MultiLine" Width="100%" BackColor="#ffffcc" CssClass="readonlytext"></asp:TextBox></td>
                 </tr>
-                <tr>
-                    <td style="width: 120px; text-wrap: avoid">Home Phone:</td>
-                    <td>
-                        <asp:TextBox ID="TextHomePhone" runat="server" BackColor="#ffffcc" Width="100px"></asp:TextBox>
-
+                <tr style="border: 2px solid darkgrey;">
+                    <td colspan="6">
+                        <table style ="width:100%">
+                            <tr>
+                                <td style=" text-wrap: avoid">Home Phone:</td>
+                                <td>
+                                    <asp:TextBox ID="TextHomePhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext"></asp:TextBox></td>
+                                <td style=" text-wrap: avoid" class="midtitle">Cell Phone:</td>
+                                <td>
+                                    <asp:TextBox ID="TextCellPhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext"></asp:TextBox>
+                                </td>
+                                <td style="text-align: right">Email:</td>
+                                <td style=" text-wrap: avoid" >
+                                    <asp:TextBox ID="TexteMail" runat="server"   Width="200px" ReadOnly="true" CssClass="readonlytext"></asp:TextBox>
+                                    @tcdsb.org
+                                </td>
+                               
+                                <td style="width:10%">
+                                 <asp:Button ID="btnUpdate" runat="server" Text="Update Contact Info" CssClass="cursorDefault" />
+                                </td>
+                            </tr>
+                        </table>
                     </td>
-                    <td class="midtitle">Cell Phone:</td>
-                    <td>
-                        <asp:TextBox ID="TextCellPhone" runat="server" BackColor="#ffffcc" Width="100px"></asp:TextBox>
-                    </td>
-                    <td style="text-align: right">Email:</td>
-                    <td>
-                        <asp:TextBox ID="TexteMail" runat="server" BackColor="#ffffcc" Width="250px"></asp:TextBox>
-
-                    </td>
-
                 </tr>
-
-
-
                 <tr>
                     <td colspan="6" style="text-align: center;">
                         <asp:HiddenField ID="HiddenFieldApply" runat="server" />
@@ -308,15 +315,14 @@
 
 
 
-                        <asp:Button ID="btnApply" runat="server" Text="Apply Position" CssClass="cursorDefault" />
-
+                        <asp:Button ID="btnApply" runat="server" Text="Apply Position"  CssClass="btnRadius"  />
+                         &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;
                         <asp:Label ID="LabelNotQualifyRoster" runat="server" Text="Roster only allow to apply 3rd Round Posting" ForeColor="Red" Font-Bold="true" Visible="false"></asp:Label>
                         <asp:Label ID="LabelNotQualify" runat="server" Text="Only qualified applicant can apply this position" ForeColor="Red" Font-Bold="true" Visible="false"></asp:Label>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="100" CssClass="cursorDefault" />
-                        <asp:Button ID="btnUpdate" runat="server" Text="Update Contact Information" CssClass="cursorDefault" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="100"  CssClass="btnRadius" />
 
                         <a id="onBehalfApply" runat="server" visible="false">Apply on Behalf </a>
-
+                        &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;
                         <asp:Label ID="LabelUploadFile" runat="server" Text="Label"></asp:Label>
                     </td>
 
@@ -325,6 +331,28 @@
                     <td colspan="6"></td>
                 </tr>
             </table>
+        </div>
+        <div id="InActiveMessage" style="visibility: hidden; position: absolute; left: 140px; top: 200px; width: 400px; height: 150px; background-color: skyblue; color: red; border: solid; border-color: blue; border-width: thin">
+            <div style="text-align: right; font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif">
+                <asp:Label ID="Label1" runat="server" Text="X" Font-Size="Medium" ToolTip="Close this Message"></asp:Label>
+
+            </div>
+            <div>
+
+                <b>Attention: Occasional Teacher </b>
+                <br />
+                According to our records, your employee status is currently on a leave of absence. 
+               <%-- and therefore your are currently not eligible to apply. -- remove at 2021-8-27 Request by Mary  --%>
+
+                <asp:Label ID="LabelMessageStatus1" Font-Bold="true" runat="server" Visible="false"></asp:Label>
+
+                Please reach out to your HR Contact for more information or to reactivate your file
+                <a href="anna.arona@tcdsb.org">anna.arona@tcdsb.org </a>or Mary Bertolo at <a href="mary.bertolo@tcdsb.org">mary.bertolo@tcdsb.org</a>
+
+                <br />
+                <br />
+
+            </div>
         </div>
         <div id="PopUpDIVAttentionMessage" style="visibility: hidden; position: absolute; left: 140px; top: 200px; width: 480px; height: 220px; background-color: skyblue; color: red; border: solid; border-color: blue; border-width: thin">
             <div style="text-align: right; font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif">
@@ -335,11 +363,10 @@
 
                 <b>Attention: Occasional Teacher </b>
                 <br />
-
-
-                According to our records, you are currently in an LTO and are not eligible to apply for this assignment.  
-                If this information is not correct, please contact Anna Arona via email at  
-                <a href="anna.arona@tcdsb.org">anna.arona@tcdsb.org </a>or Mary Bertolo at <a href="mary.bertolog@tcdsb.org">mary.bertolog@tcdsb.org</a>
+                According to our records, your current employee status does not allow you to apply to this assignment as it will exceed your full time allocation.  
+                 <asp:Label ID="LabelMessageStatus2" Font-Bold="true" runat="server" Visible="false"></asp:Label>.  
+                Please reach out to your HR Contact for more information.
+                <a href="anna.arona@tcdsb.org">anna.arona@tcdsb.org </a>or Mary Bertolo at <a href="mary.bertolo@tcdsb.org">mary.bertolo@tcdsb.org</a>
 
                 <br />
                 <br />
@@ -381,7 +408,7 @@
         <div id="ResumeCoverLetterDIV" class="bubble hide" style="width: 99%;">
             <div style="height: 22px; margin-top: -2px; background-color: deepskyblue; width: 100%;">
                 <table style="vertical-align: top;">
-                    <tr style="">
+                    <tr>
                         <td style="width: 100%; text-align: center">
                             <div id="popPagetitle" runat="server" style="font-size: medium">Upload Resume and Cover Letter </div>
                         </td>
@@ -389,6 +416,7 @@
                             <asp:HiddenField ID="hdChildFormAction" runat="server" Value="NoAction" />
                             <asp:HiddenField ID="hfInvokePageFrom" runat="server" Value="" />
                             <asp:HiddenField ID="hfUserRole" runat="server" Value="" />
+                            <asp:HiddenField ID="hfStatus" runat="server" Value="" />
                         </td>
                         <td style="text-align: right">
                             <a id="CloseMeLink" runat="server" href="#" style="text-align: right;">
@@ -403,7 +431,6 @@
             </div>
         </div>
         <div id="ResumePrompt" class="bubble hide" style="height: 200px; width: 99%; font-family: Arial; font-size: 14px;">
-         
             You have not submitted a Resume and Cover Letter for this Position yet.
             <br />
             <br />
@@ -412,7 +439,7 @@
                   <asp:RadioButtonList ID="rblResumeChose" runat="server" Font-Size="Small">
                       <asp:ListItem Value="1">Continue Apply without the Resume and Cover Letter</asp:ListItem>
                       <asp:ListItem Value="2">Go to upload the Resume and Cover Letter</asp:ListItem>
-                      <%-- <asp:ListItem Value="3">Using my most recent upload</asp:ListItem>--%>
+                      <asp:ListItem Value="3">Using my most recent upload Resume and Cover Letter</asp:ListItem>
                   </asp:RadioButtonList>
             <br />
             <div style="width: 100%; text-align: center">
@@ -438,11 +465,15 @@
 
         $("#hdChildFormAction", parent.document).val("NoAction");
         $("#btnContinue").prop('disabled', true);
-
         if ($("#hfPositionType").val() == "LTO" && $("#btnApply").val() == "Apply Position") {
-            CheckCurrentAssignment(); // POPMessage();
+            if ($("#hfStatus").val() != "Active") {
+                if ($("#hfStatus").val() == "FTE Exceed") {
+                    CheckCurrentAssignment();
+                }
+                else
+                    POPMessage("InActiveMessage");
+            }
         }
-
         $("#rblResumeChose input").click(function (e) {
             $("#btnContinue").prop('disabled', false);
             $("#btnContinue").addClass("highlightButton");
@@ -499,7 +530,7 @@
 
         $("#lblMessage").click(function (e) {
             if ($("#hfPositionType").val() == "LTO" && $("#btnApply").val() == "Apply Position") {
-                POPMessage();
+                POPMessage("PopUpDIVAttentionMessage");
             }
         });
 
@@ -519,13 +550,9 @@
                         $("#btnApply").click();
                         break;
                     case "2":
-                        // alert("schoolyear=" + parameter.SchoolYear + " CPNum=" + parameter.CPNum + " PositionID =" + parameter.PositionID);
                         openFileUpload("", parameter.SchoolYear, parameter.CPNum, parameter.PositionID);
-
                         break;
-
                     case "3":
-
                         $("#hfUsingMostRecentResume").val("Yes");
                         $("#btnApply").click();
                         break;
@@ -546,8 +573,6 @@
                 var myItem = $("#" + targetItem);
                 var selectedCode = myItem.val();
 
-
-
             } catch (e) {
             }
 
@@ -567,8 +592,10 @@
     });
 
 
-    function POPMessage() {
-        el = document.getElementById("PopUpDIVAttentionMessage");
+    function POPMessage(messageContent) {
+
+        el = document.getElementById(messageContent);// "PopUpDIVAttentionMessage");
+
         el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
         DisableAction = '0';
     }
@@ -593,7 +620,7 @@
             var cFTE = parseFloat(CurrentPosition.FTE) + parseFloat(ApplyPosition.FTE);
             var aFTE = 1.0;
             if (cFTE > aFTE) {
-                POPMessage();
+                POPMessage("PopUpDIVAttentionMessage");
             }
 
         }
@@ -620,7 +647,7 @@
 
         var vTop = 300;
         var vLeft = 100;
-        var vHeight = 150;
+        var vHeight = 180;
         var vWidth = 400;
         $("#ResumePrompt").css({
             top: vTop,
@@ -630,7 +657,7 @@
         })
         $("#ResumePrompt").fadeToggle("fast");
     }
-    // Client Web API call 
+    // Client Web API call
     /*
     function getApplicatCurrentAssignmentStatusWithAPI(applyP) {
 

@@ -62,6 +62,7 @@
     <Compile Include="ExecuteInterface\PostingPublishTests.cs" />
     <Compile Include="ExecuteInterface\PostingRequestTests.cs" />
     <Compile Include="Execute\AllProcessTests.cs" />
+    <Compile Include="Execute\PositionListCheckExeTests.cs" />
     <Compile Include="Execute\StaffManageTests.cs" />
     <Compile Include="Execute\GeneralExeTests.cs" />
     <Compile Include="Execute\PostingPositionExeTests.cs" />

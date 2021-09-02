@@ -18,7 +18,8 @@ namespace ClassLibrary
         public string Email { get; set; }
         public string QualCheck { get; set; }
         public string PostingCycleName { get; set; }
-        public string  UploadFile { get; set; }
+        public string UploadFile { get; set; }
         public string ResumeTitle { get; set; }
+        public string CanApply { get; set; }
     }
 }

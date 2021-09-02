@@ -162,6 +162,7 @@ Partial Class FileUpload
 
 
 
+
                 Dim parameter As ResumeCoverLetter = New ResumeCoverLetter()
                 With parameter
                     .Operate = type

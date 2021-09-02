@@ -8,11 +8,17 @@ namespace AppOperate.Tests
     [TestClass()]
     public class AllProcessTests
     {
-
+        readonly string  _schoolYear = "20212022";
+        readonly string  _schoolCode = "0549";
+        readonly string _dateStart ="2021-09-01";
+        readonly string _dateEnd = "2022-06-30";
+        readonly string _publishDate = DateFC.YMD(DateTime.Now , "-");
+        readonly string _applyDate= DateFC.YMD(DateTime.Now, "-");
         int _requestId = 0;
         int _positionId = 0;
         string _principalId = "";
         string _hiredCpNum = "0000";
+        string _cpNum = "00000000";
         PositionRequesting _request = new PositionRequesting();
         PositionApplying _applyFor = new PositionApplying();
 
@@ -102,10 +108,10 @@ namespace AppOperate.Tests
             NewPosition request = new NewPosition()
             {
                 Operate = "New",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = "0",
                 PositionType = "LTO",
-                SchoolCode = "0549",
+                SchoolCode = _schoolCode,
                 UserID = "mif"
             };
             //Act 
@@ -126,7 +132,7 @@ namespace AppOperate.Tests
             //Arrange
             var parameterForRequest = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _requestId.ToString()
             };
 
@@ -146,8 +152,8 @@ namespace AppOperate.Tests
             {
                 Operate = "Update",
                 UserID = "mif",
-                SchoolYear = "20192020",
-                SchoolCode = "0549",
+                SchoolYear = _schoolYear,
+                SchoolCode = _schoolCode,
                 PositionID = _requestId,
                 Comments = "Test request posting Update function by new",
                 PositionType = "LTO",
@@ -158,8 +164,8 @@ namespace AppOperate.Tests
                 Description = "Biology; Science; Science - General; full time position need senior level",
                 FTE = 1.00M,
                 FTEPanel = "Full",
-                StartDate = DateFC.YMD2("2019/09/01"),
-                EndDate = DateFC.YMD2("2020/06/30"),
+                StartDate = DateFC.YMD2(_dateStart),
+                EndDate = DateFC.YMD2(_dateEnd),
                 ReplaceTeacher = "replace teachername",
                 ReplaceTeacherID = "00019103",
                 ReplaceReason = "6",
@@ -183,23 +189,23 @@ namespace AppOperate.Tests
             //Arrange        
             var parameter = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _requestId.ToString() // create new request
             };
 
             var parameterForDeadline = new
             {
-                SchoolYear = "20192020",
-                DatePublish = "2019/11/12",
+                SchoolYear = _schoolYear,
+                DatePublish = _publishDate,
                 PositionType = "LTO"
             };
             var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
             requestPosition.Comments = "Posting school request post position test process";
-            requestPosition.CPNum = "00000000";
-            requestPosition.StartDate = "2019/09/03";
-            requestPosition.EndDate = "2020/06/30";
-            requestPosition.DatePublish = "2019/11/11";
-            requestPosition.DateApplyOpen = "2019/11/12";
+            requestPosition.CPNum = _cpNum;
+            requestPosition.StartDate = _dateStart;
+            requestPosition.EndDate = _dateEnd;
+            requestPosition.DatePublish = _publishDate;
+            requestPosition.DateApplyOpen = _applyDate;
             requestPosition.DateApplyClose = PublishPositionExe.Deadline(parameterForDeadline);
 
             //Act
@@ -228,8 +234,8 @@ namespace AppOperate.Tests
             var paraApply = new
             {
                 PositionID = _positionId,
-                SchoolYear = "20192020",
-                CPNum = "000000000"
+                SchoolYear = _schoolYear,
+                CPNum = _cpNum
             };
 
 
@@ -255,11 +261,11 @@ namespace AppOperate.Tests
             ApplicantRandom parameter = new ApplicantRandom()
             {
                 Operate = "Apply",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId.ToString(),
                 PositionType = "LTO",
                 PostingCycle = "1",
-                CPNum = "000000000"
+                CPNum = _cpNum
             };
 
             for (int i = 0; i < 10; i++)
@@ -284,7 +290,7 @@ namespace AppOperate.Tests
             paraForApply.Operate = "Apply";
             paraForApply.Action = "Applied";
             paraForApply.Comments = applicantName + " applying for this positng by Full Test processs";
-            paraForApply.SchoolYear = "20192020";
+            paraForApply.SchoolYear = _schoolYear;
             paraForApply.CPNum = cpnum;
             paraForApply.PositionID = _positionId.ToString();
             paraForApply.UserID = userID;
@@ -295,6 +301,8 @@ namespace AppOperate.Tests
 
             //Assert
             Assert.AreEqual(expect, result, $" apply applicant  { applicantName}  ");
+
+         
         }
         private string Step7_SelectInterviewCandidats()
         {
@@ -304,23 +312,23 @@ namespace AppOperate.Tests
             ParametersForOperation interviewcanddate = new ParametersForOperation()
             {
                 Operate = "SelectForInterview",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId,
                 PositionType = "LTO",
-                SchoolCode = "0549",
+                SchoolCode = _schoolCode,
                 UserID = "mif",
-                CPNum = "000000000",
+                CPNum = _cpNum,
                 Action = "1"
             };
 
             ApplicantRandom random = new ApplicantRandom()
             {
                 Operate = "Candidate",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId.ToString(),
                 PositionType = "LTO",
                 PostingCycle = "1",
-                CPNum = "000000000"
+                CPNum = _cpNum
             };
 
             //Act 
@@ -353,7 +361,7 @@ namespace AppOperate.Tests
             {
                 Operate = "Notice Update",
                 UserID = "mif",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId.ToString(),
                 NoticeDate = DateFC.YMD(DateTime.Now),
                 PrincipalID = _principalId
@@ -379,10 +387,10 @@ namespace AppOperate.Tests
             InterviewResult outcome = new InterviewResult()
             {
                 Operate = "Update",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId.ToString(),
                 UserID = _principalId,
-                CPNum = "000000",
+                CPNum = _cpNum,
                 Acceptance = "1",
                 OutCome = "6", // interview
                 Recommendation = "Principal interview comments from full testing process interview step 9",
@@ -392,7 +400,7 @@ namespace AppOperate.Tests
 
             var parameter = new
             {   Operate = "IncludeAll",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId
             };
 
@@ -427,10 +435,10 @@ namespace AppOperate.Tests
             InterviewResult outcome = new InterviewResult()
             {
                 Operate = "Recommend",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId.ToString(),
                 UserID = _principalId,
-                CPNum = "000000",
+                CPNum = _cpNum,
                 Acceptance = "1",
                 OutCome = "6", // interview
                 Recommendation = "Principal interview comments from full testing process interview step 9",
@@ -441,7 +449,7 @@ namespace AppOperate.Tests
             var parameter = new
             {
                 Operate = "",
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId
             };
 
@@ -472,7 +480,7 @@ namespace AppOperate.Tests
             //Arrange 
             var parameter = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId,
                 CPNum = _hiredCpNum
             };
@@ -486,7 +494,7 @@ namespace AppOperate.Tests
             {
                 Operate = "ConfirmHire",
                 UserID = "mif",
-                SchoolYear ="20192020",
+                SchoolYear = _schoolYear,
                 Comments = $"Auto testing Hired the person { position.TeacherName  } to this { position.PositionTitle } by Full test process ",
                 PositionID = position.PositionID,
                 PositionType = position.PositionType,
@@ -518,7 +526,7 @@ namespace AppOperate.Tests
             //Arrange 
             var parameter = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId,
                 CPNum = _hiredCpNum,
             };
@@ -549,7 +557,7 @@ namespace AppOperate.Tests
             //Arrange 
             var parameter = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = _schoolYear,
                 PositionID = _positionId,
                 CPNum = _hiredCpNum
             };

@@ -52,6 +52,10 @@ Partial Class PDFDocument_Print
                     myParas.Add(ReportRenderC.GetParameter(1, "SchoolYear", schoolyear))
                     myParas.Add(ReportRenderC.GetParameter(2, "CPNum", CPNum))
                     myParas.Add(ReportRenderC.GetParameter(3, "SessionID", sID))
+                Case "HRPendingComments"
+
+                    myParas.Add(ReportRenderC.GetParameter(0, "UserID", userID))
+                    myParas.Add(ReportRenderC.GetParameter(1, "SchoolYear", schoolyear))
 
                 Case Else
 

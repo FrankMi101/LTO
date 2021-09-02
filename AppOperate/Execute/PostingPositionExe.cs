@@ -55,7 +55,7 @@ namespace AppOperate
         private static string GetSPInClass(string action)
         {
             string parameters = " @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments";
-            string parameter2 = ",@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource";
+            string parameter2 = ",@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource,@Qualification,@QualificationCode";
             string parameter3 = ",@PositionLevel,@Qualification,@QualificationCode,@Description,@FTE,@FTEPanel,@StartDate,@EndDate,@Owner,@ReplaceTeacherID";
             string ParaPosition = " @SchoolYear,@PositionID";
             string ParaPositions = " @Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy,@SearchValue1,@SearchValue2";

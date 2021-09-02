@@ -113,7 +113,7 @@ namespace AppOperate.Tests
             //Arrange
             string iDate = "12/08/2010";
             DateTime tDate = Convert.ToDateTime(iDate);
-            string expect = "8";
+            string expect = "10";
 
             // Act                                        
             var result = DateFC.Age(tDate).ToString();
@@ -193,7 +193,7 @@ namespace AppOperate.Tests
             string expect = "20192020";
 
             // Act                                        
-            var result = DateFC.YearTOGO("Next", cschoolyear);
+            var result = DateFC.YearTOGO("Next", 10, cschoolyear);
 
             //Assert
             Assert.AreEqual(expect, result, $"school year Go Next, {result}");
@@ -208,7 +208,7 @@ namespace AppOperate.Tests
             string expect = "20172018";
 
             // Act                                        
-            var result = DateFC.YearTOGO("Pre", cschoolyear);
+            var result = DateFC.YearTOGO("Pre", 10, cschoolyear);
 
             //Assert
             Assert.AreEqual(expect, result, $"school year Go Previous, {result}");

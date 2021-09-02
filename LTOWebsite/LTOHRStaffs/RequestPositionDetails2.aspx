@@ -24,7 +24,7 @@
 
     <style>
         body {
-            width: 99%;
+            width: 98%;
         }
 
         .ReadOnlyCell {
@@ -55,8 +55,20 @@
         .InvalidCell {
             border: 2px solid red;
         }
+
         .ButonHidden {
-            display:none;
+            display: none;
+        }
+
+        #CancelDIV {
+            font-family: Arial;
+            font-size: small;
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: url(../images/BlueDIVList.png);
+            border: 3px outset skyblue;
         }
     </style>
     <script type="text/javascript">
@@ -76,11 +88,6 @@
                 $("#PopUpDIV", parent.document).fadeToggle("fast");
                 $("#PositionDetailDIV", parent.document).fadeToggle("fast");
                 // top.opener.location.reload(true);
-
-
-
-
-
             }
             catch (e) {
             }
@@ -120,9 +127,9 @@
                         <asp:TextBox ID="TextLinkPositionID" runat="server" Width="50px" ReadOnly="true" ForeColor="WhiteSmoke"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
                     Status: 
-                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Width="70px"></asp:TextBox>
+                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Width="70px" CssClass="editcellLock"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp; Request Source: 
-                        <asp:TextBox ID="TextSource" runat="server" BackColor="Transparent" Width="60px"></asp:TextBox>
+                        <asp:TextBox ID="TextSource" runat="server" BackColor="Transparent" Width="60px" CssClass="editcellLock"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;  Position Owner: 
                            <asp:DropDownList ID="ddlHRStaff" runat="server" Width="120px" CssClass="editcell"></asp:DropDownList>
                     </td>
@@ -144,7 +151,7 @@
 
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="99%" TextMode="MultiLine" CssClass="editcell"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="99%" TextMode="MultiLine" CssClass="editcell editArea"></asp:TextBox>
 
                     </td>
                 </tr>
@@ -156,7 +163,7 @@
                     <td colspan="6">
                         <table>
                             <tr>
-                                <td>Grade    </td>
+                                <td>Division Required    </td>
                                 <td style="width: 230px">
                                     <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell">
                                         <asp:ListItem Value="BC013E">Intermediate</asp:ListItem>
@@ -197,7 +204,7 @@
                     </td>
                     <td colspan="5">
                         <b>
-                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 100%" class="editcellLock" />
+                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 99%" class="editcellLock" />
                         </b>
                     </td>
                 </tr>
@@ -206,7 +213,7 @@
 
                     <td colspan="6">
 
-                        <div style="overflow: auto; width: 100%; height: 200px">
+                        <div id="cblQualficationDIV" runat="server" style="overflow: auto; width: 100%; height: 50px">
                             <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical" CssClass="editcell" Width="100%">
                                 <asp:ListItem>item1</asp:ListItem>
                                 <asp:ListItem>item2</asp:ListItem>
@@ -298,8 +305,7 @@
                             </tr>
                             <tr>
 
-                                <td colspan="2">
-                                    <asp:CheckBox ID="chbCancel" runat="server" Visible="false" Checked="false" Text="Cancel and Recover Previous posting" ForeColor="red" /></td>
+                                <td colspan="2"></td>
 
                                 <td></td>
                                 <td class="midtitle">Deadline to Apply:</td>
@@ -345,26 +351,28 @@
                 <tr>
 
                     <td colspan="6" style="text-align: center;">
-                        <table style ="width:100%">
+                        <table style="width: 100%">
                             <tr>
                                 <td style="width: 80%">
 
                                     <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px" />
                                     &nbsp;&nbsp; 
-                        <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px" />
+                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px" />
                                     &nbsp;&nbsp; 
-                          <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px" />
+                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px" />
                                     &nbsp;&nbsp;  
-                           <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />
+                                     <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />
                                     &nbsp;&nbsp;                         
-                        <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />
+                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />
                                     &nbsp;&nbsp; 
-                               <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px" />
-                                 
+                                    <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px" />
+                                    &nbsp;&nbsp; 
+                                    <asp:Button ID="btnRecover" runat="server" TabIndex="115" Text="Recover" Width="100px" Visible="false" />
+
                                     <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="1px" Width="1px" CssClass="ButonHidden" />
                                 </td>
-                                <td style="text-align:left;">
-                                    <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" /><br /> 
+                                <td style="text-align: left;">
+                                    <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" /><br />
                                     <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true" />
                                 </td>
                             </tr>
@@ -426,7 +434,30 @@
                  <asp:Button ID="ButtonCancel" runat="server" Text="Cancel" />
             </div>
         </div>
+        <div id="CancelDIV">
+            <div style="text-align: center">
 
+                <h2 style="height: 30px; margin-bottom: -5px;">Cancel posting</h2>
+
+
+                <div style="color: red;">
+                    You must provide cancel comments before you can cancel a posting.
+                </div>
+
+                <div style="text-align: left; margin-top: 15px;">
+                    Cancel Comments:  
+                </div>
+                <asp:TextBox ID="cancelComments" runat="server" Width="98%" TextMode="MultiLine" CssClass="editcell" Font-Size="Small" Height="150px"></asp:TextBox>
+                <div style="text-align: left; margin-top: 5px;">
+                    <asp:CheckBox ID="chbCancel" runat="server" Visible="false" Checked="false" Text="Cancel and Recover Previous posting" ForeColor="red" />
+                </div>
+
+                <div style="text-align: center; margin-top: 10px;">
+                    <asp:Button ID="ButtonGoCancel" runat="server" Text="Save& Submit" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:Button ID="ButtonExitCancel" runat="server" Text="Cancel" />
+                </div>
+            </div>
+        </div>
     </form>
 
 </body>
@@ -488,7 +519,9 @@
     function pageLoad(sender, args) {
         $(document).ready(function () {
             $('#TextQualification').attr('readonly', true);
+            $('#CancelDIV').hide();
             $('#FTECell').hide();
+
             if ($('#TextFTE').val() != '') {
                 $('#FTECell').show();
             }
@@ -546,10 +579,7 @@
                 $("#hdChildFormAction", parent.document).val("ChangeAction");
             });
 
-            $("#ButtonCancel").click(function (e) {
-                $("#RepostingDIV").fadeToggle("slow");
-                return false;
-            });
+
 
             $("#rblFTE input").click(function (e) {
                 try {
@@ -632,12 +662,43 @@
 
 
             $("#btnUnpublish").click(function (e) {
-                var result = confirm("Are you sure, you want to Cancel this posting ?");
-                if (result) {
-                    $("#HiddenFieldAction", parent.document).val("Yes");
-                    return true;
-                } else
+                try {
+
+                    $("#CancelDIV").css({
+                        top: 200, //mouse_y + 10,
+                        left: 150, // mouse_x - (vWidth + 15),
+                        height: 300,
+                        width: 500
+
+                    })
+
+                    $("#CancelDIV").fadeToggle("slow");
                     return false;
+                } catch (e) {
+                }
+            });
+            $("#ButtonExitCancel").click(function (e) {
+                $("#CancelDIV").hide();
+                return false;
+            })
+            $("#ButtonGoCancel").click(function (e) {
+                var cancelcomment = $("#cancelComments").val();
+                if (cancelcomment.length < 5) {
+                    alert("Please provide cancel comments!")
+                    return false;
+                }
+                else {
+
+                    var result = confirm("Are you sure, you want to Cancel this posting ?");
+                    if (result) {
+                        $("#HiddenFieldAction", parent.document).val("Yes");
+                        var comments = $("#cancelComments").val(); // $("#TextPostedComment").val() + "\n" + $("#cancelComments").val();
+                        $("#TextPostedComment").val(comments);
+                        $("#hdChildFormAction", parent.document).val("ChangeAction");
+                        return true;
+                    } else
+                        return false;
+                }
             });
 
             $("#cblQualification input").click(function (e) {
@@ -682,6 +743,7 @@
     }
     function onSuccess(result) {
         if (result == "Invalid Date") {
+
             window.alert(result);
             if (actionControl == "PublishDate") { $('#datePublish').addClass("InvalidCell"); }
             $("#dateDeadline").addClass("InvalidCell");
@@ -788,6 +850,8 @@
         var minD = new Date($("#hfSchoolyearStartDate").val());
         var maxD = new Date($("#hfSchoolyearEndDate").val());
 
+        // alert(minD);
+        // alert(maxD);
         JDatePicker.Initial($("#dateStart"), minD, maxD, value);
         JDatePicker.Initial($("#dateEnd"), minD, maxD);
 

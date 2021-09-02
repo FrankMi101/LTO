@@ -2,8 +2,7 @@
 'Imports System.Data.SqlClient
 Imports AppOperate
 Imports ClassLibrary
-Imports GemBox.Spreadsheet
-Imports Microsoft.Office.Interop
+
 Partial Class RequestPositionList2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\appList.json")

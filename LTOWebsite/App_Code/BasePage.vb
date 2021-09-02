@@ -139,17 +139,10 @@ Public Class BasePage
         End Try
     End Function
     Public Shared Function SchoolPanel(ByVal schoolcode As String) As String
-        Try
-            Dim elementaryPanel As String = WebConfigValue.getValuebyKey("ElementaryPanel")
-
-            If elementaryPanel.IndexOf(Left(schoolcode, 2)) = -1 Then
-                Return "S"
-            Else
-                Return "E"
-            End If
-        Catch ex As Exception
-            Return "E"
-        End Try
+        Return DataTools.SchoolPanel(schoolcode)
+    End Function
+    Public Shared Function EmailCheck(ByVal email As String) As String
+        Return DataTools.CheckEmail(email)
     End Function
 End Class
 

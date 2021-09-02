@@ -68,6 +68,9 @@ Partial Class ApplyPositionList2Applied
                     .Para3 = "%"
                 End With
                 AssembleListItem.SetObjLists(Me.combobox, parameter)
+                AssembleListItem.SetObjValue(Me.combobox, WorkingProfile.UserCPNum)
+                SearchForListValue1.Value = WorkingProfile.UserCPNum
+
             Else
                 Me.btApplicant.Visible = False
                 Me.ddlappType.Visible = False
@@ -103,8 +106,6 @@ Partial Class ApplyPositionList2Applied
         Return sList
     End Function
 
-
-
     Protected Sub btnSearch_Click(sender As Object, e As System.EventArgs) Handles btnSearch.Click
         BindGridData()
     End Sub
@@ -116,5 +117,10 @@ Partial Class ApplyPositionList2Applied
         '    setupApplicatList()
     End Sub
 
+    Private Sub combobox_ServerChange(sender As Object, e As EventArgs) Handles combobox.ServerChange
+        Dim index As Integer = combobox.SelectedIndex
+        WorkingProfile.UserCPNum = combobox.Items(index).Value
+        HiddenFieldTeacherCPNum.Value = combobox.Items(index).Value
+    End Sub
 End Class
 

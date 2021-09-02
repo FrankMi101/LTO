@@ -242,6 +242,37 @@ namespace AppOperate
                     rSchoolyear = preYear.ToString() + goYear.ToString();
                 }
                 return rSchoolyear;
+            }
+            catch
+            {
+                return cSchoolYear;
+            }
+        }
+        public static string YearTOGO(string strType, int cMonth, string cSchoolYear)
+        {
+            try
+            {
+                int thisYear = 2000;
+                string rSchoolyear = "";
+                DateTime vDate = DateTime.Now;
+                var vMM = vDate.Month;
+                if (cMonth < 10)
+                    thisYear = int.Parse(cSchoolYear.Substring(0, 4));
+                else
+                    thisYear = int.Parse(cSchoolYear.Substring(4, 4));
+                int goYear = 0;
+                if (strType == "Next")
+                {
+                    goYear = thisYear + 1;
+                    rSchoolyear = thisYear.ToString() + goYear.ToString();
+                }
+                else
+                {
+                    goYear = thisYear - 1;
+                    var preYear = goYear - 1;
+                    rSchoolyear = preYear.ToString() + goYear.ToString();
+                }
+                return rSchoolyear;
 
             }
 
@@ -250,7 +281,6 @@ namespace AppOperate
                 return cSchoolYear;
             }
         }
-
         public static string CurrentYearString()
         {
             DateTime now = DateTime.Today;

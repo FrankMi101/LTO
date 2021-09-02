@@ -36,4 +36,4 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyFileVersion("1.0.0.0")]
 [assembly: InternalsVisibleTo("AppOperate.Tests")]
 [assembly: InternalsVisibleTo("AppOperate.Explorables")]
-
+[assembly: InternalsVisibleTo("AppOperate.Tests1")]

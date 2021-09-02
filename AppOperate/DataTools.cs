@@ -55,10 +55,29 @@ namespace AppOperate
         public static string SchoolPanel(string schoolCode)
         {
             string elementaryPanel = WebConfigValue.getValuebyKey("ElementaryPanel");
-            if (elementaryPanel.IndexOf(schoolCode.Substring(0, 2)) == -1 )
+            if (schoolCode.Substring(0, 2) == "05")
             { return "S"; }
+            else if (elementaryPanel.IndexOf(schoolCode.Substring(0, 2)) == -1 )
+            { return "D"; }
             else
             { return "E"; }
+        }
+        public static string CheckEmail(string email)
+        {
+            try
+            {
+                if (!email.Contains("@"))
+                {
+                   return email + "@tcdsb.org";
+                }
+                else
+                   return email;
+            }
+            catch (Exception ex)
+            {
+                return email;
+               // throw ex;
+            }
         }
     }
 }

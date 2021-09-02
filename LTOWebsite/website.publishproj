@@ -54,10 +54,6 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <Project>{4BED9110-E807-43AD-9CF0-8B0D15F63B33}</Project>
       <Name>DataAccess</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LTOData\LTOData.vbproj">
-      <Project>{65E0C35F-E8CE-4D1C-A1E9-6F504DCBB6A6}</Project>
-      <Name>LTOData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
 </Project>

@@ -30,6 +30,8 @@ Partial Class LTOTeachers_FileShow
                 Dim fileType As String = result(0).FileType
                 Dim fileName As String = result(0).FileName
                 Dim fileContent As Byte() = result(0).FileContent
+
+
                 ReportRenderC.RenderReport(fileName, fileType, fileContent)
 
             Catch ex As Exception

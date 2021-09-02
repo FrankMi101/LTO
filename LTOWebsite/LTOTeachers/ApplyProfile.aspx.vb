@@ -96,7 +96,7 @@ Partial Class ApplyProfile
             .CPNum = WorkingProfile.UserCPNum
             .HomePhone = Me.TextHomePhone.Text
             .CellPhone = Me.TextCellPhone.Text
-            .Email = Me.TexteMail.Text
+            .Email = BasePage.EmailCheck(Me.TexteMail.Text)
         End With
         '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "ContactInfo")
         Dim result = ApplyProcessExe.UpdateContact(parameter) ' CommonExcute(Of ApplicantContact).GeneralValue(SP, parameter) '  CommonOperationExcute.ApplicantContactUpdate(parameter, "ContactInfo")

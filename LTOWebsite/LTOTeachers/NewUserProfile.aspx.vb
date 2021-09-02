@@ -92,7 +92,7 @@ Partial Class NewUserProfile
             Me.LabelOCTQualification.Text = BasePage.getMyValue(staff.Qualification)
             Me.LabelCurrentStatus.Text = BasePage.getMyValue(staff.OTType)
             '  Me.hfSchoolCode.Value = BasePage.getMyValue(staff.)
-            Me.TextHRComments.Text = BasePage.getMyValue(staff.Comments)
+            Me.TextHRComments.Text = HttpContext.Current.Server.HtmlDecode(BasePage.getMyValue(staff.Comments))
             If LabelTeacherName.Text = "" Then
                 btnAction.Enabled = False
                 btnAction2.Enabled = False
@@ -166,7 +166,7 @@ Partial Class NewUserProfile
             .UserID = User.Identity.Name
             .CPNum = Page.Request.QueryString("CPNum")
             .Action = action
-            .Comments = TextHRComments.Text
+            .Comments = HttpContext.Current.Server.HtmlEncode(TextHRComments.Text)
             .IDs = hfCommentsIDs.Value
             .CommentsDate = LabelCommentDate.Text
             .Ranking = Me.TextRanking.Text
@@ -243,8 +243,7 @@ Partial Class NewUserProfile
             hfCommentsIDs.Value = comment.IDs
             Me.LabelCommentBy.Text = comment.CommentsBy
             Me.LabelCommentDate.Text = comment.CommentsDate
-            Me.TextHRComments.Text = comment.Comments
-
+            Me.TextHRComments.Text = HttpContext.Current.Server.HtmlDecode(comment.Comments)
         Catch ex As Exception
             Dim sm = ex.Message
 

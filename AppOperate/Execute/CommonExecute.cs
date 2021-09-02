@@ -233,18 +233,19 @@ namespace AppOperate
         {
             try
             {
-                //  IListRepository<Employee2, string> repository = Factory.Get<CommonList<T>>();
-                var mylist = new CommonList<T>();
-                // var mylist = Factory.Get<CommonList<T>>(); Does not work;
-                return mylist.GeneralListOfT(SP, parameter); //  .IGeneralListOfT(SP, parameter);
+                return   MyDapper.EasyDataAccess<T>.ListOfT(SP, parameter);
+
+                ////  IListRepository<Employee2, string> repository = Factory.Get<CommonList<T>>();
+                //var mylist = new CommonList<T>();
+                //// var mylist = Factory.Get<CommonList<T>>(); Does not work;
+                //return mylist.GeneralListOfT(SP, parameter); //  .IGeneralListOfT(SP, parameter);
 
             }
-            catch
+            catch (System.Exception ex)
             {
-                throw;
+                var em = ex.Message;
+                throw ex;
             }
-
-
         }
         public static List<T> GeneralList(string cPage, string action, object parameter)
         {
@@ -256,9 +257,9 @@ namespace AppOperate
                 var SP = CommonExcute.SPNameAndParameters(SPFile, cPage, action);
                 return mylist.GeneralListOfT(SP, parameter);
             }
-            catch
+            catch (System.Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
@@ -272,21 +273,32 @@ namespace AppOperate
 
         public static string GeneralValue(string SP, T parameter)
         {
-            var myval = new CommonOperation<T>();
-            //  var myval =  Factory.Get<CommonOperation<T>>();  Does not work;
-            return myval.GeneralValue(SP, parameter);
+            try
+            {
+                return MyDapper.EasyDataAccess<string>.ValueOfT(SP, parameter);
+
+                //var myval = new CommonOperation<T>();
+                ////  var myval =  Factory.Get<CommonOperation<T>>();  Does not work;
+                //return myval.GeneralValue(SP, parameter);
+            }
+            catch (System.Exception ex)
+            {
+                throw ex;
+            }       
         }
         public static string GeneralValue(string SP, object parameter)
         {
             try
             {
-                var myval = new CommonOperation<T>();
-                //  var myval =  Factory.Get<CommonOperation<T>>();  Does not work;
-                return myval.GeneralValue(SP, parameter);
+                return MyDapper.EasyDataAccess<string>.ValueOfT(SP, parameter);
+
+                //var myval = new CommonOperation<T>();
+                ////  var myval =  Factory.Get<CommonOperation<T>>();  Does not work;
+                //return myval.GeneralValue(SP, parameter);
             }
-            catch
+            catch(System.Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
         public static string GeneralValue(string cPage, string action, T parameter)
@@ -309,12 +321,12 @@ namespace AppOperate
             {
                 var myval = new CommonOperation<T>();
                 //  var myval =  Factory.Get<CommonOperation<T>>();  Does not work;
-                return myval.GeneralValueOfT(SP, parameter);
+               return myval.GeneralValueOfT(SP, parameter);
 
             }
-            catch
+            catch (System.Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
     }

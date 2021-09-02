@@ -21,7 +21,7 @@ namespace AppOperate.Tests
             string operate = searchby[0];// "School"; 
             string para0 = "mif";
             string para1 = "20192020";
-            int expect = 313;
+            int expect = 332;
             //Act
             AssembleListItem.SetSearchList(myDDLlist, operate, para0, para1);
             //Assert
@@ -36,7 +36,7 @@ namespace AppOperate.Tests
             string operate = searchby[2];// "School"; 
             string para0 = "mif";
             string para1 = "20192020";
-            int expect = 11;
+            int expect = 9;
             //Act
             AssembleListItem.SetSearchList(myDDLlist, operate, para0, para1);
             var result = myDDLlist.Items.Count;
@@ -69,7 +69,7 @@ namespace AppOperate.Tests
             string operate = searchby[4];// "School"; 
             string para0 = "mif";
             string para1 = "20192020";
-            string expect = "New Posting";
+            string expect = "More Interview";
 
             //Act
             AssembleListItem.SetSearchList(myDDLlist, operate, para0, para1);

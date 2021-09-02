@@ -51,6 +51,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="DataToolsTests.cs" />
     <Compile Include="DateFCTests.cs" />
     <Compile Include="EmailNotificationTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

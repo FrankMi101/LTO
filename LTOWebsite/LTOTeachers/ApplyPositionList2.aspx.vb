@@ -29,25 +29,38 @@ Partial Class ApplyPositionList2
             If _sID <> Nothing Then Session("SchoolCode") = _sID
             ' Me.HiddenFieldUserRole.Value = WorkingProfile.UserRole
 
+
+
             Dim roleShow As String = WorkingProfile.UserRole
             '  roleShow = roleShow.Replace("Director", "Associate Director")
             If WorkingProfile.UserRole = "Roster" Then Me.aLTOTeacherList.Visible = False
 
             '  Me.SuperAreaRow.Visible = False
-
-            If Not Page.Request.QueryString("CPNum") = Nothing Then
-                WorkingProfile.UserCPNum = Page.Request.QueryString("CPNum")
+            Dim CPNum As String = Page.Request.QueryString("CPNum")
+            If Not CPNum = Nothing Then
+                WorkingProfile.UserCPNum = CPNum
+            Else
+                CPNum = WorkingProfile.UserCPNum
             End If
+            hfAutoCompletSelectedID.Value = CPNum
+
             If User.Identity.Name = "mif" Then
                 Me.ddlappType.Visible = True
             Else
                 Me.ddlappType.Visible = False
             End If
+            Dim parameter = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = CPNum}
 
-            BindDDLList()
-            BindGridData()
+            Dim OTStatus = ApplicantAttribute.OTType(parameter)
+
+            Dim appType As String = WorkingProfile.ApplicationType
+            If OTStatus = "Pending" And appType.ToUpper() = "LTO" Then
+                Page.Response.Redirect("LoadingPending.aspx")
+            Else
+                BindDDLList()
+                BindGridData()
+            End If
         End If
-
     End Sub
     Private Sub BindDDLList()
 
@@ -101,7 +114,7 @@ Partial Class ApplyPositionList2
     Private Function getDataSource() As List(Of PositionListApplying)
         Dim searchby As String = SearchType.Value
         Dim searchValue1 As String = SearchForListValue1.Value 'Me.ddlSearchbyValue.SelectedValue
-        Dim CPNum As String = WorkingProfile.UserCPNum
+        Dim CPNum As String = hfAutoCompletSelectedID.Value
         Dim parameters = CommonParameter.GetParameters("Get", User.Identity.Name, WorkingProfile.SchoolYear, Me.ddlappType.SelectedValue, searchby, searchValue1, WorkingProfile.UserRole, CPNum)
 
         '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "Positions")  '  CommonListExecute(Of PositionListApplying).ObjSP("PositionListApplying")
@@ -135,13 +148,13 @@ Partial Class ApplyPositionList2
     Protected Sub btApplicant_Click(sender As Object, e As EventArgs) Handles btApplicant.Click
         WorkingProfile.UserCPNum = hfAutoCompletSelectedID.Value
 
-        Dim parameter = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "OTType", .ID = hfAutoCompletSelectedID.Value}
-        Dim OTType = ApplicantAttribute.OTType(parameter)
-        If OTType = "Pending" Then
+        Dim parameter = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = hfAutoCompletSelectedID.Value}
+        Dim OTStatus = ApplicantAttribute.OTType(parameter)
+        Dim appType As String = WorkingProfile.ApplicationType
+        If OTStatus = "Pending" And appType.ToUpper() = "LTO" Then
             Page.Response.Redirect("LoadingPending.aspx")
         Else
             BindGridData()
-
         End If
 
         '    setupApplicatList()

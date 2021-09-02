@@ -38,6 +38,7 @@
         .textboxF {
             font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
             font-size: 12px;
+            border:1px solid #808080;
         }
 
         #formTable {
@@ -122,13 +123,13 @@
  
                     </td>
                     <td >
-                        <asp:TextBox ID="TextName" runat="server" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextName" runat="server" BackColor="Transparent"  CssClass="textboxF"></asp:TextBox>
                     </td>
                     
-                    <td  colspan ="6" > Posted Date:  <asp:TextBox ID="TextPostedDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox>
+                    <td  colspan ="6" > Posted Date:  <asp:TextBox ID="TextPostedDate" runat="server" BackColor="Transparent" Width="80px"  CssClass="textboxF"></asp:TextBox>
                      Hire Date: 
                      
-                        <asp:TextBox ID="TextHireDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox>
+                        <asp:TextBox ID="TextHireDate" runat="server" BackColor="Transparent" Width="80px"  CssClass="textboxF"></asp:TextBox>
                      
                         <asp:Label ID="lblPositionStatus" runat="server" Text="Label"></asp:Label>
                         <asp:Label ID="lblPostingCycle" runat="server" Text="Label"></asp:Label>
@@ -137,10 +138,10 @@
                 <tr>
                     <td class="Itemtitle">Position Title:</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextPositionTitle" runat="server" Width="450px" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" runat="server" Width="450px" BackColor="Transparent"  CssClass="textboxF"></asp:TextBox>
 
                       <asp:Label ID ="lblPostingNumber" runat="server">  Posting Number </asp:Label>
-                         <asp:TextBox ID="txtPostingNumber" runat="server" Width="70px" BackColor="Transparent"></asp:TextBox>
+                         <asp:TextBox ID="txtPostingNumber" runat="server" Width="70px" BackColor="Transparent"  CssClass="textboxF"></asp:TextBox>
 
                     </td>
                 </tr>
@@ -148,7 +149,7 @@
                 <tr>
                     <td class="Itemtitle">Grade:</td>
                     <td colspan="3" >
-                        <asp:TextBox ID="TextPostionLevel" runat="server" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPostionLevel" runat="server" BackColor="Transparent"  CssClass="textboxF"></asp:TextBox>
 
                      BTC:
                         <asp:Label ID="lblPositionFTE" runat="server" Width="30px" BackColor="Transparent"></asp:Label>
