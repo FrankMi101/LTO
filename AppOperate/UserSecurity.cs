@@ -23,52 +23,48 @@ namespace AppOperate
         private static string getSecurityRole(string userID, string type)
         {
             string SP = "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type";
-            WorkingTrack wt = new WorkingTrack { UserID = userID, Type = type };
-            return CommonExcute<WorkingTrack>.GeneralValue(SP, wt);
+            var wt = new { UserID = userID, Type = type };
+            return CommonExcute<string>.GeneralValue(SP, wt);
         }
         private static string getSecurityRole(string userID, string type, string role)
         {
             string SP = "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type, @Role";
-            WorkingTrack wt = new WorkingTrack { UserID = userID, Type = type, Role = role };
-            return CommonExcute<WorkingTrack>.GeneralValue(SP, wt);
+            var wt = new { UserID = userID, Type = type, Role = role };
+            return CommonExcute<string>.GeneralValue(SP, wt);
         }
-
+        public static string UserRole(string userID)
+        {
+            string SP = "dbo.tcdsb_LTO_PageUser_Role @UserID";
+            var wt = new { UserID = userID};
+            return CommonExcute<string>.GeneralValue(SP, wt);
+        }
         public static bool Authenticate(string domain, string userName, string pwd)
         {
             try
             {
-                string authenticationMethod = WebConfigValue.getValuebyKey("AuthenticateMethod");
 
-                if (authenticationMethod == "NameOnly")
+                string _path = WebConfigValue.getValuebyKey("LDAP");
+                string domainAndUsername = domain + "'\'" + userName;
+                DirectoryEntry entry = new DirectoryEntry(_path, userName, pwd);
+                try
                 {
-                    return true;
+                    object obj = entry.NativeObject; //  .NativeObject;
+                    DirectorySearcher search = new DirectorySearcher(entry);
+
+                    search.Filter = "(SAMAccountName=" + userName + ")";
+                    search.PropertiesToLoad.Add("cn");
+                    SearchResult result = search.FindOne();
+
+                    if (result == null)
+                        return false;
+                    else
+                        return true;
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    string _path = WebConfigValue.getValuebyKey("LDAP");
-                    string domainAndUsername = domain + "'\'" + userName;
-                    DirectoryEntry entry = new DirectoryEntry(_path, userName, pwd);
-                    try
-                    {
-                        object obj = entry.NativeObject; //  .NativeObject;
-                        DirectorySearcher search = new DirectorySearcher(entry);
-
-                        search.Filter = "(SAMAccountName=" + userName + ")";
-                        search.PropertiesToLoad.Add("cn");
-                        SearchResult result = search.FindOne();
-
-                        if (result == null)
-                            return false;
-                        else
-                            return true;
-
-                    }
-                    catch (Exception ex)
-                    {
-                        string em = ex.Message;
-                        return false; ;
-
-                    }
+                    string em = ex.Message;
+                    return false; ;
 
                 }
 
@@ -78,8 +74,43 @@ namespace AppOperate
                 string myEx = ex.Message;
                 return false;
             }
+        }
+        public static string AuthenticateResult(string domain, string userName, string pwd)
+        {
+            try
+            {
 
+                string _path = WebConfigValue.getValuebyKey("LDAP");
+                string domainAndUsername = domain + "'\'" + userName;
+                DirectoryEntry entry = new DirectoryEntry(_path, userName, pwd);
+                try
+                {
+                    object obj = entry.NativeObject; //  .NativeObject;
+                    DirectorySearcher search = new DirectorySearcher(entry);
 
+                    search.Filter = "(SAMAccountName=" + userName + ")";
+                    search.PropertiesToLoad.Add("cn");
+                    SearchResult result = search.FindOne();
+
+                    if (result == null)
+                        return "Login Authentication Failed Name or Password Error";
+                    else
+                        return "true";
+
+                }
+                catch (Exception ex)
+                {
+                  //  string em = ex.Message;
+                    return "Login Authentication Failed at NativeObject - " + ex.Message; 
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                string myEx = ex.Message;
+                return "Login Authentication Failed at DirectoryEntry - " + ex.Message;
+            }
         }
 
         public static string GetCurrentUserName(string type, string cUser)

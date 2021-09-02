@@ -102,8 +102,9 @@ Partial Class RequestPostingDetails2
         AssemblingList.SetLists("", Me.rblFTE, "FTEList", parameter)
         AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
         AssemblingList.SetLists("", Me.cblQualification, "Qualification_RequestP", parameter)
-
-
+        Dim divHeight As String = "80px"
+        If Me.cblQualification.Items.Count > 15 Then divHeight = "200px"
+        cblQualficationDIV.Style.Add("height", divHeight)
     End Sub
 
 
@@ -139,7 +140,7 @@ Partial Class RequestPostingDetails2
             Me.TextRequestSource.Text = BasePage.getMyValue(position.RequestSource)
             Me.lblPrinciaplName.Text = BasePage.getMyValue(position.PrincipalName)
             Me.lblSuperintendent.Text = BasePage.getMyValue(position.Superintendent)
-            Me.lblQualification.Text = BasePage.getMyValue(position.Qualification)
+            Me.lblQualification.Value = BasePage.getMyValue(position.Qualification)
             Me.hfQualificationCode.Value = BasePage.getMyValue(position.QualificationCode)
             Dim timeTable As String = BasePage.getMyValue(position.TimeTable)
             Dim multiSchool As String = BasePage.getMyValue(position.MultipleSchool)
@@ -234,7 +235,7 @@ Partial Class RequestPostingDetails2
         Me.ddlschoolcode.Enabled = Not mylock
         Me.TextPositionTitle.Enabled = Not mylock
         Me.ddlTeacherReplaced.Enabled = Not mylock
-        Me.cblQualification.Enabled = Not mylock
+        '  Me.cblQualification.Enabled = Not mylock
 
         ' Me.ddlPositionlevel.Enabled = Not mylock
     End Sub
@@ -269,7 +270,7 @@ Partial Class RequestPostingDetails2
                 '.DateApplyClose = DateFC.YMD2(Me.dateDeadline.Value.ToString())
                 .PositionLevel = ddlPositionlevel.SelectedValue
                 .QualificationCode = hfQualificationCode.Value
-                .Qualification = lblQualification.Text
+                .Qualification = lblQualification.Value
                 .ReplaceTeacherID = ddlTeacherReplaced.SelectedValue
             End With
 
@@ -323,6 +324,8 @@ Partial Class RequestPostingDetails2
                 .DateApplyClose = DateFC.YMD2(Me.dateDeadline.Value.ToString())
                 .CPNum = ddlTeacherReplaced.SelectedValue
                 .RequestSource = Me.TextRequestSource.Text
+                .QualificationCode = hfQualificationCode.Value
+                .Qualification = lblQualification.Value
             End With
             ' will create a new record in Postiion_Published table  and get PositionID as result
             '   Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
@@ -390,7 +393,7 @@ Partial Class RequestPostingDetails2
         Try
 
             Dim _mTo As String = getEmailToList()
-            Dim _mForm As String = WebConfigValue.getValuebyKey("eMailSender")
+            Dim _mForm As String = EmailNotification.CheckFromMail(Me.hfAppType.Value)
             Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
             _mCC = EmailNotification.CheckCCMailOwner(_mCC, Me.ddlHRStaff.SelectedValue, User.Identity.Name)
             _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "Posting", hfAppType.Value, "1", Me.TextPositionTitle.Text, ddlSchool.SelectedValue)
@@ -613,7 +616,7 @@ Partial Class RequestPostingDetails2
     End Function
     Private Function getQualifications() As String
 
-        Dim Qual As String = Me.lblQualification.Text
+        Dim Qual As String = Me.lblQualification.Value
         'Dim item As ListItem
         'For Each item In Me.cblQualification.Items
         '    If item.Selected Then

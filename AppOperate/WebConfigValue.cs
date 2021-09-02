@@ -30,6 +30,10 @@ namespace AppOperate
         {
             return getValuebyKey("currentDB");
         }
+        public static string CurrentDB()
+        {
+            return WebConfigurationManager.ConnectionStrings["currentDB"].ConnectionString;
+        }
         public static string LDAPServer()
         {
             return getValuebyKey("LDAP");

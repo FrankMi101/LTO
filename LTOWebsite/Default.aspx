@@ -110,6 +110,8 @@
                                <asp:HiddenField ID="hdChildFormAction" runat="server" Value="NoAction" />
                             <asp:HiddenField ID="hfInvokePageFrom" runat="server" Value="" />
                             <asp:HiddenField ID="hfUserRole" runat="server" Value="" />
+                             <asp:HiddenField ID="hfCPNum" runat="server" Value="" />
+                              <asp:HiddenField ID="hfUserID" runat="server" Value="" />
                         </td>
                         <td style=" text-align: right">
                             <a id="CloseMeLink" runat="server" href="#" style=" text-align:right;">
@@ -119,9 +121,9 @@
                 </table>
 
             </div>
-            <div id="iFrameDIV" style="height: 93%; width: 100%;">
+            <div id="iFrameDIV" style="height: 93%; width: 100%; ">
                 <iframe id="PositionDetailFrame" runat="server" name="PositionDetailiFrame" scrolling="auto" seamless="seamless"   
-                    src="#"></iframe>
+                    src=""></iframe>
             </div>
             <div id="BottomClose" style="height: 22px; background-color: deepskyblue; text-align: right">
                 <a id="CloseMeLink2" runat="server" href="#">
@@ -214,7 +216,7 @@
     }
     function DeCueerntMenu() {
         try {
-            alert("call p");
+          //  alert("call p");
             $("#" + pMenu).removeClass("menu1SelectedItem").addClass("menu1");
            pMenu = "";
        }

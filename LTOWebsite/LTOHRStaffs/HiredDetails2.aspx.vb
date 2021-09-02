@@ -208,15 +208,14 @@ Partial Class HiredDetails2
         Me.HiddenFieldAction.Value = "Yes"
 
         Dim action As String = "Revoke"
-        '  If Me.btnSaveHired.Text = "Revoke Confirm Hire" Then action = "Revoke Confirm Hire"
 
         Dim dateConfirm As String = AppOperate.DateFC.YMD2(Me.dateInterview.Text)
         Dim dateEffective As String = AppOperate.DateFC.YMD2(Me.dateEffective.Value)
         Dim dateEnd As String = AppOperate.DateFC.YMD2(Me.lblEndDate.Value)
         Try
-            Dim hire As New PositionHired() ' ParametersForOperationHire()
+            Dim hire As New PositionHired()
             With hire
-                .Operate = "Revoke"
+                .Operate = action
                 .UserID = User.Identity.Name
                 .SchoolYear = Page.Request.QueryString("SchoolYear")
                 .PositionType = hfPositionType1.Value
@@ -269,7 +268,7 @@ Partial Class HiredDetails2
 
         Dim reposting As New ParametersForOperationHire()
         With reposting
-            .Operate = "RePostHired"
+            .Operate = action
             .UserID = User.Identity.Name
             .SchoolYear = schoolyear
             .PositionID = Page.Request.QueryString("PositionID")
@@ -349,49 +348,51 @@ Partial Class HiredDetails2
             Me.btnSubstitute.Enabled = False
             Me.btnGoTo.Enabled = False
             Me.btnSaveHired.Enabled = False
-
-
         Else
             Me.btnSubstitute.Enabled = True
             Me.btnGoTo.Enabled = True
             Me.btnSaveHired.Enabled = True
-
         End If
     End Sub
 
     Protected Sub BtnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
-
-        Dim action As String = "ConfirmHire"
-        SendConfimeEmailNotification(action)
+        SendConfimeEmailNotification("ConfirmHire")
     End Sub
-
+    Private Function GetCCList() As String
+        Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
+        _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", Me.hfPositionType.Value, lblPostingCycle.Text, Me.TextPositionTitle.Text, hfSchoolCode.Value)
+        _mCC = EmailNotification.CheckCCMailOwner(_mCC, lblPositionOwner.Text, User.Identity.Name)
+        Return _mCC
+    End Function
     Private Sub SendConfimeEmailNotification(ByVal action As String)
-
-
         Try
-            Dim _mTo As String = getEmailToList()
-            Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
-            _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", Me.hfPositionType.Value, lblPostingCycle.Text, Me.TextPositionTitle.Text, hfSchoolCode.Value)
-            _mCC = EmailNotification.CheckCCMailOwner(_mCC, lblPositionOwner.Text, User.Identity.Name)
-            Dim _mFrom As String = WebConfigValue.getValuebyKey("eMailSender") ' EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name) ' _mForm '
+            Dim myEmail As New EmailBase()
 
             Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-            Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-            Dim mTemplateFile = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
+            '  Dim _mTo As String = getEmailToList()
+            '  Dim _mFrom As String = EmailNotification.CheckFromMail(Me.hfPositionType.Value) ' WebConfigValue.getValuebyKey("eMailSender") ' EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name) ' _mForm '
+            '  Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
+            '  Dim mSubject As String = EmailNotification.CheckMailSubject(Me.hfPositionType.Value, Me.hfSchoolCode.Value, myEmailTemple.Subject, Me.TextPositionTitle.Text)  ' Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
+            '  Dim mTemplateFile = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
 
+            With myEmail
+                .EmailTo = getEmailToList()
+                .EmailCC = GetCCList()
+                .EmailFrom = EmailNotification.CheckFromMail(Me.hfPositionType.Value)
+                .EmailSubject = EmailNotification.CheckMailSubject(Me.hfPositionType.Value, Me.hfSchoolCode.Value, myEmailTemple.Subject, Me.TextPositionTitle.Text)
+                .EmailBody = myEmailTemple.Template
+            End With
             If Me.chbNoticeToPrincipal.Checked Then
-                SMTPMailCall("Staff", action, _mTo, _mCC, _mFrom, mSubject, mTemplateFile)
+                SMTPMailCall("Staff", action, myEmail)
             End If
             If Me.hfPositionType1.Value = "LTO" And Me.chbNoticeToUnion.Checked Then
                 Dim unioneMail As String = EmailNotification.UnionEmail(hfSchoolCode.Value, hfPositionType.Value)
                 If Not unioneMail = "" Then
-                    _mCC = WebConfigValue.getValuebyKey("eMail_UnionA")
-                    _mTo = unioneMail
-                    SMTPMailCall("Union", action, _mTo, _mCC, _mFrom, mSubject, mTemplateFile)
+                    myEmail.EmailCC = WebConfigValue.getValuebyKey("eMail_UnionA")
+                    myEmail.EmailTo = unioneMail
+                    SMTPMailCall("Union", action, myEmail)
                 End If
             End If
-
-
 
         Catch ex As Exception
 
@@ -415,16 +416,13 @@ Partial Class HiredDetails2
         Return EmailToList
     End Function
 
-    Private Sub SMTPMailCall(ByVal who As String, ByVal actino As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal eMailSubject As String, ByVal eMailTemplate As String)
+    Private Sub SMTPMailCall(ByVal who As String, ByVal action As String, ByVal emailBase As EmailBase)
         Dim _AditionInfo As String = ""
-
-        Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-        _mBcc += WebConfigValue.getValuebyKey("LTOadminFolder")
-
+        emailBase.EmailBcc = WebConfigValue.getValuebyKey("LTOadminFolder")
         Try
 
             ' If who = "Union" Then _mTO = CommonTCDSB.Webconfig.getValuebyKey("eMail_Union")
-            Dim eMailFile As String = getEmailfileHTML(who, eMailTemplate)
+            Dim eMailFile As String = getEmailfileHTML(who, emailBase.EmailBody)
 
 
             Dim myEmail As New EmailNotice2()
@@ -438,12 +436,12 @@ Partial Class HiredDetails2
                 .PostingNum = Me.lblPostingNum.Text
                 .NoticePrincipal = Me.hfPrincipalName.Value
                 .NoticeFor = who
-                .EmailType = "Revoke Hire"
-                .EmailTo = _mTO
-                .EmailCC = _mCC
-                .EmailBcc = _mBcc
-                .EmailFrom = _mFrom
-                .EmailSubject = eMailSubject
+                .EmailType = action
+                .EmailTo = emailBase.EmailTo
+                .EmailCC = emailBase.EmailCC
+                .EmailBcc = emailBase.EmailBcc
+                .EmailFrom = emailBase.EmailFrom
+                .EmailSubject = emailBase.EmailSubject
                 .EmailBody = eMailFile
                 .EmailFormat = "HTML"
                 .Attachment1 = ""
@@ -451,8 +449,9 @@ Partial Class HiredDetails2
                 .Attachment3 = ""
             End With
 
-
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
+            If who = "Staff" Then
+                Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
+            End If
             'PositionDetails.SaveConfirmHire_eMailLog(userID, appType, schoolyear, schoolcode, positionID, positionTitle, postingNum, toPrincipal, mailType, _mTO, _mCC, _mFrom, _mSubject, eMailFile)
             Dim result = EmailNotification.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
         Catch ex As Exception

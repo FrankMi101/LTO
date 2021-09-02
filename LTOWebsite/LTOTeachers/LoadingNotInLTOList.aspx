@@ -23,7 +23,7 @@
                 <td>
                   
                  <h1  style=" color:red;" >
-                     You are not current eligible to apply to Long Term Assignments.  <br /> <br /> 
+                     You are not currently eligible to apply to Long Term Assignments.  <br /> <br /> 
                      If you have any questions, please call your HR Contact.
                     </h1>
                 </td>

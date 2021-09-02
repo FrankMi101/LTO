@@ -52,8 +52,12 @@
     <Compile Include="Applicants\CandidateListNotice.cs" />
     <Compile Include="Applicants\ResumeCoverLetter.cs" />
     <Compile Include="DeadlineDate.cs" />
-    <Compile Include="EmailNotice.cs" />
+    <Compile Include="EmailContent\EmailBase.cs" />
+    <Compile Include="EmailContent\EmailNotice.cs" />
+    <Compile Include="EmailContent\EmailNotice2.cs" />
+    <Compile Include="EmailContent\MultipleSchoolEmail.cs" />
     <Compile Include="FactoryMethod.cs" />
+    <Compile Include="GeneralCheck.cs" />
     <Compile Include="InterviewerTeam.cs" />
     <Compile Include="Parameters\IParameters.cs" />
     <Compile Include="Parameters\IParametersForCandidate.cs" />

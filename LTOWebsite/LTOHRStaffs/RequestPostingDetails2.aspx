@@ -9,6 +9,9 @@
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
     <style type="text/css">
+        body {
+            width:98%;
+        }
         .positionDescription {
             border: 1px solid #0094ff;
         }
@@ -21,9 +24,7 @@
 <%--    <script src="../Scripts/bootstrap.js" type="text/javascript"></script>
     <script src="../Scripts/bootbox.js" type="text/javascript"></script>--%>
 
-    <style>
-        
-    </style>
+    
 
     <script type="text/javascript">
         function CallShowMessage(action, message) {
@@ -148,7 +149,7 @@
                 <td colspan="8">
                     <table>
                         <tr>
-                            <td>Grade    </td>
+                            <td>Division Required   </td>
                             <td style="width: 230px">
                                 <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell">
                                     <asp:ListItem Value="BC013E">Intermediate</asp:ListItem>
@@ -189,20 +190,22 @@
                 </td>
             </tr>--%>
             <tr>
-                <td>Summary
+                <td>Qualification Summary
 
                 </td>
                 <td colspan="7">
                     <b>
-                        <asp:Label ID="lblQualification" runat="server" Text="" Width="100%" ForeColor="blue"></asp:Label>
+                       <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 98%" class="editcellLock" />
                     </b>
+                    <asp:HiddenField ID="hfQualificationCode" runat="server" Value="" />
+
                 </td>
             </tr>
             <tr class="editArea">
 
                 <td colspan="8">
 
-                    <div style="overflow: auto; width: 100%; height: 200px">
+                    <div id ="cblQualficationDIV" runat="server" style="overflow: auto; width: 100%; height: 50px" >
                         <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical">
                             <asp:ListItem>item1</asp:ListItem>
                             <asp:ListItem>item2</asp:ListItem>
@@ -251,11 +254,11 @@
                
                 </td>
                 <td colspan="6">
-                    <asp:Label ID="LabelWA" runat="server" Text="Label" Width="100%" Height="30px" CssClass="editcellLock"></asp:Label>
+                    <asp:Label ID="LabelWA" runat="server" Text="Label" Width="99%" Height="30px" CssClass="editcellLock"></asp:Label>
                 </td>
                 <td>Workplace FTE: 
                    
-                    <asp:Label ID="LabelWAFTE" runat="server" Text="Label" Width="100%" CssClass="editcellLock"></asp:Label>
+                    <asp:Label ID="LabelWAFTE" runat="server" Text="Label"   CssClass="editcellLock"></asp:Label>
                 </td>
             </tr>
 
@@ -358,7 +361,6 @@
         <asp:HiddenField ID="hfSchoolyear" runat="server" Value="" />
         <asp:HiddenField ID="hfSchoolyearStartDate" runat="server" Value="2016-08-20" />
         <asp:HiddenField ID="hfSchoolyearEndDate" runat="server" Value="2017-06-30" />
-        <asp:HiddenField ID="hfQualificationCode" runat="server" Value="" />
         <asp:HiddenField ID="hfAppType" runat="server" Value="" />
 
         <%--   <div id="QualificationCheckListDIV" style="display: none; background-color: papayawhip; position: absolute; border: 1px solid blue;">
@@ -373,6 +375,8 @@
     var Qualification;
     var OperatePage = {
         LockPage: function () { LockPageWhenPostingRequested(); },
+        UpdateQual: function (QualCode, checkValue) { UpdateQualificationSelected(QualCode, checkValue); },
+
     };
 
     function LockPageWhenPostingRequested() {
@@ -493,6 +497,20 @@
             }
 
         });
+        $("#cblQualification input").click(function (e) {
+            try {
+                var ev = window.event;
+                var targetItem = ev.srcElement.id;
+                var myItem = $("#" + targetItem);
+                var QualCode = myItem.val();
+                //Qualification = myItem.closest("td").find("label").html();
+                var checkedvalue = myItem[0].checked;
+                OperatePage.UpdateQual(QualCode, checkedvalue);
+            } catch (ex) {
+                alert(ex);
+            }
+
+        });
         $("#btnRepublish").click(function (e) {
 
             try {
@@ -548,6 +566,15 @@
         JDatePicker.Initial($("#datePublish"));
         JDatePicker.Initial($("#dateApplyStart"));
         JDatePicker.Initial($("#dateDeadline"));
+    }
+    function UpdateQualificationSelected(QualCode, checkedvalue) {
+        var code = DOMaction.CheckBoxListValue($('#cblQualification'), "Code");
+        var name = DOMaction.CheckBoxListValue($('#cblQualification'), "Name");
+        $('#lblQualification').val(name);
+        $('#hfQualificationCode').val(code);
+     //   alert($('#hfQualificationCode').val() + "  " + $('#lblQualification').val());
+
+
     }
     function CallParentPostBack(action, positionTitle, strMessage) {
 

@@ -129,7 +129,7 @@ namespace AppOperate
                 case "Candidates":
                     return "dbo.tcdsb_LTO_PageInterview_Candidates" + " @SchoolYear, @PositionID";
                 case "Positions":
-                    return "tcdsb_LTO_PageInterview_Positions" + " @Operate, @UserID, @SchoolYear,@SchoolCode";
+                    return "tcdsb_LTO_PageInterview_Positions" + " @Operate, @UserID, @SchoolYear,@SchoolCode,@SearchValue1";
                 case "Position":
                     return "tcdsb_LTO_PageInterview_Position" + " @Operate, @UserID, @SchoolYear,@PositionID";
                 case "Update":

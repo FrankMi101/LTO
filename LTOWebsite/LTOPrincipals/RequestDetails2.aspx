@@ -17,13 +17,12 @@
 
     <script src="../Scripts/angular.min.js"></script>
     <style type="text/css">
-        body {
-            width: 99%;
-        }
-
-        table {
+        body, table{
             width: 100%;
+            margin:0;
         }
+         
+
     </style>
 
     <%--    <link href="../Styles/AngualJS.css" rel="stylesheet" />--%>
@@ -101,19 +100,15 @@
                     <td colspan="7">
                         <asp:DropDownList ID="ddlschoolcode" runat="server" Width="80px" Height="20px" CssClass="editcellLock" Enabled="false"></asp:DropDownList>
 
-                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="85%" Height="20px" CssClass="editcellLock" Enabled="false"></asp:DropDownList><br />
+                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="80%" Height="20px" CssClass="editcellLock" Enabled="false"></asp:DropDownList><br />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="lblTeacherName" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="hfAutoCompletSelectedID" ErrorMessage="* must have the Teacher being replaced that select from the school or TCDSB teacher list" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                 </tr>
-                <%-- <tr style ="height:5px">
-                    <td></td>
-                    <td colspan="7">
-                    </td>
-                </tr>--%>
+                
                 <tr>
-                    <td>Teacher being Replaced: 
+                    <td>  <label for="lblTeacherName"> Teacher being <br /> Replaced: </label>  
                         
                     </td>
                     <td>
@@ -136,7 +131,7 @@
                         <input runat="server" id="hfAutoCompletSelectedID" style="width: 100px; background-color: whitesmoke" type="text" readonly="readonly" class="editcellLock" placeholder="teacher ID" title="  " />
 
                     </td>
-                    <td style="text-align: right;">Reason for Leave:                       
+                    <td style="text-align: right;"> <label for ="ddlReason"> Reason for Leave: </label>                       
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlReason" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="4">
@@ -153,24 +148,24 @@
                 <tr>
                     <td>Assignment:</td>
 
-                    <td colspan="4">Start Date:  
+                    <td colspan="4"> <label for ="dateStart">Start Date:  </label> 
 
                         <input runat="server" type="text" id="dateStart" size="9" name="dateStart" placeholder="start date" class="inputFiled editArea" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
-
-                        End Date: 
+                        <label for ="dateEnd"> End Date::  </label> 
+                        
                         <input runat="server" type="text" id="dateEnd" size="9" name="dateEnd" placeholder="end date" class="inputFiled editArea" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEnd" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                     <td colspan="3" style="text-align: right">
-                        <input runat="server" id="TextOtherReason" type="text" name="OtherReason" class="inputFiled" readonly="readonly" placeholder="Reason for Other Leave" style="width: 100%" visible="false" />
+                        <input runat="server" id="TextOtherReason" type="text" name="OtherReason" class="inputFiled" readonly="readonly" placeholder="Reason for Other Leave" style="width: 99%" visible="false" />
 
                     </td>
 
                 </tr>
                 <tr class="editArea">
-                    <td>Position Title:
+                    <td> <label for ="TextPositionTitle">  Position Title:</label>
                              <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
@@ -189,7 +184,7 @@
                     <td colspan="8">
                         <table>
                             <tr>
-                                <td>Grade    
+                                <td> <label for="ddlPositionlevel"> Division Required:</label>  
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ddlPositionlevel" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 230px">
@@ -205,7 +200,7 @@
                                         <asp:ListItem>AM</asp:ListItem>
                                         <asp:ListItem>PM</asp:ListItem>
                                     </asp:DropDownList></td>
-                                <td>BTC(%)   
+                                <td>  <label for="rblFTE"> BTC(%)   </label> 
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="rblFTE" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 300px">
@@ -227,25 +222,21 @@
 
                 </tr>
                 <tr>
-                    <td>Summary
+                    <td>  <label for="cblQualification">Qualification Summary </label> 
                          <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="lblQualification" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="7">
                         <b>
-                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 100%" class="editcellLock" />
+                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 99%; border:0;" class="editcellLock" />
                         </b>
                     </td>
                 </tr>
-                <%--<tr class="editArea">
-                    <td colspan="8">
-                        <hr />
-                    </td>
-                </tr>--%>
+               
                 <tr class="editArea">
 
                     <td colspan="8">
 
-                        <div style="overflow: auto; width: 100%; height: 200px">
+                        <div style="overflow: auto; width: 99%; height: 200px">
                             <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical">
                                 <asp:ListItem>item1</asp:ListItem>
                                 <asp:ListItem>item2</asp:ListItem>
@@ -268,10 +259,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>Description of<br />
-                        Assignment</td>
+                    <td> <label for="TextDescription">
+                        Description of<br />
+                        Assignment
+                         </label> </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="100%" CssClass="editArea"></asp:TextBox>
+                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editArea"></asp:TextBox>
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
                     </td>
@@ -279,16 +272,16 @@
 
 
                 <tr>
-                    <td>Comments on Request;
+                    <td> <label for="TextComments"> Comments on  <br /> Request;</label>
                
                     </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="100%" CssClass="editArea"></asp:TextBox></td>
+                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editArea"></asp:TextBox></td>
                 </tr>
                 <tr>
-                    <td>Princiapl Name: (Contact)</td>
+                    <td>Princiapl Name:</td>
                     <td colspan="7">
-                        <asp:Label ID="lblPrinciaplName" runat="server" Text="Label"></asp:Label>
+                         (Contact)<asp:Label ID="lblPrinciaplName" runat="server" Text="Label"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp; 
                     Superintendent Name 
 

@@ -8,7 +8,11 @@
 
     <link href="../Styles/ListPage.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
+        html {
+        margin:auto
+        }
         body {
+            margin:auto;
             height: 100%;
             width: 99.9%;
         }
@@ -75,13 +79,13 @@
     <form id="form1" runat="server">
        
      
-        <div id="DivRoot"  style="width: 100%; height:250px;">
-            <div style="overflow: hidden;" id="DivHeaderRow">
+        <div id="DivRoot"  style="width: 100%; height:100%;">
+          <%--  <div style="overflow: hidden;" id="DivHeaderRow">
                 <table id="GridView2" style="border: 1px ridge gray; width: 100%; height: 100%; background-color: white;" rules="all" cellspacing="1" cellpadding="1" borderwidth="1px">
                 </table>
-            </div>
+            </div>--%>
 
-            <div style="overflow: auto; width: 100%; height: 100%" onscroll="OnScrollDiv(this)" id="DivMainContent">
+            <div style="overflow: auto; width: 100%; height: 300px" >
                 <asp:GridView ID="GridView1" runat="server" CellPadding="1" Height="100%" Width="100%" GridLines="Both" AutoGenerateColumns="False" BackColor="White" BorderColor="gray" BorderStyle="Ridge" BorderWidth="1px" CellSpacing="1" EmptyDataText="No Applicants in selected position" EmptyDataRowStyle-CssClass="emptyData" ShowHeaderWhenEmpty="true">
                     <Columns>
 
@@ -127,7 +131,7 @@
 
     $(document).ready(function () {
 
-        MakeStaticHeader("GridView1", 350, 450, 30, false)
+      //  MakeStaticHeader("GridView1", 350, 450, 30, false)
     })
 
  

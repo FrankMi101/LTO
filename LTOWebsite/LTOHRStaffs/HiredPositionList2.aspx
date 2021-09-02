@@ -240,7 +240,7 @@
                                    <asp:BoundField DataField="ReplaceTeacher" HeaderText="Teacher being Replaced">
                                     <ItemStyle Width="6%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="PositionLevel" HeaderText="Mandatory Qualification">
+                                <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                                     <ItemStyle Width="7%" />
                                 </asp:BoundField>
                               

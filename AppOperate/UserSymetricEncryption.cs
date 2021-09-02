@@ -73,7 +73,7 @@ namespace AppOperate
             }
             catch
             {
-                return string.Empty;
+                return queryStringKeyValue;
             }
         }
         public static string EncryptValueForQueryString(string inputValue)

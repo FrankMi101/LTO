@@ -41,10 +41,10 @@ BUTTON
     border-color: Purple;
     text-decoration: underline;*/
 }
-.ButtonNormal
-{
+.ButtonNormal {
     font-weight: normal;
-  /*  border-width: 1px;
+    border-width: 0px;
+    /*  border-width: 1px;
     border-style: groove;
     font-size: small;
     color: Purple;

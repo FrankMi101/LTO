@@ -6,6 +6,8 @@
 <head runat="server">
     <title></title>
      <link href="../Styles/BubbleHelp.css" rel="stylesheet" />
+        <link href="../Styles/ListPage.css" rel="stylesheet" type="text/css" />
+
     <style type="text/css">
         body {
             height: 100%;
@@ -73,9 +75,10 @@
         .messageBox {
          border:2px solid #ff9966;
          background-color:bisque;
+         width:350px;
         }
     </style>
-    <style type="text/css" id="Infragistics WebdataGrid">
+   <%-- <style type="text/css" id="Infragistics WebdataGrid">
         .ListHeader {
             height: 50px;
         }
@@ -83,7 +86,7 @@
         .RowDisable {
             background-color: gray;
         }
-    </style>
+    </style>--%>
 
 </head>
 <body>
@@ -182,7 +185,7 @@
                     <asp:BoundField DataField="PositionTitle" HeaderText="Position Title">
                         <ItemStyle Width="10%" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="PositionLevel" HeaderText="Qualification Level">
+                    <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                         <ItemStyle Width="8%" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Qualification" HeaderText="Subject Area Qualification">
@@ -231,7 +234,7 @@
              <b>  Secondary School Principal:</b> <br /><br />
              When requesting an LTO, please ensure you select one of the two options: <br />
              <ul>
-                 <li>TAP LTO posting</li>
+               <%--  <li>TAP LTO posting</li>--%>
                  <li>LTO posting - replacing a permanent teacher on leave of absence </li>
              </ul>
             
@@ -239,7 +242,7 @@
   
          <div id ="ElementaryMessage"  class="bubble hide messageBox">
              <b>Elementary School Principal:  </b> <br /><br />
-              From this site, you may only request a LTO for a TAP position here. <br /><br />
+             <%-- From this site, you may only request a LTO for a TAP position here. <br /><br />--%>
               For an LTO posting replacing a permanent teacher on leave of absence, please go to the F100, 
               select LTO Request, select Teacher and follow the prompts. 
               
@@ -320,21 +323,22 @@
                //  var schoolcode = $("#ddlschoolcode").val();
                 //var positionType = $("#ddlappType").val();
                // var userID = $("#hfUserID").val();
-                if (request.UserID === "mif") {
+                if (request.UserID === "mif1") {
                     var requestID = "0";
                   //  WebService.CreateNewPostingRequest("Request", schoolyear, schoolcode, positionType, requestID, onSuccess, onFailure);
                     WebService.CreateNewPostingRequest("Request", request, onSuccess, onFailure);
                 }
                 else {
-                    var elementarypanle = ""; // "02,03,04";
+                    var elementarypanle = "02,03,04";//""; // 
                     var shortCode = request.SchoolCode.slice(0, 2);
-                    if (elementarypanle.indexOf(shortCode) == -1) {
-                        var requestID = "0";
-                     //   WebService.CreateNewPostingRequest("Request", schoolyear, schoolcode, positionType, requestID, onSuccess, onFailure);
-                        WebService.CreateNewPostingRequest("Request", request, onSuccess, onFailure);
+                 
+                    if (elementarypanle.indexOf(shortCode) != -1) {
+                        alert("Elementary school posting request through the Form 100 application!");            
                     }
                     else {
-                        alert("Elementary school posting request through the Form 100 application!")
+                        var requestID = "0";
+                        //   WebService.CreateNewPostingRequest("Request", schoolyear, schoolcode, positionType, requestID, onSuccess, onFailure);
+                        WebService.CreateNewPostingRequest("Request", request, onSuccess, onFailure);
                     }
                 }
                 return false;

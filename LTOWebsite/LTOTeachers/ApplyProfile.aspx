@@ -32,7 +32,8 @@
                 <tr>
                     <td style="width: 135px; text-align: right; text-wrap: avoid">Email:</td>
                     <td>
-                        <asp:TextBox ID="TexteMail" runat="server" BackColor="#ffffcc" Width="300px"></asp:TextBox>
+                        <asp:TextBox ID="TexteMail" runat="server"   ReadOnly="true" Width="300px"></asp:TextBox>
+                        @tcdsb.org
                     </td>
                 </tr>
                 <tr>

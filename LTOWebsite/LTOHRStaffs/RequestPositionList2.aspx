@@ -269,7 +269,7 @@
                                     <ItemStyle Width="2%" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="PositionLevel" HeaderText="Mandatory Qualification">
+                                <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                                     <ItemStyle Width="8%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="Qualification" HeaderText="Minimum Qualification ">
@@ -442,12 +442,12 @@
                 return false;
             });
 
-            $('#GridView1 tr').mouseenter(function (event) {
-                if (currentTR != undefined) { currentTR.removeClass("highlightBoard"); }
-                currentTR = $(this)
-                //  $(this).addClass("highlightBoard");
-                currentTR.addClass("highlightBoard");
-            });
+            //$('#GridView1 tr').mouseenter(function (event) {
+            //    if (currentTR != undefined) { currentTR.removeClass("highlightBoard"); }
+            //    currentTR = $(this)
+            //    //  $(this).addClass("highlightBoard");
+            //    currentTR.addClass("highlightBoard");
+            //});
 
             //$("#ddlSearchby").change(function (event) {
 

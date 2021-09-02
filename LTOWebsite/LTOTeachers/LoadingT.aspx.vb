@@ -8,6 +8,7 @@ Partial Class LoadingT
 
             Me.Page.Response.Expires = 0
             Dim pID As String = Page.Request.QueryString("pID")
+
             Dim appID As String = WorkingProfile.ApplicationType
 
 
@@ -34,6 +35,7 @@ Partial Class LoadingT
         End If
     End Sub
     Private Sub LoadPage(pID As String)
+        Dim cpNum As String = Page.Request.QueryString("CPNum")
         If WebConfigValue.getValuebyKey("SiteClose") = "LTO" Then
             pID = "A"
 
@@ -57,10 +59,10 @@ Partial Class LoadingT
                 If WorkingProfile.UserRole = "Pending" Then
                     Me.PageURL.HRef = "LoadingPending.aspx"
                 Else
-                    Me.PageURL.HRef = "ApplyPositionList2.aspx"
+                    Me.PageURL.HRef = "ApplyPositionList2.aspx?CPNum=" + cpNum
                 End If
             ElseIf pID = "4" Then
-                Me.PageURL.HRef = "ApplyPositionList2Applied.aspx"
+                Me.PageURL.HRef = "ApplyPositionList2Applied.aspx?CPNum=" + cpNum
             ElseIf pID = "5" Then
                 Me.PageURL.HRef = "ApplyProfile.aspx"
             ElseIf pID = "9" Then

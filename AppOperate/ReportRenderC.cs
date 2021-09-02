@@ -123,7 +123,7 @@ namespace AppOperate
                 string accessRWSPW = WebConfigValue.ReportPW();
                 string accessDomain = WebConfigValue.DomainName();
                 string reportingServices = WebConfigValue.ReportServices();
-                string currentDB = DBConnectionHelper.CurrentDB();
+                string currentDB = WebConfigValue.CurrentDB();
                 string report = WebConfigValue.ReportPathWS() + currentDB + "/" + _reportName;
                 string format = reportFormat; // getReportContentType(reportFormat); //WebConfigValue.ReportFormat();
 

@@ -54,6 +54,15 @@ Partial Class ApplyPosition2
                 '  AssembleListItem.SetLists(Me.ddlApplicant, "Applicant", parameter, Page.Request.QueryString("CPNum"))
                 AssemblingList.SetLists("", Me.ddlApplicant, "Applicant", parameter, paraForApply.CPNum)
             End If
+
+            '  Dim parameter1 = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = paraForApply.CPNum}
+
+            '  hfStatus.Value = ApplicantAttribute.OTType(parameter1)
+            If hfStatus.Value = "LeavePending" Then
+                LabelMessageStatus1.Text = hfStatus.Value
+                LabelMessageStatus2.Text = hfStatus.Value
+                btnApply.Enabled = False
+            End If
         End If
 
     End Sub
@@ -116,6 +125,7 @@ Partial Class ApplyPosition2
 
             ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
             ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
+            hfStatus.Value = BasePage.getMyValue(position.CanApply)
             If ViewState("timeTable") = "" Then
                 Me.F100TimeTable.Visible = False
                 Me.F100MultipleSchool.Visible = False
@@ -264,7 +274,7 @@ Partial Class ApplyPosition2
             .CPNum = WorkingProfile.UserCPNum
             .HomePhone = Me.TextHomePhone.Text
             .CellPhone = Me.TextCellPhone.Text
-            .Email = Me.TexteMail.Text
+            .Email = BasePage.EmailCheck(Me.TexteMail.Text)
             .PositionID = Page.Request.QueryString("PositionID")
         End With
         '   Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "ContactInfo")

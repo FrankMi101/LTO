@@ -317,8 +317,8 @@
         <asp:HiddenField ID="hfPositionTypeHired" runat="server" />
         <asp:HiddenField ID="hfHiredStatus" runat="server" />
         <asp:HiddenField ID="hfSchoolyearStartDate" runat="server" Value="2017-09-05" />
-        <asp:HiddenField ID="hfSchoolyearEndDate" runat="server" Value="2018-06-26" />
-
+        <asp:HiddenField ID="hfSchoolyearEndDate" runat="server" Value="2018-06-26" />        
+        <asp:HiddenField ID="hfPositionNumber" runat="server" />
 
     </form>
 </body>
@@ -329,23 +329,19 @@
 
 
 <script type="text/jscript">
-            var minD = new Date($("#hfSchoolyearStartDate").val());
-        var maxD = new Date($("#hfSchoolyearEndDate").val()); 
+    var today = new Date();  
+    var minD = new Date($("#hfSchoolyearStartDate").val()); // today.getDate() - 90; //
+    var maxD = new Date($("#hfSchoolyearEndDate").val()); 
 
     $(document).ready(function () {
         // $("#inputTeacherName").hide();
-        InitialDatePickerControl();
+      InitialDatePickerControl();
         $(window).unload(function () {
             window.returnValue = $("#HiddenFieldAction").val();
         });
         DOMaction.Button("#btnSaveHired", true);
         if ($("#hfPositionType1").val() == "POP") { $("#dateEnd").removeAttr("required"); }
-        $("#dateHire").datepicker(
-            {
-                dateFormat: 'yy-mm-dd',
-                changeMonth: true,
-                changeYear: true
-            });
+ 
         //$("#dateEnd").datepicker(
         //    {
         //        dateFormat: 'yy-mm-dd',

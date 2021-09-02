@@ -70,7 +70,20 @@ namespace AppOperate
             return parameters;
 
         }
+        public static ParametersForPositionList GetParametersSchool(string operate, string userId, string schoolYear, string schoolCode, string progress)
+        {
+            var parameters = new ParametersForPositionList()
+            {
+                Operate = operate,
+                UserID = userId,
+                SchoolYear = schoolYear,
+                SchoolCode = schoolCode,
+                SearchValue1 = progress
 
+            };
+            return parameters;
+
+        }
         public static ParametersForPositionList GetParameters(string operate, string userId, string schoolYear, string positionType, string searchBy, string value1)
         {
             var parameters = new ParametersForPositionList()

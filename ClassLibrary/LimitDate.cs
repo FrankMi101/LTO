@@ -24,5 +24,6 @@ namespace ClassLibrary
         public DateTime DatePublish { get; set; }
         public DateTime DateApplyOpen { get; set; }
         public DateTime DateApplyClose { get; set; }
+        public DateTime BackDate { get; set; }
     }
 }

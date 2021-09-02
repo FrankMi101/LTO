@@ -8,8 +8,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link href="../Styles/ListPage.css" rel="stylesheet" type="text/css" />
 
     <style type="text/css">
         body {
@@ -109,6 +110,7 @@
                         <asp:Label ID="lblSuper" runat="server" Text="School: "></asp:Label>
                         <asp:DropDownList ID="ddlschoolcode" runat="server" CssClass="editcell" SkinID="ddlSmall" Width="60px" AutoPostBack="true"></asp:DropDownList>
                         <asp:DropDownList ID="ddlSchool" runat="server" Width="400px" SkinID="ddlSmall" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
+                        Filter by:<asp:DropDownList ID="ddlProgress" runat="server" Width="150px" SkinID="ddlSmall" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
                         <a id="ProcessHelp" runat="server" href="javascript:openHelpProcess()">
                             <img alt="Help process" class="auto-style4" src="../images/HelpS.bmp" />
                         </a>
@@ -126,7 +128,7 @@
                         <asp:HiddenField ID="HiddenFieldUserRole" runat="server" />
                          <asp:HiddenField ID="HiddenFieldDevice" runat="server" />
                     </td>
-                    <td style="width: 40%">
+                    <td style="width: 30%">
                         <a id="A1" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/HM40.pdf' target="_blank">H.M.40</a> &nbsp;&nbsp;&nbsp;&nbsp;
                         <a id="A3" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/HM31.pdf' target="_blank">H.M.31</a>&nbsp;&nbsp;&nbsp;&nbsp;
                         <a id="A2" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
@@ -188,7 +190,7 @@
                     <asp:BoundField DataField="PositionTitle" HeaderText="Position Title">
                         <ItemStyle Width="10%" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="PositionLevel" HeaderText="Qualification Level">
+                    <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                         <ItemStyle Width="10%" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Qualification" HeaderText="Subject Area Qualification ">

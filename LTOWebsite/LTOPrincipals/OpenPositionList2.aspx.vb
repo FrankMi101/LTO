@@ -43,14 +43,21 @@ Partial Class OpenPositionList2
                 .Para0 = _Schoolcode
                 .Para1 = WorkingProfile.ApplicationType
             End With
-            AssembleListItem.SetLists(Me.ddlSchoolYear, "SchoolYearbySchool", parameter, WorkingProfile.SchoolYear)
-            parameter.Operate = "Schoolist"
-            parameter.Para0 = _UserID
-            parameter.Para1 = _Role
-            parameter.Para2 = ""
-            parameter.Para3 = WorkingProfile.SchoolYear
+            AssemblingList.SetLists("", Me.ddlSchoolYear, "SchoolYearbySchool", parameter, WorkingProfile.SchoolYear)
+            AssemblingList.SetLists("", Me.ddlProgress, "InterviewProgress", parameter, WorkingProfile.SchoolYear)
 
-            AssembleListItem.SetLists2(ddlschoolcode, Me.ddlSchool, parameter, _Schoolcode)
+
+
+            With parameter
+                .Operate = "Schoolist"
+                .Para0 = WorkingProfile.UserID
+                .Para1 = WorkingProfile.UserRole
+                .Para2 = WorkingProfile.ApplicationType
+                .Para3 = WorkingProfile.SchoolYear
+            End With
+            ' AssembleListItem.SetLists2(ddlschoolcode, Me.ddlSchool, parameter, schoolcode)
+            AssemblingList.SetListSchool(ddlschoolcode, Me.ddlSchool, "SchoolList", parameter, _Schoolcode)
+
 
             If WorkingProfile.UserRole = "Admin" Or WorkingProfile.UserRole = "HRStaff" Then
                 Me.ddlSchool.Enabled = True
@@ -83,7 +90,8 @@ Partial Class OpenPositionList2
     Private Function getDataSource() As List(Of PositionListInterview)
         Dim schoolYear As String = Me.ddlSchoolYear.SelectedValue
         Dim schoolCode As String = ddlschoolcode.SelectedValue
-        Dim parameters = CommonParameter.GetParameters("OpenPosition", User.Identity.Name, Me.ddlSchoolYear.SelectedValue, Me.ddlschoolcode.SelectedValue)
+
+        Dim parameters = CommonParameter.GetParametersSchool("OpenPosition", User.Identity.Name, Me.ddlSchoolYear.SelectedValue, Me.ddlschoolcode.SelectedValue, Me.ddlProgress.SelectedValue)
         ' Dim sList = CommonListExecute.SchoolOpenPositions(parameters) '  PostingPublishExe.Positions(parameters) ' .PostingPositions(parameters)
         ' Dim sList = CommonListExecute(Of PositionListInterview).GeneralPositions(parameters)
 
@@ -97,12 +105,12 @@ Partial Class OpenPositionList2
 
 
     Protected Sub ddlSchool_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSchool.SelectedIndexChanged
-        AssembleListItem.SetValue(Me.ddlschoolcode, Me.ddlSchool.SelectedValue)
+        AssemblingList.SetValue(Me.ddlschoolcode, Me.ddlSchool.SelectedValue)
         schoolChange()
     End Sub
 
     Protected Sub ddlschoolcode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlschoolcode.SelectedIndexChanged
-        AssembleListItem.SetValue(Me.ddlSchool, Me.ddlschoolcode.SelectedValue)
+        AssemblingList.SetValue(Me.ddlSchool, Me.ddlschoolcode.SelectedValue)
         schoolChange()
     End Sub
     Private Sub schoolChange()
@@ -116,5 +124,9 @@ Partial Class OpenPositionList2
         BindGridData(True)
     End Sub
 
+    Private Sub ddlProgress_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlProgress.SelectedIndexChanged
+        BindGridData(True)
+
+    End Sub
 End Class
 

@@ -9,5 +9,6 @@ namespace ClassLibrary
     public class PositionPublish : PositionInfo
     {
         public int RequestCount { get; set; }
+        public string CanRecover { get; set; }
     }
 }

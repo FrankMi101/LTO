@@ -109,7 +109,9 @@ Partial Class RequestPositionDetails2
         AssemblingList.SetLists("", Me.cblQualification, "Qualification_RequestP", parameter)
         AssemblingList.SetLists("", Me.rblFTE, "FTEList", parameter)
         AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
-
+        Dim divHeight As String = "80px"
+        If Me.cblQualification.Items.Count > 15 Then divHeight = "200px"
+        cblQualficationDIV.Style.Add("height", divHeight)
         'AssembleListItem.SetLists(Me.ddlHRStaff, "HRStaffPosting", parameter)
         'AssembleListItem.SetLists(Me.ddlPositionlevel, "PositionLevel", parameter)
         'AssembleListItem.SetLists(Me.ddlReason, "LeaveReason", parameter)
@@ -276,7 +278,23 @@ Partial Class RequestPositionDetails2
                 Me.btnRepublish.Enabled = False
                 Me.btndelete.Enabled = False
                 Me.btnSave.Enabled = False
+                If WorkingProfile.UserRole = "Admin" Then
+                    Me.btnSave.Enabled = True
+                    If User.Identity.Name = "mif" Then
+                        Me.btnUnpublish.Enabled = True
+                        Me.btnRepublish.Enabled = True
+                        Me.btndelete.Enabled = True
+                    End If
+
+                End If
             End If
+
+            If position.CanRecover = "Yes" Then
+                btnUnpublish.Visible = False
+                btnRecover.Visible = True
+                btndelete.Visible = False
+            End If
+
             SetStartandEndDate()
             '  CheeckAction()
         Catch ex As Exception
@@ -461,8 +479,23 @@ Partial Class RequestPositionDetails2
         Dim ds As String = Me.hfIDs.Value
         ' BindSelectedPositionData(schoolyear, IDs)
     End Sub
+    Protected Sub btnRecover_Click(sender As Object, e As EventArgs) Handles btnRecover.Click
+        Dim schoolYear As String = Page.Request.QueryString("SchoolYear")
+        Dim recoverPosition = New With {Key .UserID = User.Identity.Name,
+                                  Key .SchoolYear = schoolYear,
+                                  Key .PostingNum = Me.TextPostingNumber.Text,
+                                  Key .PositionID = Me.hfIDs.Value
+                                  }
 
-    Protected Sub BtnUnpublish_Click(sender As Object, e As EventArgs) Handles btnUnpublish.Click
+        Dim result As String = PublishPositionExe.Recover(recoverPosition)
+        CreatSaveMessage(result, "Recover a Posting")
+
+
+    End Sub
+    Private Sub ButtonGoCancel_Click(sender As Object, e As EventArgs) Handles ButtonGoCancel.Click
+        CancellProcess()
+    End Sub
+    Private Sub CancellProcess()
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim postingCycle As String = Me.lblPostedCycle.Text
         Dim postingNumber As String = TextPostingNumber.Text
@@ -502,8 +535,9 @@ Partial Class RequestPositionDetails2
             CreatSaveMessage("Faield", "Cancel Posting")
         End Try
         ' BindSelectedPositionData(schoolyear, Me.hfIDs.Value)
-
     End Sub
+    'Protected Sub BtnUnpublish_Click(sender As Object, e As EventArgs) Handles btnUnpublish.Click
+    'End Sub
     Protected Sub Btndelete_Click(sender As Object, e As EventArgs) Handles btndelete.Click
         Try
             Me.HiddenFieldAction.Value = "Yes"
@@ -740,7 +774,8 @@ Partial Class RequestPositionDetails2
             Dim principalName As String = ddlPrincipal.SelectedItem.Text
             '  Dim _mTO As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", hfPrincipalID.Value)
             Dim mTo As String = GetEmailToList()
-            Dim mForm As String = WebConfigValue.getValuebyKey("eMailSender")
+            Dim mForm As String = EmailNotification.CheckFromMail(Me.ddlType.SelectedValue)
+
             Dim mCc As String = WebConfigValue.getValuebyKey("eMailCC")
             mCc = EmailNotification.CheckCCMailOwner(mCc, Me.hfPositionOwner.Value, User.Identity.Name)
             mCc = EmailNotification.CheckCCMail(mCc, "Principal", "Posting", hfAppType.Value, Me.ddlPostingCycle.SelectedValue, Me.TextPositionTitle.Text, ddlSchool.SelectedValue)
@@ -879,6 +914,12 @@ Partial Class RequestPositionDetails2
             eMailFile = Replace(eMailFile, "[timeTable]", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "[multiSchool]", ViewState("multiSchool"))
 
+            Dim Round4ContactStatement = ""
+            If lblPostRound.Value = "4" Then Round4ContactStatement = WebConfigValue.getValuebyKey("Round4ContactStatement")
+
+
+            eMailFile = Replace(eMailFile, "[Round4ContactStatement]", Round4ContactStatement)
+
             If who = "Union" Then
                 eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", "")
                 eMailFile = Replace(eMailFile, "[PIDSTR]", "")
@@ -903,5 +944,7 @@ Partial Class RequestPositionDetails2
     Private Sub DDLHRStaff_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlHRStaff.SelectedIndexChanged
         Me.hfPositionOwner.Value = ddlHRStaff.SelectedValue
     End Sub
+
+
 
 End Class

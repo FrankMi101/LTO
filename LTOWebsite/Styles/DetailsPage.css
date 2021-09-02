@@ -4,17 +4,36 @@
     background-image: url(../images/message_body_m.bmp);
 }
 
+td {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: x-small;
+}
+
 .editcell {
     background-color: papayawhip;
     font-family: Arial;
     font-size: x-small;
 }
 
+.DateCell input:focus {
+    border: 2px dotted red;
+}
+
+.editcell, .editArea {
+    border: 0px solid grey;
+}
+
+    .editcell:focus, .editArea:focus {
+        border: 2px solid #0094ff;
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+    }
+
 .editcellLock {
     background-color: aliceblue;
     font-family: Arial;
     font-size: x-small;
     pointer-events: none;
+    border: 0;
 }
 
 .editcellAllow {
@@ -23,10 +42,6 @@
     font-size: x-small;
 }
 
-td {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: x-small;
-}
 
 .auto-style2 {
     height: 14px;
@@ -91,5 +106,26 @@ td {
 }
 
 .PositionDescription {
-     border: 1px solid papayawhip;
+    border: 1px solid papayawhip;
+}
+
+.btnRadius {
+    border: 2px solid #0094ff;
+    border-radius: 7px;
+    cursor: default;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+    .btnRadius:hover {
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+    }
+
+    .btnRadius:focus {
+        border: 2px solid #0094ff;
+        border-radius: 7px;
+    }
+
+.cursorDefault {
+    cursor: default;
 }
