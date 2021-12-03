@@ -57,7 +57,11 @@ Partial Class Default_Home
                 .Para0 = _schoolcode
                 .Para1 = WorkingProfile.ApplicationType
             End With
-
+            ' ******************* Anonymous Type *************************************************
+            'Dim para1 = New List2Item With {.Operate = "SchoolYearbySchool", .Para0 = _schoolcode, .Para1 = WorkingProfile.ApplicationType}
+            'Dim para2 = New With {.Operate = "SchoolYearbySchool", .Para0 = _schoolcode, .Para1 = WorkingProfile.ApplicationType}
+            'Dim para3 = New With {Key .Operate = "SchoolYearbySchool", Key .Para0 = _schoolcode, Key .Para1 = WorkingProfile.ApplicationType}
+            '*************************************************************************
 
             AssemblingList.SetLists("", Me.ddlSchoolYear, "SchoolYearbySchool", parameter, _schoolyear)
 

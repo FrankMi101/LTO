@@ -22,6 +22,9 @@
             margin:0;
         }
          
+     #btnSave1 {
+            display: none;
+        }
 
     </style>
 
@@ -87,7 +90,7 @@
                     <td colspan="6">Status: 
                         <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" CssClass="editcellLock" Width="80px"></asp:TextBox>
                         To HR Staff 
-                        <asp:DropDownList ID="ddlHRStaff" runat="server" CssClass="editArea" Width="100px"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlHRStaff" runat="server" CssClass="editArea Edit-Content-Control" Width="100px"></asp:DropDownList>
                         <asp:Label ID="lblRequestID" runat="server"> Request ID:  </asp:Label>
                         <asp:TextBox ID="TextRequestID" runat="server" CssClass="editcellLock" Width="50px" ReadOnly="true"></asp:TextBox>
                         <asp:TextBox ID="lblRequestSource" runat="server" ReadOnly="true" Width="50px" CssClass="editcellLock"></asp:TextBox>
@@ -115,7 +118,7 @@
 
 
                         <%--<asp:Label ID="lblTeacherName" runat="server" Text=""> </asp:Label>--%>
-                        <input id="lblTeacherName" runat="server" value="" autocomplete="off" style="height: 17px; width: 120px" class="inputFiled editArea" required />
+                        <input id="lblTeacherName" runat="server" value="" autocomplete="off" style="height: 17px; width: 120px" class="inputFiled editArea Edit-Content-Control" required />
 
                         <%-- <div id="comboboxDIV" runat="server">
                             <asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="120px" CssClass="editArea" Visible="false"></asp:DropDownList>
@@ -135,7 +138,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlReason" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="4">
-                        <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="200px" Height="20px" CssClass="editArea" required></asp:DropDownList>
+                        <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="200px" Height="20px" CssClass="editArea Edit-Content-Control" required></asp:DropDownList>
                         <asp:RadioButtonList ID="rblReason" runat="server" RepeatDirection="Horizontal" Visible="false">
                             <asp:ListItem>Personal</asp:ListItem>
                             <asp:ListItem>Medical</asp:ListItem>
@@ -150,16 +153,16 @@
 
                     <td colspan="4"> <label for ="dateStart">Start Date:  </label> 
 
-                        <input runat="server" type="text" id="dateStart" size="9" name="dateStart" placeholder="start date" class="inputFiled editArea" />
+                        <input runat="server" type="text" id="dateStart" size="9" name="dateStart" placeholder="start date" class="inputFiled editArea Edit-Content-Control" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                         <label for ="dateEnd"> End Date::  </label> 
                         
-                        <input runat="server" type="text" id="dateEnd" size="9" name="dateEnd" placeholder="end date" class="inputFiled editArea" />
+                        <input runat="server" type="text" id="dateEnd" size="9" name="dateEnd" placeholder="end date" class="inputFiled editArea Edit-Content-Control" />
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEnd" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                     <td colspan="3" style="text-align: right">
-                        <input runat="server" id="TextOtherReason" type="text" name="OtherReason" class="inputFiled" readonly="readonly" placeholder="Reason for Other Leave" style="width: 99%" visible="false" />
+                        <input runat="server" id="TextOtherReason" type="text" name="OtherReason" class="inputFiled Edit-Content-Control" readonly="readonly" placeholder="Reason for Other Leave" style="width: 99%" visible="false" />
 
                     </td>
 
@@ -170,7 +173,7 @@
 
                     </td>
                     <td colspan="7">
-                        <input runat="server" id="TextPositionTitle" type="text" name="title" class="inputFiled editArea" placeholder="Posting Position Title" style="width: 99%" required />
+                        <input runat="server" id="TextPositionTitle" type="text" name="title" class="inputFiled editArea Edit-Content-Control" placeholder="Posting Position Title" style="width: 99%" required />
 
 
                     </td>
@@ -188,13 +191,13 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ddlPositionlevel" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 230px">
-                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell" required>
+                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell Edit-Content-Control" required>
                                         <asp:ListItem Value="BC013E">Intermediate</asp:ListItem>
                                         <asp:ListItem Value="BC014E">Senior</asp:ListItem>
                                         <asp:ListItem Value="BC003E">Intermediate and Senior</asp:ListItem>
                                     </asp:DropDownList></td>
                                 <td>
-                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell">
+                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Selected="true">Full</asp:ListItem>
                                         <asp:ListItem>PartTime</asp:ListItem>
                                         <asp:ListItem>AM</asp:ListItem>
@@ -204,7 +207,7 @@
                                      <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="rblFTE" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 300px">
-                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell" required>
+                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell Edit-Content-Control" required>
                                         <asp:ListItem Value="100">100%</asp:ListItem>
                                         <asp:ListItem Value="67">67%</asp:ListItem>
                                         <asp:ListItem Value="50">50%</asp:ListItem>
@@ -213,7 +216,7 @@
                                         <asp:ListItem Value="00">XX%</asp:ListItem>
                                     </asp:RadioButtonList></td>
                                 <td id="FTECell" runat="server">
-                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell"></asp:TextBox>%
+                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell Edit-Content-Control"></asp:TextBox>%
 
                                 </td>
                             </tr>
@@ -237,7 +240,7 @@
                     <td colspan="8">
 
                         <div style="overflow: auto; width: 99%; height: 200px">
-                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical">
+                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical"  >
                                 <asp:ListItem>item1</asp:ListItem>
                                 <asp:ListItem>item2</asp:ListItem>
                                 <asp:ListItem>item3</asp:ListItem>
@@ -264,7 +267,7 @@
                         Assignment
                          </label> </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editArea"></asp:TextBox>
+                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editArea Edit-Content-Control"></asp:TextBox>
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
                     </td>
@@ -276,7 +279,7 @@
                
                     </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editArea"></asp:TextBox></td>
+                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editArea Edit-Content-Control"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Princiapl Name:</td>
@@ -306,15 +309,15 @@
                     <td></td>
                     <td colspan="7" style="text-align: center;">
 
-                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting" CssClass="inactive" />
-                        &nbsp;&nbsp;&nbsp;&nbsp; 
-                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="175px" Visible="false" Enabled="false" />
+                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting"   />
+                          
+                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="175px" Visible="false" Enabled="false"  />
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;                           
-                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px" />
-                        &nbsp;&nbsp;&nbsp;&nbsp; 
-                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" />
-                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" CssClass="ButonHidden" />
+                                              
+                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px"  />
+                        
+                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false"  />
+                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px"   />
 
                     </td>
 

@@ -85,7 +85,7 @@ namespace AppOperate
                 case "NoticeCandidates":
                     return "dbo.tcdsb_LTO_PageCandidate_NoticeCandidates" + " @Operate, @SchoolYear,@PositionID,@PositionType";
                 case "NoticeUpdate":
-                    return "dbo.tcdsb_LTO_PageCandidate_NoticeUpdate" + parameter + ",@PrincipalID, @RequestCount";
+                    return "dbo.tcdsb_LTO_PageCandidate_NoticeUpdate" + parameter + ",@PrincipalID, @RequestCount,@Comments";
                 case "Applicants":
                     return "dbo.tcdsb_LTO_PageCandidate_Applicants" + " @Operate,@SchoolYear, @PositionID"; 
                 case "Applicant":

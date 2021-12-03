@@ -69,8 +69,6 @@ namespace AppOperate
                 if (title.IndexOf("Elementary") < 0) panel = "Elementary";
             }
             return subject.Replace("for PositionTitle", appType + " " + panel + " " + title);
-
-
             //appType = "LTO"/"POP"
             //appAction = "Hired"/ "Interview" / "Post"
             // mailAction = "Confirm" / "Revoke" / "Reject"
@@ -82,22 +80,17 @@ namespace AppOperate
         {     // actionType :  Posting / interview / ConfirmHire  / Request
               // appType :  LTO /POP
               // who: Union / Staff / Principal / Applicant
-
-
-
             string unioneMail = "eMail_UnionE";
             if (DataTools.SchoolPanel(schoolCode) == "S")
             { unioneMail = "eMail_UnionS"; }
 
             if (who == "Union")
             {
-
                 mCC += AddMail(mCC, unioneMail);
                 if (appType == "LTO")
                 {
                     mCC += AddMail(mCC, "eMailCC_LTO");
                 }
-
             }
             else
             {
@@ -118,16 +111,13 @@ namespace AppOperate
                     {
                         mCC += AddMail(mCC, "eMailCC_ConfirmHire_POP");
                         mCC += AddMail(mCC, "eMailCC_ConfirmHire_POP_" + DataTools.SchoolPanel(schoolCode));
-
                     }
                     else
                     {
                         mCC += AddMail(mCC, "eMailCC_POP_" + DataTools.SchoolPanel(schoolCode));
-
                     }
 
                     mCC += AddMail(mCC, unioneMail);
-
                 }
 
                 if (title.IndexOf("French") != -1)
@@ -135,8 +125,6 @@ namespace AppOperate
                     mCC += AddMail(mCC, "eMailCC_French");
                     mCC += AddMail(mCC, "eMailCC_French1");
                     mCC += AddMail(mCC, "eMailCC_French_" + DataTools.SchoolPanel(schoolCode));
-
-
                 }
 
                 if (title.IndexOf("FSL") != -1)
@@ -154,8 +142,7 @@ namespace AppOperate
                     if (appType == "LTO")
                     {
                         mCC += AddMail(mCC, "eMailCC_4th_" + DataTools.SchoolPanel(schoolCode));
-
-                    }
+                   }
                 }
             }
 
@@ -170,14 +157,20 @@ namespace AppOperate
         }
         private static string AddMail2(string mCC, string addM)
         {
-            string rVal = "";
-            if (addM.Length > 1)
+            try
             {
-                if (mCC.IndexOf(addM) == -1)
-                    rVal = mCC.Length > 1 ? ";" + addM : addM;
+                string rVal = "";
+                if (addM.Length > 1)
+                {
+                    if (mCC.IndexOf(addM) == -1)
+                        rVal = mCC.Length > 1 ? ";" + addM : addM;
+                }
+                return rVal;
             }
-            return rVal;
-
+            catch (Exception)
+            {
+                return "";
+            }
         }
         public static string UserProfileByID(string type, string userID)
         {

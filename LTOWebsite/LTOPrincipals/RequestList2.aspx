@@ -115,10 +115,10 @@
                         <asp:Label ID="lblSuper" runat="server" Text="School: "></asp:Label>
                     </td>
                     <td>
-                        <asp:DropDownList ID="ddlschoolcode" runat="server" CssClass="editcell" SkinID="ddlSmall" Width="60px" AutoPostBack="true"></asp:DropDownList></td>
+                        <asp:DropDownList ID="ddlschoolcode" runat="server" CssClass="editcell Edit-Content-Control" SkinID="ddlSmall" Width="60px" AutoPostBack="true"></asp:DropDownList></td>
 
                     <td>
-                        <asp:DropDownList ID="ddlSchool" runat="server" Width="400px" SkinID="ddlSmall" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchool" runat="server" Width="400px" SkinID="ddlSmall" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
 
                     </td>
                     <td>

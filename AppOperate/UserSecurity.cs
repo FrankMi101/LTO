@@ -79,7 +79,6 @@ namespace AppOperate
         {
             try
             {
-
                 string _path = WebConfigValue.getValuebyKey("LDAP");
                 string domainAndUsername = domain + "'\'" + userName;
                 DirectoryEntry entry = new DirectoryEntry(_path, userName, pwd);
@@ -93,7 +92,7 @@ namespace AppOperate
                     SearchResult result = search.FindOne();
 
                     if (result == null)
-                        return "Login Authentication Failed Name or Password Error";
+                        return "Login Authentication Failed (Name or Password Error)";
                     else
                         return "true";
 

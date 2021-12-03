@@ -132,7 +132,7 @@
                 <tr>
                     <td>Mandatory Qualification:</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextPostionLevel" runat="server"  Width="100%" BackColor="Transparent"></asp:TextBox>
+                        <asp:TextBox ID="TextPostionLevel" runat="server" CssClass="Edit-Content-Control"  Width="100%" BackColor="Transparent"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +144,7 @@
                 <tr>
                     <td>Minimum Qualification:</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextQualification" runat="server" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TextQualification" runat="server" CssClass="Edit-Content-Control" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
 
 
                     </td>
@@ -153,7 +153,7 @@
                 <tr class="PositionDescription">
                     <td>Position Description:</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextDescription" runat="server" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TextDescription" runat="server" CssClass="Edit-Content-Control" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
 
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
@@ -162,7 +162,7 @@
                 <tr>
                     <td>Posting Comments:</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextPostingComments" runat="server" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TextPostingComments" runat="server" CssClass="Edit-Content-Control" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -170,7 +170,7 @@
                     </td>
 
                     <td colspan="7">
-                        <asp:TextBox ID="TextComments" runat="server" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
+                        <asp:TextBox ID="TextComments" runat="server" CssClass="Edit-Content-Control" BackColor="Transparent" TextMode="MultiLine" Height="40px" Width="100%"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -192,7 +192,7 @@
                 <tr id="HiredRow2" runat="server">
                     <td>Principal Comments </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextPrincipalComments" runat="server" Height="40px" TextMode="MultiLine" Width="100%" BackColor="Transparent"></asp:TextBox></td>
+                        <asp:TextBox ID="TextPrincipalComments" runat="server" Height="40px" CssClass="Edit-Content-Control" TextMode="MultiLine" Width="100%" BackColor="Transparent"></asp:TextBox></td>
                 </tr>
                 <tr id="HiredRow3" runat="server">
                     <td>Hire / Re post / Substitute
@@ -200,7 +200,7 @@
                         HR
                         Comments </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextHiredcomments" runat="server" Height="30px" TextMode="MultiLine" Width="100%" BackColor="#ffffcc"></asp:TextBox></td>
+                        <asp:TextBox ID="TextHiredcomments" runat="server" Height="30px" CssClass="Edit-Content-Control" TextMode="MultiLine" Width="100%" BackColor="#ffffcc"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td colspan="8">
@@ -221,7 +221,7 @@
                     <td>
                         Pay Status:
                     </td>
-                    <td><asp:DropDownList ID="ddlPayStatus" TabIndex="11" runat="server" Width="120px" Height="20px" CssClass="editcell">
+                    <td><asp:DropDownList ID="ddlPayStatus" TabIndex="11" runat="server" Width="120px" Height="20px" CssClass="editcell Edit-Content-Control">
                             <asp:ListItem Value="9"><-- select --> </asp:ListItem>
                             <asp:ListItem Value="1">Leave with Pay</asp:ListItem>
                             <asp:ListItem Value="0">Leave without Pay</asp:ListItem>
@@ -244,7 +244,7 @@
                     <td colspan="3">
                         <asp:CheckBox ID="chbHiring" runat="server" Enabled="false" />
                         Date of Effective 
-                        <input runat="server" type="text" id="dateEffective" size="9" />
+                        <input runat="server" type="text" id="dateEffective" size="9"  class="Edit-Content-Control"/>
 
                     </td>
                     <td>Date of End</td>
@@ -254,9 +254,9 @@
                     <td colspan="2" style="text-align: left">
 
 
-                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" />
+                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" CssClass="Edit-Content-Control" />
                         <br />
-                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true"  />
+                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true"  CssClass="Edit-Content-Control" />
                     </td>
                 </tr>
                 <tr>
@@ -269,7 +269,7 @@
                     <td colspan="8" style="text-align: center;">
                         <asp:CheckBox ID="chbNextYear" runat="server" Text="Push to Next Year" ForeColor="Red" AutoPostBack="true" Visible="false" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnSaveHired" runat="server" Text="Confirm Hire" Width="130px" />
+                        <asp:Button ID="btnSaveHired" runat="server" Text="Confirm Hire" Width="130px" CssClass="action-button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnRepost" runat="server" Visible="false" Text="Re-post New" Width="100px" title="Write Re Post comments before click on the button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;

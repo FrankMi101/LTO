@@ -98,16 +98,16 @@
                             <div style="display: inline;">
 
                                 <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>
-                                <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True"
+                                <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True" 
                                     Enabled="true">
                                 </asp:DropDownList>
-                                <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" >
                                     <asp:ListItem>POP</asp:ListItem>
                                     <asp:ListItem>LTO</asp:ListItem>
                                     <asp:ListItem>COP</asp:ListItem>
                                 </asp:DropDownList>
                                 <asp:Label ID="lblSuperArea" runat="server" Text="Search by"></asp:Label>
-                                <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True">
+                                <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True" >
                                     <%--  <asp:ListItem Selected="True">All</asp:ListItem>
                                   <asp:ListItem>Area</asp:ListItem>
                                     <asp:ListItem>School</asp:ListItem>
@@ -127,9 +127,9 @@
                                     <asp:ListItem>Applicants </asp:ListItem>--%>
                                 </asp:DropDownList>
 
-                                <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="False">
+                                <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="False"  >
                                 </asp:DropDownList>
-                                <asp:TextBox ID="txtSearchBox" runat="server" Width="150px" Visible="false"></asp:TextBox>
+                                <asp:TextBox ID="txtSearchBox" runat="server" Width="150px" Visible="false"  ></asp:TextBox>
 
                                 <input runat="server" visible="false" type="text" id="datepicker" size="10" />
                                 <asp:Label ID="DateTo" runat="server" Text="To"></asp:Label>
@@ -143,7 +143,7 @@
                                         <asp:ListItem Value="05">Secondary</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>--%>
-                                <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="False">
+                                <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="False"  >
                                     <asp:ListItem>All</asp:ListItem>
                                     <asp:ListItem Selected="True">Open</asp:ListItem>
                                     <asp:ListItem>Close</asp:ListItem>

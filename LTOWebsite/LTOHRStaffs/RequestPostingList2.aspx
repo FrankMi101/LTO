@@ -86,16 +86,16 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>
-                    <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True"
+                    <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True" CssClass="Search-Content-Control"
                         Enabled="true">
                     </asp:DropDownList>
-                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" CssClass="Search-Content-Control">
                         <asp:ListItem>POP</asp:ListItem>
                         <asp:ListItem>LTO</asp:ListItem>
                         <asp:ListItem>COP</asp:ListItem>
                     </asp:DropDownList>
                     <asp:Label ID="lblSuperArea" runat="server" Text="Search by"></asp:Label>
-                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True" CssClass="Search-Content-Control">
                         <asp:ListItem Selected="True">All</asp:ListItem>
                         <asp:ListItem>Area</asp:ListItem>
                         <asp:ListItem>School</asp:ListItem>
@@ -104,7 +104,7 @@
                         <asp:ListItem Value="RequestFrom">Request from</asp:ListItem>
                     </asp:DropDownList>
 
-                    <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="True">
+                    <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="True" CssClass="Search-Content-Control">
                     </asp:DropDownList>
                     <asp:TextBox ID="txtSearchBox" runat="server" Width="150px" Visible="false"></asp:TextBox>
 
@@ -114,7 +114,7 @@
                     <%--<ig:WebDatePicker ID="searchdate" runat="server" Visible="false" Height="20px" Width="100px" DisplayModeFormat="yyyy/MM/dd" EditModeFormat="yyyy/MM/dd" MaxValue="2020-12-31" MinValue="2013-01-01"></ig:WebDatePicker>--%>
                     <div id="PanelDIV" runat="server" style="display: inline;">
                         IN 
-             <asp:DropDownList ID="ddlPanel" runat="server" Width="90px" SkinID="ddlSmall" AutoPostBack="True">
+             <asp:DropDownList ID="ddlPanel" runat="server" Width="90px" SkinID="ddlSmall" AutoPostBack="True" CssClass="Search-Content-Control">
                  <asp:ListItem Selected="True" Value="0">All</asp:ListItem>
                  <asp:ListItem Value="02">Elementary</asp:ListItem>
                  <asp:ListItem Value="05">Secondary</asp:ListItem>

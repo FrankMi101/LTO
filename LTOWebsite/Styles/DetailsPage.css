@@ -1,7 +1,7 @@
 ﻿body {
     height: 100%;
     width: 100%;
-    background-image: url(../images/message_body_m.bmp);
+   /* background-image: url(../images/message_body_m.bmp);*/
 }
 
 td {
@@ -71,8 +71,7 @@ td {
     position: absolute;
     left: 0;
     top: 0;
-    background: url(../images/BlueDIVList.png);
-    border: 3px outset skyblue;
+     border: 3px outset skyblue;
 }
 
 #lblNoticeDate {
@@ -128,4 +127,63 @@ td {
 
 .cursorDefault {
     cursor: default;
+}
+
+.ButtonNormal
+{
+    margin-left:20px;
+}
+.action-button {
+    border: 2px solid dodgerblue;
+    text-align: center;
+    outline: 0;
+    border-radius: 9px;
+    height: 25px;
+}
+
+    .action-button:hover {
+        filter: contrast(200%);
+        border: 2px solid #0094ff;
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+        cursor:pointer;
+    }
+
+.Edit-Content-Control {
+    border: 1px solid grey;
+    background-color: cornsilk;
+}
+
+    .Edit-Content-Control:hover {
+        border-radius: 7px;
+        filter: contrast(200%);
+        border: 2px solid #0094ff;
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+    }
+
+
+.Edit-Content-Control-Readonly {
+    border: 1px solid grey;
+}
+
+    .Edit-Content-Control-Readonly:hover {
+        border-radius: 7px;
+        filter: contrast(200%);
+        border: 2px solid #0094ff;
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+    }
+
+.Edit-Content-CheckBox {
+
+}
+    .Edit-Content-CheckBox:hover {
+        border-radius: 7px;
+        filter: contrast(200%);
+        border: 1px solid #0094ff;
+        box-shadow: 0 0 0 2px rgba(24,117,255,0.25);
+    }
+
+#cblQualification label:hover {
+    border-radius: 3px;
+    border: 2px solid #0094ff;
+    box-shadow: 0 0 0 2px rgba(24,117,255,0.25);
 }

@@ -7,6 +7,8 @@
     <title>Apply Position</title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+
     <style type="text/css">
         body {
             height: 100%;
@@ -24,15 +26,17 @@
         }
 
         #LabelUploadFile > a {
+            margin-left:10px;
             font-family: Arial, 'DejaVu Sans', 'Liberation Sans', Freesans, sans-serif;
-            border: 1px solid #bbb9b9;
+         /*   border: 1px solid #bbb9b9;*/
             font-style: normal;
             font-size: 13px;
-            background-color: white;
+         /*   background-color: transparent  ;*/
             height: 25px;
-            padding-right: 10px;
+            padding-right: 20px;
             padding-top: 3px;
             padding-bottom: 2px;
+          /*  border-radius: 7px;*/
         }
 
         #btnRow input:hover {
@@ -220,7 +224,7 @@
                           
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionDescription" runat="server" Height="50px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionDescription" runat="server" Height="45px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox>
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
                     </td>
@@ -259,7 +263,7 @@
                 <tr>
                     <td>Comments:</td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextComemnts" runat="server" Height="40px" TextMode="MultiLine" Width="100%" BackColor="#ffffcc" CssClass="readonlytext"></asp:TextBox></td>
+                        <asp:TextBox ID="TextComemnts" runat="server" Height="40px" TextMode="MultiLine" Width="100%" BackColor="#ffffcc" CssClass="readonlytext Edit-Content-Control"></asp:TextBox></td>
                 </tr>
                 <tr style="border: 2px solid darkgrey;">
                     <td colspan="6">
@@ -267,10 +271,10 @@
                             <tr>
                                 <td style=" text-wrap: avoid">Home Phone:</td>
                                 <td>
-                                    <asp:TextBox ID="TextHomePhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext"></asp:TextBox></td>
+                                    <asp:TextBox ID="TextHomePhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext Edit-Content-Control"></asp:TextBox></td>
                                 <td style=" text-wrap: avoid" class="midtitle">Cell Phone:</td>
                                 <td>
-                                    <asp:TextBox ID="TextCellPhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext"></asp:TextBox>
+                                    <asp:TextBox ID="TextCellPhone" runat="server" BackColor="#ffffcc" Width="100px" CssClass="readonlytext Edit-Content-Control"></asp:TextBox>
                                 </td>
                                 <td style="text-align: right">Email:</td>
                                 <td style=" text-wrap: avoid" >
@@ -279,7 +283,7 @@
                                 </td>
                                
                                 <td style="width:10%">
-                                 <asp:Button ID="btnUpdate" runat="server" Text="Update Contact Info" CssClass="cursorDefault" />
+                                 <asp:Button ID="btnUpdate" runat="server" Text="Update Contact Info" CssClass="cursorDefault action-button" />
                                 </td>
                             </tr>
                         </table>
@@ -315,15 +319,15 @@
 
 
 
-                        <asp:Button ID="btnApply" runat="server" Text="Apply Position"  CssClass="btnRadius"  />
-                         &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;
+                        <asp:Button ID="btnApply" runat="server" Text="Apply Position"  CssClass="action-button"  />
+                         
                         <asp:Label ID="LabelNotQualifyRoster" runat="server" Text="Roster only allow to apply 3rd Round Posting" ForeColor="Red" Font-Bold="true" Visible="false"></asp:Label>
                         <asp:Label ID="LabelNotQualify" runat="server" Text="Only qualified applicant can apply this position" ForeColor="Red" Font-Bold="true" Visible="false"></asp:Label>
-                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="100"  CssClass="btnRadius" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="100"  CssClass="action-button" />
 
-                        <a id="onBehalfApply" runat="server" visible="false">Apply on Behalf </a>
-                        &nbsp;  &nbsp;  &nbsp; &nbsp; &nbsp;
-                        <asp:Label ID="LabelUploadFile" runat="server" Text="Label"></asp:Label>
+                        <a id="onBehalfApply" runat="server" visible="false"  class="action-button"  >Apply on Behalf </a>
+                       &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        <asp:Label ID="LabelUploadFile" runat="server" Text="Label" CssClass="action-button"  Height="22px"></asp:Label>
                     </td>
 
                 </tr>

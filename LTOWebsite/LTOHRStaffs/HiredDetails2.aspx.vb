@@ -360,7 +360,11 @@ Partial Class HiredDetails2
     End Sub
     Private Function GetCCList() As String
         Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
-        _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", Me.hfPositionType.Value, lblPostingCycle.Text, Me.TextPositionTitle.Text, hfSchoolCode.Value)
+        Dim positionType As String = Me.hfPositionType.Value
+        Dim postingCycle As String = lblPostingCycle.Text
+        Dim positionTitle As String = Me.TextPositionTitle.Text
+        _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", positionType, postingCycle, positionTitle, hfSchoolCode.Value)
+
         _mCC = EmailNotification.CheckCCMailOwner(_mCC, lblPositionOwner.Text, User.Identity.Name)
         Return _mCC
     End Function
@@ -383,9 +387,11 @@ Partial Class HiredDetails2
                 .EmailBody = myEmailTemple.Template
             End With
             If Me.chbNoticeToPrincipal.Checked Then
+                SMTPMailCall("Principal", action, myEmail)
+            ElseIf Me.chbNoticeToStaffOnly.Checked Then
+                myEmail.EmailTo = EmailNotification.CheckCCMailOwner("", lblPositionOwner.Text, User.Identity.Name)
                 SMTPMailCall("Staff", action, myEmail)
-            End If
-            If Me.hfPositionType1.Value = "LTO" And Me.chbNoticeToUnion.Checked Then
+            ElseIf Me.hfPositionType1.Value = "LTO" And Me.chbNoticeToUnion.Checked Then
                 Dim unioneMail As String = EmailNotification.UnionEmail(hfSchoolCode.Value, hfPositionType.Value)
                 If Not unioneMail = "" Then
                     myEmail.EmailCC = WebConfigValue.getValuebyKey("eMail_UnionA")
@@ -393,7 +399,6 @@ Partial Class HiredDetails2
                     SMTPMailCall("Union", action, myEmail)
                 End If
             End If
-
         Catch ex As Exception
 
         End Try
@@ -449,7 +454,7 @@ Partial Class HiredDetails2
                 .Attachment3 = ""
             End With
 
-            If who = "Staff" Then
+            If who = "Principal" Then
                 Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
             End If
             'PositionDetails.SaveConfirmHire_eMailLog(userID, appType, schoolyear, schoolcode, positionID, positionTitle, postingNum, toPrincipal, mailType, _mTO, _mCC, _mFrom, _mSubject, eMailFile)

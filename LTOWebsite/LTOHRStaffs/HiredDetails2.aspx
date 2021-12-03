@@ -206,27 +206,23 @@
                     <td colspan="2">
                         <asp:Label ID="lblTeacherBeReplacedPersonID" runat="server" Text="person id"></asp:Label>
                     </td>
-                    <td class="noWrap">
+                    <td class="noWrap" style="text-align: left">
                         <asp:Label ID="lblRound" runat="server" Text="1 "> </asp:Label>
                         Round
                     </td>
-
-
-
-
                 </tr>
 
                 <tr>
                     <td>Reason for leave
                
                     </td>
-                    <td colspan="3">
+                    <td colspan="2">
                         <asp:Label ID="lblReasonReplacement" TabIndex="14" runat="server" Height="22px" Width="99%"></asp:Label>
 
                     </td>
                     <td class="noWrap">Pay Status:</td>
-                    <td colspan="3">
-                        <asp:DropDownList ID="ddlPayStatus" TabIndex="11" runat="server" Width="120px" Height="20px" CssClass="editcell" Enabled="false">
+                    <td colspan="4">
+                        <asp:DropDownList ID="ddlPayStatus" TabIndex="11" runat="server" Width="120px" Height="20px" CssClass="editcell Edit-Content-Control" Enabled="false">
                             <asp:ListItem Value="9"><-- select --> </asp:ListItem>
                             <asp:ListItem Value="1">Leave with Pay</asp:ListItem>
                             <asp:ListItem Value="0">Leave without Pay</asp:ListItem>
@@ -234,54 +230,47 @@
 
                         </asp:DropDownList>
                     </td>
+
                 </tr>
                 <tr id="HiredRow4" runat="server">
-
-
-                    <td>Confirm Hire 
-                       
-                    </td>
-
+                    <td>Confirm Hire  </td>
                     <td>
                         <asp:CheckBox ID="chbHiring" runat="server" Enabled="false" />
                     </td>
-                    <td class="noWrap">Date of Effective </td>
-                    <td>
+                    <td colspan="5" class="noWrap">Date of Effective
                         <input runat="server" type="text" id="dateEffective" size="9" disabled="true" />
-
-                    </td>
-                    <td>Date of End</td>
-                    <td>
-                       <%-- <asp:Label ID="lblEndDate" runat="server" Text="endDate"></asp:Label>--%>
+                        Date of End 
                          <input runat="server" type="text" id="lblEndDate" size="9" disabled="true" />
                     </td>
-                    <td colspan="2" style="text-align: left">
-
-
-                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" />
-                        <br />
-                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true" />
+                    <td style="text-align: left">
+                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true" Visible="false" />
                     </td>
                 </tr>
                 <tr>
                     <td>H.M.40 Sign Off</td>
 
-                    <td id="signOffChb" runat="server" colspan="7" style="font-size: small; color: red;">
+                    <td id="signOffChb" runat="server" colspan="6" style="font-size: small; color: red;">
                         <asp:CheckBox ID="chbSignatureSignOff" runat="server" Visible="false" Text="Interviewer and Candidate Sign Off Status on H.M. 40 Document" /></td>
+                    <td>
+                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="false" />
+                    </td>
                 </tr>
                 <tr>
-                    <td colspan="8" style="text-align: center;">
+                    <td colspan="7" style="text-align: center;">
                         <asp:CheckBox ID="chbNextYear" runat="server" Text="Push to Next Year" ForeColor="Red" AutoPostBack="true" Visible="false" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnSaveHired" runat="server" Text="Confirm Hire" Width="160px" />
+                        <asp:Button ID="btnSaveHired" runat="server" Text="Confirm Hire" Width="160px" CssClass="action-button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnRepost" runat="server" Visible="false" Text="Re-post New" Width="100px" title="Write Re Post comments before click on the button" />
+                        <asp:Button ID="btnRepost" runat="server" Visible="false" CssClass="action-button" Text="Re-post New" Width="100px" title="Write Re Post comments before click on the button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnSubstitute" runat="server" Visible="false" Text="Re-post" Width="100px" title="Write Subetitute comments before click on the button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnGoTo" runat="server" Visible="false" Text="Go to Position" Width="100px" title="Write Replacement comments before click on the button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <asp:Button ID="btnEmail" runat="server" Text="Send Confirm Hire email" Width="180px" />
+                        <asp:Button ID="btnEmail" runat="server" CssClass="action-button" Text="Send Confirm Hire email" Width="180px" />
+                    </td>
+                    <td>
+                        <asp:CheckBox ID="chbNoticeToStaffOnly" runat="server" Text="Email to HR " Checked="true" />
                     </td>
                 </tr>
 

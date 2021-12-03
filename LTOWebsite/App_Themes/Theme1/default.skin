@@ -22,5 +22,7 @@ Default skin template. The following skins are provided as examples only.
 
   <asp:RadioButtonList runat="server" Font-Names="Arial" Font-Size="x-Small" /> 
   <asp:dropdownlist runat="server"   Font-Names="Arial" Font-Size="x-Small" />
-  <asp:dropdownlist runat="server"  SkinId="ddlSmall" Font-Names="Arial" Font-Size="Small" />
-  <asp:Button   runat="server"   CssClass="ButtonNormal"  />
+  <asp:dropdownlist runat="server"  SkinId="ddlSmall" Font-Names="Arial" Font-Size="Small"  CssClass="Search-Content-Control"  />
+  <asp:Button   runat="server"   CssClass="ButtonNormal action-button"  />
+  <asp:CheckBox runat="server" CssClass ="Edit-Content-CheckBox" />
+  <asp:TextBox  runat="server" CssClass ="Edit-Content-Control" ></asp:TextBox>

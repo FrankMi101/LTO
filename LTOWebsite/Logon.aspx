@@ -17,6 +17,8 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Cache-Control" content="no-Store,no-Cache" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link href="Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+
     <script type="text/jscript">
         document.getElementById("txtUsername").focus();
         function getResolution() {
@@ -89,15 +91,15 @@
             padding: 2px 3px 2px 3px;
         }
 
-        .textField {
+   /*     .textField {
         }
 
             .textField:focus {
                 border: 1px solid #0094ff;
                 box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
             }
-
-
+*/
+/*
         #btnLogin {
             border: 2px solid #0094ff;
             border-radius: 7px;
@@ -110,11 +112,15 @@
             #btnLogin:focus {
                 border: 2px solid #0094ff;
                 border-radius: 7px;
-            }
+            }*/
+        #btnLogin
+        { 
+            margin-left:1px;
+        }
     </style>
 </head>
 <body onload="javascript:getResolution();">
-    <form id="Form1" method="post" runat="server">
+    <form id="Form1" runat="server">
 
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
@@ -171,7 +177,7 @@
                                                         <asp:Label ID="Label2" runat="server">Username:</asp:Label>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtUsername" runat="server" Width="124px" autofocus="True" CssClass="textField"></asp:TextBox>
+                                                        <asp:TextBox ID="txtUsername" runat="server" Width="124px" autofocus="True" CssClass="textField Edit-Content-Control"></asp:TextBox>
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -179,7 +185,7 @@
                                                         <asp:Label ID="Label3" runat="server">Password:</asp:Label>
                                                     </td>
                                                     <td>
-                                                        <asp:TextBox ID="txtPassword" runat="server" Width="124px" TextMode="Password" AutoComplete="Disabled" AutoCompleteType="Disabled" CssClass="textField"></asp:TextBox>
+                                                        <asp:TextBox ID="txtPassword" runat="server" Width="124px" TextMode="Password" AutoComplete="Disabled" AutoCompleteType="Disabled" CssClass="textField Edit-Content-Control"></asp:TextBox>
 
                                                         <ajaxtoolkit:PasswordStrength ID="PasswordStrength3" runat="server" TargetControlID="txtPassword"
                                                             DisplayPosition="BelowLeft" StrengthIndicatorType="Text" PrefixText="How secure is your password? "
@@ -194,9 +200,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td></td>
-                                                    <td>
-                                                        <asp:Button ID="btnLogin" runat="server" Text="Login" Width="128px"  ></asp:Button>
+                                                     <td></td>
+                                                    <td  >
+                                                        <asp:Button ID="btnLogin" runat="server"  Text="Login" Width="125px" CssClass="action-button"  ></asp:Button>
 
                                                     </td>
                                                 </tr>

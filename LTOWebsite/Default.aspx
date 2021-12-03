@@ -59,8 +59,8 @@
 
         </header>
 
-        <nav style="height: 25px; width: 100%; text-wrap: avoid;">
-            <div id="topnav" style="width: 100%; height: 25px; background-image: url(images/BlueExplorer.GIF); border: 0 none; padding: 1px 0px 1px 0px;">
+        <nav style="height: 25px; width: 100%; text-wrap: avoid; background-image:url(images/BlueExplorer.gif)">
+            <div id="topnav" style="width: 100%; height: 25px;  border: 0 none; padding: 1px 0px 1px 0px;">
                 <ul id="navlist">
                     <li id="li_Menu0" runat="server"><a href="#" id="Menu0" runat="server" target="mainTop">Request Post </a>
                         <div id="li_Menu0_c" runat="server"></div>

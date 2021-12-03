@@ -9,8 +9,8 @@
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
     <link href="../Styles/BubbleHelp.css" rel="stylesheet" type="text/css" />
-    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
     <link href="../JQuery-UI/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
@@ -56,7 +56,7 @@
             border: 2px solid red;
         }
 
-        .ButonHidden {
+        #btnSave1 {
             display: none;
         }
 
@@ -70,6 +70,7 @@
             background: url(../images/BlueDIVList.png);
             border: 3px outset skyblue;
         }
+
     </style>
     <script type="text/javascript">
         function ShowSaveMessage(action, message) {
@@ -123,24 +124,24 @@
 
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPostingNumber" runat="server" CssClass="editcell" Width="60px" ReadOnly="true"></asp:TextBox>
+                        <asp:TextBox ID="TextPostingNumber" runat="server" CssClass="editcell Edit-Content-Control" Width="80px" ReadOnly="true"></asp:TextBox>
                         <asp:TextBox ID="TextLinkPositionID" runat="server" Width="50px" ReadOnly="true" ForeColor="WhiteSmoke"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;
                     Status: 
                         <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Width="70px" CssClass="editcellLock"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp; Request Source: 
                         <asp:TextBox ID="TextSource" runat="server" BackColor="Transparent" Width="60px" CssClass="editcellLock"></asp:TextBox>
-                        &nbsp;&nbsp;&nbsp;  Position Owner: 
-                           <asp:DropDownList ID="ddlHRStaff" runat="server" Width="120px" CssClass="editcell"></asp:DropDownList>
+                        &nbsp;&nbsp;&nbsp; Position Owner: 
+                           <asp:DropDownList ID="ddlHRStaff" runat="server" Width="120px" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
                     </td>
                 </tr>
 
                 <tr>
                     <td>School:  </td>
                     <td colspan="5">
-                        <asp:DropDownList ID="ddlschoolcode" runat="server" Width="50px" Height="20px" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="70%" Height="20px" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlPrincipal" TabIndex="12" runat="server" Width="128px" Height="20px" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlschoolcode" runat="server" Width="50px" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="70%" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlPrincipal" TabIndex="12" runat="server" Width="128px" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
                     </td>
                     <td>
                 </tr>
@@ -151,7 +152,7 @@
 
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="99%" TextMode="MultiLine" CssClass="editcell editArea"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="99%" TextMode="MultiLine" CssClass="editcell editArea Edit-Content-Control"></asp:TextBox>
 
                     </td>
                 </tr>
@@ -165,13 +166,13 @@
                             <tr>
                                 <td>Division Required    </td>
                                 <td style="width: 230px">
-                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell">
+                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Value="BC013E">Intermediate</asp:ListItem>
                                         <asp:ListItem Value="BC014E">Senior</asp:ListItem>
                                         <asp:ListItem Value="BC003E">Intermediate and Senior</asp:ListItem>
                                     </asp:DropDownList></td>
                                 <td>
-                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell">
+                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Selected="true">Full</asp:ListItem>
                                         <asp:ListItem>PartTime</asp:ListItem>
                                         <asp:ListItem>AM</asp:ListItem>
@@ -179,7 +180,7 @@
                                     </asp:DropDownList></td>
                                 <td>BTC(%)   </td>
                                 <td style="width: 300px">
-                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell">
+                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Value="100" Selected="true">100%</asp:ListItem>
                                         <asp:ListItem Value="67">67%</asp:ListItem>
                                         <asp:ListItem Value="50">50%</asp:ListItem>
@@ -188,7 +189,7 @@
                                         <asp:ListItem Value="00">XX%</asp:ListItem>
                                     </asp:RadioButtonList></td>
                                 <td id="FTECell" runat="server">
-                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell"></asp:TextBox>%
+                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell Edit-Content-Control"></asp:TextBox>%
 
                                 </td>
                             </tr>
@@ -214,7 +215,7 @@
                     <td colspan="6">
 
                         <div id="cblQualficationDIV" runat="server" style="overflow: auto; width: 100%; height: 50px">
-                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical" CssClass="editcell" Width="100%">
+                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical" CssClass="editcell Edit-Content-Control" Width="100%">
                                 <asp:ListItem>item1</asp:ListItem>
                                 <asp:ListItem>item2</asp:ListItem>
                                 <asp:ListItem>item3</asp:ListItem>
@@ -236,7 +237,7 @@
                         <img runat="server" id="MultipleSchoolimg" height="22" width="35" alt="qualification" title="Click on to setup Multiple Locations" src="../images/schoolhouse.png" />
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionDescription" TabIndex="141" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editcell"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionDescription" TabIndex="141" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editcell Edit-Content-Control"></asp:TextBox>
 
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
@@ -253,11 +254,11 @@
                
                     </td>
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="100%" CssClass="editcell"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="100%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
                     </td>
 
                     <td colspan="3">Reason for Replacement 
-                   <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="60%" CssClass="editcell"></asp:DropDownList>
+                   <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="60%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
                     </td>
                 </tr>
 
@@ -276,14 +277,14 @@
                                 <td class="midtitle">Assignment Start Date:</td>
 
                                 <td style="text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="dateStart" size="9" />
+                                    <input runat="server" type="text" id="dateStart" size="9" class ="Edit-Content-Control"  />
                                 </td>
                                 <td style="width: 15px">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="text-align: right;">Publish Date:</td>
                                 <td style="text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="datePublish" size="9" />
+                                    <input runat="server" type="text" id="datePublish" size="9" class ="Edit-Content-Control"  />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="datePublish" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
@@ -291,7 +292,7 @@
 
                                 <td class="midtitle">Assignment &nbsp;End Date:</td>
                                 <td>
-                                    <input runat="server" type="text" id="dateEnd" size="9" />
+                                    <input runat="server" type="text" id="dateEnd" size="9" class ="Edit-Content-Control"  />
                                 </td>
                                 <td style="width: 15px"></td>
 
@@ -299,7 +300,7 @@
                                     <div>Date to Apply: </div>
                                 </td>
                                 <td>
-                                    <input runat="server" type="text" id="dateApplyStart" size="9" />
+                                    <input runat="server" type="text" id="dateApplyStart" size="9" class="Edit-Content-Control" />
 
                                 </td>
                             </tr>
@@ -310,7 +311,7 @@
                                 <td></td>
                                 <td class="midtitle">Deadline to Apply:</td>
                                 <td>
-                                    <input runat="server" type="text" id="dateDeadline" size="9" />
+                                    <input runat="server" type="text" id="dateDeadline" size="9" class ="Edit-Content-Control"  />
                                 </td>
                             </tr>
                         </table>
@@ -332,18 +333,18 @@
                         <asp:Label ID="lblPostedCycle" runat="server" Text="" ForeColor="red "> </asp:Label>
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPostedComment" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editcell"></asp:TextBox></td>
+                        <asp:TextBox ID="TextPostedComment" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editcell Edit-Content-Control"></asp:TextBox></td>
                 </tr>
                 <tr id="RemainderMessageRow" runat="server" style="color: red;">
                     <td></td>
                     <td colspan="5" style="font-size: xx-small">Notice Principal Date:
-                        <input runat="server" type="text" id="lblNoticeDate" size="8" readonly="readonly" />
+                        <input runat="server" type="text" id="lblNoticeDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
 
 
                         Last Reminder Date:
-                         <input runat="server" type="text" id="lblRemainderDate" size="8" readonly="readonly" />
+                         <input runat="server" type="text" id="lblRemainderDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
                         Posting Round 
-                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" />
+                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" class="Edit-Content-Control-Readonly"  />
 
 
                     </td>
@@ -355,21 +356,21 @@
                             <tr>
                                 <td style="width: 80%">
 
-                                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px" />
-                                    &nbsp;&nbsp; 
-                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px" />
-                                    &nbsp;&nbsp; 
-                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px" />
-                                    &nbsp;&nbsp;  
-                                     <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />
-                                    &nbsp;&nbsp;                         
-                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />
-                                    &nbsp;&nbsp; 
-                                    <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px" />
-                                    &nbsp;&nbsp; 
-                                    <asp:Button ID="btnRecover" runat="server" TabIndex="115" Text="Recover" Width="100px" Visible="false" />
+                                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px"   />
+                                    
+                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px"   />
+                                    
+                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px"   />
+                                     
+                                     <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px"  />
+                                                            
+                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px"   />
+                                    
+                                    <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px"   />
+                                    
+                                    <asp:Button ID="btnRecover" runat="server" TabIndex="115" Text="Recover" Width="100px" Visible="false"   />
 
-                                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="1px" Width="1px" CssClass="ButonHidden" />
+                                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="1px"   />
                                 </td>
                                 <td style="text-align: left;">
                                     <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" /><br />
@@ -447,7 +448,7 @@
                 <div style="text-align: left; margin-top: 15px;">
                     Cancel Comments:  
                 </div>
-                <asp:TextBox ID="cancelComments" runat="server" Width="98%" TextMode="MultiLine" CssClass="editcell" Font-Size="Small" Height="150px"></asp:TextBox>
+                <asp:TextBox ID="cancelComments" runat="server" Width="98%" TextMode="MultiLine" CssClass="editcell Edit-Content-Control" Font-Size="Small" Height="150px"></asp:TextBox>
                 <div style="text-align: left; margin-top: 5px;">
                     <asp:CheckBox ID="chbCancel" runat="server" Visible="false" Checked="false" Text="Cancel and Recover Previous posting" ForeColor="red" />
                 </div>

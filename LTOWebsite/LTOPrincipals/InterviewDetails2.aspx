@@ -8,6 +8,8 @@
     <title>Principal Interview </title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+
     <style type="text/css">
         html, body {
             height: 99%;
@@ -218,7 +220,7 @@
                         / Interview Comments : 
                     </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextRecomendation" runat="server" Height="40px" TextMode="MultiLine" Width="99%" BackColor="#ffffcc" CssClass="textboxF"></asp:TextBox>
+                        <asp:TextBox ID="TextRecomendation" runat="server" Height="40px" TextMode="MultiLine" Width="99%" BackColor="#ffffcc" CssClass="textboxF Edit-Content-Control "></asp:TextBox>
 
                     </td>
                 </tr>
@@ -244,7 +246,7 @@
 
                     
                     <td colspan="3"><b>Interview Date:</b>
-                        <input runat="server" type="text" id="dateInterview" size="9" />
+                        <input runat="server" type="text" id="dateInterview" size="9" class="Edit-Content-Control" />
                     </td>
                     <td colspan="3">
 
@@ -264,7 +266,7 @@
                             <tr>
                                 <td>
 
-                                    <asp:DropDownList ID="ddlAction" runat="server" Width="130px" BackColor="#ffffcc" AutoPostBack="false"></asp:DropDownList>
+                                    <asp:DropDownList ID="ddlAction" runat="server" Width="130px" BackColor="#ffffcc" AutoPostBack="false" CssClass="Edit-Content-Control"></asp:DropDownList>
                                 </td>
                                 <td>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlAction" ErrorMessage="Must select Interview Outcome. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>
@@ -275,7 +277,7 @@
                     </td>
                      
                     <td colspan="3"> <b> <asp:Label ID="LabelStartDate" runat="server" Text=" LTO start date:"></asp:Label></b>
-                        <input runat="server" type="text" id="dateEffective" size="9" />
+                        <input runat="server" type="text" id="dateEffective" size="9" class="Edit-Content-Control" />
                         <%--                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEffective" ErrorMessage="Must input Start Date. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
                     </td>
                     <td colspan="3">
@@ -297,7 +299,7 @@
 
                 <tr>
                     <td>
-                        <asp:Button ID="btnSave" runat="server" Text="Save" Width="80px" />
+                        <asp:Button ID="btnSave" runat="server" Text="Save" Width="80px" CssClass="action-button" />
                     </td>
                     <td colspan="2">
 
@@ -311,7 +313,7 @@
                     </td>
                     <td colspan="3">
                         <div id="RecommendForHireDIV">
-                            <asp:Button ID="btnSaveRecommendation" runat="server" Text="Recommend for Hire" Width="200px" Enabled="false" ToolTip="You must interview all candidate first and then chose one for recommend for Hire. " />
+                            <asp:Button ID="btnSaveRecommendation" runat="server" Text="Recommend for Hire" CssClass="action-button" Width="200px" Enabled="false" ToolTip="You must interview all candidate first and then chose one for recommend for Hire. " />
                         </div>
                     </td>
                     <td colspan="2">
@@ -412,7 +414,7 @@
             Please provide detailed notes as to why the candidate is Unsuccessful before we can proceed.  
             <br />
             Unsuccessful comments:
-              <asp:TextBox ID="txtComments" runat="server" Height="190px" TextMode="MultiLine" Width="570px" BackColor="#ffffcc" CssClass="textboxF"></asp:TextBox>
+              <asp:TextBox ID="txtComments" runat="server" Height="190px" TextMode="MultiLine" Width="570px" BackColor="#ffffcc" CssClass="textboxF Edit-Content-Control"></asp:TextBox>
 
         </div>
         <div id="PopUpHelp" style="display: none; background-color: papayawhip; position: absolute; border: 2px solid blue; font-family: Arial; font-size: medium; color: red;">

@@ -108,9 +108,9 @@
                             Enabled="true">
                         </asp:DropDownList>
                         <asp:Label ID="lblSuper" runat="server" Text="School: "></asp:Label>
-                        <asp:DropDownList ID="ddlschoolcode" runat="server" CssClass="editcell" SkinID="ddlSmall" Width="60px" AutoPostBack="true"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlSchool" runat="server" Width="400px" SkinID="ddlSmall" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
-                        Filter by:<asp:DropDownList ID="ddlProgress" runat="server" Width="150px" SkinID="ddlSmall" CssClass="editcell" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlschoolcode" runat="server" CssClass="editcell Edit-Content-Control" SkinID="ddlSmall" Width="60px" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchool" runat="server" Width="400px" SkinID="ddlSmall" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        Filter by:<asp:DropDownList ID="ddlProgress" runat="server" Width="150px" SkinID="ddlSmall" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
                         <a id="ProcessHelp" runat="server" href="javascript:openHelpProcess()">
                             <img alt="Help process" class="auto-style4" src="../images/HelpS.bmp" />
                         </a>
@@ -259,13 +259,13 @@
     function pageLoad(sender, args) {
 
         $(document).ready(function () {
-            $('#GridView1 tr').mouseenter(function (event) {
-                if (currentTR != undefined)
-                { currentTR.removeClass("highlightBoard"); }
-                currentTR = $(this)
-                //  $(this).addClass("highlightBoard");
-                currentTR.addClass("highlightBoard");
-            });
+            //$('#GridView1 tr').mouseenter(function (event) {
+            //    if (currentTR != undefined)
+            //    { currentTR.removeClass("highlightBoard"); }
+            //    currentTR = $(this)
+            //    //  $(this).addClass("highlightBoard");
+            //    currentTR.addClass("highlightBoard");
+            //});
 
 
         });

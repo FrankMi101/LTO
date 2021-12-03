@@ -13,11 +13,11 @@
     font-family: Arial;
     color: Black;
 }
-BUTTON
+/*BUTTON
 {
     font-style: normal;
     font-weight: bold;
-}
+}*/
 .FontBold
 {
     font-weight: bold;
@@ -30,9 +30,9 @@ BUTTON
     border-width: 0px;
     border-style: groove;
 }
-.ButtonMouseOver
+/*.ButtonMouseOver
 {
-    font-weight: normal;
+    font-weight: normal;*/
   /*  border-width: 1px;
     border-style: groove;
     font-size: small;
@@ -40,10 +40,10 @@ BUTTON
     background: WhiteSmoke;
     border-color: Purple;
     text-decoration: underline;*/
-}
-.ButtonNormal {
+/*}*/
+/*.ButtonNormal {
     font-weight: normal;
-    border-width: 0px;
+    border-width: 0px;*/
     /*  border-width: 1px;
     border-style: groove;
     font-size: small;
@@ -51,7 +51,7 @@ BUTTON
     border-color: Blue;
     background: WhiteSmoke;
     text-decoration: none;*/
-}
+/*}*/
 .LinkNormal
 {
     font-weight: normal;

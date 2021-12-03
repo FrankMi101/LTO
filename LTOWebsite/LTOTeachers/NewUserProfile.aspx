@@ -109,10 +109,10 @@
                     </td>
                     <td>Ranking:</td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextRanking" runat="server" Width="60px" CssClass="editcell"></asp:TextBox>
+                        <asp:TextBox ID="TextRanking" runat="server" Width="60px" CssClass="editcell Edit-Content-Control"></asp:TextBox>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      Lots:
-                        <asp:TextBox ID="TextLots" runat="server" Width="50px" CssClass="editcell"></asp:TextBox>
+                        <asp:TextBox ID="TextLots" runat="server" Width="50px" CssClass="editcell Edit-Content-Control"></asp:TextBox>
                     </td>
                     <td>
                         <asp:Button ID="btnSaveRanking" runat="server" Text="Area Change Save " CssClass="myButton" />
@@ -157,7 +157,7 @@
                     <td colspan="5">
 
 
-                        <asp:TextBox ID="TextHRComments" runat="server" Height="120px" Width="100%" CssClass="editcell" TextMode="MultiLine"></asp:TextBox>
+                        <asp:TextBox ID="TextHRComments" runat="server" Height="120px" Width="100%" CssClass="editcell Edit-Content-Control" TextMode="MultiLine"></asp:TextBox>
 
 
 

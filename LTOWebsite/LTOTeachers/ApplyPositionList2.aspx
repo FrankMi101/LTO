@@ -97,7 +97,7 @@
                                 </td>
                                 <td style="width: 5%">
 
-                                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" AutoPostBack="True" Height="20px">
+                                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" Height="20px">
                                         <asp:ListItem>LTO</asp:ListItem>
                                         <asp:ListItem>POP</asp:ListItem>
                                     </asp:DropDownList>

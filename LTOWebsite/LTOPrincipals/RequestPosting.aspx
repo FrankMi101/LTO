@@ -194,13 +194,13 @@
                             <tr>
                                 <td>Grade    </td>
                                 <td style="width: 230px">
-                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell">
+                                    <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Value="BC013E">Intermediate</asp:ListItem>
                                         <asp:ListItem Value="BC014E">Senior</asp:ListItem>
                                         <asp:ListItem Value="BC003E">Intermediate and Senior</asp:ListItem>
                                     </asp:DropDownList></td>
                                 <td>
-                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell">
+                                    <asp:DropDownList ID="ddlFTEPanel" runat="server" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Selected="true">Full</asp:ListItem>
                                         <asp:ListItem>PartTime</asp:ListItem>
                                         <asp:ListItem>AM</asp:ListItem>
@@ -208,7 +208,7 @@
                                     </asp:DropDownList></td>
                                 <td>BTC(%)   </td>
                                 <td style="width: 300px">
-                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell">
+                                    <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell Edit-Content-Control">
                                         <asp:ListItem Value="100" Selected="true">100%</asp:ListItem>
                                         <asp:ListItem Value="67">67%</asp:ListItem>
                                         <asp:ListItem Value="50">50%</asp:ListItem>
@@ -217,7 +217,7 @@
                                         <asp:ListItem Value="00">XX%</asp:ListItem>
                                     </asp:RadioButtonList></td>
                                 <td id="FTECell" runat="server">
-                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell"></asp:TextBox>%
+                                    <asp:TextBox ID="TextFTE" runat="server" Width="30px" CssClass="editcell Edit-Content-Control"></asp:TextBox>%
 
                                 </td>
                             </tr>
@@ -286,7 +286,7 @@
                     <td>Description of<br />
                         Assignment</td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="100%" CssClass="editArea"></asp:TextBox>
+                        <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="100%" CssClass="editArea Edit-Content-Control"></asp:TextBox>
                         <div id="F100TimeTable" runat="Server"></div>
                         <div id="F100MultipleSchool" runat="Server"></div>
                     </td>
@@ -298,7 +298,7 @@
                
                     </td>
                     <td colspan="7">
-                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="100%" CssClass="editArea"></asp:TextBox></td>
+                        <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="100%" CssClass="editArea Edit-Content-Control"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Princiapl Name: (Contact)</td>
@@ -328,15 +328,15 @@
                     <td></td>
                     <td colspan="7" style="text-align: center;">
 
-                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting" CssClass="inactive" />
+                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting" CssClass="inactive action-button" />
                         &nbsp;&nbsp;&nbsp;&nbsp; 
-                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="150px" Visible="false" Enabled="false" />
+                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="150px" Visible="false" Enabled="false" CssClass="action-button" />
 
                         &nbsp;&nbsp;&nbsp;&nbsp;                           
-                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px" />
+                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px"  CssClass="action-button"/>
                         &nbsp;&nbsp;&nbsp;&nbsp; 
-                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" />
-                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" CssClass="ButonHidden" />
+                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" CssClass="action-button" />
+                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" CssClass="ButonHidden action-button" />
 
                     </td>
 

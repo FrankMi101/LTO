@@ -99,7 +99,7 @@
                     <td>School Principal:</td>
                     <td colspan="5">
                         <asp:TextBox ID="textPrincipal" runat="server" Height="20px" Width="100px" BackColor="Transparent" Visible="false"></asp:TextBox>
-                        <asp:DropDownList ID="ddlSchoolPrincipal" runat="server" SkinID="ddlSmall" CssClass="editcell"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchoolPrincipal" runat="server" SkinID="ddlSmall" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
                         Posted Date:<asp:TextBox ID="TextPostedDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox>
                         <asp:Label ID="lblPostingCycle" runat="server" Height="20px" Width="80px" BackColor="Transparent" Text=" "></asp:Label>
                         <asp:Label ID="lblFTE" runat="server" Height="20px" Width="50px" BackColor="Transparent" Text=" "></asp:Label>
@@ -172,6 +172,11 @@
                     <td>
                         <asp:TextBox ID="TextEndDate" runat="server" BackColor="Transparent" Visible="true" Width="100px"></asp:TextBox>
                     </td>
+                </tr>   <tr>
+                    <td>Interview Candidate <br /> HR Comments</td>
+                    <td colspan="5">
+                        <asp:TextBox ID="TextComments" runat="server" TextMode="MultiLine" Width="100%" Height="60px" CssClass="editcell Edit-Content-Control"></asp:TextBox>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="6">
@@ -182,13 +187,12 @@
                 <tr>
                     <td style="border: 1px solid #46aaf3">
                         <asp:Label ID="lblInterviewCandidates" runat="server" Text=" Interview Candidates"  ></asp:Label>
-                       
-
                     </td>
                     <td style="border: 1px solid #46aaf3" colspan="5">
                         <div id="interviewCandidate" runat="server" style="height: 100px; width: 100%; overflow: auto; display: block;"></div>
                     </td>
                 </tr>
+             
                 <tr>
 
                     <td colspan="4" style="text-align: center;">

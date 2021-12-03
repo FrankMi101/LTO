@@ -11,6 +11,7 @@ namespace ClassLibrary
         public string NoticeDate { get; set; }
         public string PrincipalID { get; set; }
         public int RequestCount { get; set; }
+        public string Comments { get; set; }
 
     }
 }

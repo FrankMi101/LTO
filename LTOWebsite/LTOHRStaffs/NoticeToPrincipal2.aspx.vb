@@ -223,6 +223,7 @@ Partial Class NoticeToPrincipal2
             .PositionID = Me.TextPositionID.Text
             .NoticeDate = AppOperate.DateFC.YMD(Now())
             .PrincipalID = Me.ddlSchoolPrincipal.SelectedValue
+            .Comments = Me.TextComments.Text
         End With
         Dim result As String = SelectCandidateExe.NoticeUpdate(interviewNotice) ' CommonOperationExcute.InterviewNotice(interviewNotice, "Send Notice ToPrincipal")
         CreatSaveMessage(result, "Sent interview list email notice to Principal")
@@ -388,6 +389,7 @@ Partial Class NoticeToPrincipal2
             eMailFile = Replace(eMailFile, "[PostingCycleSTR]", Me.lblPostingCycle.Text)
             eMailFile = Replace(eMailFile, "[timeTable]", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "[multiSchool]", ViewState("multiSchool"))
+            eMailFile = Replace(eMailFile, "[HRCommentsSTR]", Me.TextComments.Text)
 
             Dim TeacherbeReplaceSection As String = ""
             Dim hrefLink As String = ""

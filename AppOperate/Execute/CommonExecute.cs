@@ -31,8 +31,8 @@ namespace AppOperate
                     return GetSPandPara_FromItemList(JsonFile, page, action);  // for DataAccess.json
                                                                                //    return GetSPandPara_FromPageList(JsonFile, page, action); // for DataAccessSP.json 
                                                                                // Does not works
-                                                                               //  DataSourceItem myitem = GetItemList("PageList", JsonFile, page, actio// DataSourceItem myitem = GetItemList("ItemList", JsonFile, page, action)// return myitem.objName + myitem.parameters;
-                }
+                                                                              //  DataSourceItem myitem = GetItemList("PageList", JsonFile, page, actio// DataSourceItem myitem = GetItemList("ItemList", JsonFile, page, action)// return myitem.objName + myitem.parameters;
+               }
             }
             catch (System.Exception ex)
             {

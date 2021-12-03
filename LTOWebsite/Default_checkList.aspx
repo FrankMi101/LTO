@@ -138,7 +138,7 @@
                                         </td>
                                         <td>Search by:
                                                 
-                                            <asp:DropDownList ID="ddlSearchType" runat="server" Width="100px" Height="20px">
+                                            <asp:DropDownList ID="ddlSearchType" runat="server" Width="100px" Height="20px" SkinID="ddlSmall">
                                                 <asp:ListItem>SurName</asp:ListItem>
                                                 <asp:ListItem>CPNum</asp:ListItem>
 
