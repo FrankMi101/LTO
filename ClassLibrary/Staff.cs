@@ -26,7 +26,9 @@
         public string Lots { get; set; }
         public string Ranking { get; set; }
         public int RowNo { get; set; }
-
+        public string IDs { get; set; }
+        public string CommentsDate { get; set; }
+       
     }
     public class HRComments : StaffBasic
     {

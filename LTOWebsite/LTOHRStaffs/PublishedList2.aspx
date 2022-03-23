@@ -84,13 +84,11 @@
         .highlightBoard {
             border: 2px #ff6a00 solid;
             /*background-color:dodgerblue;*/
-
         }
 
         .defaultBoard {
             border: 0px #ff6a00 solid;
         }
-
     </style>
 
 </head>
@@ -113,7 +111,6 @@
                     </asp:DropDownList>
                     <asp:Label ID="lblSuperArea" runat="server" Text="Search by"></asp:Label>
                     <asp:DropDownList ID="ddlSearchby" runat="server" Width="130px" SkinID="ddlSmall" Visible="true" AutoPostBack="True">
-                       
                     </asp:DropDownList>
 
                     <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="200px" SkinID="ddlSmall" Visible="true" AutoPostBack="True">
@@ -125,7 +122,7 @@
                     <input runat="server" visible="false" type="text" id="datepicker2" size="10" />
 
 
-                   <%-- <div id="PanelDIV" runat="server" style="display: inline;">
+                    <%-- <div id="PanelDIV" runat="server" style="display: inline;">
                         IN
                         <asp:DropDownList ID="ddlPanel" runat="server" Width="100px" SkinID="ddlSmall" AutoPostBack="True">
                             <asp:ListItem Selected="True" Value="0">All</asp:ListItem>
@@ -133,11 +130,11 @@
                             <asp:ListItem Value="05">Secondary</asp:ListItem>
                         </asp:DropDownList>
                     </div>--%>
-                     <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="True">
-                                    <asp:ListItem>All</asp:ListItem>
-                                    <asp:ListItem Selected="True">Open</asp:ListItem>
-                                    <asp:ListItem>Close</asp:ListItem>
-                                </asp:DropDownList>
+                    <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="True">
+                        <asp:ListItem>All</asp:ListItem>
+                        <asp:ListItem Selected="True">Open</asp:ListItem>
+                        <asp:ListItem>Close</asp:ListItem>
+                    </asp:DropDownList>
                     <asp:Button ID="btnSearch" runat="server" Text="Go" />
                     <asp:CheckBox ID="cb4Th" runat="server" Text="4th Round" />
                     <asp:CheckBox ID="CheckBox1" runat="server" Text="Not sent Email Position" />
@@ -156,10 +153,10 @@
                             </ProgressTemplate>
                         </asp:UpdateProgress>
                     </div>
-                          <div style="color: Red; font-size: x-small">
-            <asp:Label runat="server" ID="remaind22" Text="* Click on the Select button to see interview candidate list "> </asp:Label>
-            <asp:Label runat="server" ID="Label1" Text="" Visible="false"> </asp:Label>
-        </div>
+                    <div style="color: Red; font-size: x-small">
+                        <asp:Label runat="server" ID="remaind22" Text="* Click on the Select button to see interview candidate list "> </asp:Label>
+                        <asp:Label runat="server" ID="Label1" Text="" Visible="false"> </asp:Label>
+                    </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
@@ -266,8 +263,8 @@
                                         </ItemTemplate>
                                         <ItemStyle Width="2%" />
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="StartDate" ReadOnly="True" ItemStyle-CssClass="myDateS"/>
-                                    <asp:BoundField DataField="EndDate" ReadOnly="True" ItemStyle-CssClass="myDateE"/>
+                                    <asp:BoundField DataField="StartDate" ReadOnly="True" ItemStyle-CssClass="myDateS" />
+                                    <asp:BoundField DataField="EndDate" ReadOnly="True" ItemStyle-CssClass="myDateE" />
                                 </Columns>
 
                                 <FooterStyle BackColor="#C6C3C6" ForeColor="Black" />
@@ -286,7 +283,7 @@
             </asp:UpdatePanel>
 
         </div>
- 
+
         <div style="height: 100%;">
             <asp:Label runat="server" class="DataContentTile" ID="SelectedPosition" Text="All Applicant List Applied the Position "> </asp:Label>
         </div>
@@ -444,14 +441,14 @@
 
 
         var goPage = "LoadingHR.aspx?pID=2&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&PostedState=" + postedState + "&SchoolName=" + schoolname;
-        if (schoolcode.substr(0, 2) != "05" )
-          {
-            PositionTitle = PositionTitle + " (" + Description.substr(0,30) + ")";
-           }
+        if (schoolcode.substr(0, 2) != "05") {
+            PositionTitle = PositionTitle + " (" + Description.substr(0, 30) + ")";
+        }
         $("#SelectedPosition").text("All Applicant List Applied the " + PositionTitle + " (From " + StartDate + " to " + EndDate + ")" + " of " + schoolname);
         window.frames.ApplicantList.location.href = goPage;
     }
     function openEmailNotice(schoolyear, schoolcode, positionID) {
+
         //   var goPage = "Loading2.aspx?pID=LTOHRStaffs/NoticeToPrincipal.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&SchoolName=" + schoolname;
         var goPage = "Loading2.aspx?pID=LTOHRStaffs/NoticeToPrincipal2.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&SchoolName=" + schoolname;
 

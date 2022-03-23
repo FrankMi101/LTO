@@ -51,7 +51,7 @@ Partial Class PostingSummaryDetailsSub
             Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
             ' Dim SP As String = CommonExcute.SPNameAndParameters("Publish", "Position")
             ' Dim position =   CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0)
-            Dim position = PublishPositionExe.Position(parameter)(0) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0)
+            Dim position = PublishPositionExe(Of PositionPublish).Position(parameter)(0) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0)
 
             ' Dim ds As DataSet = PositionDetails.PositionSummarybyID(userid, schoolyear, positionID, cycle)
             Me.textPostingNumber.Text = position.PostingNumber '  ds.Tables(0).Rows(0).Item(1)

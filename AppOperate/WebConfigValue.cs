@@ -112,7 +112,7 @@ namespace AppOperate
 
         public static Contact HRContact(string JsonFile, string UserID )
         {
-            return JsonFileReader.CurrentOwner(JsonFile, UserID);
+            return CurrentOwner.PositionOwner( JsonFile, UserID);
         }
         public static string Extension(string userID)
         {

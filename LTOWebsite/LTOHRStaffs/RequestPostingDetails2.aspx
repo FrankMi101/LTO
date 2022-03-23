@@ -10,10 +10,15 @@
     <meta http-equiv="Pragma" content="No-cache" />
     <style type="text/css">
         body {
-            width:98%;
+            width: 98%;
         }
+
         .positionDescription {
             border: 1px solid #0094ff;
+        }
+
+        .hideMe {
+            display: none;
         }
     </style>
     <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
@@ -21,20 +26,20 @@
     <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
     <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
-<%--    <script src="../Scripts/bootstrap.js" type="text/javascript"></script>
+    <%--    <script src="../Scripts/bootstrap.js" type="text/javascript"></script>
     <script src="../Scripts/bootbox.js" type="text/javascript"></script>--%>
 
-    
+
 
     <script type="text/javascript">
         function CallShowMessage(action, message) {
-              window.alert(action + " " + message);
-           // bootbox.alert(action + " " + message);
+            window.alert(action + " " + message);
+            // bootbox.alert(action + " " + message);
         }
         function CallBackReloadParent(action, message) {
             try {
-                  window.alert(action + " " + message);
-               // bootbox.alert(action + " " + message);
+                window.alert(action + " " + message);
+                // bootbox.alert(action + " " + message);
                 $("#hdChildFormAction", parent.document).val(action);
 
                 if (action === "Posting Request" && message === "Successfully") {
@@ -195,7 +200,7 @@
                 </td>
                 <td colspan="7">
                     <b>
-                       <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 98%" class="editcellLock" />
+                        <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 98%" class="editcellLock" />
                     </b>
                     <asp:HiddenField ID="hfQualificationCode" runat="server" Value="" />
 
@@ -205,7 +210,7 @@
 
                 <td colspan="8">
 
-                    <div id ="cblQualficationDIV" runat="server" style="overflow: auto; width: 100%; height: 50px" >
+                    <div id="cblQualficationDIV" runat="server" style="overflow: auto; width: 100%; height: 50px">
                         <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical">
                             <asp:ListItem>item1</asp:ListItem>
                             <asp:ListItem>item2</asp:ListItem>
@@ -255,7 +260,7 @@
                 </td>
                 <td>Workplace FTE: 
                    
-                    <asp:Label ID="LabelWAFTE" runat="server" Text="Label"   CssClass="editcellLock"></asp:Label>
+                    <asp:Label ID="LabelWAFTE" runat="server" Text="Label" CssClass="editcellLock"></asp:Label>
                 </td>
             </tr>
 
@@ -288,7 +293,7 @@
 
                             <td class="midtitle">Assignment &nbsp;End Date:</td>
                             <td>
-                                <input runat="server" type="text" id="dateEnd" size="9" class ="Edit-Content-Control" />
+                                <input runat="server" type="text" id="dateEnd" size="9" class="Edit-Content-Control" />
 
                             </td>
                             <td style="width: 15px"></td>
@@ -322,22 +327,22 @@
 
                 <td colspan="6" style="text-align: center;">
 
-                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save" Width="80px"   />                  
+                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save" Width="80px" />
                     <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Posting" Width="150px" CssClass="disabaledBTCn action-button " />
-                    <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="100px" Visible="false"  />      
+                    <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="100px" Visible="false" />
                     <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" />
-                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px"  />
-                    <asp:Button ID="btnReject" runat="server" TabIndex="112" Text="Reject" Width="100px"  />
+                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" BorderStyle="None" BorderWidth="0px"  />
+                    <asp:Button ID="btnReject" runat="server" TabIndex="112" Text="Reject" Width="100px" />
 
                     <br />
                 </td>
-                 <td colspan="2" style="text-align: left">
+                <td colspan="2" style="text-align: left">
 
 
-                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" />
-                        <br />
-                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true"   />
-                    </td>
+                    <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" />
+                    <br />
+                    <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true" />
+                </td>
 
             </tr>
         </table>
@@ -394,7 +399,7 @@
 
     $(document).ready(function () {
         InitialDatePickerControl();
-       if ($("#TextStatus").val() != "Initial") OperatePage.LockPage();
+        if ($("#TextStatus").val() != "Initial") OperatePage.LockPage();
         $('#FTECell').hide();
         if ($('#TextFTE').val() != '') {
             $('#FTECell').show();
@@ -528,8 +533,8 @@
                 result = false;
 
             } else {
-                  result = confirm("Are you sure, you want delete this Position ?");
-               
+                result = confirm("Are you sure, you want delete this Position ?");
+
             }
             if (result) {
                 // $("#HiddenFieldAction").val("Yes");
@@ -560,7 +565,7 @@
         var name = DOMaction.CheckBoxListValue($('#cblQualification'), "Name");
         $('#lblQualification').val(name);
         $('#hfQualificationCode').val(code);
-     //   alert($('#hfQualificationCode').val() + "  " + $('#lblQualification').val());
+        //   alert($('#hfQualificationCode').val() + "  " + $('#lblQualification').val());
 
 
     }

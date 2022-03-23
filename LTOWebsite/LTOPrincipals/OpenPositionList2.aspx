@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="OpenPositionList2.aspx.vb" Inherits="OpenPositionList2" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="OpenPositionList2.aspx.vb" Inherits="OpenPositionList2"   EnableTheming="true" %>
 
 
 <%--<%@ Register assembly="Infragistics4.Web.v16.2, Version=16.2.20162.1023, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" namespace="Infragistics.Web.UI.GridControls" tagprefix="ig" %>--%>

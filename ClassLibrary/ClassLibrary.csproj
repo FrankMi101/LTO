@@ -59,6 +59,8 @@
     <Compile Include="FactoryMethod.cs" />
     <Compile Include="GeneralCheck.cs" />
     <Compile Include="InterviewerTeam.cs" />
+    <Compile Include="NameValueList.cs" />
+    <Compile Include="PageItem.cs" />
     <Compile Include="Parameters\IParameters.cs" />
     <Compile Include="Parameters\IParametersForCandidate.cs" />
     <Compile Include="Parameters\IParametersForOperation.cs" />

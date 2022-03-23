@@ -59,7 +59,7 @@
 
         </header>
 
-        <nav style="height: 25px; width: 100%; text-wrap: avoid; background-image:url(images/BlueExplorer.gif)">
+        <nav style="height: 25px; width: 100%; text-wrap: avoid; background-image:url(images/BlueExplorer.png)">
             <div id="topnav" style="width: 100%; height: 25px;  border: 0 none; padding: 1px 0px 1px 0px;">
                 <ul id="navlist">
                     <li id="li_Menu0" runat="server"><a href="#" id="Menu0" runat="server" target="mainTop">Request Post </a>

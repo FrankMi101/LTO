@@ -40,7 +40,7 @@ Partial Class RequestMoreInterview2
         Dim userid As String = HttpContext.Current.User.Identity.Name
 
         Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
-        Dim position = PublishPositionExe.Position(parameter)(0) '  CommonListExecute.PublishPosition(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
+        Dim position = PublishPositionExe(Of PositionPublish).Position(parameter)(0) '  CommonListExecute.PublishPosition(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
         Return position
 
     End Function

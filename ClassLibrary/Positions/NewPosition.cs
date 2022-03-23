@@ -13,8 +13,7 @@ namespace ClassLibrary
         public string SchoolYear { get; set; }
         public string SchoolCode { get; set; }
         public string PositionID { get; set; }
-        public string PositionType { get; set; }
-
+        public string PositionType { get; set; } 
 
     }
 }

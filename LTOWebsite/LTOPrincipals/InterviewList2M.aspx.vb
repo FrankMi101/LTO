@@ -53,7 +53,7 @@ Partial Class InterviewList2M
             .Para0 = _SchoolYear
             .Para1 = _appType
         End With
-        AssembleListItem.SetLists(Me.cellEditInterviewOutCome, "InterviewProcess", parameter, _SchoolYear)
+        AssemblingList.SetLists("", Me.cellEditInterviewOutCome, "InterviewProcess", parameter, _SchoolYear)
 
 
         CheckRequestSchool()

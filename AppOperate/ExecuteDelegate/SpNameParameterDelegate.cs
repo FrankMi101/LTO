@@ -38,7 +38,7 @@ namespace AppOperate.ExecuteDelegate
                     case "Approve":
                         return GeneralDelegate.RuningDelegate(PostingPositionExe.SPName, action);
                     case "Publish":
-                        return GeneralDelegate.RuningDelegate(PublishPositionExe.SpName, action);
+                        return GeneralDelegate.RuningDelegate(PublishPositionExe<string>.SpName, action);
                     case "Candidate":
                         return GeneralDelegate.RuningDelegate(SelectCandidateExe.SPName, action);
                     case "Hiring":
@@ -82,7 +82,7 @@ namespace AppOperate.ExecuteDelegate
                     case "Approve":
                         return GeneralDelegate<string>.RunningTDelegate(PostingPositionExe.SPName, action);
                     case "Publish":
-                        return GeneralDelegate<string>.RunningTDelegate(PublishPositionExe.SpName, action);
+                        return GeneralDelegate<string>.RunningTDelegate(PublishPositionExe<string>.SpName, action);
                     case "Candidate":
                         return GeneralDelegate<string>.RunningTDelegate(SelectCandidateExe.SPName, action);
                     case "Hiring":

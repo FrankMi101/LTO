@@ -33,7 +33,7 @@
 	}
 .FrameBodyMiddle
  {  width:100%;
-	background-image:url(images/blueDIVList.png);
+	/*background-image:url(images/blueDIVList.png);*/
   	}	
         
   .FrameBodyRight
@@ -44,7 +44,7 @@
 .bubble {
 	border: 2px solid #fbaa21;
 	padding: 5px;
-	Z-INDEX: 10; 	BACKGROUND: #fff url(images/blueDIVList.png); 
+/*	Z-INDEX: 10; 	BACKGROUND: #fff url(images/blueDIVList.png); */
 LEFT: 569px; 
 	WIDTH: 100px; 	POSITION: absolute; TOP: 115px;
 }

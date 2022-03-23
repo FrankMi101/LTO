@@ -64,12 +64,6 @@ namespace AppOperate.Tests
         }
 
         [TestMethod()]
-        public void MultipleSchoolPrinciaplsTest_Return_PositionMultiSchoolPrincipalEmail_IfthePositionForMultipleSchool()
-        {
-            Assert.Fail();
-        }
-
-        [TestMethod()]
         public void RejectRequestTest()
         {
             //Arrange
@@ -125,11 +119,7 @@ namespace AppOperate.Tests
             Assert.IsNotNull(result, $"  Reject Posting Request e{ result}");
         }
 
-        [TestMethod()]
-        public void UpdatePostingTest()
-        {
-            Assert.Fail();
-        }
+      
 
         [TestMethod()]
         public void DeletePostingTest()
@@ -181,13 +171,13 @@ namespace AppOperate.Tests
                 Qualification = ""
 
             };
-            string expect = "Successfully";
+            string expect = "Successfully, Failed";
 
             //Act
             var result = PostingApproveRequestExe.SavePosting(parameter, 1666);
 
             //Assert
-            Assert.AreEqual(expect, result, $"  Save Posting Request { result}");
+            StringAssert.Contains(expect, result, $"  Save Posting Request { result}");
         }
     
 

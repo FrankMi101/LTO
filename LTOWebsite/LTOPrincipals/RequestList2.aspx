@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="RequestList2.aspx.vb" Inherits="RequestList2" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="RequestList2.aspx.vb" Inherits="RequestList2"   EnableTheming="true" %>
 
 <!DOCTYPE html>
 
@@ -277,7 +277,7 @@
       //  var goPage = "Loading2.aspx?pID=LTOPrincipals/RequestPosting.aspx" + "&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID;
         var goPage = "Loading2.aspx?pID=LTOPrincipals/RequestDetails2.aspx" + "&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID;
 
-        openDetailPage(550, 800, goPage, "Edit posting request")
+        openDetailPage(600, 800, goPage, "Edit posting request")
     }
 
     function openDetailPage(vHeight, vWidth, goPage, pTitle) {

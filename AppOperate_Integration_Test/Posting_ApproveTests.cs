@@ -1,7 +1,6 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
-
 namespace AppOperate.Tests
 {
     [TestClass()]
@@ -158,7 +157,6 @@ namespace AppOperate.Tests
                 UserID = "mif",
                 SchoolYear = schoolyear,
                 SchoolCode = "0546",
-
                 PositionID = requestid,
                 Comments = "Posting comments",
                 StartDate = DateFC.YMD2(DateTime.Now.ToShortDateString()),
@@ -171,16 +169,17 @@ namespace AppOperate.Tests
                 ReplaceTeacherID = "00000000"
             };
 
-            string expect = "Successfully";
             string SP = CommonExcute.SPNameAndParameters(SPFile, cPage, action);
             string result = CommonExcute<PositionApprove>.GeneralValue(SP, parameter);
             int positionID = Int32.Parse(result);
+            string year = DateTime.Now.Year.ToString();
+            string expect = year +"-" + result;
 
             parameter.PositionID = positionID;
             parameter.Operate = "PostingNumber";
             string PostingNumber = CommonOperationExcute.ApproveOperation(parameter, "Property");
 
-            Assert.AreEqual(expect, result, $"  REquest Posting position  New Posting Number { PostingNumber }");
+            Assert.AreEqual(expect, PostingNumber, $"  REquest Posting position  New Posting Number { PostingNumber }");
 
 
 
@@ -216,16 +215,18 @@ namespace AppOperate.Tests
                 ReplaceTeacherID = "Test Teacher",
             };
 
-            string expect = "Successfully";
             string SP = CommonExcute.SPNameAndParameters(SPFile, cPage, action);
             string result = CommonExcute<PositionApprove>.GeneralValue(SP, parameter);
             int positionID = Int32.Parse(result);
+            string year = DateTime.Now.Year.ToString();
+            string expect = year +"-" + result;
 
             parameter.PositionID = positionID;
             parameter.Operate = "PostingNumber";
+
             string PostingNumber = CommonOperationExcute.ApproveOperation(parameter, "Property");
 
-            Assert.AreEqual(expect, result, $"  REquest Posting position  New Posting Number { PostingNumber }");
+            Assert.AreEqual(expect, PostingNumber, $"  Request Posting position  New Posting Number { PostingNumber }");
 
 
 

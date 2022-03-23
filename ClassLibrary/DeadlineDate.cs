@@ -9,7 +9,7 @@ namespace ClassLibrary
    public  class DeadlineDate
     {
         public string  SchoolYear { get; set; }
-        public string DatePublish { get; set; }
+        public string PublishDate { get; set; }
         public  string PositionType { get; set; }
     }
 }

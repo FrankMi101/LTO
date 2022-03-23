@@ -513,7 +513,7 @@ Partial Class InterviewDetails2
         If chbHiring.Checked Then
 
             Me.btnSaveRecommendation.Enabled = True
-            AssembleListItem.SetValue(Me.ddlAction, "0")
+            AssemblingList.SetValue(Me.ddlAction, "0")
             ' ListInitial.DDL(Me.ddlAction, "0")
         Else
             Me.btnSaveRecommendation.Enabled = False

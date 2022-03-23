@@ -65,7 +65,7 @@ Partial Class ApplyPositionList2
     Private Sub BindDDLList()
 
         Try
-            AssembleListItem.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
+            AssemblingList.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
 
             If WorkingProfile.LoginRole = "Admin" Then
                 btApplicant.Visible = True
@@ -81,7 +81,7 @@ Partial Class ApplyPositionList2
                     .Para2 = WorkingProfile.UserRole
                     .Para3 = "%"
                 End With
-                AssembleListItem.SetObjLists(Me.combobox, parameter)
+                AssemblingList.SetListsObj("", Me.combobox, "Applicant", parameter)
             Else
                 Me.ddlappType.Visible = False
 

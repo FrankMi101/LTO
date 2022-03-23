@@ -29,7 +29,7 @@ Partial Class NoticeToPrincipal2
     End Sub
 
 
-    Private Function getDataSource() As PositionPublish
+    Private Function getDataSource(Of T)() As T
         Dim userid As String = HttpContext.Current.User.Identity.Name
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
 
@@ -39,17 +39,17 @@ Partial Class NoticeToPrincipal2
         Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
         If User.Identity.Name = "mif" Then
             '  Dim SP As String = CommonListExecute(Of PositionPublish).ObjSP("PositionPublish")
-            Me.lblPostingNumber.ToolTip = PublishPositionExe.SpName("Position")
+            Me.lblPostingNumber.ToolTip = PublishPositionExe(Of String).SpName("Position")
         End If
 
-        Dim position = PublishPositionExe.Position(parameter)(0)  '  CommonListExecute.PublishPosition(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
+        Dim position = PublishPositionExe(Of T).Position(parameter)(0)  '  CommonListExecute.PublishPosition(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
         Return position
 
     End Function
 
     Private Sub bindData()
         Try
-            Dim position = getDataSource() '  SinglePosition.PositionByID(parameter)
+            Dim position = getDataSource(Of PositionListPublish)() ' getDataSource() '  SinglePosition.PositionByID(parameter)
 
             Me.TextPositionID.Text = position.PositionID
 
@@ -68,7 +68,7 @@ Partial Class NoticeToPrincipal2
             Me.textPrincipal.Text = getMyValue(position.PrincipalName)
 
             Dim _postionLevel As String = BasePage.getMyValue(position.PositionLevel)
-            AssembleListItem.SetValue(Me.ddlPositionlevel, _postionLevel)
+            AssemblingList.SetValue(Me.ddlPositionlevel, _postionLevel)
             Me.hfPositionType.Value = getMyValue(position.PositionType)
             '  ListInitial.DDL(Me.ddlSchoolPrincipal, getMyValue(position.PrincipalID))
             Me.TextType.Text = getMyValue(position.PositionType)
@@ -79,7 +79,7 @@ Partial Class NoticeToPrincipal2
             Me.TextTeacherReplaced.Text = getMyValue(position.ReplaceTeacher)
             Me.TextTeacherPersonID.Text = getMyValue(position.ReplaceTeacherID)
             Me.TextPostingNum.Text = getMyValue(position.PostingNumber)
-            AssembleListItem.SetValue(Me.ddlSchoolPrincipal, getMyValue(position.PrincipalID))
+            AssemblingList.SetValue(Me.ddlSchoolPrincipal, getMyValue(position.PrincipalID))
             hfPrincipalID.Value = getMyValue(position.PrincipalID)
             hfSchoolCode.Value = getMyValue(position.SchoolCode)
             hfPositionType.Value = getMyValue(position.PositionType)
@@ -120,8 +120,8 @@ Partial Class NoticeToPrincipal2
                 .Para0 = Page.Request.QueryString("SchoolYear")
                 .Para1 = Page.Request.QueryString("SchoolCode")
             End With
-            AssembleListItem.SetLists(Me.ddlSchoolPrincipal, "SchoolPrincipal", parameter)
-            AssembleListItem.SetLists(Me.ddlPositionlevel, "PositionLevel", parameter)
+            AssemblingList.SetLists("", Me.ddlSchoolPrincipal, "SchoolPrincipal", parameter)
+            AssemblingList.SetLists("", Me.ddlPositionlevel, "PositionLevel", parameter)
 
         Catch ex As Exception
 
@@ -274,9 +274,6 @@ Partial Class NoticeToPrincipal2
         Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
         _mCC = EmailNotification.CheckCCMailOwner(_mCC, Me.TextOwner.Text, User.Identity.Name)
         _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "Posting", appType, "1", Me.TextPositionTitle.Text, schoolcode)
-
-
-
 
 
         ' *** handle bandler position posting notification

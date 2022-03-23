@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ClassLibrary;
 
+
 namespace AppOperate.ExecuteInterface
 {
     public class PostingRequest<T> : IPosting<T>

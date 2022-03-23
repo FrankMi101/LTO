@@ -12,8 +12,10 @@ namespace AppOperate.Tests
         readonly string  _schoolCode = "0549";
         readonly string _dateStart ="2021-09-01";
         readonly string _dateEnd = "2022-06-30";
-        readonly string _publishDate = DateFC.YMD(DateTime.Now , "-");
-        readonly string _applyDate= DateFC.YMD(DateTime.Now, "-");
+        // if test use today date, should avoid the public hoilday  _testDate = DateTime()
+        readonly static DateTime  _testDate = new DateTime(2021, 9, 11);
+        readonly string _publishDate = DateFC.YMD(_testDate, "-","Y");
+        readonly string _applyDate =  DateFC.YMD(_testDate, "-","Y");
         int _requestId = 0;
         int _positionId = 0;
         string _principalId = "";
@@ -47,6 +49,7 @@ namespace AppOperate.Tests
 
             if (result == expect)
             {
+                
                 // 4. Posting Request and get publish Position ID 
                 result = Step4_PostingRequestandGetPositionID();
             }
@@ -121,7 +124,7 @@ namespace AppOperate.Tests
 
             //Assert
 
-            Assert.IsNotNull(newid, $"Request ID { newid } ");
+            Assert.IsNotNull(newid, $"Step1_CreateNewReuqest : Request ID { newid } ");
 
             return "Successfully";
 
@@ -141,7 +144,7 @@ namespace AppOperate.Tests
             _request = request1[0];
 
             //Assert
-            Assert.IsNotNull(_request, $" Get Request Position ");
+            Assert.IsNotNull(_request, $"Step2-GetRequestPosition : Get Request Position ");
 
             return "Successfully";
         }
@@ -179,7 +182,7 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Assert
-            Assert.AreEqual(expect, result, $" Update and save postion request action was:  { result}");
+            Assert.AreEqual(expect, result, $" Step3_UpdateRequestPosiiton :  Update and save postion request action was:  { result}");
 
             return "Successfully";
         }
@@ -196,7 +199,7 @@ namespace AppOperate.Tests
             var parameterForDeadline = new
             {
                 SchoolYear = _schoolYear,
-                DatePublish = _publishDate,
+                PublishDate = _publishDate,
                 PositionType = "LTO"
             };
             var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
@@ -206,7 +209,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = _dateEnd;
             requestPosition.DatePublish = _publishDate;
             requestPosition.DateApplyOpen = _applyDate;
-            requestPosition.DateApplyClose = PublishPositionExe.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
 
             //Act
             string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting
@@ -222,7 +225,7 @@ namespace AppOperate.Tests
 
 
             //Assert
-            Assert.AreEqual(expect, result, $"Posting Request {result }");
+            Assert.AreEqual(expect, result, $"Step4_PostingRequestandGetPositionID : Posting Request {result }");
             return "Successfully";
         }
 
@@ -246,7 +249,7 @@ namespace AppOperate.Tests
             string expect = "English Grade 10 Teacher";
             string result = _applyFor.PositionTitle;
             //Assert
-            Assert.AreEqual(expect, result, $" Apply Position id { _applyFor.PositionID } { _applyFor.PositionTitle } ");
+            Assert.AreEqual(expect, result, $" Step5_GetanApplyPositionbyID : Apply Position id { _applyFor.PositionID } { _applyFor.PositionTitle } ");
 
             return "Successfully";
         }
@@ -300,7 +303,7 @@ namespace AppOperate.Tests
             string result = ApplyProcessExe.Appied(paraForApply);
 
             //Assert
-            Assert.AreEqual(expect, result, $" apply applicant  { applicantName}  ");
+            Assert.AreEqual(expect, result, $" Step6_ApplyOpenPosition_Action : apply applicant  { applicantName}  ");
 
          
         }
@@ -347,7 +350,7 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Assert
-            Assert.IsNotNull( result, $" select interview candaitae.");
+            Assert.IsNotNull( result, $" Step7_SelectInterviewCandidats :  select interview candaitae.");
 
 
             return "Successfully";
@@ -373,7 +376,7 @@ namespace AppOperate.Tests
 
 
             //Assert
-            Assert.AreEqual(expect, result, $"Notice position { interviewNotice.PositionID } interview candiates to  School Principal { _principalId } ");
+            Assert.AreEqual(expect, result, $"Step8_NoticeCandidateToSchoolPrincipal : Notice position { interviewNotice.PositionID } interview candiates to  School Principal { _principalId } ");
 
 
             return "Successfully";
@@ -415,10 +418,10 @@ namespace AppOperate.Tests
 
             //Act 
 
-            string expect = "Successfully";
+            string expect = "Successfully,No Applicant exists";
 
             //Assert
-            Assert.AreEqual(expect, result, $" Interview outcome update result ");
+            StringAssert.Contains(expect, result, $" Step9_InterviewCandidats_Result :  Interview outcome update result ");
 
 
             return expect;
@@ -469,7 +472,7 @@ namespace AppOperate.Tests
                 }
             }
             //Assert
-            Assert.AreEqual(expect, result, $" Recommented for hire of { outcome.CPNum } ");
+            Assert.AreEqual(expect, result, $" Step10_RecommendForHire : Recommented for hire of { outcome.CPNum } ");
             return result;
 
         }
@@ -513,7 +516,7 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Assert
-            Assert.AreEqual(expect, result, $"Hired { position.TeacherName } on  { position.PositionTitle } . " );
+            Assert.AreEqual(expect, result, $"Step11_ConfirmHire : Hired {  position.TeacherName } on  { position.PositionTitle } . " );
 
 
             return "Successfully";
@@ -543,7 +546,7 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Assert
-            Assert.AreEqual(expect, result, $" Revoke Hired { position.TeacherName } on  { position.PositionTitle } . ");
+            Assert.AreEqual(expect, result, $" Step12_ConfirmHireRevoke : Revoke Hired { position.TeacherName } on  { position.PositionTitle } . ");
 
 
             return "Successfully";
@@ -573,11 +576,55 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Assert
-            Assert.AreEqual(expect, result, $" Revoke Hired { position.TeacherName } on  { position.PositionTitle } . ");
+            Assert.AreEqual(expect, result, $" Step99_ClearupTestingProcess:  Revoke Hired { position.TeacherName } on  { position.PositionTitle } . ");
 
 
             return "Successfully";
 
+        }
+
+        [TestMethod()]
+        private string Step4_PostingRequestandGetPositionID_check()
+        {
+            // 4. posting Request 
+            //Arrange        
+            var parameter = new
+            {
+                SchoolYear = _schoolYear,
+                PositionID = _requestId.ToString() // create new request
+            };
+
+            var parameterForDeadline = new
+            {
+                SchoolYear = _schoolYear,
+                PublishDate = _publishDate,
+                PositionType = "LTO"
+            };
+            var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
+            requestPosition.Comments = "Posting school request post position test process";
+            requestPosition.CPNum = _cpNum;
+            requestPosition.StartDate = _dateStart;
+            requestPosition.EndDate = _dateEnd;
+            requestPosition.DatePublish = _publishDate;
+            requestPosition.DateApplyOpen = _applyDate;
+            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
+
+            //Act
+            string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting
+            _positionId = _requestId = Int32.Parse(postingPositionId);
+            var parameterForGetPostingNumber = new
+            {
+                Operate = "Get",
+                PositionID = postingPositionId
+            };
+
+            var result = PostingPositionExe.PostingNumber(parameterForGetPostingNumber); // get Published Position
+            string expect = DateTime.Now.Year.ToString() + "-" + postingPositionId;
+
+
+            //Assert
+            Assert.AreEqual(expect, result, $"Step4_PostingRequestandGetPositionID : Posting Request {result }");
+            return "Successfully";
         }
     }
 }

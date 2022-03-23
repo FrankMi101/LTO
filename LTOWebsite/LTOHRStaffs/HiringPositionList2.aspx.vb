@@ -71,7 +71,7 @@ Partial Class HiringPositionList2
             End If
 
 
-            AssembleListItem.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
+            AssemblingList.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
 
             Dim parameter As New List2Item()
             With parameter
@@ -80,28 +80,30 @@ Partial Class HiringPositionList2
                 .Para1 = WorkingProfile.ApplicationType
             End With
 
-            AssembleListItem.SetLists(Me.ddlSchoolYear, "SchoolYearbySchool", parameter, WorkingProfile.SchoolYear)
+            AssemblingList.SetLists("", Me.ddlSchoolYear, "SchoolYearbySchool", parameter, WorkingProfile.SchoolYear)
 
-            AssembleListItem.SetValue(Me.ddlSearchby, WorkingProfile.SearchBy)
-            ' ListInitial.DDL(Me.ddlSearchby, WorkingProfile.SearchBy)
 
-            Me.txtSearchBox.Visible = False
 
-            If Not WorkingProfile.SearchByValue = Nothing Then
+            AssemblingList.SetValue(Me.ddlSearchby, WorkingProfile.SearchBy)
+            ddlSearchby_SelectedIndexChanged(Me.Page, System.EventArgs.Empty)
 
-                If WorkingProfile.SearchByValue = "All" Then
-                    WorkingProfile.SearchBy = "School"
-                    WorkingProfile.SearchByValue = "0000"
-                End If
 
-                AssemblingList.SetLists(JsonFile, ddlSearchby, "Searchby", parameter)
-                '  AssembleListItem.SetListsFromJson(ddlSearchby, "Searchby", JsonFile)
-                '  AssembleListItem.SetListsFromJson(ddlSearchby, "Searchby", JsonFile, New myJsonLists().SearchBy)
-                AssemblingList.SetValue(Me.ddlSearchby, WorkingProfile.SearchBy)
-                ddlSearchby_SelectedIndexChanged(Me.Page, System.EventArgs.Empty)
-                AssemblingList.SetValue(Me.ddlSearchbyValue, WorkingProfile.SearchByValue)
+            'If Not WorkingProfile.SearchByValue = Nothing Then
 
-            End If
+            '    If WorkingProfile.SearchByValue = "All" Then
+            '        WorkingProfile.SearchBy = "School"
+            '        WorkingProfile.SearchByValue = "0000"
+            '    End If
+
+            '    'AssemblingList.SetLists(JsonFile, ddlSearchby, "Searchby", parameter)
+
+
+            '    AssemblingList.SetValue(Me.ddlSearchby, WorkingProfile.SearchBy)
+
+            '    ddlSearchby_SelectedIndexChanged(Me.Page, System.EventArgs.Empty)
+            '    AssemblingList.SetValue(Me.ddlSearchbyValue, WorkingProfile.SearchByValue)
+
+            'End If
 
 
         Catch ex As Exception
@@ -217,33 +219,37 @@ Partial Class HiringPositionList2
         Dim _schoolYear As String = Me.ddlSchoolYear.SelectedValue
         Me.ddlSearchbyValue.Visible = True
         Me.txtSearchBox.Visible = False
-        Select Case searchby
-            Case "Area", "School", "Panel", "Level", "State"
-                AssembleListItem.SetSearchList(Me.ddlSearchbyValue, searchby, _UserID, _schoolYear)
 
-            Case "All"
-                Me.ddlSearchbyValue.ClearSelection()
-                Me.ddlSearchbyValue.Items.Clear()
-                Me.txtSearchBox.Text = ""
-                '     BindGridData(True)
+        Dim parameter As New List2Item()
+        parameter.Para0 = _schoolYear
+
+        Select Case searchby
+
+            Case "Area", "PostingCycle", "PostingState", "Panel"
+                AssemblingList.SetLists(JsonFile, ddlSearchbyValue, searchby, parameter)
+            Case "School", "Level", "PendingConfirm", "PositionStatus", "State"
+                AssemblingList.SetLists("", ddlSearchbyValue, searchby, parameter)
+
             Case Else
                 Me.ddlSearchbyValue.Visible = False
                 Me.ddlSearchbyValue.ClearSelection()
-                Me.txtSearchBox.Text = ""
+                Me.txtSearchBox.Text = SearchbyOtherInitial(searchby)
                 Me.txtSearchBox.Visible = True
-
         End Select
 
+    End Sub
+    Private Function SearchbyOtherInitial(ByVal searchby As String) As String
+        Dim rVal As String = ""
         If searchby = "PostingNum" Then
             Dim yearSTR As String = Now().Year
-            If Left(WorkingProfile.SearchByValue, 4) = yearSTR Then
-                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
+            If Left(WorkingProfile.SearchByValue, 5) = yearSTR + "-" Then
+                rVal = WorkingProfile.SearchByValue
             Else
-                Me.txtSearchBox.Text = yearSTR + "-"
+                rVal = yearSTR + "-"
             End If
         End If
-
-    End Sub
+        Return rVal
+    End Function
 
 
     Protected Sub ddlSearchbyValue_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSearchbyValue.SelectedIndexChanged

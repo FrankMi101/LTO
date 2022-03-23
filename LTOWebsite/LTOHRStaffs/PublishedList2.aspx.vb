@@ -184,55 +184,59 @@ Partial Class PublishedList2
         '  Me.PanelDIV.Visible = True
         Select Case searchby
             Case "School", "Level", "State", "PendingConfirm"
-                ' Me.PanelDIV.Visible = True
                 AssemblingList.SetLists("", Me.ddlSearchbyValue, searchby, parameter)  ' SetupList.ListDDLSearch(Me.ddlSearchbyValue, searchby, _UserID, _schoolYear)
             Case "Area", "PostingCycle", "PostingState", "Panel"
                 AssemblingList.SetLists(JsonFile, ddlSearchbyValue, searchby, parameter)
             Case "PublishDate", "PositionStartDate", "PositionEndDate", "DeadlineDate", "OpenDate", "CloseDate"
-                Me.ddlSearchbyValue.Visible = False
-                Me.datepicker.Visible = True
-                If IsDate(WorkingProfile.SearchByValue) Then
-                    Me.datepicker.Value = WorkingProfile.SearchByValue
-                Else
-                    Me.datepicker.Value = DateFC.YMD(Now(), "-") ' DateFC.YMD2(Now())
-                End If
-
-                Me.datepicker2.Visible = True
-
-                Me.datepicker2.Value = DateFC.YMD(WorkingProfile.SearchByValue2, "-")
-                Me.DateTo.Visible = True
-
-
-                If DateFC.YMD(Me.datepicker2.Value) < DateFC.YMD(Me.datepicker.Value) Then
-                    Me.datepicker2.Value = Me.datepicker.Value
-                End If
-
-
-            Case "All"
-                Me.ddlSearchbyValue.ClearSelection()
-                Me.ddlSearchbyValue.Items.Clear()
-                Me.txtSearchBox.Text = ""
-                '   If Not sender.id = "__Page" Then BindGridData(True)
+                SearchbyDateInitial()
             Case Else
                 Me.ddlSearchbyValue.Visible = False
                 Me.ddlSearchbyValue.ClearSelection()
-                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
-
+                Me.txtSearchBox.Text = SearchbyOtherInitial(searchby)
                 Me.txtSearchBox.Visible = True
                 '    Me.searchdate.Visible = False
         End Select
-        If searchby = "PostingNum" Then
-            Dim yearSTR As String = Now().Year
-            If Left(WorkingProfile.SearchByValue, 4) = yearSTR Then
-                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
-            Else
-                Me.txtSearchBox.Text = yearSTR + "-"
-            End If
-        End If
-
 
     End Sub
+    Private Function SearchbyOtherInitial(ByVal searchby As String) As String
+        Dim rVal As String = ""
+        If searchby = "PostingNum" Then
+            Dim yearSTR As String = Now().Year
+            If Left(WorkingProfile.SearchByValue, 5) = yearSTR + "-" Then
+                rVal = WorkingProfile.SearchByValue
+            Else
+                rVal = yearSTR + "-"
+            End If
+        End If
+        Return rVal
+    End Function
+    Private Sub SearchbyDateInitial()
+        Try
+            Me.ddlSearchbyValue.Visible = False
+            Me.datepicker.Visible = True
+            If IsDate(WorkingProfile.SearchByValue) Then
+                Me.datepicker.Value = WorkingProfile.SearchByValue
+            Else
+                Me.datepicker.Value = DateFC.YMD(Now(), "")
+            End If
 
+            Me.datepicker2.Visible = True
+            If IsDate(WorkingProfile.SearchByValue2) Then
+                Me.datepicker2.Value = WorkingProfile.SearchByValue2
+            Else
+                Me.datepicker2.Value = DateFC.YMD(Now(), "")
+            End If
+
+            Me.DateTo.Visible = True
+
+            If DateFC.YMD(Me.datepicker2.Value) < DateFC.YMD(Me.datepicker.Value) Then
+                Me.datepicker2.Value = Me.datepicker.Value
+            End If
+
+        Catch ex As Exception
+
+        End Try
+    End Sub
 
     Protected Sub ddlSearchbyValue_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSearchbyValue.SelectedIndexChanged
         Me.txtSearchBox.Text = ""

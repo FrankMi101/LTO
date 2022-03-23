@@ -49,10 +49,8 @@ Partial Class SearchPosition
         Select Case searchby
             Case "School", "Level", "State", "PendingConfirm"
                 AssemblingList.SetLists("", Me.ddlSearchbyValue, searchby, parameter)
-                '  AssembleListItem.SetSearchList(Me.ddlSearchbyValue, searchby, _UserID, _schoolYear) '  SetupList.ListDDLSearch(Me.ddlSearchbyValue, searchby, _UserID, _schoolYear)
                 Me.ddlSearchbyValue.Visible = True
             Case "Area", "PostingCycle", "PostingState", "Panel"
-                '  AssembleListItem.SetListsFromJson(ddlSearchbyValue, searchby, JsonFile)
                 AssemblingList.SetLists(JsonFile, ddlSearchbyValue, searchby, parameter)
             Case "PublishDate", "PositionStartDate", "PositionEndDate", "DeadlineDate", "OpenDate", "CloseDate"
                 Me.ddlSearchbyValue.Visible = False

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AppOperate;
 using AppOperate.ExecuteInterface;
 
+
 namespace AppOperate.ExecuteInterface
 {
    public class PostingApprove<T> : IPosting<T>

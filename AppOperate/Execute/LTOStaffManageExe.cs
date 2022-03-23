@@ -1,4 +1,6 @@
 ﻿using ClassLibrary;
+using DataAccess;
+using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,47 +11,53 @@ namespace AppOperate
 {
     public class LTOStaffManageExe
     {
+        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new StaffManage());
+
         public LTOStaffManageExe()
         {
         }
-        public static string SPName(string action)
-        {
-            return GetSP(action);
-        }
+  
         public static List<Staff> TCDSBStaffs(object parameter)
         {
             string SP = GetSP("TCDSBStaffs");
-            return CommonExcute<Staff>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<Staff>(SP, parameter);
+            // return CommonExcute<Staff>.GeneralList(SP, parameter);
         }
         public static List<HRComments> CommentsList(object parameter)
         {
             string SP = GetSP("CommentsList");
-            return CommonExcute<HRComments>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<HRComments>(SP, parameter);
+            //            return CommonExcute<HRComments>.GeneralList(SP, parameter);
         }
         public static List<Staff> LTOStaffs(object parameter)
         {
             string SP = GetSP("LTOStaffs");
-            return CommonExcute<Staff>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<Staff>(SP, parameter);
+            //           return CommonExcute<Staff>.GeneralList(SP, parameter);
         }
         public static List<Staff> Staff(object parameter)
         {
             string SP = GetSP("Staff");
-            return CommonExcute<Staff>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<Staff>(SP, parameter);
+            //           return CommonExcute<Staff>.GeneralList(SP, parameter);
         }
         public static string Save(object parameter)
         {
-            string SP = GetSP("Save");
-            return CommonExcute<string>.GeneralValue(SP, parameter);
+            string SP = GetSP("Save"); 
+            return _action.AppOne.CommonAction(SP, parameter);
+            //            return CommonExcute<string>.GeneralValue(SP, parameter);
         }
         public static string SaveRanking(object parameter)
         {
             string SP = GetSP("SaveRanking");
-            return CommonExcute<string>.GeneralValue(SP, parameter);
+             return _action.AppOne.CommonAction(SP, parameter);
+            //             return CommonExcute<string>.GeneralValue(SP, parameter);
         }
         public static string ApplicantOTType(object parameter)
         {
             string SP = GetSP("OTType");
-            return CommonExcute<string>.GeneralValue(SP, parameter);
+             return _action.AppOne.CommonAction(SP, parameter);
+            //            return CommonExcute<string>.GeneralValue(SP, parameter);
         }
         private static string GetSP(string action)
         {
@@ -59,31 +67,21 @@ namespace AppOperate
             { return GetSPFromJsonFile(action); }
 
         }
+        public static string SPName(string action)
+        {
+            return GetSPInClass(action);
+        }
+        public static string SPName(string action, object para)
+        {
+            return GetSPInClass(action, para);
+        }
         private static string GetSPInClass(string action)
         {
- 
-            string ParaPositions = "  @SearchBy,@SearchValue";
-
-            switch (action)
-            {
-                case "TCDSBStaffs":
-                    return "dbo.tcdsb_LTO_PageStaffManage_TCDSBStaffList" + ParaPositions;
-                case "LTOStaffs":
-                    return "dbo.tcdsb_LTO_PageStaffManage_LTOList" + ParaPositions;
-                case "Staff":
-                    return "dbo.tcdsb_LTO_PageStaffManage_Staff" + " @CPNum,@Source";
-                case "OTType":
-                    return "dbo.tcdsb_LTO_PageStaffManager_OTType" + " @CPNum";
-                case "Save":
-                    return "dbo.tcdsb_LTO_PageStaffManager_Operation" + " @UserID,@CPNum,@Action,@Comments,@IDs,@CommentsDate,@DateOfHire,@Ranking,@Lots";
-                case "SaveRanking":
-                    return "dbo.tcdsb_LTO_PageStaffManager_OperationRanking" + " @Operate,@UserID,@CPNum,@DateOfHire,@Ranking,@Lots";
-                case "CommentsList":
-                    return "dbo.tcdsb_LTO_PageStaffManager_HRComments" + " @UserID,@CPNum,@Action"; 
-               default:
-                    return action;
-
-            }
+            return action;
+        }
+        private static string GetSPInClass(string action, object parameter)
+        {
+            return   _action.AppOne.SpName(action, parameter);
         }
         private static string GetSPFromJsonFile(string action)
         {

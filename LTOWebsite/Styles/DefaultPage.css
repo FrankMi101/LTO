@@ -15,7 +15,7 @@ table {
 ul, li {
     margin-left: 0px;
     padding-left: 0px;
-    background-image: url(images/BlueExplorer.gif);
+    background-image: url(/images/BlueExplorer.png);
 }
 
 a:link, a:visited {

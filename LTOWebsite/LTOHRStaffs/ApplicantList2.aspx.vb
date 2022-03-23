@@ -37,9 +37,7 @@ Partial Class ApplicantList2
 
     Private Sub BindGridData(ByVal goDatabase As Boolean)
         Try
-            '  Dim ds As DataSet
-            '  ds = GetDataset(goDatabase)
-            Me.GridView1.DataSource = getDataSource() ' ds.Tables(0)
+            Me.GridView1.DataSource = getDataSource()
             GridView1.DataBind()
 
         Catch ex As Exception

@@ -274,7 +274,11 @@ Partial Class HiredPositionList2
         End Select
         If searchby = "PostingNum" Then
             Dim yearSTR As String = Now().Year.ToString()
-            Me.txtSearchBox.Text = yearSTR + "-"
+            If Left(WorkingProfile.SearchByValue, 5) = yearSTR + "-" Then
+                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
+            Else
+                Me.txtSearchBox.Text = yearSTR + "-"
+            End If
         End If
 
     End Sub

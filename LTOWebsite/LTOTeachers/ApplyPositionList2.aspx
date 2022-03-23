@@ -109,11 +109,11 @@
                                     <a id="aLTOTeacherList" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
 
                                 </td>
-                                <td style="width: 30%; text-align: center; text-wrap: avoid">
-                                    <div id="ApplicantForDeveloper" runat="server" visible="false">
+                                <td style="width:30%; text-align: center; text-wrap: avoid">
+                                    <div id="ApplicantForDeveloper" runat="server" visible="false"  >
                                         <div class="ui-widget">
                                             <asp:Label ID="lblSchoolyear" Text="Search Teacher:" runat="server"> </asp:Label>
-                                            <select id="combobox" runat="server" style="width: 200px; background-color: lightgoldenrodyellow"
+                                            <select id="combobox" runat="server" style="background-color: lightgoldenrodyellow" 
                                                 ng-model="myText">
                                                 <option value="">Select Teacher...</option>
 
@@ -279,7 +279,7 @@
 
         </div>
 
-        <div id="ResumeCoverLetterDIV" class="bubble hide" style="width: 99%;">
+        <div id="ResumeCoverLetterDIV" class="bubble hide" style="width: 99%; background-color:azure ">
 
             <div style="height: 22px; margin-top: -2px; background-color: deepskyblue; width: 100%;">
 
@@ -406,13 +406,11 @@
     }
     function openApply(schoolyear, schoolcode, positionID, CPNum) {
         var goPage = "Loading2.aspx?pID=LTOTeachers/ApplyPosition2.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&ApplyUserID=" + CPNum; //+ "&SchoolName=" + schoolname;
-        openDetailPage(630, 800, goPage, "Apply Open Position");
+        openDetailPage(650, 800, goPage, "Apply Open Position");
     }
     function openApplyNotQualified(schoolyear, schoolcode, positionID, CPNum) {
         window.alert("You do not currently hold the qualifications for this position.");
-        //  var goPage = "Loading2.aspx?pID=LTOTeachers/ApplyPositionNotQual.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&ApplyUserID=" + CPNum; //+ "&SchoolName=" + schoolname;
-        //  openDetailPage(550, 720, goPage, "Not Qualified Open Position");
-    }
+     }
     function openLocationMap(schoolcode, schoolname) {
         var goPage = "Loading2.aspx?pID=LTOTeachers/LocationMap.aspx&SchoolCode=" + schoolcode
         openDetailPage(560, 650, goPage, schoolname + " Location");
@@ -467,6 +465,7 @@
     function pageLoad(sender, args) {
         AutoCompleteComboBox();
         $(".custom-combobox-input").focus();
+        
         // $("#combobox").focus();
 
     }

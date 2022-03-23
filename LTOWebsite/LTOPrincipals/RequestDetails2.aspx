@@ -14,18 +14,22 @@
 
     <link href="../Styles/TablesFrame4.css" rel="stylesheet" type="text/css" />
     <link href="../Styles/BubbleHelp.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/autoCompleteDDL.css" rel="stylesheet" type="text/css" />
 
     <script src="../Scripts/angular.min.js"></script>
     <style type="text/css">
-        body, table{
+        body, table {
             width: 100%;
-            margin:0;
+            margin: 0;
         }
-         
-     #btnSave1 {
+
+        #btnSave1 {
             display: none;
         }
 
+        .Required-Field-Control {
+            border: 2px dotted red;
+        }
     </style>
 
     <%--    <link href="../Styles/AngualJS.css" rel="stylesheet" />--%>
@@ -33,7 +37,6 @@
     <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
     <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
     <%-- <script src="../Scripts/autoCompleteDDL.js" type="text/javascript"></script>--%>
-    <link href="../Styles/autoCompleteDDL.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         function CallShowMessage(action, message) {
@@ -104,15 +107,19 @@
                         <asp:DropDownList ID="ddlschoolcode" runat="server" Width="80px" Height="20px" CssClass="editcellLock" Enabled="false"></asp:DropDownList>
 
                         <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="80%" Height="20px" CssClass="editcellLock" Enabled="false"></asp:DropDownList><br />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="lblTeacherName" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="hfAutoCompletSelectedID" ErrorMessage="* must have the Teacher being replaced that select from the school or TCDSB teacher list" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_lblTeacherName" runat="server" ControlToValidate="lblTeacherName" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_hfAutoCompletSelectedID" runat="server" ControlToValidate="hfAutoCompletSelectedID" ErrorMessage="* Must have the Teacher being replaced that select from the school or TCDSB teacher list" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                 </tr>
-                
                 <tr>
-                    <td>  <label for="lblTeacherName"> Teacher being <br /> Replaced: </label>  
-                        
+                    <td>
+                        <label for="lblTeacherName">
+                            Teacher being
+                            <br />
+                            Replaced:
+                        </label>
+
                     </td>
                     <td>
 
@@ -134,11 +141,12 @@
                         <input runat="server" id="hfAutoCompletSelectedID" style="width: 100px; background-color: whitesmoke" type="text" readonly="readonly" class="editcellLock" placeholder="teacher ID" title="  " />
 
                     </td>
-                    <td style="text-align: right;"> <label for ="ddlReason"> Reason for Leave: </label>                       
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ddlReason" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td style="text-align: right;">
+                        <label for="ddlReason">Reason for Leave: </label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_ddlReason" runat="server" ControlToValidate="ddlReason" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="4">
-                        <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="200px" Height="20px" CssClass="editArea Edit-Content-Control" required></asp:DropDownList>
+                        <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="200px" Height="20px" CssClass="editCell Edit-Content-Control" required></asp:DropDownList>
                         <asp:RadioButtonList ID="rblReason" runat="server" RepeatDirection="Horizontal" Visible="false">
                             <asp:ListItem>Personal</asp:ListItem>
                             <asp:ListItem>Medical</asp:ListItem>
@@ -151,14 +159,15 @@
                 <tr>
                     <td>Assignment:</td>
 
-                    <td colspan="4"> <label for ="dateStart">Start Date:  </label> 
+                    <td colspan="4">
+                        <label for="dateStart">Start Date:  </label>
 
                         <input runat="server" type="text" id="dateStart" size="9" name="dateStart" placeholder="start date" class="inputFiled editArea Edit-Content-Control" />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
-                        <label for ="dateEnd"> End Date::  </label> 
-                        
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_dateStart" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <label for="dateEnd">End Date::  </label>
+
                         <input runat="server" type="text" id="dateEnd" size="9" name="dateEnd" placeholder="end date" class="inputFiled editArea Edit-Content-Control" />
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEnd" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_dateEnd" runat="server" ControlToValidate="dateEnd" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                     <td colspan="3" style="text-align: right">
@@ -167,19 +176,23 @@
                     </td>
 
                 </tr>
+
                 <tr class="editArea">
-                    <td> <label for ="TextPositionTitle">  Position Title:</label>
-                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td>
+                        <label for="TextPositionTitle">Position Title:</label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
                     </td>
                     <td colspan="7">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_TextPositionTitle" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="* Must provide a Position Title" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+
                         <input runat="server" id="TextPositionTitle" type="text" name="title" class="inputFiled editArea Edit-Content-Control" placeholder="Posting Position Title" style="width: 99%" required />
 
 
                     </td>
                 </tr>
                 <tr class="editArea">
-                    <td colspan="8" style="color:#cc0033; font-size:1rem" >
+                    <td colspan="8" style="color: #cc0033; font-size: 1rem">
                         <b>Please Select Grade, Subject Area and Specific Qualfication you are looking for   </b>
 
                 </tr>
@@ -187,8 +200,9 @@
                     <td colspan="8">
                         <table>
                             <tr>
-                                <td> <label for="ddlPositionlevel"> Division Required:</label>  
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="ddlPositionlevel" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <td>
+                                    <label for="ddlPositionlevel">Division Required:</label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_ddlPositionlevel" runat="server" ControlToValidate="ddlPositionlevel" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 230px">
                                     <asp:DropDownList ID="ddlPositionlevel" runat="server" CssClass="editcell Edit-Content-Control" required>
@@ -203,8 +217,9 @@
                                         <asp:ListItem>AM</asp:ListItem>
                                         <asp:ListItem>PM</asp:ListItem>
                                     </asp:DropDownList></td>
-                                <td>  <label for="rblFTE"> BTC(%)   </label> 
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="rblFTE" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <td>
+                                    <label for="rblFTE">BTC(%)   </label>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator_rblFTE" runat="server" ControlToValidate="rblFTE" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="width: 300px">
                                     <asp:RadioButtonList ID="rblFTE" runat="server" RepeatDirection="Horizontal" Width="100%" CssClass="editcell Edit-Content-Control" required>
@@ -225,22 +240,23 @@
 
                 </tr>
                 <tr>
-                    <td>  <label for="cblQualification">Qualification Summary </label> 
-                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="lblQualification" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                    <td>
+                        <label for="cblQualification">Qualification Summary </label>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_lblQualification" runat="server" ControlToValidate="lblQualification" ErrorMessage="*" Font-Size="small" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td colspan="7">
                         <b>
-                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 99%; border:0;" class="editcellLock" />
+                            <input id="lblQualification" runat="server" name="lblQualification" type="text" readonly="readonly" style="width: 99%; border: 0;" class="editcellLock" />
                         </b>
                     </td>
                 </tr>
-               
+
                 <tr class="editArea">
 
                     <td colspan="8">
 
                         <div style="overflow: auto; width: 99%; height: 200px">
-                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical"  >
+                            <asp:CheckBoxList ID="cblQualification" runat="server" RepeatColumns="4" RepeatDirection="Vertical">
                                 <asp:ListItem>item1</asp:ListItem>
                                 <asp:ListItem>item2</asp:ListItem>
                                 <asp:ListItem>item3</asp:ListItem>
@@ -262,10 +278,12 @@
                     </td>
                 </tr>
                 <tr>
-                    <td> <label for="TextDescription">
-                        Description of<br />
-                        Assignment
-                         </label> </td>
+                    <td>
+                        <label for="TextDescription">
+                            Description of<br />
+                            Assignment
+                        </label>
+                    </td>
                     <td colspan="7">
                         <asp:TextBox ID="TextDescription" TabIndex="14" runat="server" Height="40px" TextMode="MultiLine" Width="99%" CssClass="editArea Edit-Content-Control"></asp:TextBox>
                         <div id="F100TimeTable" runat="Server"></div>
@@ -275,16 +293,19 @@
 
 
                 <tr>
-                    <td> <label for="TextComments"> Comments on  <br /> Request;</label>
-               
+                    <td>
+                        <label for="TextComments">
+                            Comments on 
+                            <br />
+                            Request;</label>
+
                     </td>
                     <td colspan="7">
                         <asp:TextBox ID="TextComments" TabIndex="15" runat="server" Height="30px" TextMode="MultiLine" Width="99%" CssClass="editArea Edit-Content-Control"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td>Princiapl Name:</td>
-                    <td colspan="7">
-                         (Contact)<asp:Label ID="lblPrinciaplName" runat="server" Text="Label"></asp:Label>
+                    <td colspan="7">(Contact)<asp:Label ID="lblPrinciaplName" runat="server" Text="Label"></asp:Label>
                         &nbsp;&nbsp;&nbsp;&nbsp; 
                     Superintendent Name 
 
@@ -309,15 +330,15 @@
                     <td></td>
                     <td colspan="7" style="text-align: center;">
 
-                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting"   />
-                          
-                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="175px" Visible="false" Enabled="false"  />
+                        <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save to Request Posting" />
 
-                                              
-                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px"  />
-                        
-                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false"  />
-                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px"   />
+                        <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Request Posting" Width="175px" Visible="false" Enabled="false" />
+
+
+                        <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="150px" />
+
+                        <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" />
+                        <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" />
 
                     </td>
 
@@ -442,200 +463,185 @@
         if (requestStatus == "Initial" || requestStatus === "Reject") return false;
         return true;
     }
-    $(document).ready(function () {
-        InitialDatePickerControl();
-        $('#FTECell').hide();
-        if ($('#TextFTE').val() != '') {
-            $('#FTECell').show();
-        }
+    function pageLoad(sender, args) {
 
-        //alert("source = " + requestSource  +  " State = " + requestStatus); 
-        if (requestSource == "Principal") {
-            if (requestStatus == "Initial" || requestStatus == "Reject" || requestStatus == "Pending") {
-                OperatePage.OpenPage();
-                OperatePage.RequestBtn();
-                // if ($("#TextPositionTitle").val() != "") DOMaction.Button($("#btnRequest"), false);
+        $(document).ready(function () {
+            InitialDatePickerControl();
+
+            $('#FTECell').hide();
+            if ($('#TextFTE').val() != '') {
+                $('#FTECell').show();
+            }
+
+            //alert("source = " + requestSource  +  " State = " + requestStatus); 
+            if (requestSource == "Principal") {
+                if (requestStatus == "Initial" || requestStatus == "Reject" || requestStatus == "Pending") {
+                    OperatePage.OpenPage();
+                    OperatePage.RequestBtn();
+                    // if ($("#TextPositionTitle").val() != "") DOMaction.Button($("#btnRequest"), false);
+                }
+                else { OperatePage.LockPage(); }
             }
             else { OperatePage.LockPage(); }
-        }
-        else { OperatePage.LockPage(); }
 
-        if (requestStatus == "Posted") {
-            alert("The Position has been posted. Changes won't save !!! ");
-        }
-        //$("#lblTeacherName").focus(function (ev) {
-        //    var ev = window.event;
-        //    var vTop = $('#lblTeacherName').offset().top - 10;   
-        //    var vLeft = $('#lblTeacherName').offset().left - 10;  
-
-        //    ShowSelectTeacherList(vTop, vLeft, "Click");
-        //});
-
-        $("#lblTeacherName").click(function (ev) {
-            var ev = window.event;
-            var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
-            var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
-
-            ShowSelectTeacherList(vTop, vLeft, "Click");
-        });
-
-        $("#lblTeacherName").keyup(function (e) {
-            var ev = window.event;
-            var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
-            var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
-
-            ShowSelectTeacherList(vTop, vLeft, "Keyup");
-        });
-
-
-        $("#TextPositionTitle").keyup(function (e) {
-            OperatePage.RequestBtn();
-        });
-        $("#btnRequest").click(function (e) {
-            $("#hdChildFormAction", parent.document).val("ChangeAction");
-        });
-        $("#btnSave").click(function (e) {
-            DOMaction.Button($("#btnRequest"), false);
-            $("#hdChildFormAction", parent.document).val("ChangeAction");
-
-        });
-        $("#ButtonCancel").click(function (e) {
-            $("#RepostingDIV").fadeToggle("slow");
-            return false;
-        });
-        //$("#btndelete").mouseover(function (e) {
-
-        //    if ($("#TextPositionTitle").val() === "") {
-        //        $("#TextPositionTitle").val("Position Title for delete");
-        //    }
-        //    if ($("#ddlTeacherReplaced").val() === "") {
-        //        $("#ddlTeacherReplaced").get(0).selectedIndex = 1;
-        //    }
-        //    if ($("#ddlReason").val() === "") {
-        //        $("#ddlReason").get(0).selectedIndex = 1;
-        //    }
-        //    // $("#TextPositionTitle").val("Position Title for delete");
-        //    // $("#ddlTeacherReplaced").get(0).selectedIndex =1;
-        //    // $("#ddlReason").get(0).selectedIndex = 1;
-        //});
-        $("#btndelete").click(function (e) {
-           
-
-            $("#HiddenFieldAction").val("Yes");
-
-            var applicant = $("#hfApplicant").val();
-            $("#hdChildFormAction", parent.document).val("ChangeAction");
-
-            var result = confirm("Are you sure, you want delete this Position ?");
-            if (result) {
-
-                return true;
-            }
-            else {
-
-                return false;
+            if (requestStatus == "Posted") {
+                alert("The Position has been posted. Changes won't save !!! ");
             }
 
-        });
-
-
-        $(window).unload(function () {
-            //   var myaction = document.getElementById("HiddenFieldAction").value;
-            window.returnValue = $("#HiddenFieldAction").val();
-        });
-
-        $("#rblReason input").click(function (e) {
-            try {
+            $("#lblTeacherName").click(function (ev) {
                 var ev = window.event;
-                var targetItem = ev.srcElement.id;
-                var myItem = $("#" + targetItem);
-                var selectedCode = myItem.val();
-                if (selectedCode == "Other") {
-                    DOMaction.InputText($("#TextOtherReason"), false);
-                }
-                else {
-                    DOMaction.InputText($("#TextOtherReason"), true);
-                }
+                var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
+                var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
 
+                ShowSelectTeacherList(vTop, vLeft, "Click");
+            });
 
-            }
-            catch (e) { }
-
-        })
-        $("#rblFTE input").click(function (e) {
-            try {
+            $("#lblTeacherName").keyup(function (e) {
                 var ev = window.event;
-                var targetItem = ev.srcElement.id;
-                var myItem = $("#" + targetItem);
-                var selectedCode = myItem.val();
-                if (selectedCode == "00") {
-                    $('#FTECell').show();
-                }
-                else {
-                    $('#FTECell').hide();
-                }
+                var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
+                var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
 
+                ShowSelectTeacherList(vTop, vLeft, "Keyup");
+            });
 
-            }
-            catch (e) { }
-
-        })
-        $("#cblQualification input").click(function (e) {
-            try {
-                var ev = window.event;
-                var targetItem = ev.srcElement.id;
-                var myItem = $("#" + targetItem);
-                var QualCode = myItem.val();
-                //Qualification = myItem.closest("td").find("label").html();
-                var checkedvalue = myItem[0].checked;
-                OperatePage.UpdateQual(QualCode, checkedvalue);
+            $("#TextPositionTitle").keyup(function (e) {
                 OperatePage.RequestBtn();
-            }
-            catch (ex) {
-                alert(ex);
-            }
+            });
+            $("#TextPositionTitle").focus(function (e) {
+                HideSelectTeacherList();
+            });
+            $("#ddlReason").focus(function (e) {
+                HideSelectTeacherList();
+            });
 
-        })
 
-        $("#btnUnpublish").click(function (e) {
-            var result = confirm("Are you sure, you want to Cancel this posting ?");
-            if (result) {
+            $("#btnRequest").click(function (e) {
                 $("#hdChildFormAction", parent.document).val("ChangeAction");
-                $("#HiddenFieldAction", parent.document).val("Yes");
-                return true;
-            }
+            });
+            $("#btnSave").click(function (e) {
+                checkRequiredFields();
+                DOMaction.Button($("#btnRequest"), false);
+                $("#hdChildFormAction", parent.document).val("ChangeAction");
 
-            else
+            });
+            $("#ButtonCancel").click(function (e) {
+                $("#RepostingDIV").fadeToggle("slow");
                 return false;
-        });
+            });
 
-        $('#ddlTeacherReplaced').change(function () {
-            try {
+            $("#btndelete").click(function (e) {
 
-                var personID = $('#ddlTeacherReplaced').val();
-                $("#TextTeacherReplacedID").val(personID);
-            }
-            catch (e) {
-                window.alert(e.message);
-            }
-        });
-        $("#hfAutoCompletSelectedID").change(function () {
-            var cpnum = $("#hfAutoCompletSelectedID").val();
-            var checkCpnum = {
-                "Operate": "Request",
-                "UserID": $("#hfUserID").val(),
-                "SchoolYear": $("#hfSchoolyear").val(),
-                "SchoolCode": $("#ddlschoolcode").val(),
-                "PositionID": $("#TextRequestID").val(),
-                "CPNum": cpnum
-            }
+                $("#HiddenFieldAction").val("Yes");
 
-            $("#TextTeacherReplacedID").val(cpnum);
-            WebService.GetTeacherNamebyCPnum(checkCpnum, onSuccessTeacherName, onFailure);
-        });
+                var applicant = $("#hfApplicant").val();
+                $("#hdChildFormAction", parent.document).val("ChangeAction");
 
+                var result = confirm("Are you sure, you want delete this Position ?");
+                if (result) {
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            });
 
-    })
+            $("#rblReason input").click(function (e) {
+                try {
+                    var ev = window.event;
+                    var targetItem = ev.srcElement.id;
+                    var myItem = $("#" + targetItem);
+                    var selectedCode = myItem.val();
+                    if (selectedCode == "Other") {
+                        DOMaction.InputText($("#TextOtherReason"), false);
+                    }
+                    else {
+                        DOMaction.InputText($("#TextOtherReason"), true);
+                    }
+                }
+                catch (e) { }
+            })
+            $("#rblFTE input").click(function (e) {
+                try {
+                    var ev = window.event;
+                    var targetItem = ev.srcElement.id;
+                    var myItem = $("#" + targetItem);
+                    var selectedCode = myItem.val();
+                    if (selectedCode == "00") {
+                        $('#FTECell').show();
+                    }
+                    else {
+                        $('#FTECell').hide();
+                    }
+                }
+                catch (e) { }
+            })
+            $("#cblQualification input").click(function (e) {
+                try {
+                    var ev = window.event;
+                    var targetItem = ev.srcElement.id;
+                    var myItem = $("#" + targetItem);
+                    var QualCode = myItem.val();
+                    //Qualification = myItem.closest("td").find("label").html();
+                    var checkedvalue = myItem[0].checked;
+                    OperatePage.UpdateQual(QualCode, checkedvalue);
+                    OperatePage.RequestBtn();
+                }
+                catch (ex) {
+                    alert(ex);
+                }
+            })
+
+            $("#btnUnpublish").click(function (e) {
+                var result = confirm("Are you sure, you want to Cancel this posting ?");
+                if (result) {
+                    $("#hdChildFormAction", parent.document).val("ChangeAction");
+                    $("#HiddenFieldAction", parent.document).val("Yes");
+                    return true;
+                }
+                else
+                    return false;
+            });
+
+            $('#ddlTeacherReplaced').change(function () {
+                try {
+
+                    var personID = $('#ddlTeacherReplaced').val();
+                    $("#TextTeacherReplacedID").val(personID);
+                }
+                catch (e) {
+                    window.alert(e.message);
+                }
+            });
+            $("#hfAutoCompletSelectedID").change(function () {
+                var cpnum = $("#hfAutoCompletSelectedID").val();
+                var checkCpnum = {
+                    "Operate": "Request",
+                    "UserID": $("#hfUserID").val(),
+                    "SchoolYear": $("#hfSchoolyear").val(),
+                    "SchoolCode": $("#ddlschoolcode").val(),
+                    "PositionID": $("#TextRequestID").val(),
+                    "CPNum": cpnum
+                }
+
+                $("#TextTeacherReplacedID").val(cpnum);
+                WebService.GetTeacherNamebyCPnum(checkCpnum, onSuccessTeacherName, onFailure);
+            });
+        })
+    }
+
+    $(window).unload(function () {
+        //   var myaction = document.getElementById("HiddenFieldAction").value;
+        window.returnValue = $("#HiddenFieldAction").val();
+    });
+    function checkRequiredFields() {
+        DOMaction.Validation("RequiredFieldValidator_TextPositionTitle", "TextPositionTitle");
+        DOMaction.Validation("RequiredFieldValidator_lblTeacherName", "lblTeacherName");
+        DOMaction.Validation("RequiredFieldValidator_ddlReason", "ddlReason");
+        DOMaction.Validation("RequiredFieldValidator_rblFTE", "rblFTE");
+        DOMaction.Validation("RequiredFieldValidator_ddlPositionlevel", "ddlPositionlevel");
+        DOMaction.Validation("RequiredFieldValidator_lblQualification", "cblQualification");
+    }
+  
     function onSuccess(result) {
 
         $("#dateDeadline").val(result);
@@ -771,6 +777,9 @@
             board: 0
         })
         if (action == "Click") { $("#BubbleHelpDIV").fadeToggle("fast"); }
+    }
+    function HideSelectTeacherList() {
+        $("#BubbleHelpDIV").hide();
     }
 
 </script>

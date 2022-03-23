@@ -308,10 +308,10 @@ namespace AppOperate.Tests
         {
             //Arrange
             string action = "DefaultDate";
-            var parameter = new LimitDate()
+            var parameter = new
             {
                 Operate = action,
-                PositionType = "LTO",
+                AppType = "LTO",
                 SchoolYear = schoolyear,
                 DatePublish =  "2018/12/10"
             };

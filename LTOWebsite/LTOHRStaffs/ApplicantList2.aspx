@@ -114,7 +114,7 @@
                         <asp:BoundField DataField="myKey" ReadOnly="True" Visible="False" />
                         <asp:BoundField DataField="SchoolYear" ReadOnly="True" Visible="False" />
 
-                        <asp:BoundField DataField="PositionID" ReadOnly="True" Visible="False" />
+                        <asp:BoundField DataField="PositionID" ReadOnly="True" Visible="False"  />
                         <asp:BoundField DataField="OCTNumber" ReadOnly="True" Visible="False" />
 
                         <asp:BoundField DataField="RowNo" HeaderText="No." ItemStyle-CssClass="myRowNo">
@@ -122,7 +122,7 @@
                         </asp:BoundField>
                         <asp:TemplateField HeaderText="Confirm selected">
                             <ItemTemplate>
-                                <asp:CheckBox ID="cbSelect" Checked='<%# Bind("SelectedC") %>' runat="server" CssClass="myCheck"></asp:CheckBox>
+                                <asp:CheckBox ID="cbSelect" Checked='<%# Bind("SelectedC") %>' runat="server"   CssClass="myCheck"></asp:CheckBox>
                             </ItemTemplate>
                             <ItemStyle Width="2%" Wrap="False" />
                         </asp:TemplateField>

@@ -6,20 +6,20 @@ Imports ClassLibrary
 
 Partial Class RequestList2
     Inherits System.Web.UI.Page
-    'Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
-    '    If Not Session("mytheme") Is Nothing Then
-    '        Me.Theme = Session("mytheme")
+    Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
+        If Not Session("mytheme") Is Nothing Then
+            Me.Theme = Session("mytheme")
 
-    '    End If
-    'End Sub
-    '' ### setup Page StylesheetTheme
-    'Public Overrides Property StyleSheetTheme() As String
-    '    Get
-    '        Return Session("mytheme")
-    '    End Get
-    '    Set(ByVal value As String)
-    '    End Set
-    'End Property
+        End If
+    End Sub
+    ' ### setup Page StylesheetTheme
+    Public Overrides Property StyleSheetTheme() As String
+        Get
+            Return Session("mytheme")
+        End Get
+        Set(ByVal value As String)
+        End Set
+    End Property
     Dim cPage As String = "Request"
     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile() 
     Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -65,7 +65,7 @@ Partial Class RequestList2
             parameter.Para2 = _Schoolcode
             parameter.Para3 = WorkingProfile.SchoolYear
 
-            AssembleListItem.SetLists2(ddlschoolcode, Me.ddlSchool, parameter, _Schoolcode)
+            AssemblingList.SetListSchool(ddlschoolcode, Me.ddlSchool, "Schoolist", parameter, _Schoolcode)
 
             'If WorkingProfile.UserRole = "Admin" Or WorkingProfile.UserRole = "HRStaff" Then
             '    Me.ddlSchool.Enabled = True
@@ -98,9 +98,9 @@ Partial Class RequestList2
         End With
         AssemblingList.SetLists("", ddlappType, "RequestAppType", parameter)
         If Mid(_schoolCode, 1, 2) = "05" Then
-            AssembleListItem.SetValue(ddlappType, WorkingProfile.ApplicationType)
+            AssemblingList.SetValue(ddlappType, WorkingProfile.ApplicationType)
         Else
-            AssembleListItem.SetValue(ddlappType, "TAP")
+            AssemblingList.SetValue(ddlappType, "TAP")
         End If
     End Sub
     Private Sub BindGridData(ByVal goDatabase As Boolean)
@@ -130,12 +130,12 @@ Partial Class RequestList2
 
 
     Protected Sub ddlSchool_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSchool.SelectedIndexChanged
-        AssembleListItem.SetValue(Me.ddlschoolcode, Me.ddlSchool.SelectedValue)
+        AssemblingList.SetValue(Me.ddlschoolcode, Me.ddlSchool.SelectedValue)
         ChangeSchool()
     End Sub
 
     Protected Sub ddlschoolcode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlschoolcode.SelectedIndexChanged
-        AssembleListItem.SetValue(Me.ddlSchool, Me.ddlschoolcode.SelectedValue)
+        AssemblingList.SetValue(Me.ddlSchool, Me.ddlschoolcode.SelectedValue)
         ChangeSchool()
     End Sub
     Private Sub ChangeSchool()

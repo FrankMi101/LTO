@@ -1,4 +1,6 @@
 ﻿using ClassLibrary;
+using DataAccess;
+using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,48 +11,53 @@ namespace AppOperate
 {
     public class PostingSummaryExe
     {
+        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PostingSummary());
+
         public PostingSummaryExe()
         {
         }
 
-        public static string SPName(string action)
-        {
-            return GetSP(action);
-        }
         public static List<PositionListPublish> Positions(object parameter)
         {
             string SP = GetSP("Positions");
-            return CommonExcute<PositionListPublish>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionListPublish>(SP, parameter);
+           // return CommonExcute<PositionListPublish>.GeneralList(SP, parameter);
         }
         public static List<PositionListApplied> AppliedPositions(object parameter)
         {
             string SP = GetSP("AppliedHistory");
-            return CommonExcute<PositionListApplied>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionListApplied>(SP, parameter);
+            //           return CommonExcute<PositionListApplied>.GeneralList(SP, parameter);
         }
         public static List<PositionPublish> Position(object parameter)
         {
             string SP = GetSP("Position");
-            return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionPublish>(SP, parameter);
+            //            return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
         }
         public static List<ApplicantList> ApplicantApplied(object parameter)
         {
             string SP = GetSP("ApplicantApplied");
-            return CommonExcute<ApplicantList>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<ApplicantList>(SP, parameter);
+            //           return CommonExcute<ApplicantList>.GeneralList(SP, parameter);
         }
         public static List<PositionPublish> ApplicantEmail(object parameter)
         {
             string SP = GetSP("ApplicantEmail");
-            return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionPublish>(SP, parameter);
+            //           return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
         }
         public static List<PositionInterview> ApplicantInterview(object parameter)
         {
             string SP = GetSP("ApplicantInterview");
-            return CommonExcute<PositionInterview>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionInterview>(SP, parameter);
+            //           return CommonExcute<PositionInterview>.GeneralList(SP, parameter);
         }
         public static List<PositionPublish> PostingRounds(object parameter)
         {
             string SP = GetSP("PostingRounds");
-            return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
+            return _action.AppOne.CommonList<PositionPublish>(SP, parameter);
+            //           return CommonExcute<PositionPublish>.GeneralList(SP, parameter);
         }
 
 
@@ -62,35 +69,22 @@ namespace AppOperate
             { return GetSPFromJsonFile(action); }
 
         }
+        public static string SPName(string action)
+        {
+            return GetSPInClass(action);
+        }
+        public static string SPName(string action, object para)
+        {
+            return GetSPInClass(action, para);
+        }
         private static string GetSPInClass(string action)
         {
-
-            string ParaPosition = " @SchoolYear, @PositionID";
-            string ParaPositions = " @UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy,@SearchValue1,@SearchValue2";
-
-            switch (action)
-            {
-                case "Positions":
-                    return "dbo.tcdsb_LTO_PageSummary_Positions" + ParaPositions;
-                case "Position":
-                    return "dbo.tcdsb_LTO_PageSummary_Position" + ParaPosition;
-                case "AppliedPositions":
-                    return "dbo.tcdsb_LTO_PageSummary_AppliedHistory" + ParaPositions;
-                case "AppliedHistory":
-                    return "dbo.tcdsb_LTO_PageSummary_AppliedHistory" + " @UserID,@SchoolYear,@PositionType,@CPNum";
-                case "ApplicantApplied":
-                    return "dbo.tcdsb_LTO_PageSummary_ApplicantApplied" + " @SchoolYear,@PositionID";
-                case "ApplicantEmail":
-                    return "dbo.tcdsb_LTO_PageSummary_ApplicantEmail" + " @SchoolYear,@PositionID";
-                case "ApplicantInterview":
-                    return "dbo.tcdsb_LTO_PageSummary_ApplicantInterview" + " @SchoolYear,@PositionID";
-                case "PostingRounds":
-                    return "dbo.tcdsb_LTO_PagePublish_PostingRounds" + " @SchoolYear, @PositionID";
-
-                default:
-                    return action;
-
-            }
+            return action;
+        }
+        private static string GetSPInClass(string action, object parameter)
+        {
+            return   _action.AppOne.SpName(action, parameter);
+ 
         }
         private static string GetSPFromJsonFile(string action)
         {

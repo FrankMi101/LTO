@@ -21,4 +21,10 @@ namespace ClassLibrary
             public string GoAction { get; set; }
         
         }
+
+    public class ListSchool
+    {
+        public string Name { get; set; }
+        public string Code { get; set; }
+    }
 }

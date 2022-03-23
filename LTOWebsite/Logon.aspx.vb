@@ -233,7 +233,6 @@ Partial Class Logon
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
             Me.Theme = Session("mytheme")
-
         End If
     End Sub
     ' ### setup Page StylesheetTheme

@@ -9,9 +9,7 @@ namespace ClassLibrary
    
     public class List2Item
     {
-        public string MyText { get; set; }
-        public string MyValue { get; set; }
-        public string Operate { get; set; }
+         public string Operate { get; set; }
         public string Para0 { get; set; }
         public string Para1 { get; set; }
         public string Para2 { get; set; }

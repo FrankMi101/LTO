@@ -10,33 +10,9 @@
     <link href="../JQuery-UI/jquery-ui.css" rel="stylesheet" type="text/css" />
 
     <link href="../Styles/ListPage.css" rel="stylesheet" type="text/css" />
+    <link href="../Styles/autoCompleteDDL.css" rel="stylesheet" type="text/css" />
     <style>
-        .custom-combobox {
-            position: relative;
-            display: inline-block;
-        }
-
-        .custom-combobox-toggle {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin-left: -1px;
-            padding: 0;
-        }
-
-        .custom-combobox-input {
-            margin: 0;
-            padding: 5px 10px;
-            background-color: #ffffcc;
-        }
-
-        input.ng-invalid {
-            background-color: #ffffcc;
-        }
-
-        input.ng-valid {
-            background-color: white;
-        }
+       
     </style>
     <style type="text/css">
         body {
@@ -122,7 +98,7 @@
                                 </td>
                                 <td style="width: 5%">
 
-                                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" AutoPostBack="True" Height="20px">
+                                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" Height="20px">
                                         <asp:ListItem>POP</asp:ListItem>
                                         <asp:ListItem>LTO</asp:ListItem>
                                     </asp:DropDownList>
@@ -132,11 +108,11 @@
                                 <td>
                                     <a id="A1" runat="server" href='#' style="text-decoration: none; color: Gray">Loading.....</a>
                                 </td>
-                                <td style="width: 30%; text-align: center; text-wrap: avoid">
+                                <td style="width: 30%; text-align: center; text-wrap: avoid;">
                                     <div id="ApplicantForDeveloper" runat="server" visible="false">
                                         <div class="ui-widget">
                                             Search Teacher:
-                                            <select id="combobox" runat="server" style="width: 250px; background-color: lightgoldenrodyellow"
+                                            <select id="combobox" runat="server" style="width: 250px; background-color: lightgoldenrodyellow" class="Search-Content-Control"
                                                 ng-model="myText">
                                                 <option value="">Select Teacher...</option>
 
@@ -152,12 +128,12 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <asp:Button ID="btApplicant" runat="server" Text="Go" CssClass="GoButton" />
+                                    <asp:Button ID="btApplicant" runat="server" Text="Go" CssClass="GoButton" Visible="false"  />
 
                                 </td>
                                 <td style="width: 40%">
 
-                                    <a id="aLTOTeacherList" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
+                                    <a id="aLTOTeacherList" visible="false" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
                                     <%--<a href="../Template/Long%20Term%20Occasional%20Teachers%20List.pdf">../TemplateXLS/Long Term Occasional Teachers List.pdf</a>--%>
                                 </td>
 
@@ -449,3 +425,9 @@
 </script>
  
  
+<script>
+    function pageLoad(sender, args) {
+        AutoCompleteComboBox();
+        $(".custom-combobox-input").focus();
+    }
+</script>

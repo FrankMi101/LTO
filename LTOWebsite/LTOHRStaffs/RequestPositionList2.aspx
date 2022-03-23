@@ -561,6 +561,7 @@
     }
 
     function openDetailPage(vHeight, vWidth, goPage, pTitle) {
+      
         $(document).ready(function () {
             try {
                 var vLeft = (screen.width / 2) - (vWidth / 2) - 100;

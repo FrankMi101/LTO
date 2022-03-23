@@ -14,7 +14,7 @@
 
     <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
     <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
-    <script src="../Scripts/angular.min.js" type="text/javascript"></script>
+    <%--    <script src="../Scripts/angular.min.js" type="text/javascript"></script>--%>
     <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
 
     <%--    <link href="../Content/bootstrap.css" rel="stylesheet" type="text/css" />
@@ -28,6 +28,10 @@
         }
 
         .ReadOnlyCell {
+        }
+
+        .Required-Field-Control {
+            border: 2px dotted red;
         }
 
         #LTOMultipleSchool {
@@ -70,7 +74,6 @@
             background: url(../images/BlueDIVList.png);
             border: 3px outset skyblue;
         }
-
     </style>
     <script type="text/javascript">
         function ShowSaveMessage(action, message) {
@@ -140,19 +143,20 @@
                     <td>School:  </td>
                     <td colspan="5">
                         <asp:DropDownList ID="ddlschoolcode" runat="server" Width="50px" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="70%" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
-                        <asp:DropDownList ID="ddlPrincipal" TabIndex="12" runat="server" Width="128px" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlSchool" TabIndex="11" runat="server" Width="68%" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlPrincipal" TabIndex="12" runat="server" Width="131px" Height="20px" CssClass="editcell Edit-Content-Control" AutoPostBack="true"></asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_ddlPrincipal" runat="server" ControlToValidate="ddlPrincipal" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                     </td>
                     <td>
                 </tr>
                 <tr>
                     <td>Position Title:
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator_TextPositionTitle" runat="server" ControlToValidate="TextPositionTitle" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
 
 
                     </td>
                     <td colspan="5">
-                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="99%" TextMode="MultiLine" CssClass="editcell editArea Edit-Content-Control"></asp:TextBox>
+                        <asp:TextBox ID="TextPositionTitle" TabIndex="12" runat="server" Width="96%" TextMode="MultiLine" CssClass="editcell editArea Edit-Content-Control"></asp:TextBox>
 
                     </td>
                 </tr>
@@ -277,14 +281,14 @@
                                 <td class="midtitle">Assignment Start Date:</td>
 
                                 <td style="text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="dateStart" size="9" class ="Edit-Content-Control"  />
+                                    <input runat="server" type="text" id="dateStart" size="9" class="Edit-Content-Control" />
                                 </td>
                                 <td style="width: 15px">
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                                 <td style="text-align: right;">Publish Date:</td>
                                 <td style="text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="datePublish" size="9" class ="Edit-Content-Control"  />
+                                    <input runat="server" type="text" id="datePublish" size="9" class="Edit-Content-Control" />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="datePublish" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                                 </td>
                             </tr>
@@ -292,7 +296,7 @@
 
                                 <td class="midtitle">Assignment &nbsp;End Date:</td>
                                 <td>
-                                    <input runat="server" type="text" id="dateEnd" size="9" class ="Edit-Content-Control"  />
+                                    <input runat="server" type="text" id="dateEnd" size="9" class="Edit-Content-Control" />
                                 </td>
                                 <td style="width: 15px"></td>
 
@@ -311,7 +315,7 @@
                                 <td></td>
                                 <td class="midtitle">Deadline to Apply:</td>
                                 <td>
-                                    <input runat="server" type="text" id="dateDeadline" size="9" class ="Edit-Content-Control"  />
+                                    <input runat="server" type="text" id="dateDeadline" size="9" class="Edit-Content-Control" />
                                 </td>
                             </tr>
                         </table>
@@ -341,11 +345,11 @@
                         <input runat="server" type="text" id="lblNoticeDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
 
 
-                        Last Reminder Date:
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Last Reminder Date:
                          <input runat="server" type="text" id="lblRemainderDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
-                        Posting Round 
-                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" class="Edit-Content-Control-Readonly"  />
-
+                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Round 
+                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" style="width:20px;" class="Edit-Content-Control-Readonly" />
+                        Posting 
 
                     </td>
                 </tr>
@@ -356,21 +360,21 @@
                             <tr>
                                 <td style="width: 80%">
 
-                                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px"   />
-                                    
-                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px"   />
-                                    
-                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px"   />
-                                     
-                                     <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px"  />
-                                                            
-                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px"   />
-                                    
-                                    <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px"   />
-                                    
-                                    <asp:Button ID="btnRecover" runat="server" TabIndex="115" Text="Recover" Width="100px" Visible="false"   />
+                                    <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px" />
 
-                                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="1px"   />
+                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px" />
+
+                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px" />
+
+                                    <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />
+
+                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />
+
+                                    <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px" />
+
+                                    <asp:Button ID="btnRecover" runat="server" TabIndex="115" Text="Recover" Width="100px" Visible="false" />
+
+                                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="1px" />
                                 </td>
                                 <td style="text-align: left;">
                                     <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" /><br />
@@ -403,8 +407,8 @@
         <asp:HiddenField ID="hfPostingCycle" runat="server" Value="" />
 
 
-        <div id="RepostingDIV">
-            <div style="text-align: center">
+        <div id="RepostingDIV" style="background-color: aliceblue">
+            <div style="text-align: center;">
 
                 <br />
                 Are you sure,
@@ -414,11 +418,12 @@
                 <br />
                 <br />
                 Posting as:<asp:DropDownList ID="ddlPostingCycle" runat="server">
-                    <asp:ListItem Value="1">1st Posting</asp:ListItem>
-                    <asp:ListItem Value="2">2nd Posting</asp:ListItem>
-                    <asp:ListItem Value="3">3rd Posting</asp:ListItem>
-                    <asp:ListItem Value="4">4th Posting</asp:ListItem>
-                </asp:DropDownList>
+               <asp:ListItem Value="1">1st Posting</asp:ListItem>
+    <%--            <asp:ListItem Value="2">2nd Posting</asp:ListItem>
+                    <asp:ListItem Value="3">3rd Posting</asp:ListItem> 
+                    <asp:ListItem Value="4" >4th Posting</asp:ListItem> Remove 2nd and 4rd 2022-03-07 Request from HR --%>
+                     <asp:ListItem Value="4" Selected="true">Re Posting</asp:ListItem>
+               </asp:DropDownList>
                 <br />
                 <br />
             </div>
@@ -477,26 +482,8 @@
     function openPageForNewPosting() { }
 
     function LockPageWhenPostingComplete() {
-        //  DOMaction.DatePicker($("#dateStart"), true);
-        //  DOMaction.DatePicker($("#dateEnd"), true);
-        //   DOMaction.InputText($("#TextOtherReason"), true);
-        //  DOMaction.InputText($("#TextPositionTitle"), true);
-        //  DOMaction.InputText($("#lblQualification"), true);
-        // DOMaction.Button($("#btnSave"), true);
         DOMaction.Button($("#btndelete"), true);
-        // DOMaction.Button($("#btnRepublish"), true);
-        // DOMaction.Button($("#btnUnpublish"), true);
-
         DOMaction.DropDownList($("#ddlType"), true);
-        //  DOMaction.DropDownList($("#ddlSchool"), true);
-        //   DOMaction.DropDownList($("#ddlschoolcode"), true);
-        // DOMaction.DropDownList($("#ddlPositionlevel"), true);
-        //   DOMaction.DropDownList($("#ddlFTEPanel"), true);
-        //   DOMaction.DropDownList($("#ddlHRStaff"), true);
-        //   DOMaction.DropDownList($("#ddlTeacherReplaced"), true);
-        //   DOMaction.DropDownList($("#ddlReason"), true);
-        //   DOMaction.CheckBoxList($('#cblQualification'), true);
-        //   DOMaction.RadioButtonList($('#rblFTE'), true);
     }
     function UpdateQualificationSelected(QualCode, checkedvalue) {
         var qual = {
@@ -540,7 +527,9 @@
                     actionControl = "PublishDate";
                     var publishdate = $("#datePublish").val();
                     var schoolyear = $("#hfSchoolyear").val();
+                    var positiontype = $("#ddlType").val();
                     $("#dateApplyStart").val(publishdate);
+
                     // *************** works on developer Computer this is WCF Web services ******************
                     // var newDate = new LTOPositionDeadLine.GetDeadLineDate;
                     //  newDate.myDate(schoolyear, publishdate, onSuccess, onFailure);
@@ -555,7 +544,8 @@
 
                     //************** Web api call ****************************
                     // GetDeadLineDateFromWebAPI(publishdate, schoolyear);
-                    //********************************************
+                    // GetDeadLineDateWebAPICall(schoolyear, publishdate, positiontype)
+                    //********************************************************
                 }
                 catch (e) {
                     window.alert(e.message);
@@ -613,7 +603,9 @@
 
                     $("#RepostingDIV").fadeToggle("slow");
                     return false;
-                } catch (e) {
+                }
+                catch (e) {
+                    return false;
                 }
 
             });
@@ -716,30 +708,7 @@
                 }
 
             });
-            //$("#btnUnpublish").click(function (e) {
-            //    var result = confirm("Are you sure, you want to Cancel this posting ?");
-            //    if (result) {
-            //        $("#HiddenFieldAction").val("Yes");
-            //        var operate = "Unpublish";
-            //        var IDs = $('#hfIDs').val();
-            //        var schoolyear = $('#hfSchoolyear').val();
-            //        var PositionID = $('#TextPositionID').val();
-            //        var postComments = $('#TextPostedComment').val();
-            //        $.ajax({
-            //            type: 'POST',
-            //            contentType: "application/json; charset=utf-8",
-            //            url: 'RequestPositionDetails.aspx/SaveDataToDataBase',
-            //            data: "{'operate':'" + operate + "','IDs':'" + IDs + "','schoolyear':'" + schoolyear + "','positionID':'" + positionID + "','postedComments':'" + postedComments + "'}",
-            //            async: false,
-            //            success: function (response) {
-            //               // $('#txtName').val(''); $('#txtAge').val(''); $('#txtSex').val('');
-            //                alert("Posting Cancel successfully..!!");
-            //            },
-            //            error: function () {
-            //                alert("Error");
-            //            }
-            //        });
-            //    }
+        
         });
     }
     function onSuccess(result) {
@@ -792,7 +761,13 @@
         }
 
     }
-
+    function checkRequiredFields() {
+        DOMaction.Validation("RequiredFieldValidator_TextPositionTitle", "TextPositionTitle");
+        DOMaction.Validation("RequiredFieldValidator_ddlPrincipal", "ddlPrincipal");
+        DOMaction.Validation("RequiredFieldValidator_rblFTE", "rblFTE");
+        DOMaction.Validation("RequiredFieldValidator_ddlPositionlevel", "ddlPositionlevel");
+        DOMaction.Validation("RequiredFieldValidator_lblQualification", "cblQualification");
+    }
 
     function CallParentPostBack(action, positionTitle, strMessage) {
 
@@ -899,6 +874,28 @@
     //        }
     //    });
     //}
+    function GetDeadLineDateWebAPICall( schoolyear,publishdate,positionType) {
+        try {
+            var para = {
+                Operate: $("#hfAction").val(),
+                UserID: $("#hfUserID").val(), 
+            };
+            var uri = "DeadLine";
+            var qStr = "/" + schoolyear + "/" + publishdate + "/" + positionType;
+
+            var data = WebAPICall.GetDataPassQstr(uri, qStr);
+
+           // var deadlinedate = data[0].ApplyDate;
+            $("#dateDeadline").val(data[0].ApplyDate);
+            $("#dateApplyStart").removeClass("InvalidCell");
+            $("#dateDeadline").removeClass("InvalidCell");
+          //  $("#dateDeadline").val(result);
+ 
+        }
+        catch (e) {
+            alert(para.Operate + " Submit click something going wrong");
+        }
+    }
 
 </script>
 

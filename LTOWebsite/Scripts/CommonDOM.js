@@ -7,7 +7,8 @@
     InputText: function (obj, value) { OperationInputText(obj, value); },
     Button: function (obj, value) { OperationButton(obj, value); },
     DatePicker: function (obj, value) { OperationDatePicker(obj, value); },
-    DatePickerInitial: function (objC, minD, maxD, value) { InitialJQueryDatePicker(objC, minD, maxD, value); }
+    DatePickerInitial: function (objC, minD, maxD, value) { InitialJQueryDatePicker(objC, minD, maxD, value); },
+    Validation: function (validator, target) { DOMaction.Validation(validator, target); }
 };
 function OperationCheckBoxList(obj, value) {
     try {
@@ -106,25 +107,31 @@ function InitialJQueryDatePicker(objC, minD, maxD, value) {
     //if (value !== "undefined") objC.datepicker({ val: value }); /*  IE 11 does not support this feature*/
 }
 function InitialJQueryDatePickerInSearchList(objC, value) {
+    try {
+        objC.datepicker({
+            dateFormat: 'yy-mm-dd',
+            showOn: "button",
+            buttonImage: "../images/calendar.gif",
+            buttonImageOnly: true,
+            changeMonth: true,
+            changeYear: true,
+            beforeShow: function () {
+                setTimeout(function () {
+                    $('#ui-datepicker-div').css('z-index', 999);
+                }, 0);
+            }
+        });
 
-    // InitialJQueryDatePicker(objC)    ;
-
-    objC.datepicker({
-        dateFormat: 'yy-mm-dd',
-        showOn: "button",
-        buttonImage: "../images/calendar.gif",
-        buttonImageOnly: true,
-        changeMonth: true,
-        changeYear: true,
-        beforeShow: function () {
-            setTimeout(function () {
-                $('#ui-datepicker-div').css('z-index', 999);
-            }, 0);
-        }
-    });
-
-    if (value !== "undefined") objC.datepicker({ val: value });/*  IE 11 does not support this feature*/
-
-
-
+        if (value !== "undefined") objC.datepicker({ val: value });/*  IE 11 does not support this feature*/
+    }
+    catch (ex) {
+       // alert(ex.message);
+    }
+    
 }
+//function DOMaction.Validation(validator, target) {
+//    if ($("#" + validator).css("visibility") == "visible")
+//        $("#" + target).addClass("Required-Field-Control");
+//    else
+//        $("#" + target).removeClass("Required-Field-Control");
+//}

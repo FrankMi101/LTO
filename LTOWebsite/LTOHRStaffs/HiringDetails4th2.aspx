@@ -193,15 +193,18 @@
                             <tr>
                                 <td>Hire Teacher Name:</td>
                                 <td>
-                                    <div class="ui-widget">
+                                   
+                                        <div class="ui-widget" style ="overflow:auto " >
 
-                                        <select id="combobox" runat="server" style="background-color: lightgoldenrodyellow"
-                                            ng-model="myText" required>
-                                            <option value="">Select Teacher...</option>
+                                            <select id="combobox" runat="server" style="background-color: lightgoldenrodyellow;"
+                                                ng-model="myText" required>
+                                                <option value="">Select Teacher...</option>
 
-                                        </select>
+                                            </select>
 
-                                    </div>
+                                        </div>
+                                
+
                                     <div id="inputTeacherName" runat="server" style="display: none">
 
                                         <input runat="server" id="TextInputTeacherName" style="width: 100%; background-color: #ffffcc" type="text" name="teacher name" class="inputFiled editArea" placeholder="new teacher Name" />
@@ -211,9 +214,6 @@
 
                                 </td>
                                 <td>
-                                    <%--                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="combobox" ErrorMessage="Must select a Teacher. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
-
-
                                     <img id="imgNewTeacher" runat="server" alt="teacher img" src="../images/teacher.gif" title="Click to add New Teacher" style="height: 20px; width: 20px" />
 
                                 </td>
@@ -221,37 +221,26 @@
 
                                     <div id="inputPersonID" runat="server">
                                         PersonID :    
-                                       <%-- <asp:TextBox ID="TextCPNum" runat="server" Width="80px" BackColor="Silver"  required ></asp:TextBox>
-                                       --%>
-                                        <input runat="server" type="text" id="TextCPNum" size="9" ng-model="Silver" />
-                                        <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextCPNum" ErrorMessage="Must have. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
+                                         <input runat="server" type="text" id="TextCPNum" size="9" ng-model="Silver" class="Edit-Content-Control" />
                                     </div>
 
                                 </td>
                             </tr>
-                            <%-- <tr style="display: none;">
-                                <td>Hire Teacher Name:
-                                </td>
-                                <td colspan="3">
-                                    <asp:DropDownList ID="ddlApplicant" runat="server" Width="150px" BackColor="#ffffcc" Height="20px" AutoPostBack="true">
-                                    </asp:DropDownList>
-                                </td>
 
-                            </tr>--%>
                             <tr>
                                 <td style="text-align: right; width: 16%">
                                     <asp:Label ID="LabelStartDate" runat="server" Text=" LTO start date:"></asp:Label>
                                 </td>
 
                                 <td style="width: 34%; text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="dateEffective" size="9" ng-model="myText1" required />
+                                    <input runat="server" type="text" id="dateEffective" size="9" class="Edit-Content-Control" ng-model="myText1" required />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEffective" ErrorMessage="Must input Start Date. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>
 
                                 </td>
                                 <td style="width: 17%">
                                     <asp:Label ID="Label1" runat="server" Text="Assignment End Date:"></asp:Label></td>
                                 <td style="width: 33%; text-wrap: none; overflow-wrap: normal">
-                                    <input runat="server" type="text" id="dateEnd" size="9" ng-model="myText2" required />
+                                    <input runat="server" type="text" id="dateEnd" size="9" ng-model="myText2" class="Edit-Content-Control" required />
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateEnd" ErrorMessage="Must input End Date. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>
 
                                 </td>
@@ -317,7 +306,7 @@
         <asp:HiddenField ID="hfPositionTypeHired" runat="server" />
         <asp:HiddenField ID="hfHiredStatus" runat="server" />
         <asp:HiddenField ID="hfSchoolyearStartDate" runat="server" Value="2017-09-05" />
-        <asp:HiddenField ID="hfSchoolyearEndDate" runat="server" Value="2018-06-26" />        
+        <asp:HiddenField ID="hfSchoolyearEndDate" runat="server" Value="2018-06-26" />
         <asp:HiddenField ID="hfPositionNumber" runat="server" />
 
     </form>
@@ -325,23 +314,23 @@
 </html>
 <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
 <script src="../Scripts/PopUpDIVLeft.js" type="text/javascript"></script>
-    <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
+<script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
 
 
 <script type="text/jscript">
-    var today = new Date();  
+    var today = new Date();
     var minD = new Date($("#hfSchoolyearStartDate").val()); // today.getDate() - 90; //
-    var maxD = new Date($("#hfSchoolyearEndDate").val()); 
+    var maxD = new Date($("#hfSchoolyearEndDate").val());
 
     $(document).ready(function () {
         // $("#inputTeacherName").hide();
-      InitialDatePickerControl();
+        InitialDatePickerControl();
         $(window).unload(function () {
             window.returnValue = $("#HiddenFieldAction").val();
         });
         DOMaction.Button("#btnSaveHired", true);
         if ($("#hfPositionType1").val() == "POP") { $("#dateEnd").removeAttr("required"); }
- 
+
         //$("#dateEnd").datepicker(
         //    {
         //        dateFormat: 'yy-mm-dd',
@@ -355,7 +344,7 @@
         //    });
         //$("#dateEffective").datepicker(
         //    {
-              
+
         //        dateFormat: 'yy-mm-dd',
         //        showOn: "button",
         //        buttonImage: "../images/calendar.gif",
@@ -364,7 +353,7 @@
         //        maxDate: maxD,
         //        changeMonth: true,
         //        changeYear: true
-                 
+
 
         //    });
         $("#btnSaveHired_old").click(function (e) {
@@ -424,9 +413,9 @@
 
         JDatePicker.Initial($("#dateEffective"), minD, maxD);
         JDatePicker.Initial($("#dateEnd"), minD, maxD);
-      // JDatePicker.Initial($("#dateHire"), minD, maxD);
+        // JDatePicker.Initial($("#dateHire"), minD, maxD);
 
-        
+
     }
     function openLTOAppraisal(schoolyear, schoolcode, SessionID, TeacherID) {
         var printPage = "../PDFLoading/PDFDocument_Loading.aspx?rID=InterviewPackage" + "&yID=" + schoolyear + "&CPNum=" + TeacherID + "&pID=" + SessionID;
@@ -570,7 +559,7 @@
                 this.element.val("");
                 this._delay(function () {
                     this.input.tooltip("close").attr("title", "");
-                }, 2500);
+                }, 1500);
                 this.input.autocomplete("instance").term = "";
             },
 

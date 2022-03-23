@@ -14,11 +14,9 @@ namespace AppOperate.Tests
             UserID = "mif",
             CPNum = "20192020",
             Action = "Pending",
-            Comments = "Pending comments"
+            Comments = "Pending comments",
+            IDs = "",
         };
-
-       
-         
 
 
         [TestMethod()]
@@ -35,7 +33,7 @@ namespace AppOperate.Tests
             string otType = LTOStaffManageExe.ApplicantOTType(parameter);
 ;            //Assert
             Assert.AreEqual(expect, result, $"Pending Action for Applicant { parameter.CPNum }  was { result}");
-            Assert.AreEqual("Pending", otType, $"Pending Action for Applicant { parameter.CPNum }  was { otType}");
+            StringAssert.Contains("LTOTeacher,Roster,Pending", otType, $"Pending Action for Applicant { parameter.CPNum }  was { otType}");
 
         }
         [TestMethod()]
@@ -126,7 +124,7 @@ namespace AppOperate.Tests
 
             //Assert
             Assert.AreEqual(expect, result, $"Add Applicant to LTO /Roster list  { parameter.CPNum }  was { result}");
-            Assert.AreEqual("Roster", otType, $"Pending Action for Applicant { parameter.CPNum }  was { otType}");
+            StringAssert.Contains("LTOTeacher,Roster", otType, $"Pending Action for Applicant { parameter.CPNum }  was { otType}");
 
         }
         [TestMethod()]

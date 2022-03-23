@@ -50,6 +50,10 @@ Copyright (C) Microsoft Corporation. All rights reserved.
       <Project>{8E5758E3-D65C-4625-8974-9F7B70CF86D4}</Project>
       <Name>ClassLibrary</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccessFakeSource\DataAccess.FakeData.csproj">
+      <Project>{0A3313EB-A8B6-4070-8866-8D328BAD697E}</Project>
+      <Name>DataAccess.FakeData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
       <Project>{4BED9110-E807-43AD-9CF0-8B0D15F63B33}</Project>
       <Name>DataAccess</Name>

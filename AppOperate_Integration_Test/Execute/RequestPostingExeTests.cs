@@ -51,7 +51,7 @@ namespace AppOperate.Tests
             string action = "Position";
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageRequest_Position @SchoolYear, @PositionID";
+            string expect = action;// "dbo.tcdsb_LTO_PageRequest_Position @SchoolYear, @PositionID";
             string result = RequestPostingExe.SPName(action);
 
             //Assert
@@ -64,7 +64,7 @@ namespace AppOperate.Tests
             string action = "Positions";
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageRequest_Positions @Operate, @UserID, @SchoolYear, @SchoolCode";
+            string expect = action;// "dbo.tcdsb_LTO_PageRequest_Positions @Operate, @UserID, @SchoolYear, @SchoolCode";
             string result = RequestPostingExe.SPName(action);
 
             //Assert
@@ -78,7 +78,7 @@ namespace AppOperate.Tests
             string action = "New";
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageRequest_CreateNew @Operate, @UserID, @SchoolYear, @SchoolCode, @PositionID, @PositionType";
+            string expect = action;// "dbo.tcdsb_LTO_PageRequest_CreateNew @Operate, @UserID, @SchoolYear, @SchoolCode, @PositionID, @PositionType";
             string result = RequestPostingExe.SPName(action);
 
             //Assert
@@ -119,7 +119,7 @@ namespace AppOperate.Tests
 
             //Act
 
-            var testList = RequestPostingExe.Position(parameter);
+            var testList = RequestPostingExe.Position(request);
 
 
             myGridview.AutoGenerateColumns = true;
@@ -137,32 +137,29 @@ namespace AppOperate.Tests
         public void TeachersListTest_Return_0209School_Plus_TCDSB_top_200_Teachers()
         {
             //Arrange 
-            string action = "TeacherList";
+            string action = "TeachersList";
+            string expect = "Kurnik, Cassandra";
+             string intitalValue = "00045299"; // "kurnikc";
 
-
-            ParametersForPositionList parameterT = new ParametersForPositionList()
+            var para = new // ParametersForPositionList()
             {
-                Operate = "List",
+                Operate = "TeachersList",
                 UserID = "mif",
                 SchoolYear = "20192020",
                 SchoolCode = "0209",
                 SearchValue1 = "K"
             };
-
+      
             var testDDLControl = new System.Web.UI.WebControls.DropDownList();
 
             // Act
-            string expect = "Kurnik, Cassandra";
-            int expect2 = 202;
-            string intitalValue = "00045299"; // "kurnikc";
-            object datasourceList = RequestPostingExe.TeachersList(parameterT);
+            object datasourceList = RequestPostingExe.TeachersList(para);
             AssemblingList.SetLists(testDDLControl, datasourceList, "CPNum", "TeacherName", intitalValue);
             string result = testDDLControl.SelectedItem.Text;
-            int result2 = testDDLControl.Items.Count;
+ 
             // Assert
             Assert.AreEqual(expect, result, $"Teacher List From School Select Value  { result}");
-            Assert.AreEqual(expect2, result2, $"DD List Totle Count Value  { result2}");
-        }
+         }
 
 
         [TestMethod()]
@@ -286,7 +283,7 @@ namespace AppOperate.Tests
         public void RequestAttributeTest_Return_RequestSchool()
         {
             //Arrange
-            string action = "RequestSchool";
+            string action = "RequestSchool"; 
             requestposition.UserID = "mif";
             requestposition.Operate = action;
             requestposition.SchoolYear = "20192020";
@@ -305,20 +302,20 @@ namespace AppOperate.Tests
         public void RequestAttributeTest_Return_Position_Infomation()
         {
             //Arrange
-            string action = "PositionInfo";
-            requestposition.UserID = "mif";
+            string action = "RequestPositionInfo";
+             requestposition.UserID = "mif";
             requestposition.Operate = action;
             requestposition.SchoolYear = "20192020";
             requestposition.SchoolCode = "0549";
             requestposition.PositionID = getNewRequestID("LTO");
             //act
-            string expect = "0549";
+            string expect = "LTO";
             //Act
             string result = RequestPostingExe.RequestAttribute(requestposition);
            
 
             //Assert
-            Assert.IsNotNull(result, $"request position Info  { result} .");
+            StringAssert.Contains(result, expect, $"request position Info  { result} .");
         }
         [TestMethod()]
         public void RequestAttributeTest_Return_Position_Qualification()

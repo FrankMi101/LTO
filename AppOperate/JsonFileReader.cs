@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using ClassLibrary;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
 namespace AppOperate
 {
-    class JsonFileReader
+   public class JsonFileReader
     {
 
         public static string JsonString(string jsonFile)
@@ -110,6 +111,22 @@ namespace AppOperate
                 var em = ex.Message;
                 return null;
             }
+        }
+        public static EmailTemplateItem GetSubjectAndTemplate(TextReader jsonFile, string pType, string action)
+        {
+            try
+            {
+                var jsonString =  jsonFile.ToString();
+                var result = JsonConvert.DeserializeObject<EmailTemplate>(jsonString);
+                var myList = pType == "POP" ? result.Pop : result.Lto;
+                return myList.FirstOrDefault(l => l.Action == action);// .Where(l => l.Action == action).FirstOrDefault();
+
+            }
+            catch (System.Exception ex)
+            {
+                var em = ex.Message;
+                return null;
+            }
 
 
         }
@@ -142,7 +159,7 @@ namespace AppOperate
 
 
         }
-        public static List<NvListItem> GetNvList(string jsonFile, string valueType)
+        public static List<NameValueList> GetNvList(string jsonFile, string valueType)
         {
             var jsonString = JsonString(jsonFile);
             var result = JsonConvert.DeserializeObject<NvLists>(jsonString);
@@ -169,7 +186,7 @@ namespace AppOperate
                     return result.SearchBy;
             }
         }
-        public static List<NvListItem> GetNvList(string jsonFile, string valueType, NvLists obj)
+        public static List<NameValueList> GetNvList(string jsonFile, string valueType, NvLists obj)
         {
             var jsonString = JsonString(jsonFile);
             var result = JsonConvert.DeserializeObject<dynamic>(jsonString);
@@ -185,18 +202,7 @@ namespace AppOperate
                 List<Contact> myList = result.ContactStaffs;
 
                 return myList.FirstOrDefault(l => l.Userid == userId);
-
-                //foreach (var item in myList)
-                //{
-                //    if (item.Userid == useIid)
-                //    {
-                //        // newSingleList.AddRange(item);   
-                //        return item;
-                //    }
-                //}
-
-                // return null;
-
+ 
             }
             catch (System.Exception ex)
             {
@@ -368,11 +374,11 @@ public class JsonFileReader<T>
     }
 }
 
-public class NvListItem
-{
-    public string Name { get; set; }
-    public string Value { get; set; }
-}
+//public class NvListItem
+//{
+//    public string Name { get; set; }
+//    public string Value { get; set; }
+//}
 public class ListSchool
 {
     public string Name { get; set; }
@@ -380,12 +386,12 @@ public class ListSchool
 }
 public class NvLists
 {
-    public List<NvListItem> SearchBy { get; set; }
-    public List<NvListItem> SearchByShort { get; set; }
-    public List<NvListItem> SchoolArea { get; set; }
-    public List<NvListItem> RoundCycle { get; set; }
-    public List<NvListItem> PostingState { get; set; }
-    public List<NvListItem> Panel { get; set; }
+    public List<NameValueList> SearchBy { get; set; }
+    public List<NameValueList> SearchByShort { get; set; }
+    public List<NameValueList> SchoolArea { get; set; }
+    public List<NameValueList> RoundCycle { get; set; }
+    public List<NameValueList> PostingState { get; set; }
+    public List<NameValueList> Panel { get; set; }
 }
 public class EmailTemplate
 {

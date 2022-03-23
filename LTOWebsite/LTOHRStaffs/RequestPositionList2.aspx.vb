@@ -6,7 +6,7 @@ Imports ClassLibrary
 Partial Class RequestPositionList2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\appList.json")
-     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile()  ' Server.MapPath("..\Content\DataAccess.json")
+    Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile()  ' Server.MapPath("..\Content\DataAccess.json")
     Dim cPage As String = "Publish"
 
     Dim postingList As List(Of PositionListPublish) ' this works
@@ -32,41 +32,37 @@ Partial Class RequestPositionList2
             Session("currentDataSet") = Nothing
             Dim _sID As String = Page.Request.QueryString("sID")
             If _sID <> Nothing Then Session("SchoolCode") = _sID
-            Me.HiddenFieldUserRole.Value = WorkingProfile.UserRole
-            Me.hfSchoolCode.Value = WorkingProfile.SchoolCode
+
             Dim roleShow As String = WorkingProfile.UserRole
             roleShow = roleShow.Replace("Director", "Associate Director")
+
             If WorkingProfile.UserRole = "Admin" Then roleShow = "Superintendent"
+
             Dim UserID As String = HttpContext.Current.User.Identity.Name
+            Me.HiddenFieldUserRole.Value = WorkingProfile.UserRole
+            Me.hfSchoolCode.Value = WorkingProfile.SchoolCode
             hfUserID.Value = UserID
+
             WorkingProfile.ApplicationType = WorkingProfile.checkAppTypebyUserID(UserID, WorkingProfile.ApplicationType)
 
-            '   Me.PanelDIV.Visible = True
             BindDDLList()
-            ' Me.WebDataGrid1.Behaviors.EditingCore.BatchUpdating = True
 
             BindGridData(True)
 
-            Dim sps As String = SPSource.SPFile
 
         End If
 
     End Sub
     Private Sub BindDDLList()
-        Dim _UserID As String = HttpContext.Current.User.Identity.Name
-        Dim _Role As String = WorkingProfile.UserRole
-        Dim _SchoolYear As String = WorkingProfile.SchoolYear
-        Dim _schoolcode As String = WorkingProfile.SchoolCode
 
         Try
 
-            AssembleListItem.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
-            '  AssembleListItem.SetValue(Me.ddlPanel, WorkingProfile.Panel)
+            AssemblingList.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
 
             Dim parameter As New List2Item()
             With parameter
                 .Operate = "SchoolYearbySchool"
-                .Para0 = _schoolcode
+                .Para0 = WorkingProfile.SchoolCode
                 .Para1 = WorkingProfile.ApplicationType
             End With
             AssemblingList.SetLists("", Me.ddlSchoolYear, "SchoolYearbySchool", parameter, WorkingProfile.SchoolYear)
@@ -80,6 +76,8 @@ Partial Class RequestPositionList2
                 btnNewOpen.Visible = False
             End If
 
+            AssemblingList.SetLists(JsonFile, ddlSearchby, "Searchby", parameter, WorkingProfile.SearchBy)
+
 
             If Not WorkingProfile.SearchByValue = Nothing Then
 
@@ -88,10 +86,6 @@ Partial Class RequestPositionList2
                     WorkingProfile.SearchByValue = "0000"
                 End If
 
-                AssemblingList.SetLists(JsonFile, ddlSearchby, "Searchby", parameter)
-                '  AssembleListItem.SetListsFromJson(ddlSearchby, "Searchby", JsonFile)
-                '  AssembleListItem.SetListsFromJson(ddlSearchby, "Searchby", JsonFile, New myJsonLists().SearchBy)
-                AssemblingList.SetValue(Me.ddlSearchby, WorkingProfile.SearchBy)
                 ddlSearchby_SelectedIndexChanged(Me.Page, System.EventArgs.Empty)
                 AssemblingList.SetValue(Me.ddlSearchbyValue, WorkingProfile.SearchByValue)
 
@@ -105,8 +99,6 @@ Partial Class RequestPositionList2
     Protected Sub ddlSearchby_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSearchby.SelectedIndexChanged
 
         Dim searchby As String = Me.ddlSearchby.SelectedValue
-        Dim _UserID As String = HttpContext.Current.User.Identity.Name
-        Dim _schoolYear As String = Me.ddlSchoolYear.SelectedValue
 
         Me.ddlSearchbyValue.Visible = True
         Me.txtSearchBox.Visible = False
@@ -114,64 +106,71 @@ Partial Class RequestPositionList2
         Me.datepicker2.Visible = False
         Me.DateTo.Visible = False
 
-
         Dim parameter As New List2Item()
-        parameter.Para0 = _schoolYear
-        Select Case searchby
+        With parameter
+            .Operate = searchby
+            .Para0 = HttpContext.Current.User.Identity.Name
+            .Para1 = Me.ddlSchoolYear.SelectedValue
+        End With
 
+
+        Select Case searchby
             Case "Area", "PostingCycle", "PostingState", "Panel"
-                '  AssembleListItem.SetListsFromJson(ddlSearchbyValue, searchby, JsonFile)
                 AssemblingList.SetLists(JsonFile, ddlSearchbyValue, searchby, parameter)
             Case "School", "Level", "PendingConfirm", "PositionStatus"
-                ' AssembleListItem.SetSearchList(Me.ddlSearchbyValue, searchby, _UserID, _schoolYear)
-                AssemblingList.SetLists("", Me.ddlSearchbyValue, searchby, parameter)
+                AssemblingList.SetLists("", ddlSearchbyValue, searchby, parameter)
             Case "PublishDate", "PositionStartDate", "PositionEndDate", "DeadlineDate", "OpenDate", "CloseDate"
-                Me.ddlSearchbyValue.Visible = False
-                Me.datepicker.Visible = True
-                If IsDate(WorkingProfile.SearchByValue) Then
-                    Me.datepicker.Value = WorkingProfile.SearchByValue
-                Else
-                    Me.datepicker.Value = DateFC.YMD(Now(), "-")
-                End If
-
-                Me.datepicker2.Visible = True
-                Me.datepicker2.Value = DateFC.YMD(WorkingProfile.SearchByValue2, "-")
-                Me.DateTo.Visible = True
-
-
-
-                If DateFC.YMD(Me.datepicker2.Value) < DateFC.YMD(Me.datepicker.Value) Then
-                    Me.datepicker2.Value = Me.datepicker.Value
-                End If
-
-
-            Case "All"
-                Me.ddlSearchbyValue.ClearSelection()
-                Me.ddlSearchbyValue.Items.Clear()
-                Me.txtSearchBox.Text = ""
-                '   If Not sender.id = "__Page" Then BindGridData(True)
+                SearchbyDateInitial()
             Case Else
                 Me.ddlSearchbyValue.Visible = False
                 Me.ddlSearchbyValue.ClearSelection()
-                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
-
+                Me.txtSearchBox.Text = SearchbyOtherInitial(searchby)
                 Me.txtSearchBox.Visible = True
-                '    Me.searchdate.Visible = False
         End Select
 
+    End Sub
+    Private Function SearchbyOtherInitial(ByVal searchby As String) As String
+        Dim rVal As String = ""
         If searchby = "PostingNum" Then
             Dim yearSTR As String = Now().Year
-            If Left(WorkingProfile.SearchByValue, 4) = yearSTR Then
-                Me.txtSearchBox.Text = WorkingProfile.SearchByValue
+            If Left(WorkingProfile.SearchByValue, 5) = yearSTR + "-" Then
+                rVal = WorkingProfile.SearchByValue
             Else
-                Me.txtSearchBox.Text = yearSTR + "-"
+                rVal = yearSTR + "-"
             End If
         End If
+        Return rVal
+    End Function
+    Private Sub SearchbyDateInitial()
+        Try
+            Me.ddlSearchbyValue.Visible = False
+            Me.datepicker.Visible = True
+            If IsDate(WorkingProfile.SearchByValue) Then
+                Me.datepicker.Value = WorkingProfile.SearchByValue
+            Else
+                Me.datepicker.Value = DateFC.YMD(Now(), "")
+            End If
 
+            Me.datepicker2.Visible = True
+            If IsDate(WorkingProfile.SearchByValue2) Then
+                Me.datepicker2.Value = WorkingProfile.SearchByValue2
+            Else
+                Me.datepicker2.Value = DateFC.YMD(Now(), "")
+            End If
+
+            Me.DateTo.Visible = True
+
+            If DateFC.YMD(Me.datepicker2.Value) < DateFC.YMD(Me.datepicker.Value) Then
+                Me.datepicker2.Value = Me.datepicker.Value
+            End If
+
+        Catch ex As Exception
+
+        End Try
     End Sub
     Private Sub BindGridData(ByVal goDatabase As Boolean)
         Try
-            Me.GridView1.DataSource = getDataSourceNew() '.OfType(Of PositionListPublish)
+            Me.GridView1.DataSource = getDataSourceNew(Of PositionListPublish)() '.OfType(Of PositionListPublish)
             ' Me.GridView1.DataSource = getFilteredDataSetbyLinq() 'this function works
             Me.GridView1.DataBind()
 
@@ -232,12 +231,12 @@ Partial Class RequestPositionList2
         End Try
 
     End Function
-    Private Function allDataSet() As List(Of PositionListPublish)
-        Dim parameters = CommonParameter.GetParameters("Page", User.Identity.Name, WorkingProfile.SchoolYear, WorkingProfile.ApplicationType, "00", "Open", "All", "", "")
-        Dim allList = PublishPositionExe.Positions(parameters)  ' CommonExcute(Of PositionListPublish).GeneralList(SP, parameters) '  PositionListPublish).GeneralList(SP, parameters)
-        Return allList
-    End Function
-    Private Function getDataSourceNew() As List(Of PositionListPublish) ' 
+    'Private Function allDataSet() As List(Of PositionListPublish)
+    '    Dim parameters = CommonParameter.GetParameters("Page", User.Identity.Name, WorkingProfile.SchoolYear, WorkingProfile.ApplicationType, "00", "Open", "All", "", "")
+    '    Dim allList = PublishPositionExe.Positions(parameters)  ' CommonExcute(Of PositionListPublish).GeneralList(SP, parameters) '  PositionListPublish).GeneralList(SP, parameters)
+    '    Return allList
+    'End Function
+    Private Function getDataSourceNew(Of T)() As List(Of T) ' 
         Dim searchby As String = Me.ddlSearchby.SelectedValue
         Dim searchValue1 As String = getSeracherValue() 'Me.ddlSearchbyValue.SelectedValue
         Dim searchValue2 As String = getSeracherDate2()
@@ -245,12 +244,26 @@ Partial Class RequestPositionList2
         WorkingProfile.SearchByValue = searchValue1
         WorkingProfile.SearchByValue2 = searchValue2
 
-        Dim parameters = CommonParameter.GetParameters("Page", User.Identity.Name, Me.ddlSchoolYear.SelectedValue, Me.ddlappType.SelectedValue, "00", Me.ddlOpenClose.SelectedValue, searchby, searchValue1, searchValue2)
-        Dim sList = PublishPositionExe.Positions(parameters)  ' CommonExcute(Of PositionListPublish).GeneralList(SP, parameters) '  PositionListPublish).GeneralList(SP, parameters)
+
+        Dim para = New With
+            {
+            .Operate = "Page",
+            .UserID = User.Identity.Name,
+            .SchoolYear = Me.ddlSchoolYear.SelectedValue,
+            .PositionType = Me.ddlappType.SelectedValue,
+            .Panel = "00",
+            .Status = Me.ddlOpenClose.SelectedValue,
+            .searchby = searchby,
+            .searchValue1 = searchValue1,
+            .searchValue2 = searchValue2
+            }
+        '   Dim para = CommonParameter.GetParameters("Page", User.Identity.Name, Me.ddlSchoolYear.SelectedValue, Me.ddlappType.SelectedValue, "00", Me.ddlOpenClose.SelectedValue, searchby, searchValue1, searchValue2)
+
+        Dim sList = PublishPositionExe(Of T).Positions(para)  ' CommonExcute(Of PositionListPublish).GeneralList(SP, parameters) '  PositionListPublish).GeneralList(SP, parameters)
 
         If User.Identity.Name = "mif" Then
-            Me.lblSuperArea.ToolTip = PublishPositionExe.SpName("Positions")
-            Me.btnNewOpen.ToolTip = PublishPositionExe.SpName("New")
+            Me.lblSuperArea.ToolTip = PublishPositionExe(Of String).SpName("Positions")
+            Me.btnNewOpen.ToolTip = PublishPositionExe(Of String).SpName("New")
         End If
         Return sList
     End Function

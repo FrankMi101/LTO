@@ -12,19 +12,19 @@ namespace AppOperate.ExecuteInterface
     {
         public List<T> Position(object parameter)
         {
-            string sp = PublishPositionExe.SpName("Position");
+            string sp = PublishPositionExe<string>.SpName("Position");
             return CommonExcute<T>.GeneralList(sp, parameter);
         }
 
         public List<T> Positions(object parameter)
         {
-            string sp = PublishPositionExe.SpName("Positions");
+            string sp = PublishPositionExe<string>.SpName("Positions");
             return CommonExcute<T>.GeneralList(sp, parameter);
         }
 
         public string Update(object parameter)
         {
-            string sp = PublishPositionExe.SpName("Update");
+            string sp = PublishPositionExe<string>.SpName("Update");
             
             return CommonExcute<string>.GeneralValue(sp, parameter);
             
@@ -37,7 +37,7 @@ namespace AppOperate.ExecuteInterface
         public List<T> Position<T>(object parameter)
         {
 
-            string sp = PublishPositionExe.SpName("Position");
+            string sp = PublishPositionExe<string>.SpName("Position");
             return CommonExcute<T>.GeneralList(sp, parameter);
 
            // return PublishPositionExe.Position(parameter);
@@ -45,13 +45,13 @@ namespace AppOperate.ExecuteInterface
 
         public List<T> Positions<T>(object parameter)
         {
-            string sp = PublishPositionExe.SpName("Positions");
+            string sp = PublishPositionExe<string>.SpName("Positions");
             return CommonExcute<T>.GeneralList(sp, parameter);
         }
 
         public string Update(object parameter)
         {
-            return PublishPositionExe.Update(parameter);
+            return PublishPositionExe<string>.Update(parameter);
 
         }
 

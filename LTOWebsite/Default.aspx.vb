@@ -71,9 +71,9 @@ Partial Class _Default
                 Case "Principal", "Support2", "Support"
                     goDefaultList = "LTOPrincipals/LoadingP.aspx?pID=5"
                 Case "HRStaff", "Superintendent", "HRStaff4"
-                    goDefaultList = "LTOHRStaffs/LoadingHR.aspx?pID=W"
+                    goDefaultList = "Welcome.html" ' "LTOHRStaffs/LoadingHR.aspx?pID=W"
                 Case "Admin"
-                    goDefaultList = "LTOHRStaffs/LoadingHR.aspx?pID=W"
+                    goDefaultList = "Welcome.html" ' "LTOHRStaffs/LoadingHR.aspx?pID=W"
                 Case Else
                     goDefaultList = "LTOTeachers/LoadingNonQ.aspx"
                     Me.Menu1.Visible = False

@@ -35,7 +35,18 @@ Partial Class HiringDetails4th2
 
             '  Dim mylist As ListControl = CType(Me.combobox, ListControl)
 
-            AssembleListItem.SetObjLists(Me.combobox, "Applicant4ThRound", User.Identity.Name, WorkingProfile.SchoolYear, "", WorkingProfile.UserRole, "%")
+            Dim parameter As New List2Item()
+            With parameter
+                .Operate = "Applicant4ThRound"
+                .Para0 = WorkingProfile.SchoolYear
+                .Para1 = ""
+                .Para2 = WorkingProfile.UserRole
+                .Para3 = "%"
+            End With
+
+
+            AssemblingList.SetListsOBj("", Me.combobox, "Applicant4ThRound", parameter)
+            ' AssembleListItem.SetObjLists(Me.combobox, "Applicant4ThRound", User.Identity.Name, WorkingProfile.SchoolYear, "", WorkingProfile.UserRole, "%")
             '.ListDDL(Me.combobox, "Applicant4ThRound", WorkingProfile.SchoolYear, "", WorkingProfile.UserRole, "%")
             SetStartandEndDate()
             LoadMyData()

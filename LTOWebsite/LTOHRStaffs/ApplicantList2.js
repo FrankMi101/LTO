@@ -6,14 +6,6 @@ function pageLoad(sender, args) {
 
     $(document).ready(function () {
         MakeStaticHeader("GridView1", 270, 1500, 25, false, 'DivHeaderRow', 'GridView2', 'DivMainContent');
-
-        //$('#GridView1 tr').mouseenter(function (event) {
-        //    if (currentTR !== undefined) { currentTR.removeClass("highlightBoard"); }
-        //    currentTR = $(this);
-        //    //  $(this).addClass("highlightBoard");
-        //    currentTR.addClass("highlightBoard");
-        //});
-
         var hireState = $('#HiddenFieldHired').val();
         var x = 0;
         $("#GridView1 tr").each(function () {
@@ -42,19 +34,17 @@ function pageLoad(sender, args) {
             // alert("you are double click the check box, please refresh this list.");
             location.reload();
         });
+
         $('td > .myCheck').click(function (event) {
+          
             var eventCell = $(this);
             var check = eventCell[0].childNodes['0'].checked;
             var action = "0";
             if (check) { action = "1"; }
-            //  event.preventDefault();
-            //$(this).prop('disabled', true);
-            // window.setTimeout(function () {
-            //    $(this).prop('disabled', false);
-            //  }, 1000)
-
+        
             if ($("#HiddenFieldUserRole").val() !== "Superintendent") {
 
+             
                 var applyuserID = $(this).closest('tr').find('td.EditCPNum').text();
                 // var mySelectImg = $(this).closest('tr').find('a.mySelect').html() ;
                 myImg = $(this).closest('tr').find('a.mySelect');
@@ -69,12 +59,9 @@ function pageLoad(sender, args) {
                     }
                 }
             }
-
-
         });
 
         $("#btnExcel").click(function (e) {
-
 
             var appType = $("#ddlappType").val();
             var includeAll = "No";
@@ -90,14 +77,7 @@ function pageLoad(sender, args) {
         });
     });
 }
-
-$(document).ready(function () {
-
-
-});
-
-
-
+ 
 function PopUpDIV3() {
     el = parent.parent.document.getElementById("PopUpDIV");
     el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";

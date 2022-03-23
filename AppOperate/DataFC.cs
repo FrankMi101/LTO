@@ -42,7 +42,7 @@ namespace AppOperate
                             break;
                         case "MMMDDYYYY":
                             string sMonthName = pDate.ToString("MMM");
-                            rValue = sMonthName +"/" + vDD+ "/"+vYY;
+                            rValue = sMonthName + "/" + vDD + "/" + vYY;
                             break;
                         default:
                             rValue = vYY + "/" + vMM + "/" + vDD;
@@ -81,6 +81,27 @@ namespace AppOperate
         }
         public static string YMD(DateTime vDate)
         {
+            return YMDF("/", vDate);
+        }
+
+        public static string YMD(DateTime vDate, string linkStr)
+        {
+            return YMDF(linkStr, vDate);
+        }
+        public static string YMD(DateTime vDate, string linkStr, string skipWeekEnd)
+        {
+            if (skipWeekEnd == "Y")
+            {
+                if (vDate.DayOfWeek == DayOfWeek.Saturday) vDate = vDate.AddDays(1);
+                if (vDate.DayOfWeek == DayOfWeek.Sunday) vDate = vDate.AddDays(1);
+            }
+
+            return YMDF(linkStr, vDate);
+        }
+
+        private static string YMDF(string linkStr, DateTime vDate)
+        {
+            if (string.IsNullOrEmpty(linkStr)) linkStr = "-";
             string rDate = "";
             try
             {
@@ -95,25 +116,22 @@ namespace AppOperate
                     { vMM = "0" + vMM; }
                     if (vDate.Day < 10)
                     { vDD = "0" + vDD; }
-                    rDate = vYY + '/' + vMM + '/' + vDD;
+                    rDate = vYY + linkStr + vMM + linkStr + vDD;
                 }
                 return rDate;
-
             }
             catch
             {
                 return rDate;
             }
-
         }
-
         public static DateTime YMD(string eDate)
         {
             try
             {
-             string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy","yyyy/MM/dd", "yyyy-MM-dd"};
-            DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
-            return oDate;
+                string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "yyyy/MM/dd", "yyyy-MM-dd" };
+                DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
+                return oDate;
 
             }
             catch (Exception ex)
@@ -126,9 +144,9 @@ namespace AppOperate
         {
             try
             {
-             string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "yyyy/MM/dd" };
-            DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
-            return YMD( oDate);
+                string[] format = new[] { "dd/MM/yyyy", "d/M/yyyy", "dd-MM-yyyy", "yyyy/MM/dd" };
+                DateTime oDate = DateTime.ParseExact(eDate, format, System.Globalization.DateTimeFormatInfo.InvariantInfo, System.Globalization.DateTimeStyles.None);
+                return YMD(oDate);
 
             }
             catch (Exception)
@@ -137,43 +155,6 @@ namespace AppOperate
                 return eDate;
             }
         }
-
-        public static string YMD(DateTime vDate, string sign)
-        {
-            // string iString = "2005-05-05 22:12 PM";
-            //   DateTime oDate = DateTime.ParseExact(iString, "yyyy-MM-dd HH:mm tt", System.Globalization.CultureInfo.InvariantCulture);
-            string rDate = "";
-            try
-            {
-                if (vDate == null)
-                { rDate = ""; }
-                else
-                {
-                    string vYY = vDate.Year.ToString();
-                    string vMM = vDate.Month.ToString();
-                    string vDD = vDate.Day.ToString();
-                    if (vDate.Month < 10)
-                    { vMM = "0" + vMM; }
-                    if (vDate.Day < 10)
-                    { vDD = "0" + vDD; }
-                    if (sign == "" || sign == null)
-                    { rDate = vYY + '/' + vMM + '/' + vDD; }
-                    else
-                    {
-                        rDate = vYY + sign + vMM + sign + vDD;
-                    }
-
-                }
-                return rDate;
-
-            }
-            catch
-            {
-                return rDate;
-            }
-
-        }
-
 
         public static int Age(DateTime BirthDate)
         {

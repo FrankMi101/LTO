@@ -52,7 +52,7 @@ Partial Class RequestDetails2
     Private Sub AssiblingPage()
 
 
-        RequiredFieldValidator2.Enabled = False
+        'RequiredFieldValidator_lblTeacherName.Enabled = False
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
         Dim positionID As String = Page.Request.QueryString("PositionID")
@@ -99,8 +99,8 @@ Partial Class RequestDetails2
     Private Sub setPageVaildationControl()
         If WorkingProfile.ApplicationType = "POP" Then
             '  for POP position no need to check the replace teacher
-            RequiredFieldValidator5.Enabled = False
-            RequiredFieldValidator6.Enabled = False
+            RequiredFieldValidator_lblTeacherName.Enabled = False
+            RequiredFieldValidator_hfAutoCompletSelectedID.Enabled = False
         End If
     End Sub
     Private Sub BindPageData()
@@ -419,11 +419,11 @@ Partial Class RequestDetails2
     Private Sub setHRStaff()
         Dim appType As String = Me.ddlType.SelectedValue
         If appType = "LTO" Then
-            RequiredFieldValidator2.Enabled = True
+            RequiredFieldValidator_dateEnd.Enabled = True
         Else
-            RequiredFieldValidator2.Enabled = False
+            RequiredFieldValidator_dateEnd.Enabled = False
         End If
-        AssembleListItem.SetValue(Me.ddlHRStaff, getHRUser())
+        AssemblingList.SetValue(Me.ddlHRStaff, getHRUser())
 
     End Sub
     Private Function getHRUser() As String

@@ -1,7 +1,6 @@
 ﻿using System;
 using ClassLibrary;
-using System.DirectoryServices;
-
+using System.DirectoryServices; 
 namespace AppOperate
 {
     public class UserSecurity

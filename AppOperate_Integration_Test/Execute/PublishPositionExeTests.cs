@@ -49,28 +49,47 @@ namespace AppOperate.Tests
 
 
         [TestMethod()]
-        public void SPNameTest_retrun_Position_StoreProcedure_name()
+        public void SPNameTest_retrun_Position_StoreProcedure_nameWithParameter()
         {
             //Arrange 
             string action = "Position";
+            var para = new ParametersForPositionList() { };
 
             //Act
             string expect = "dbo.tcdsb_LTO_PagePublish_Position @SchoolYear, @PositionID";
-            string result = PublishPositionExe.SpName(action);
+            string result = PublishPositionExe.SpName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Publish Position Store Procedure Name:  { result}");
 
         }
+
         [TestMethod()]
-        public void SPNameTest_retrun_Positions_StoreProcedure_name()
+        public void SPNameTest_retrun_Positions_StoreProcedure_nameWithParameter()
         {
             //Arrange 
             string action = "Positions";
+            var para = new ParametersForPositionList() { };
 
             //Act
             string expect = "dbo.tcdsb_LTO_PagePublish_Positions @Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy,@SearchValue1,@SearchValue2";
-            string result = PublishPositionExe.SpName(action);
+            string result = PublishPositionExe.SpName(action,para);
+
+            //Assert
+            Assert.AreEqual(expect, result, $" Publish Positions list Store Procedure Name:  { result}");
+
+        }
+
+        [TestMethod()]
+        public void SPNameTest_retrun_Positions_StoreProcedure_nameOnly()
+        {
+            //Arrange 
+            string action = "Positions";
+            var para = new { };
+
+            //Act
+            string expect = "dbo.tcdsb_LTO_PagePublish_Positions";
+            string result = PublishPositionExe.SpName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Publish Positions list Store Procedure Name:  { result}");
@@ -81,10 +100,11 @@ namespace AppOperate.Tests
         {
             //Arrange 
             string action = "New";
+            var para = new PublishPosition() { };
 
             //Act
             string expect = "dbo.tcdsb_LTO_PagePublish_CreateNew @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@PositionType";
-            string result = PublishPositionExe.SpName(action);
+            string result = PublishPositionExe.SpName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Create new Publish Position Store Procedure Name:  { result}");
@@ -111,7 +131,7 @@ namespace AppOperate.Tests
             string expect = "334";
 
             //Act
-            List<PositionListPublish> publishList = PublishPositionExe.Positions(parameter);
+           var publishList = PublishPositionExe<PositionListPublish>.Positions(parameter);
             myGridview.AutoGenerateColumns = true;
             myGridview.DataSource = publishList;
             myGridview.DataBind();
@@ -126,7 +146,7 @@ namespace AppOperate.Tests
         public void PositionTest_return_publishPosition_by_giving_PositionID()
         {
             //Arrange
-            var myGridview = new System.Web.UI.WebControls.GridView();
+             
             var parameter = new ParametersForPosition()
             {
                 SchoolYear = schoolyear,
@@ -135,19 +155,12 @@ namespace AppOperate.Tests
             string expect = parameter.PositionID;
 
             //Act
-            List<PositionPublish> publishList = PublishPositionExe.Position(parameter);
-            myGridview.AutoGenerateColumns = true;
-            myGridview.DataSource = publishList;
-            myGridview.DataBind();
+            var publishposition = PublishPositionExe.Position(parameter)[0];
 
-            myGridview.SelectedIndex = 0;
 
-            GridViewRow row = myGridview.SelectedRow;
+            string result = publishposition.PositionID.ToString();
 
-            string result = row.Cells[14].Text; // PositionID in Gridview Cell position
-
-            var result2 = publishList[0].PositionID;
-
+ 
             //Assert
             Assert.AreEqual(expect, result, $" Publish positions ID is { result } ");
 
@@ -179,7 +192,7 @@ namespace AppOperate.Tests
             //Act
             string updateresult = PublishPositionExe.Update(position);
 
-            List<PositionInfo> positionInfo = PublishPositionExe.PositionInfo(parameter);
+            List<PositionInfo> positionInfo = PublishPositionExe<PositionInfo>.PositionInfo(parameter);
             string expect = position.PositionTitle + "(" + parameter.PositionID + ")";
             string expect2 = position.StartDate;
             string result = positionInfo[0].PositionTitle;
@@ -193,18 +206,20 @@ namespace AppOperate.Tests
         [TestMethod()]
         public void DefaultDateTest()
         {
+            // ********* This test will Fail if test happend public hoilday **********
+
             //Arrange 
             string action = "DefaultDate";
-            SearchParameter parameter = new SearchParameter()
+            var parameter = new
             {
                 Operate = action,
-                SchoolYear = "20192020",
-                PositionType = "LTO"
+                AppType = "LTO",
+                SchoolYear = "20192020"
             };
 
             // Act
 
-            List<PositionPublish> myDate = PublishPositionExe.DefaultDate(parameter);
+            List<LTODefalutDate> myDate = PublishPositionExe.DefaultDate(parameter);
 
             //myGridview.AutoGenerateColumns = true;
             //myGridview.DataSource = myDatasource;
@@ -216,8 +231,8 @@ namespace AppOperate.Tests
             var openDate = myDate[0].DateApplyOpen;
             var closeDate = myDate[0].DateApplyClose;
 
-            string expect = DateFC.YMD(DateTime.Now);
-            string result = publishDate;
+            string expect =  DateFC.YMD(DateTime.Now,"/","Y");
+            string result = DateFC.YMD(publishDate,"/","Y");
 
             //Assert
             Assert.AreEqual(expect, result, $"default publish Date Value  { result}");
@@ -228,8 +243,19 @@ namespace AppOperate.Tests
         [TestMethod()]
         public void PostingRoundsTest()
         {
-            List<PositionPublish> result = PublishPositionExe.PostingRounds(parameter);
-            Assert.Fail();
+            //Arrange
+            var para = new
+            {
+                SchoolYear = schoolyear,
+                PositionID = "14609",
+            };
+            //Act
+            List<PositionPublish> result = PublishPositionExe.PostingRounds(para);
+
+            int expect = result.Count;
+            // Assert
+
+            Assert.AreEqual(expect, result.Count,$"posting cycle number is { result.Count }" ) ;
         }
 
         [TestMethod()]
@@ -413,7 +439,7 @@ namespace AppOperate.Tests
             var anonyParametere = new
             {
                 SchoolYear = "20192020",
-                DatePublish = "2019/11/11",
+                PublishDate = "2019/11/11",
                 PositionType = "LTO"
             };
 
@@ -422,7 +448,7 @@ namespace AppOperate.Tests
             string expect = "2019/11/13";
 
             //Assert
-            Assert.AreEqual(expect, result, $" The deasline date is { result } for publish date {anonyParametere.DatePublish } ");
+            Assert.AreEqual(expect, result, $" The deasline date is { result } for publish date {anonyParametere.PublishDate } ");
 
         }
 
@@ -464,7 +490,7 @@ namespace AppOperate.Tests
             string expect = "0549";
 
             //Act
-            string result = PublishPositionExe.Attribute(parameter);
+            string result = PublishPositionExe.Attribute(publish);
 
             //Assert
             Assert.IsNotNull(result, $"request position Info  { result} .");

@@ -3,17 +3,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using AppOperate.Execute;
+using DataAccess;
+using DataAccess.Repository;
 
 namespace AppOperate
 {
     public class GeneralExe
     {
+        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new GeneralItems());
+
         public GeneralExe()
         {
         }
         public static string SPName(string action)
         {
-            return GetSP(action);
+            return   GetSP(action);
+        }
+        public static string SPName(string action, object parameter)
+        {
+             return GetSPInClass(action, parameter);
         }
         public static string SPName(string action, string page)
         {
@@ -25,54 +33,55 @@ namespace AppOperate
         }
         public static List<List2Item> DDList(object parameter)
         {
-            return CommonExcute<List2Item>.GeneralList(GetSP("DDList"), parameter);
+           
+            return _action.AppOne.CommonList<List2Item>(GetSP("DDList"), parameter);
         }
-        public static List<NvListItem> DDListNV(object parameter)
+        public static List<NameValueList> DDListNV(object parameter)
         {
-            return CommonExcute<NvListItem>.GeneralList(GetSP("DDList"), parameter);
+            return _action.AppOne.CommonList<NameValueList>(GetSP("DDList"), parameter);
         }
         public static List<ListSchool> SchoolList(object parameter)
         {
-            return CommonExcute<ListSchool>.GeneralList(GetSP("Schools"), parameter);
+            return _action.AppOne.CommonList<ListSchool>(GetSP("Schools"), parameter);
         }
-        public static List<NvListItem> SearchList(object parameter)
+        public static List<NameValueList> SearchList(object parameter)
         {
-            return CommonExcute<NvListItem>.GeneralList(GetSP("SearchList"), parameter);
+            return _action.AppOne.CommonList<NameValueList>(GetSP("SearchList"), parameter);
         }
         public static List<LTODefalutDate> DefaultDate(object parameter)
         {
-            return CommonExcute<LTODefalutDate>.GeneralList(GetSP("DefaultDate"), parameter);
+            return _action.AppOne.CommonList<LTODefalutDate>(GetSP("DefaultDate"), parameter);
         }
         public static List<LTODefalutDate> OpenCloseDate(object parameter)
         {
-             return CommonExcute<LTODefalutDate>.GeneralList(GetSP("OpenCloseDate"), parameter);
+            return _action.AppOne.CommonList<LTODefalutDate>(GetSP("OpenCloseDate"), parameter);
         }
         public static List<LTODefalutDate> StartEndDate(object parameter)
         {
-            return CommonExcute<LTODefalutDate>.GeneralList(GetSP("StartEndDate"), parameter);
+            return _action.AppOne.CommonList<LTODefalutDate>(GetSP("StartEndDate"), parameter);
         }
         public static List<TeachersListByCategory> TeachersList(object parameter)
         {
-              return CommonExcute<TeachersListByCategory>.GeneralList(GetSP("TeachersList"), parameter);
+            return _action.AppOne.CommonList<TeachersListByCategory>(GetSP("TeachersList"), parameter);
         }
 
         public static List<Applicant> RandomApplicant(object parameter)
         {
-             return CommonExcute<Applicant>.GeneralList(GetSP("RandomApplicant"), parameter);
+            return _action.AppOne.CommonList<Applicant>(GetSP("RandomApplicant"), parameter);
         }
 
         public static string Profile(object parameter)
         {
   
-            return CommonExcute<string>.GeneralValue(GetSP("Profile"), parameter);
+            return  _action.AppOne.CommonAction(GetSP("Profile"), parameter);
         }
         public static string TeacherName(object parameter)
         {
-            return CommonExcute<string>.GeneralValue(GetSP("TeacherName"), parameter);
+            return _action.AppOne.CommonAction(GetSP("TeacherName"), parameter);
         }
         public static string ValidateDate(object parameter)
         {
-            return CommonExcute<string>.GeneralValue(GetSP("ValidateDate"), parameter);
+            return _action.AppOne.CommonAction(GetSP("ValidateDate"), parameter);
         }
   
 
@@ -137,42 +146,19 @@ namespace AppOperate
 
             return spNameParameter(action, page);
         }
-        private static string GetSPInClass(string action, string page)
+
+        public static string SpName(string action, object para)
         {
-
-            string parameters = " @Operate,@Para0,@Para1,@Para2,@Para3";
-            string parameters2 = " @Operate,@SchoolYear,@PositionType";
-        
-
-            switch (action)
-            {
-                case "DDList":
-                    return "dbo.tcdsb_LTO_PageGeneral_List" + parameters;
-                case "Schools":
-                    return "dbo.tcdsb_LTO_PageGeneral_ListSchools" + parameters;
-                case "SearchList":
-                    return "dbo.tcdsb_LTO_PageGeneral_ListSearch" + parameters2 + ",@SearchType";
-                case "ValidateDate":
-                    return "dbo.tcdsb_LTO_PageGeneral_ValidateDate" + parameters2 + ",@ValidateDate";
-                case "DefaultDate":
-                    return "dbo.tcdsb_LTO_PageGeneral_DefaultDate" + parameters2;
-                case "OpenCloseDate":
-                    return "dbo.tcdsb_LTO_PageGeneral_OpenCloseDate" + parameters2 + ",@DatePublish";
-                case "StartEndDate":
-                    return "dbo.tcdsb_LTO_PageGeneral_StartEndDate" + parameters2;
-                case "Profile":
-                    return "dbo.tcdsb_LTO_PageGeneral_Profile" + " @Operate,@UserID,@SchoolYear,@ProfileType,@CheckValue";
-                case "TeachersList":
-                    return "dbo.tcdsb_LTO_PageGeneral_TeacherList" + " @SchoolYear,@SchoolCode,@SearchValue1";
-                case "TeacherName":
-                    return "dbo.tcdsb_LTO_PageGeneral_TeacherName" + " @Operate,@CPNum";
-                case "RandomApplicant":
-                    return "dbo.tcdsb_LTO_PageGeneral_RandomApplicant" + " @Operate,@SchoolYear,@PositionID,@PositionType,@PostingCycle,@CPNum";
-    
-                default:
-                    return action;
-
-            }
+            return GetSPInClass(action, para);
+        }
+        private static string GetSPInClass(string action)
+        {
+            return action;
+        }
+        private static string GetSPInClass(string action, object para)
+        {
+            return   _action.AppOne.SpName(action, para);
+ 
         }
         private static string GetSPFromJsonFile(string action, string page)
         {
@@ -182,6 +168,8 @@ namespace AppOperate
     }
     public class GeneralExe<T>
     {
+        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource);
+
         private delegate List<T> GetMyListDel(string spName, object parameter);
         private static List<T> GetListHelper(GetMyListDel delgateFunc, string spName, object parameter)
         {
@@ -202,9 +190,7 @@ namespace AppOperate
             }
             catch (Exception ex)
             {
-                string em = ex.Message;
-                string es = ex.StackTrace;
-                throw;
+                 throw;
             }
         }
        
@@ -218,9 +204,7 @@ namespace AppOperate
             }
             catch (Exception ex)
             {
-                string em = ex.Message;
-                string es = ex.StackTrace;
-                throw;
+                 throw ;
 
             }
         }
@@ -234,9 +218,7 @@ namespace AppOperate
             }
             catch (Exception ex)
             {
-                string em = ex.Message;
-                string es = ex.StackTrace;
-                throw;
+                 throw;
 
             }
         }

@@ -141,17 +141,22 @@ Partial Class ApplyPosition2
             Me.LabelApplyDate.Visible = False
             Me.TextApplyDate.Visible = False '   Me.ApplyedDate.Visible = False
 
-            If _Role = "Roster" Then
-                Me.btnApply.Enabled = False
-                Me.LabelNotQualifyRoster.Visible = True
-                If Me.TextPostingCycle.Text = "3" Then
-                    Me.btnApply.Enabled = True
-                    Me.LabelNotQualifyRoster.Visible = False
-                End If
-            Else
-                Me.btnApply.Enabled = True
-            End If
 
+            ' ********************* No Need change the Roster *************************************************************************
+            Me.btnApply.Enabled = True
+            Me.LabelNotQualifyRoster.Visible = False
+
+            'If _Role = "Roster" Then
+            '    Me.btnApply.Enabled = False
+            '    Me.LabelNotQualifyRoster.Visible = True
+            '    If Me.TextPostingCycle.Text = "3" Then
+            '        Me.btnApply.Enabled = True
+            '        Me.LabelNotQualifyRoster.Visible = False
+            '    End If
+            'Else
+            '    Me.btnApply.Enabled = True
+            'End If
+            ' *****************************************************************************************************
             If Me.HiddenFieldApply.Value = "Applied" Then
                 Me.btnApply.Text = "Rescind Application"
                 Me.HiddenFieldApply.Value = "Cancel"

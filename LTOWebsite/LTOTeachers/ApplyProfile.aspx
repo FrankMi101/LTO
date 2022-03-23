@@ -7,6 +7,7 @@
     <title>Apply Position</title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+     <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
     <style type="text/css">
         body {
             height: 100%;

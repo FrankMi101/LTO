@@ -63,13 +63,13 @@ Public Class DefaultDate
         Return myDate
     End Function
     Private Shared Function DateSourceNew(ByVal schoolYear As String, ByVal positionType As String) As List(Of PositionPublish)
-        Dim parameter As New LimitDate()
-        With parameter
-            .Operate = "DefaultDate"
-            .PositionType = positionType
+        Dim parameter = New With
+        {.Operate = "DefaultDate",
+            .AppType = positionType,
             .SchoolYear = schoolYear
-        End With
-        Return PublishPositionExe.DefaultDate(parameter)  ' CommonExcute(Of LimitDate).GeneralList(SP, parameter) '
+        }
+
+        Return PublishPositionExe(Of PositionPublish).DefaultDate(parameter)  ' CommonExcute(Of LimitDate).GeneralList(SP, parameter) '
 
     End Function
 End Class

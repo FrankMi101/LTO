@@ -7,6 +7,20 @@ Partial Class OpenPositionList2
     Inherits System.Web.UI.Page
     Dim cPage As String = "Interview"
     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile() 
+    Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
+        If Not Session("mytheme") Is Nothing Then
+            Me.Theme = Session("mytheme")
+
+        End If
+    End Sub
+    ' ### setup Page StylesheetTheme
+    Public Overrides Property StyleSheetTheme() As String
+        Get
+            Return Session("mytheme")
+        End Get
+        Set(ByVal value As String)
+        End Set
+    End Property
     Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         If Not Page.IsPostBack Then
 

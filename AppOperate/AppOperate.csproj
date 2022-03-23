@@ -34,8 +34,8 @@
     <Reference Include="MyBaseClassC">
       <HintPath>..\..\DLLReferance\MyBaseClassC.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -54,7 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonAction.cs" />
+    <Compile Include="CommonObj\CommonAction.cs" />
     <Compile Include="ExecuteDelegate\DataProcessDelegate.cs" />
     <Compile Include="ExecuteDelegate\GeneralDelegate.cs" />
     <Compile Include="ExecuteDelegate\SpNameParameterDelegate.cs" />
@@ -65,9 +65,10 @@
     <Compile Include="ExecuteInterface\PostingRequest.cs" />
     <Compile Include="Execute\ApplicantAttribute.cs" />
     <Compile Include="Execute\CommonExecute.cs" />
-    <Compile Include="CommonSP.cs" />
+    <Compile Include="CommonObj\CommonSP.cs" />
     <Compile Include="Execute\ApplyProcessExe.cs" />
     <Compile Include="Execute\ConfirmHireExe.cs" />
+    <Compile Include="Execute\CurrentOwner.cs" />
     <Compile Include="Execute\GeneralExe.cs" />
     <Compile Include="Execute\GetSpNameFormJsonFile.cs" />
     <Compile Include="Execute\HiredPositionExe.cs" />
@@ -83,49 +84,48 @@
     <Compile Include="Execute\SPSource.cs" />
     <Compile Include="Execute\VaildateName.cs" />
     <Compile Include="FileOperation.cs" />
-    <Compile Include="ICommonList.cs" />
-    <Compile Include="ICommonOperation.cs" />
-    <Compile Include="ICommonParameter.cs" />
-    <Compile Include="JsonFileReader.cs" />
+    <Compile Include="CommonObj\ICommonList.cs" />
+    <Compile Include="CommonObj\ICommonOperation.cs" />
+    <Compile Include="CommonObj\ICommonParameter.cs" />
     <Compile Include="list\AbstractFactory.cs" />
-    <Compile Include="CommonList.cs" />
-    <Compile Include="CommonListExecute.cs" />
-    <Compile Include="CommonOperation.cs" />
-    <Compile Include="CommonOperationExcute.cs" />
-    <Compile Include="CommonParameter.cs" />
-    <Compile Include="PostingInterview.cs" />
+    <Compile Include="CommonObj\CommonList.cs" />
+    <Compile Include="CommonObj\CommonListExecute.cs" />
+    <Compile Include="CommonObj\CommonOperation.cs" />
+    <Compile Include="CommonObj\CommonOperationExcute.cs" />
+    <Compile Include="CommonObj\CommonParameter.cs" />
+    <Compile Include="Execute0\PostingInterview.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="ReportRenderC.cs" />
-    <Compile Include="RequestingPost.cs" />
-    <Compile Include="PostingInterviewExc.cs" />
-    <Compile Include="RequestingPostExe.cs" />
-    <Compile Include="PostingHire.cs" />
-    <Compile Include="PostingApproveRequest.cs" />
-    <Compile Include="IPosition.cs" />
+    <Compile Include="Execute0\RequestingPost.cs" />
+    <Compile Include="Execute0\PostingInterviewExc.cs" />
+    <Compile Include="Execute0\RequestingPostExe.cs" />
+    <Compile Include="Execute0\PostingHire.cs" />
+    <Compile Include="Execute0\PostingApproveRequest.cs" />
+    <Compile Include="Execute0\IPosition.cs" />
     <Compile Include="list\ListPositionWithInterface.cs" />
     <Compile Include="list\PositionApproved.cs" />
     <Compile Include="list\PositionWithInterface.cs" />
-    <Compile Include="PostingApproveRequestExe.cs" />
-    <Compile Include="PostingPublish.cs" />
-    <Compile Include="PostingHireExc.cs" />
-    <Compile Include="PostingPublishExe.cs" />
-    <Compile Include="PostingQualification.cs" />
-    <Compile Include="PostingQualificationExe.cs" />
+    <Compile Include="Execute0\PostingApproveRequestExe.cs" />
+    <Compile Include="Execute0\PostingPublish.cs" />
+    <Compile Include="Execute0\PostingHireExc.cs" />
+    <Compile Include="Execute0\PostingPublishExe.cs" />
+    <Compile Include="Execute0\PostingQualification.cs" />
+    <Compile Include="Execute0\PostingQualificationExe.cs" />
     <Compile Include="list\SinglePosition.cs" />
     <Compile Include="list\SingleTeacher.cs" />
     <Compile Include="list\ApplicantNoticeList.cs" />
-    <Compile Include="AssembleListItem.cs" />
+    <Compile Include="AssemblingList.cs" />
     <Compile Include="DataFC.cs" />
     <Compile Include="DataTools.cs" />
     <Compile Include="EmailNotification.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="HelpText.cs" />
-    <Compile Include="IPositionListRepository.cs" />
-    <Compile Include="ITeacherListRepository.cs" />
+    <Compile Include="Execute0\IPositionListRepository.cs" />
+    <Compile Include="ExecuteInterface\ITeacherListRepository.cs" />
     <Compile Include="list\ListPosition.cs" />
     <Compile Include="list\ListTeacher.cs" />
     <Compile Include="list\ListTeachertInterviewCandiate.cs" />
@@ -139,8 +139,8 @@
     <Compile Include="list\ListPositionApprove.cs" />
     <Compile Include="list\ListPositionRequesting.cs" />
     <Compile Include="list\ListTeacherSelectnterviewCandidate.cs" />
-    <Compile Include="IPositionRepository.cs" />
-    <Compile Include="ManageNewStaffs.cs" />
+    <Compile Include="Execute0\IPositionRepository.cs" />
+    <Compile Include="Execute0\ManageNewStaffs.cs" />
     <Compile Include="list\PositionInterviewed.cs" />
     <Compile Include="list\PositionPublished.cs" />
     <Compile Include="list\PositionRequested.cs" />
@@ -198,10 +198,6 @@
     <None Include="Web References\ReportingWebService\Warning.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
-    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

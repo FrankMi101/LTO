@@ -44,15 +44,7 @@ Partial Class InterviewTeam
             .Para1 = WorkingProfile.SchoolCode
         End With
 
-        'SetupList.ListDDL(Me.combobox1, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-        'SetupList.ListDDL(Me.combobox2, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-        'SetupList.ListDDL(Me.combobox3, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-        AssembleListItem.SetLists3(Me.ddlInterview1, Me.ddlInterview2, Me.ddlInterview3, Parameter)
-        ' SetupList.ListDDL(Me.ddlInterview1, Me.ddlInterview2, Me.ddlInterview3, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-        'SetupList.ListDDL(Me.ddlInterview2, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-        'SetupList.ListDDL(Me.ddlInterview3, "InterviewPrincipal", _SchoolYear, _Schoolcode, _Role, "%")
-
-
+        AssemblingList.SetLists3(Me.ddlInterview1, Me.ddlInterview2, Me.ddlInterview3, parameter)
 
     End Sub
     Private Sub BindData()

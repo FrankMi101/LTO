@@ -108,6 +108,7 @@ Partial Class RequestPositionDetails2
         AssemblingList.SetLists("", Me.ddlType, "ApplicationType", parameter, WorkingProfile.ApplicationType)
         AssemblingList.SetLists("", Me.cblQualification, "Qualification_RequestP", parameter)
         AssemblingList.SetLists("", Me.rblFTE, "FTEList", parameter)
+        '   AssemblingList.SetLists("", Me.ddlPostingCycle, "PostingCycle", parameter)
         AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
         Dim divHeight As String = "80px"
         If Me.cblQualification.Items.Count > 15 Then divHeight = "200px"
@@ -143,31 +144,22 @@ Partial Class RequestPositionDetails2
         Dim userid As String = HttpContext.Current.User.Identity.Name
         Me.hfSchoolyear.Value = schoolyear
 
-        Dim parameter = CommonParameter.GetParameters(schoolyear, positionId)
-        '  Dim SP As String = CommonOperationExcute(Of PositionPublish).ObjSP("PositionPublish", "Retrieve")
+        Dim para = CommonParameter.GetParameters(schoolyear, positionId)
+        '  Dim para = New With {.SchoolYear = schoolyear, .PositionID = positionId}
 
-        Dim position = PublishPositionExe.Position(parameter)(0)
+        Dim position = PublishPositionExe(Of PositionPublish).Position(para)(0)
 
         '  Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Position") '  CommonExcute.SPNameAndParameters(SPFile, cPage, "Position")
         If User.Identity.Name = "mif" Then
-            'Dim SP1 As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Update")
-            'Dim SP2 As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Cancel")
-            'Dim SP3 As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "RePosting")
-            'Dim SP4 As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Delete")
 
-            Me.lblPostingNumber.ToolTip = PublishPositionExe.SpName("Position")
-            Me.btnSave.ToolTip = PublishPositionExe.SpName("Update")
-            Me.btnUnpublish.ToolTip = PublishPositionExe.SpName("Cancel")
-            Me.btnRepublish.ToolTip = PublishPositionExe.SpName("RePosting")
-            Me.btndelete.ToolTip = PublishPositionExe.SpName("Delete")
+            Me.lblPostingNumber.ToolTip = PublishPositionExe(Of String).SpName("Position")
+            Me.btnSave.ToolTip = PublishPositionExe(Of String).SpName("Update")
+            Me.btnUnpublish.ToolTip = PublishPositionExe(Of String).SpName("Cancel")
+            Me.btnRepublish.ToolTip = PublishPositionExe(Of String).SpName("RePosting")
+            Me.btndelete.ToolTip = PublishPositionExe(Of String).SpName("Delete")
             Me.MultipleSchoolimg.Attributes.Add("title", MultipleSchoolsExe.SPName("MultipleSchools"))
 
         End If
-
-        ' Dim position = CommonListExecute(Of PositionPublish).GeneralPositions(SP, parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
-        ' Dim position = CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
-
-        ' Dim position = CommonListExecute.PublishPosition(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
         Return position
 
     End Function
@@ -196,7 +188,7 @@ Partial Class RequestPositionDetails2
             AssemblingList.SetValue(rblFTE, ConvertFte(BasePage.getMyValue(position.FTE)))
             If rblFTE.SelectedValue = "" Then
                 Me.TextFTE.Text = ConvertFte(BasePage.getMyValue(position.FTE))
-                AssembleListItem.SetValue(rblFTE, "00")
+                AssemblingList.SetValue(rblFTE, "00")
             End If
             Me.dateStart.Value = BasePage.getMyValue(position.StartDate)
             Me.dateEnd.Value = BasePage.getMyValue(position.EndDate)
@@ -222,11 +214,15 @@ Partial Class RequestPositionDetails2
 
             Me.lblNoticeDate.Value = BasePage.getMyValue(position.DateNotice)
             Me.lblRemainderDate.Value = BasePage.getMyValue(position.DateRemaider)
-            Dim posting As Integer = BasePage.getMyValue(position.PostingCycle)
+            Me.lblPostRound.Value = BasePage.getMyValue(position.PostingCycle)
             Me.hfApplicant.Value = BasePage.getMyValue(position.Applicant)
-            AssemblingList.SetValue(Me.ddlPostingCycle, CType(posting + 1, String))
 
-            Me.lblPostRound.Value = posting
+            ' ***************** 2nd and 3rd Round posting no long needs *******************************
+            'Dim posting As Integer = BasePage.getMyValue(position.PostingCycle)
+            'AssemblingList.SetValue(Me.ddlPostingCycle, CType(posting + 1, String))
+
+            AssemblingList.SetValue(Me.ddlPostingCycle, CType(4, String))
+            '********************************************************************************
 
 
             AssemblingList.SetValue(ddlTeacherReplaced, BasePage.getMyValue(position.ReplaceTeacherID))
@@ -270,8 +266,7 @@ Partial Class RequestPositionDetails2
 
                     btnRepublish.ToolTip = position.HiredInformation
                 End If
-                'If Me.dateStart.Value = "" Then Me.dateStart.Value = Now.Date()
-                'If Me.datePublish.Value = "" Then Me.datePublish.Value = Now.Date()
+
             End If
             If position.PositionState = "Close" Then
                 Me.btnUnpublish.Enabled = False
@@ -342,8 +337,6 @@ Partial Class RequestPositionDetails2
         Dim positionType = WorkingProfile.ApplicationType
         DefaultDate.SetDate(schoolyear, positionType, Me.dateStart, Me.dateEnd, Me.datePublish, Me.dateApplyStart, Me.dateDeadline, hfSchoolyearStartDate, hfSchoolyearEndDate)
 
-        'Me.hfSchoolyearStartDate.Value = Me.dateStart.Value
-        'Me.hfSchoolyearEndDate.Value = Me.dateEnd.Value
 
 
     End Sub
@@ -383,48 +376,45 @@ Partial Class RequestPositionDetails2
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         '  If IDs = "0" Then action = "Insert"
         Try
-            Dim position1 As New PositionPublish()
-            With position1
-                .Operate = action
-                .UserID = User.Identity.Name
-                .SchoolYear = schoolyear
-                .SchoolCode = Me.ddlSchool.SelectedValue
-                .PositionID = ds
-                .PositionType = hfAppType.Value
-                .PositionTitle = Me.TextPositionTitle.Text
-                .PositionLevel = ddlPositionlevel.SelectedValue
-                .Qualification = Me.lblQualification.Value
-                .QualificationCode = Me.hfQualificationsCode.Value
-                .Description = Me.TextPositionDescription.Text
-                .FTE = GetFte()
-                .FTEPanel = Me.ddlFTEPanel.SelectedValue
-                .StartDate = DateFC.YMD2(Me.dateStart.Value)
-                .EndDate = DateFC.YMD2(Me.dateEnd.Value)
-                .DatePublish = DateFC.YMD2(Me.datePublish.Value)
-                .DateApplyOpen = DateFC.YMD2(Me.dateApplyStart.Value)
-                .DateApplyClose = DateFC.YMD2(Me.dateDeadline.Value)
-                .Comments = Me.TextPostedComment.Text
-                .ReplaceTeacherID = ddlTeacherReplaced.SelectedValue
-                .ReplaceTeacher = ddlTeacherReplaced.SelectedItem.Text
-                .ReplaceReason = ddlReason.SelectedValue
-                .OtherReason = ddlReason.SelectedItem.Text
-                .Owner = Me.ddlHRStaff.SelectedValue
+            '   Dim position1 As New PositionPublish()
+            Dim position1 = New With
+            {
+                .Operate = action,
+                .UserID = User.Identity.Name,
+                .SchoolYear = schoolyear,
+                .SchoolCode = Me.ddlSchool.SelectedValue,
+                .PositionID = ds,
+                .PositionType = hfAppType.Value,
+                .PositionTitle = Me.TextPositionTitle.Text,
+                .PositionLevel = ddlPositionlevel.SelectedValue,
+                .Qualification = Me.lblQualification.Value,
+                .QualificationCode = Me.hfQualificationsCode.Value,
+                .Description = Me.TextPositionDescription.Text,
+                .FTE = GetFte(),
+                .FTEPanel = Me.ddlFTEPanel.SelectedValue,
+                .StartDate = DateFC.YMD2(Me.dateStart.Value),
+                .EndDate = DateFC.YMD2(Me.dateEnd.Value),
+                .DatePublish = DateFC.YMD2(Me.datePublish.Value),
+                .DateApplyOpen = DateFC.YMD2(Me.dateApplyStart.Value),
+                .DateApplyClose = DateFC.YMD2(Me.dateDeadline.Value),
+                .Comments = Me.TextPostedComment.Text,
+                .ReplaceTeacherID = ddlTeacherReplaced.SelectedValue,
+                .ReplaceTeacher = ddlTeacherReplaced.SelectedItem.Text,
+                .ReplaceReason = ddlReason.SelectedValue,
+                .OtherReason = ddlReason.SelectedItem.Text,
+                .Owner = Me.ddlHRStaff.SelectedValue,
                 .PrincipalID = ddlPrincipal.SelectedValue
-
-            End With
+           }
 
             '   Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, action)
 
-            Dim result As String = PublishPositionExe.Update(position1) ' CommonExcute(Of PositionPublish).GeneralValue(SP, position1)
-            ' Dim _result As String = CommonOperationExcute(Of PositionPublish).CommonOperation(position1, SP, action)
-            ' _result = CommonOperationExcute.PublishOperation(position1, action) ' .PostingPublishExe.SavePosting(position1, IDs) '   PositionPublished.SavePosition(position1)
+            Dim result As String = PublishPositionExe(Of String).Update(position1) ' CommonExcute(Of PositionPublish).GeneralValue(SP, position1)
+
+
             If Not (result = "Successfully" Or result = "Failed") Then
                 Me.hfIDs.Value = result
                 ds = result
                 result = "Successfully"
-                '  SaveQualification(IDs, "Initial")
-
-                '  BindSelectedPositionData(schoolyear, IDs)
 
             End If
             CreatSaveMessage1(result, "Save Position")
@@ -433,25 +423,6 @@ Partial Class RequestPositionDetails2
         Catch ex As Exception
             CreatSaveMessage1("Falied", "Save Position")
         End Try
-
-
-        ' *** This code for Application Insight ************************************************************ 
-
-        '  Dim mysel As New SelectedObject
-        ' mysel.CPNum = schoolcode
-        ' mysel.PositionID = IDs
-
-
-        'Dim PositionApply As New Dictionary(Of String, Object)
-        'PositionApply.Add("Schoolcode", mysel.CPNum)
-        'PositionApply.Add("PositionID", mysel.PositionID)
-        'PositionApply.Add("Owner", userid)
-        'Dim Server_name As String = System.Net.Dns.GetHostName()
-
-
-        ' ServerAnalytics.CurrentRequest.LogEvent(Server_name + "/" + "Add New Position/", PositionApply)
-        '******************************************************************************************************
-
 
     End Sub
     Private Function GetQualifications() As String
@@ -487,7 +458,7 @@ Partial Class RequestPositionDetails2
                                   Key .PositionID = Me.hfIDs.Value
                                   }
 
-        Dim result As String = PublishPositionExe.Recover(recoverPosition)
+        Dim result As String = PublishPositionExe(Of String).Recover(recoverPosition)
         CreatSaveMessage(result, "Recover a Posting")
 
 
@@ -517,7 +488,7 @@ Partial Class RequestPositionDetails2
 
             End With
             ' Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, action)
-            Dim result As String = PublishPositionExe.Cancel(cancelPosting) '   CommonExcute(Of PositionPublish).GeneralValue(SP, cancelPosting)
+            Dim result As String = PublishPositionExe(Of String).Cancel(cancelPosting) '   CommonExcute(Of PositionPublish).GeneralValue(SP, cancelPosting)
             '  Dim _result As String = CommonOperationExcute(Of PositionPublish).CommonOperation(cancelPosting, SP, action)  '  PostingPublishExe.CancelPosting(cancelPosting, Me.hfIDs.Value)
             '  Dim _result As String = CommonOperationExcute.PublishOperation(cancelPosting, action)  '  PostingPublishExe.CancelPosting(cancelPosting, Me.hfIDs.Value)
             CheckApplicantsSendNotification("CancelA")
@@ -526,7 +497,7 @@ Partial Class RequestPositionDetails2
             If chbCancel.Checked Then
                 cancelPosting.Operate = "CancelAndRecoverPre"
                 '  _result = CommonOperationExcute(Of PositionPublish).CommonOperation(cancelPosting, SP, action)   '  PostingPublishExe.CancelPosting(cancelPosting, Me.hfIDs.Value)
-                result = PublishPositionExe.Cancel(cancelPosting)  'CommonExcute(Of PositionPublish).GeneralValue(SP, cancelPosting)
+                result = PublishPositionExe(Of String).Cancel(cancelPosting)  'CommonExcute(Of PositionPublish).GeneralValue(SP, cancelPosting)
             End If
 
             CreatSaveMessage(result, "Cancel Posting")
@@ -554,7 +525,7 @@ Partial Class RequestPositionDetails2
                 .PositionType = Me.hfAppType.Value
             End With
             ' Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, action)
-            Dim result As String = PublishPositionExe.Delete(deletePosting) '  CommonExcute(Of PositionPublish).GeneralValue(SP, deletePosting)
+            Dim result As String = PublishPositionExe(Of String).Delete(deletePosting) '  CommonExcute(Of PositionPublish).GeneralValue(SP, deletePosting)
             '  Dim _result As String = CommonOperationExcute(Of PositionPublish).CommonOperation(deletePosting, SP, action)  '  PostingPublishExe.CancelPosting(cancelPosting, Me.hfIDs.Value)
             '  Dim _result As String = CommonOperationExcute.PublishOperation(deletePosting, action)  ' ' PostingPublishExe.CancelPosting(deletePosting, Me.hfIDs.Value)
             Me.btnUnpublish.Enabled = False
@@ -566,32 +537,25 @@ Partial Class RequestPositionDetails2
     End Sub
     Protected Sub ButtonOK_Click(sender As Object, e As EventArgs) Handles ButtonOK.Click
         Try
-            Dim action As String = "RePosting"
-            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-            Dim userid As String = HttpContext.Current.User.Identity.Name
             Dim ds As String = Me.hfIDs.Value
-            Dim postingNum As String = Me.TextPostingNumber.Text
-            Dim takeApplicant As String = IIf(Me.CheckBoxgetApplicant.Checked, "Yes", "No")
             Dim postingCycle As String = Me.ddlPostingCycle.SelectedValue
 
             Me.lblPostRound.Value = postingCycle
             Dim rePosting As New PositionPublish() ' ParametersForOperation()
             With rePosting
-                .Operate = action
+                .Operate = "RePosting"
                 .UserID = User.Identity.Name
-                .SchoolYear = schoolyear
+                .SchoolYear = Page.Request.QueryString("SchoolYear")
                 .PositionID = Me.hfIDs.Value
                 .PostingCycle = postingCycle
-                .TakeApplicant = takeApplicant
+                .TakeApplicant = IIf(Me.CheckBoxgetApplicant.Checked, "Yes", "No")
                 .SchoolCode = Me.ddlSchool.SelectedValue
                 .PositionType = Me.hfAppType.Value
-                .PostingNumber = postingNum
+                .PostingNumber = Me.TextPostingNumber.Text
             End With
 
-            ' Dim SP As String = CommonExcute.SPNameAndParameters("", cPage, action)
-            '  Dim _result As String = CommonOperationExcute(Of PositionPublish).CommonOperation(rePosting, SP, action)  '  PostingPublishExe.CancelPosting(cancelPosting, Me.hfIDs.Value)
-            Dim result As String = PublishPositionExe.RePosting(rePosting) ' CommonExcute(Of PositionPublish).GeneralValue(SP, rePosting)
-            '    Dim _result As String = CommonOperationExcute.PublishOperation(rePosting, action)  ' PostingPublishExe.RePosting(rePosting, Me.hfIDs.Value)
+
+            Dim result As String = PublishPositionExe(Of String).RePosting(rePosting) ' CommonExcute(Of PositionPublish).GeneralValue(SP, rePosting)
 
             If Not (result = "Successfully" Or result = "Failed") Then
                 ds = result
@@ -720,7 +684,7 @@ Partial Class RequestPositionDetails2
 
             '  Dim applicantNoticelist As New List(Of ApplicantList)
 
-            Dim applicantNoticelist = PublishPositionExe.NoticeApplicants(parameter) ' CommonListExecute.ApplicantsNoticeList(parameter)  ' Applicant.ApplicantsNoticebyID(parameter)
+            Dim applicantNoticelist = PublishPositionExe(Of ApplicantNotice).NoticeApplicants(parameter) ' CommonListExecute.ApplicantsNoticeList(parameter)  ' Applicant.ApplicantsNoticebyID(parameter)
             Dim mForm As String = WebConfigValue.getValuebyKey("eMailSender")
             For Each item In applicantNoticelist
                 Dim teacherName As String = item.TeacherName
@@ -794,13 +758,13 @@ Partial Class RequestPositionDetails2
             Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
             Dim mTemplateFile = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
 
-
+            ' Send email notification to school principal if checked on notice to principal checkbox
             If Me.chbNoticeToPrincipal.Checked Then
                 SmtpMailCall("Staff", action, mTo, mCc, mForm, principalName, mSubject, mTemplateFile)
 
             End If
 
-
+            ' Send email notification to union if checked on notice union checkbox
             If Me.hfAppType.Value = "LTO" And Me.chbNoticeToUnion.Checked Then
                 Dim unioneMail As String = EmailNotification.UnionEmail(ddlSchool.SelectedValue, Me.hfAppType.Value)
                 If Not unioneMail = "" Then
@@ -907,7 +871,7 @@ Partial Class RequestPositionDetails2
             eMailFile = Replace(eMailFile, "[PositionEndDateSTR]", endDate)
             eMailFile = Replace(eMailFile, "[BTCSTR]", GetFte()) ' Me.TextPositionFTE.Text)
             eMailFile = Replace(eMailFile, "[PositionTypeSTR]", Me.hfAppType.Value)
-            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", Me.lblPostRound.Value)
+            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", "") 'Me.lblPostRound.Value)
             eMailFile = Replace(eMailFile, "[PositionOwnerSTR]", contact)
 
 

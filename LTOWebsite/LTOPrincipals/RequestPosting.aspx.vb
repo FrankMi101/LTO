@@ -424,7 +424,7 @@ Partial Class RequestPosting
         Else
             RequiredFieldValidator2.Enabled = False
         End If
-        AssembleListItem.SetValue(Me.ddlHRStaff, GetHRUser())
+        AssemblingList.SetValue(Me.ddlHRStaff, GetHRUser())
 
 
     End Sub

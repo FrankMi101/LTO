@@ -409,7 +409,7 @@
             </div>
         </div>
 
-        <div id="ResumeCoverLetterDIV" class="bubble hide" style="width: 99%;">
+        <div id="ResumeCoverLetterDIV" class="bubble hide" style="width: 99%; background-color:aliceblue ">
             <div style="height: 22px; margin-top: -2px; background-color: deepskyblue; width: 100%;">
                 <table style="vertical-align: top;">
                     <tr>
@@ -434,7 +434,7 @@
                     src=""></iframe>
             </div>
         </div>
-        <div id="ResumePrompt" class="bubble hide" style="height: 200px; width: 99%; font-family: Arial; font-size: 14px;">
+        <div id="ResumePrompt" class="bubble hide" style="height: 200px; width: 99%; font-family: Arial; font-size: 14px; background-color:aliceblue">
             You have not submitted a Resume and Cover Letter for this Position yet.
             <br />
             <br />

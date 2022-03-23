@@ -63,7 +63,7 @@ Partial Class InterviewList2
             .Para0 = _schoolyear
             .Para1 = _appType
         End With
-        AssembleListItem.SetLists(Me.cellEditInterviewOutCome, "InterviewProcess", parameter, _schoolyear)
+        AssemblingList.SetLists("", Me.cellEditInterviewOutCome, "InterviewProcess", parameter, _schoolyear)
 
         '  SetupList.ListDDL(Me.cellEditInterviewOutCome, "InterviewProcess", _SchoolYear)
         CheckRequestSchool()
@@ -78,7 +78,7 @@ Partial Class InterviewList2
 
         Dim parameter = CommonParameter.GetParameters(_schoolyear, _PositionID)
         ' Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, "Publish", "PositionInfo")
-        Dim positionInfo As PositionInfo = PublishPositionExe.PositionInfo(parameter)(0) '  CommonExcute(Of PositionInfo).GeneralList(SP, parameter)(0) ' CommonListExecute.PublishPositionInfo(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
+        Dim positionInfo As PositionInfo = PublishPositionExe(Of PositionInfo).PositionInfo(parameter)(0) '  CommonExcute(Of PositionInfo).GeneralList(SP, parameter)(0) ' CommonListExecute.PublishPositionInfo(parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
 
         RequestSchool = positionInfo.SchoolName  ' RequestingPostExe.RequestPositionAttribute(myRequestPosting, _PositionID)
         Me.lblPostingNumber.Text = positionInfo.PostingNumber '  RequestingPostExe.RequestPositionAttribute(myRequestPosting, _PositionID)

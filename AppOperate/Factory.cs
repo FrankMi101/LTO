@@ -17,7 +17,10 @@ namespace AppOperate
             Type resolvedType = Type.GetType(tName);
             object instance = Activator.CreateInstance(resolvedType);
             return instance as T;
+          //  return (T) instance ;
         }
+
+
         public static ICommonList<T> GetClass<T>() where T : class
         {
             var tName = typeof(T).ToString();

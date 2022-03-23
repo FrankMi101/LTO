@@ -23,7 +23,7 @@ Partial Class ApplyPositionList2Applied
 
     Private Sub Page_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
-            Session("ParentPage") = "AvailablePositionList"
+            Session("ParentPage") = "AppliedPositionList"
             Session("currentDataSet") = Nothing
             Dim _sID As String = Page.Request.QueryString("sID")
             If _sID <> Nothing Then Session("SchoolCode") = _sID
@@ -52,7 +52,7 @@ Partial Class ApplyPositionList2Applied
     Private Sub BindDDLList()
 
         Try
-            AssembleListItem.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
+            AssemblingList.SetValue(Me.ddlappType, WorkingProfile.ApplicationType)
 
             If WorkingProfile.LoginRole = "Admin" Then
                 Me.btApplicant.Visible = True
@@ -67,8 +67,8 @@ Partial Class ApplyPositionList2Applied
                     .Para2 = WorkingProfile.UserRole
                     .Para3 = "%"
                 End With
-                AssembleListItem.SetObjLists(Me.combobox, parameter)
-                AssembleListItem.SetObjValue(Me.combobox, WorkingProfile.UserCPNum)
+                AssemblingList.SetListsObj("", Me.combobox, "Applicant", parameter)
+                AssemblingList.SetObjValue(Me.combobox, WorkingProfile.UserCPNum)
                 SearchForListValue1.Value = WorkingProfile.UserCPNum
 
             Else

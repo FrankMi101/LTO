@@ -20,8 +20,9 @@ namespace ClassLibrary
         public string TakeApplicant { get; set; }
         public string PositionType { get; set; }
          public string CPNum { get; set; }
+        public string PostingNumber { get; set; }
 
-     
+
     }
     public class ParametersForOperationHire : ParametersForOperation
     {

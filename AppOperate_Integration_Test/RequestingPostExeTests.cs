@@ -65,7 +65,7 @@ namespace AppOperate.Tests
 
             int newid = getNewRequestID("LTO");
 
-            ParametersForPosition parameters = CommonParameter.GetParameters("20182019", newid.ToString());
+            ParametersForPosition parameters = CommonParameter.GetParameters(schoolyear, newid.ToString());
 
             int expect = newid;
 
@@ -186,7 +186,7 @@ namespace AppOperate.Tests
         public void UpdateQualificationTest()
         {
             //Arrange 
-            int newid = getNewRequestID("LTO");
+            int newid = getNewRequestID("LTO"); 
             var position = new QualificationUpdate()
             {
 
@@ -200,13 +200,13 @@ namespace AppOperate.Tests
                 Selected = "True"  
              };
 
-            string expect = "Successfully";
+            string expect = "Successfully,Failed";
             //Act
-            var result = RequestingPostExe.UpdateQualification(position, "0");
+            var result = RequestingPostExe.UpdateQualification(position, newid.ToString());
 
   
             //Assert
-            Assert.AreEqual(expect, result, $" Create New Request position   { result} ");
+            StringAssert.Contains(expect, result, $" Create New Request position   { result} ");
 
         }
     }

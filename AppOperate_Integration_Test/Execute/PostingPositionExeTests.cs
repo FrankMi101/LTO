@@ -7,6 +7,7 @@ namespace AppOperate.Tests
     [TestClass()]
     public class PostingPositionExeTests
     {
+        private DeadlineDate parameterForDeadline = new DeadlineDate() { SchoolYear = "20192020", PublishDate = "2019/11/12", PositionType = "LTO" };
 
 
         NewPosition request = new NewPosition()
@@ -32,58 +33,96 @@ namespace AppOperate.Tests
         {
             //Arrange 
             string action = "Positions";
+            var para = new ParametersForPosition();
 
             //Act
             string expect = "dbo.tcdsb_LTO_PageApprove_Positions @Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy,@SearchValue1,@SearchValue2";
-            string result = PostingPositionExe.SPName(action);
+            string result = PostingPositionExe.SPName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Appraove  Positions list Store Procedure Name:  { result}");
 
         }
+
         [TestMethod()]
-        public void SPNameTest_retrun_Position_StoreProcedure_name()
+        public void SPNameTest_retrun_Position_StoreProcedure_nameOnly()
         {
             //Arrange 
             string action = "Position";
-
+            var para = new{SchoolYear ="20212022", PosiitonID = 0};
             //Act
-            string expect = "dbo.tcdsb_LTO_PageApprove_Position @SchoolYear,@PositionID";
-            string result = PostingPositionExe.SPName(action);
+            string expect = "dbo.tcdsb_LTO_PageApprove_Position";
+            string result = PostingPositionExe.SPName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Approve position  by requestid :  { result}");
 
         }
+
+        [TestMethod()]
+        public void SPNameTest_retrun_Position_StoreProcedure_nameandParameter()
+        {
+            //Arrange 
+            string action = "Position";
+            var para = new ParametersForPosition();
+            //Act
+            string expect = "dbo.tcdsb_LTO_PageApprove_Position @SchoolYear,@PositionID";
+            string result = PostingPositionExe.SPName(action,para);
+
+            //Assert
+            Assert.AreEqual(expect, result, $" Approve position  by requestid :  { result}");
+
+        }
+
         [TestMethod()]
         public void SPNameTest_retrun_PostingPosition_StoreProcedure_name()
         {
             //Arrange 
             string action = "Posting";
+            var para = new ParametersForPosition();
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageApprove_OperationPosting @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource";
-            string result = PostingPositionExe.SPName(action);
+            string expect = "dbo.tcdsb_LTO_PageApprove_OperationPosting @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource,@Qualification,@QualificationCode";
+            string result = PostingPositionExe.SPName(action,para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Approve position  by requestid :  { result}");
 
         }
+
         [TestMethod()]
-        public void SPNameTest_retrun_RejectRequest_StoreProcedure_name()
+        public void SPNameTest_retrun_RejectRequest_StoreProcedure_nameOnly()
         {
             //Arrange 
             string action = "Reject";
+            var para = new { Operate = action};
+
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageApprove_OperationReject @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@CPNum";
-            string result = PostingPositionExe.SPName(action);
+            string expect = "dbo.tcdsb_LTO_PageApprove_OperationReject";
+            string result = PostingPositionExe.SPName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" Approve position  by requestid :  { result}");
 
         }
 
+        [TestMethod()]
+        public void SPNameTest_retrun_RejectRequest_StoreProcedure_nameAndParameter()
+        {
+            //Arrange 
+            string action = "Reject";
+            var para = new ParametersForPosition();
+
+
+            //Act
+            string expect = "dbo.tcdsb_LTO_PageApprove_OperationReject @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@CPNum";
+            string result = PostingPositionExe.SPName(action, para);
+
+            //Assert
+            Assert.AreEqual(expect, result, $" Approve position  by requestid :  { result}");
+
+        }
         [TestMethod()]
         public void PositionsTest_return_allActive_schoolRequestedPostingPosition()
         {
@@ -143,12 +182,7 @@ namespace AppOperate.Tests
                 SchoolYear = "20192020",
                 PositionID = GetNewRequestId("LTO").ToString() // create new request
             };
-            var parameterForDeadline = new
-            {
-                SchoolYear = "20192020",
-                DatePublish = "2019/11/12",
-                PositionType = "LTO"
-            };
+  
             var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
             requestPosition.Operate = "Save";
             requestPosition.Comments = "Posting school request post position test process";
@@ -157,7 +191,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
             requestPosition.Qualification = "";
             requestPosition.QualificationCode = "";
             requestPosition.FTE = 1.00M;
@@ -210,12 +244,7 @@ namespace AppOperate.Tests
                 PositionID = GetNewRequestId("LTO").ToString() // create new request
             };
 
-            var parameterForDeadline = new
-            {
-                SchoolYear = "20192020",
-                DatePublish = "2019/11/12",
-                PositionType = "LTO"
-            };
+        
             var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
             requestPosition.Comments = "Posting school request post position test process";
             requestPosition.CPNum = "00000000";
@@ -223,7 +252,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
 
             //Act
             string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting
@@ -234,7 +263,7 @@ namespace AppOperate.Tests
                 PositionID = postingPositionId
             };
 
-            var publishPosition = PublishPositionExe.Position(parameterFormPublishPosition)[0]; // get Published Position
+            var publishPosition = PublishPositionExe<PositionPublish>.Position(parameterFormPublishPosition)[0]; // get Published Position
             string expect = parameter.PositionID;
             string result = publishPosition.RequestID.ToString();
 
@@ -253,12 +282,6 @@ namespace AppOperate.Tests
                 PositionID = GetNewRequestId("LTO").ToString() // create new request
             };
 
-            var parameterForDeadline = new
-            {
-                SchoolYear = "20192020",
-                DatePublish = "2019/11/12",
-                PositionType = "LTO"
-            };
             var requestPosition = PostingPositionExe.Position(parameter)[0]; // get the posting position
             requestPosition.Comments = "Posting school request post position test process";
             requestPosition.CPNum = "00000000";
@@ -266,7 +289,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
 
             //Act
             string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting

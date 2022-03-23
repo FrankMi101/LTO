@@ -200,18 +200,18 @@
                                     <ItemStyle Width="2%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="PostingNumber" HeaderText="Posting Number">
-                                    <ItemStyle Width="4%" />
+                                    <ItemStyle Width="5%" />
                                 </asp:BoundField>
                                 <asp:TemplateField HeaderText="Hired">
                                     <ItemTemplate>
                                         <asp:HyperLink ID="Link2" runat="server" Text='<%# Bind("ViewDetail") %>'>  </asp:HyperLink>
                                     </ItemTemplate>
-                                    <ItemStyle Width="2%" Wrap="False" />
+                                    <ItemStyle Width="3%" Wrap="False" />
                                 </asp:TemplateField>
 
-                                <asp:BoundField DataField="DateApplied" HeaderText="Applied Date">
+                            <%--    <asp:BoundField DataField="DateApplied" HeaderText="Applied Date">
                                     <ItemStyle Width="4%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="DateInterview" HeaderText="Interview Date">
                                     <ItemStyle Width="4%" />
                                 </asp:BoundField>
@@ -219,23 +219,23 @@
                                     <ItemStyle Width="4%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="TeacherName" HeaderText="Teacher Name">
-                                    <ItemStyle Width="6%" />
+                                    <ItemStyle Width="8%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="SchoolName" HeaderText="School">
                                     <ItemStyle Width="10%" />
                                 </asp:BoundField>
 
-                                <asp:BoundField DataField="SchoolArea" HeaderText="School Area">
+<%--                                <asp:BoundField DataField="SchoolArea" HeaderText="School Area">
                                     <ItemStyle Width="5%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="PositionTitle" HeaderText="Position Title">
-                                    <ItemStyle Width="7%" />
+                                    <ItemStyle Width="8%" />
                                 </asp:BoundField>
                                  <asp:BoundField DataField="FTE" HeaderText="FTE">
                                     <ItemStyle Width="2%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="FTEPanel" HeaderText="AM/PM">
-                                    <ItemStyle Width="2%" />
+                                    <ItemStyle Width="3%" />
                                 </asp:BoundField>
                                    <asp:BoundField DataField="ReplaceTeacher" HeaderText="Teacher being Replaced">
                                     <ItemStyle Width="6%" />
@@ -252,7 +252,7 @@
                                 </asp:BoundField>
 
                                 <asp:BoundField DataField="ApplicantQualification" HeaderText="Qualification">
-                                    <ItemStyle Width="20%" />
+                                    <ItemStyle Width="18%" />
                                 </asp:BoundField>
 
                                 <asp:BoundField DataField="PostingCycle" HeaderText="Round">

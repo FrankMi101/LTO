@@ -44,7 +44,7 @@ Partial Class PostingSummaryDetails
         Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
 
         Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Position") '  CommonExcute.SPNameAndParameters(SPFile, cPage, "Position")
-        Dim position = PublishPositionExe.Position(parameter) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
+        Dim position = PublishPositionExe(Of PositionPublish).Position(parameter) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
         Return position(0)
 
     End Function
@@ -71,7 +71,7 @@ Partial Class PostingSummaryDetails
 
             Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
             ' Dim SP As String = CommonExcute.SPNameAndParameters("Publish", "PostingRound")
-            Dim round = PublishPositionExe.PostingRounds(parameter) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)
+            Dim round = PublishPositionExe(Of PositionPublish).PostingRounds(parameter) ' CommonExcute(Of PositionPublish).GeneralList(SP, parameter)
             ' Dim row As DataRow
             Dim x As Int16 = 1
             For Each item In round ' row In ds.Tables(1).Rows

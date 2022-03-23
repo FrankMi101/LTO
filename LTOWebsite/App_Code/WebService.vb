@@ -86,11 +86,11 @@ Public Class WebService
             Dim SP As String = CommonExcute.SPNameAndParameters("", "Publish", "Deadline")
             Dim parameter As New DeadlineDate With {
                 .SchoolYear = schoolyear,
-                .DatePublish = datepublish,
+                .PublishDate = datepublish,
                 .PositionType = WorkingProfile.ApplicationType
             }
 
-            Dim myDate As String = PublishPositionExe.Deadline(parameter) '  CommonExcute(Of DeadlineDate).GeneralValue(SP, parameter)
+            Dim myDate As String = PublishPositionExe(Of DeadlineDate).Deadline(parameter) '  CommonExcute(Of DeadlineDate).GeneralValue(SP, parameter)
 
 
             Return myDate
@@ -279,7 +279,7 @@ Public Class WebService
         Try
 
             request.Operate = action
-            Dim requestID As String = PublishPositionExe.Add(request)
+            Dim requestID As String = PublishPositionExe(Of String).Add(request)
             ' Dim SP As String = CommonExcute.SPNameAndParameters("", "Publish", "New")
             ' Dim requestID As String = CommonExcute(Of NewPosition).GeneralValue(SP, request)
             '  Dim requestID As String = CommonOperationExcute.PublishNewOperation(request, "NewPublish") '  PostingPublishExe.NewPosting(request, 0)
@@ -306,7 +306,7 @@ Public Class WebService
     End Function
 
     <WebMethod(EnableSession:=True)>
-    Public Function SearchbyValueList(ByVal dataSource As String, ByVal paramater As List2Item) As List(Of NvListItem)
+    Public Function SearchbyValueList(ByVal dataSource As String, ByVal paramater As List2Item) As List(Of NameValueList)
         Try
             If dataSource = "Json" Then
                 dataSource = Server.MapPath("..\Content\appList.json")
@@ -317,14 +317,14 @@ Public Class WebService
             Dim SP As String = CommonExcute.SPNameAndParameters(dataSource, "General", "DDList")
 
             '  List<NVListItem> ListDataSource(string JsonSource, string ddlType, List2Item parameter)
-            Dim list As List(Of NvListItem)
+            Dim list As List(Of NameValueList)
 
-            list = CommonExcute(Of NvListItem).GeneralList(SP, paramater)
+            list = CommonExcute(Of NameValueList).GeneralList(SP, paramater)
             '  Dim requestID As String = CommonOperationExcute.PublishNewOperation(request, "NewPublish") '  PostingPublishExe.NewPosting(request, 0)
             Return list
         Catch ex As Exception
 
-            Return New List(Of NvListItem)
+            Return New List(Of NameValueList)
         End Try
     End Function
 

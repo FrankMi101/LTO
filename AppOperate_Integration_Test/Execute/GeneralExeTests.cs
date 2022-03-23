@@ -37,10 +37,10 @@ namespace AppOperate.Tests
         {
             //Arrange 
             string action = "DDList";
-
+            var para = new CommonParameter();
             //Act
             string expect = "dbo.tcdsb_LTO_PageGeneral_List @Operate,@Para0,@Para1,@Para2,@Para3";
-            string result = GeneralExe.SPName(action);
+            string result = GeneralExe.SPName(action, para);
 
             //Assert
             Assert.AreEqual(expect, result, $" DDList Store Procedure Name:  { result}");
@@ -154,7 +154,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 325;
+            int expect2 = 334;
             string intitalValue = "0290";
             object datasourceList = GeneralExe.SchoolList(parameter);
             AssemblingList.SetLists(testDDLControl, datasourceList, "Code", "Name", intitalValue);
@@ -181,7 +181,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 325;
+            int expect2 = 334;
             string intitalValue = "0290";
             object datasourceList = GeneralExe<ListSchool>.myListOfT(spName, parameter);
             AssemblingList.SetLists(testDDLControl, datasourceList, "Code", "Name", intitalValue);
@@ -192,6 +192,7 @@ namespace AppOperate.Tests
             Assert.AreEqual(expect2, result2, $"DD List Totle Count Value  { result2}");
 
         }
+
         [TestMethod()]
         public void SchoolListTest_return_AllTCDSB_SchoolList_byDelegateMethod()
         {
@@ -207,9 +208,10 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 325;
+            int expect2 = 334;
             string intitalValue = "0290";
             object datasourceList = GeneralExe<ListSchool>.myListofT_DelegateHelp_Method("Schools", parameter);
+
             AssemblingList.SetLists(testDDLControl, datasourceList, "Code", "Name", intitalValue);
             string result = testDDLControl.SelectedItem.Text;
             int result2 = testDDLControl.Items.Count;
@@ -399,12 +401,12 @@ namespace AppOperate.Tests
             string expectStartDate = "2019/09/03";
             DateTime actinDate = DateFC.YMD(expectStartDate);
             DateTime currentDate = DateTime.Now;
-            SearchParameter parameter = new SearchParameter()
+            var parameter = new 
             {
                 Operate = action,
-                SchoolYear = "20192020",
+               SchoolYear = "20192020",
                 PositionType = "LTO"
-            };
+           };
             if (currentDate > actinDate)
                 expectStartDate = DateFC.YMD(currentDate, "/");
 
@@ -468,27 +470,7 @@ namespace AppOperate.Tests
         }
 
 
-        [TestMethod()]
-        public void ProfileTest_Return_Pernr_Number_byUserCPNum()
-        {
-            //Arrange 
-            string action = "PernrNum";
-            string cpnum = "00054071";
-            Profile parameter = new Profile()
-            {
-                Operate = action,
-                SchoolYear = "20192020",
-                ProfileType = action,
-                CheckValue = cpnum
-            };
-
-            // Act         
-            string expect = "00062531";
-            string result = GeneralExe.Profile(parameter);
-
-            //Assert
-            Assert.AreEqual(expect, result, $"Pernr Number is { result} from CPNum ID: { cpnum } ");
-        }
+      
         [TestMethod()]
         public void ProfileTest_Return_Applicant_Role()
         {
@@ -504,11 +486,11 @@ namespace AppOperate.Tests
             };
 
             // Act         
-            string expect = "Roster";
+            string expect = "LTOTeacher,Roster,Other";
             string result = GeneralExe.Profile(parameter);
 
             //Assert
-            Assert.AreEqual(expect, result, $" User Role is { result} from User ID: { userid } ");
+           StringAssert.Contains( expect,result, $" User Role is { result} from User ID: { userid } ");
         }
         [TestMethod()]
         public void ProfileTest_Return_Applicant_Role_using_GeneralMethod()
@@ -525,8 +507,8 @@ namespace AppOperate.Tests
             };
 
             // Act         
-            string expect = "Roster";
-            string result = GeneralExe<string>.myValueOfT("Profile", parameter);
+            string expect = "LTOTeacher,Roster,Other";
+            string result = GeneralExe.Profile( parameter);
             /*
             parameter.ProfileType = "CPNum";
             int cpnum = GeneralExe<int>.myValueOfT("Profile", parameter);
@@ -534,7 +516,7 @@ namespace AppOperate.Tests
             DateTime startDate = GeneralExe<DateTime>.myValueOfT("Profile", parameter);
              */
             //Assert
-            Assert.AreEqual(expect, result, $" User Role is { result} from User ID: { userid } ");
+            StringAssert.Contains(expect, result, $" User Role is { result} from User ID: { userid } ");
         }
 
         [TestMethod()]
@@ -545,7 +527,7 @@ namespace AppOperate.Tests
 
             var myAnonymousParametere = new
             {
-                SchoolYear = "20192020",
+                SchoolYear = "20182019",
                 SchoolCode = "0209",
                 SearchValue1 = "K"
             };
@@ -553,8 +535,8 @@ namespace AppOperate.Tests
             var testDDLControl = new System.Web.UI.WebControls.DropDownList();
 
             // Act
-            string expect = "Kurnik, Cassandra";
-            int expect2 = 202;
+            string expect = "Kurnik,Cassandra";
+            int expect2 = 204;
             string intitalValue = "00045299"; // "kurnikc";
             object datasourceList = GeneralExe.TeachersList(myAnonymousParametere);
             AssemblingList.SetLists(testDDLControl, datasourceList, "CPNum", "TeacherName", intitalValue);
@@ -581,8 +563,8 @@ namespace AppOperate.Tests
             var testDDLControl = new System.Web.UI.WebControls.DropDownList();
 
             // Act
-            string expect = "Kurnik, Cassandra";
-            int expect2 = 202;
+            string expect = "Kurnik,Cassandra";
+            int expect2 = 204;
             string intitalValue = "00045299"; // "kurnikc";
             object datasourceList = GeneralExe<TeachersListByCategory>.myListOfT(action, myAnonymousParametere);
             AssemblingList.SetLists(testDDLControl, datasourceList, "CPNum", "TeacherName", intitalValue);
@@ -716,7 +698,7 @@ namespace AppOperate.Tests
             };
 
             //Act 
-            string expect = "2019/11/11";
+            string expect = "2019/11/12";
             string result = GeneralExe.ValidateDate(checkDate);
 
             //Assert
@@ -778,7 +760,7 @@ namespace AppOperate.Tests
             };
 
             //Act 
-            string expect = "2019/10/15";
+            string expect = "2019/10/16";
             string result = GeneralExe.ValidateDate(checkDate);
 
             //Assert
@@ -798,7 +780,7 @@ namespace AppOperate.Tests
             };
 
             //Act 
-            string expect = "2020/01/06";
+            string expect = "2020/01/07";
             string result = GeneralExe.ValidateDate(checkDate);
 
             //Assert

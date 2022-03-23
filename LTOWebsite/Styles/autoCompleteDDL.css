@@ -32,6 +32,13 @@
     background-color: #ffffcc;
 }
 
+    .custom-combobox-input:hover {
+        border-radius: 7px;
+        filter: contrast(200%);
+        border: 2px solid #0094ff;
+        box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
+    }
+
 input.ng-invalid {
     background-color: #ffffcc;
 }

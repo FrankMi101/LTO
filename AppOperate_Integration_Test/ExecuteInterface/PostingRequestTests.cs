@@ -38,23 +38,9 @@ namespace AppOperate.ExecuteInterface.Tests
             SearchValue1 = "",
             SearchValue2 = ""
         };
-        [TestMethod()]
-        public void PositionTest_return_a_RequestPostionList_of_PositionID_2662()
-        {
 
-            // Arrange
-            var expect = "2662";
-            string action = "Position";
-            var parameter = new { SchoolYear = "20192020", PositionID = expect };
-            //  IPostingPosition<PositionRequesting> myList = new PostingRequest<PositionRequesting>();
-            var myList = new Posting<PositionRequesting>(new PostingPublish<PositionRequesting>());
-            var testList = myList.Position(parameter);// RequestPostingExe.Positions(parameter);
-            var result = testList[0].PositionID.ToString();
 
-            //Assert
-            Assert.AreEqual(expect, result, $"  Posting position List { result}");
-            //  Assert.IsNotNull(result, $"  Request Posting position List { result}");
-        }
+     
 
         [TestMethod()]
         public void PositionsTest_fromSearchConditionParameter_ReturnAllRequestList()
@@ -68,8 +54,8 @@ namespace AppOperate.ExecuteInterface.Tests
             //Act     
             var parameter = new { Operate = action, UserID = "mif", SchoolYear = "20192020", SchoolCode = "0506" };
            // IPostingPosition<PositionListRequesting> myList = new PostingRequest<PositionListRequesting>();
-            var myList = new Posting<PositionListRequesting>(new PostingRequest<PositionListRequesting>());
-            var testList = myList.Positions(parameter);// RequestPostingExe.Positions(parameter);
+         //   var myList = new Posting<PositionListRequesting>(new PostingRequest<PositionListRequesting>());
+            var testList =  RequestPostingExe.Positions(parameter);
             myGridview.AutoGenerateColumns = true;
             myGridview.DataSource = testList;
             myGridview.DataBind();

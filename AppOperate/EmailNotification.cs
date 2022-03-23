@@ -1,7 +1,9 @@
 ﻿using ClassLibrary;
+using DataAccess;
 using DataAccess.Common;
 using Microsoft.SqlServer.Server;
 using System;
+using System.IO;
 using System.Net.Mail;
 using System.Web.Configuration;
 
@@ -21,6 +23,10 @@ namespace AppOperate
         {
             return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
         }
+        public static string Subject(TextReader JsonFile, string pType, string action)
+        {
+            return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
+        }
         public static string Template(string JsonFile, string pType, string action)
         {
             return EmailSubjectAndTemple(JsonFile, pType, action).Template;  //JsonFileReader.GetTemplate(JsonFile, pType, action);
@@ -29,6 +35,11 @@ namespace AppOperate
         {
             return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
         }
+        public static EmailTemplateItem EmailSubjectAndTemple(TextReader JsonFile, string pType, string action)
+        {
+            return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
+        }
+
         public static string UnionEmail(string schoolCode, string appType)
         {
             if (DataTools.SchoolPanel(schoolCode) == "E")
@@ -40,11 +51,11 @@ namespace AppOperate
         {
 
             if (owner == cUser)
-            { mCC += AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", cUser)); }
+            { mCC = AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", cUser)); }
             else
             {
-                mCC += AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", cUser));
-                mCC += AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", owner));
+                mCC = AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", cUser));
+                mCC = AddMail2(mCC, UserProfileByID("TCDSBeMailAddress", owner));
             }
 
             mCC = mCC.Replace("; ;", ";");
@@ -86,63 +97,63 @@ namespace AppOperate
 
             if (who == "Union")
             {
-                mCC += AddMail(mCC, unioneMail);
+                mCC = AddMail(mCC, unioneMail);
                 if (appType == "LTO")
                 {
-                    mCC += AddMail(mCC, "eMailCC_LTO");
+                    mCC = AddMail(mCC, "eMailCC_LTO");
                 }
             }
             else
             {
                 if (appType == "LTO")
                 {
-                    mCC += AddMail(mCC, "eMailCC_LTO");
+                    mCC = AddMail(mCC, "eMailCC_LTO");
                     if (actionType == "ConfirmHire")
                     {
-                        mCC += AddMail(mCC, "eMailCC_ConfirmHire_LTO");
+                        mCC = AddMail(mCC, "eMailCC_ConfirmHire_LTO");
 
-                        mCC += AddMail(mCC, "eMailCC_ConfirmHire_LTO_" + DataTools.SchoolPanel(schoolCode));
+                        mCC = AddMail(mCC, "eMailCC_ConfirmHire_LTO_" + DataTools.SchoolPanel(schoolCode));
                     }
                 }
                 else
                 {
-                    mCC += AddMail(mCC, "eMailCC_POP");
+                    mCC = AddMail(mCC, "eMailCC_POP");
                     if (actionType == "ConfirmHire")
                     {
-                        mCC += AddMail(mCC, "eMailCC_ConfirmHire_POP");
-                        mCC += AddMail(mCC, "eMailCC_ConfirmHire_POP_" + DataTools.SchoolPanel(schoolCode));
+                        mCC = AddMail(mCC, "eMailCC_ConfirmHire_POP");
+                        mCC = AddMail(mCC, "eMailCC_ConfirmHire_POP_" + DataTools.SchoolPanel(schoolCode));
                     }
                     else
                     {
-                        mCC += AddMail(mCC, "eMailCC_POP_" + DataTools.SchoolPanel(schoolCode));
+                        mCC = AddMail(mCC, "eMailCC_POP_" + DataTools.SchoolPanel(schoolCode));
                     }
 
-                    mCC += AddMail(mCC, unioneMail);
+                    mCC = AddMail(mCC, unioneMail);
                 }
 
                 if (title.IndexOf("French") != -1)
                 {
-                    mCC += AddMail(mCC, "eMailCC_French");
-                    mCC += AddMail(mCC, "eMailCC_French1");
-                    mCC += AddMail(mCC, "eMailCC_French_" + DataTools.SchoolPanel(schoolCode));
+                    mCC = AddMail(mCC, "eMailCC_French");
+                    mCC = AddMail(mCC, "eMailCC_French1");
+                    mCC = AddMail(mCC, "eMailCC_French_" + DataTools.SchoolPanel(schoolCode));
                 }
 
                 if (title.IndexOf("FSL") != -1)
                 {
-                    mCC += AddMail(mCC, "eMailCC_French");
-                    mCC += AddMail(mCC, "eMailCC_French1");
-                    mCC += AddMail(mCC, "eMailCC_French_" + DataTools.SchoolPanel(schoolCode));
+                    mCC = AddMail(mCC, "eMailCC_French");
+                    mCC = AddMail(mCC, "eMailCC_French1");
+                    mCC = AddMail(mCC, "eMailCC_French_" + DataTools.SchoolPanel(schoolCode));
                 }
-                if (title.IndexOf("Music") != -1) mCC += AddMail(mCC, "eMailCC_Music");
-                if (title.IndexOf("Deaf/Hard") != -1) mCC += AddMail(mCC, "eMailCC_DHH");
-                if (title.IndexOf("Deaf and Hard") != -1) mCC += AddMail(mCC, "eMailCC_DHH");
+                if (title.IndexOf("Music") != -1) mCC = AddMail(mCC, "eMailCC_Music");
+                if (title.IndexOf("Deaf/Hard") != -1) mCC = AddMail(mCC, "eMailCC_DHH");
+                if (title.IndexOf("Deaf and Hard") != -1) mCC = AddMail(mCC, "eMailCC_DHH");
                 if (postingCycle == "4")
                 {
-                    mCC += AddMail(mCC, "eMailCC_4th");
+                    mCC = AddMail(mCC, "eMailCC_4th");
                     if (appType == "LTO")
                     {
-                        mCC += AddMail(mCC, "eMailCC_4th_" + DataTools.SchoolPanel(schoolCode));
-                   }
+                        mCC = AddMail(mCC, "eMailCC_4th_" + DataTools.SchoolPanel(schoolCode));
+                    }
                 }
             }
 
@@ -159,17 +170,16 @@ namespace AppOperate
         {
             try
             {
-                string rVal = "";
-                if (addM.Length > 1)
-                {
-                    if (mCC.IndexOf(addM) == -1)
-                        rVal = mCC.Length > 1 ? ";" + addM : addM;
-                }
-                return rVal;
+                if (mCC.Contains(addM)) return mCC;
+
+                if (addM.Length > 5) return mCC.Length > 5 ? mCC + ";" + addM : addM;
+
+                return mCC;
+
             }
             catch (Exception)
             {
-                return "";
+                return mCC;
             }
         }
         public static string UserProfileByID(string type, string userID)
@@ -267,6 +277,7 @@ namespace AppOperate
                 catch (Exception ex)
                 {
                     var em = ex.Message;
+                    result = "SMTP Server Failed";
 
                 }
                 Mailmsg.Dispose();

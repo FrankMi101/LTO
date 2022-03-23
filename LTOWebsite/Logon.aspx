@@ -19,23 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <link href="Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
 
-    <script type="text/jscript">
-        document.getElementById("txtUsername").focus();
-        function getResolution() {
-            try {
-                var screenWidth = screen.width;
-                var screenHeight = screen.height;
-                var elem = document.forms[0].elements['txtResolution'];
-                elem.value = screenWidth + "x" + screenHeight;
 
-                document.getElementById("txtUsername").focus();
-
-            }
-            catch (err) {
-
-            }
-        }
-    </script>
     <%-- <script type="text/javascript">
          var appInsights = window.appInsights || function (config) {
              function r(config) { t[config] = function () { var i = arguments; t.queue.push(function () { t[config].apply(t, i) }) } } var t = { config: config }, u = document, e = window, o = "script", s = u.createElement(o), i, f; for (s.src = config.url || "//az416426.vo.msecnd.net/scripts/a/ai.0.js", u.getElementsByTagName(o)[0].parentNode.appendChild(s), t.cookie = u.cookie, t.queue = [], i = ["Event", "Exception", "Metric", "PageView", "Trace"]; i.length;) r("track" + i.pop()); return r("setAuthenticatedUserContext"), r("clearAuthenticatedUserContext"), config.disableExceptionTracking || (i = "onerror", r("_" + i), f = e[i], e[i] = function (config, r, u, e, o) { var s = f && f(config, r, u, e, o); return s !== !0 && t["_" + i](config, r, u, e, o), s }), t
@@ -91,7 +75,7 @@
             padding: 2px 3px 2px 3px;
         }
 
-   /*     .textField {
+        /*     .textField {
         }
 
             .textField:focus {
@@ -99,7 +83,7 @@
                 box-shadow: 0 0 0 3px rgba(24,117,255,0.25);
             }
 */
-/*
+        /*
         #btnLogin {
             border: 2px solid #0094ff;
             border-radius: 7px;
@@ -113,9 +97,8 @@
                 border: 2px solid #0094ff;
                 border-radius: 7px;
             }*/
-        #btnLogin
-        { 
-            margin-left:1px;
+        #btnLogin {
+            margin-left: 1px;
         }
     </style>
 </head>
@@ -186,7 +169,6 @@
                                                     </td>
                                                     <td>
                                                         <asp:TextBox ID="txtPassword" runat="server" Width="124px" TextMode="Password" AutoComplete="Disabled" AutoCompleteType="Disabled" CssClass="textField Edit-Content-Control"></asp:TextBox>
-
                                                         <ajaxtoolkit:PasswordStrength ID="PasswordStrength3" runat="server" TargetControlID="txtPassword"
                                                             DisplayPosition="BelowLeft" StrengthIndicatorType="Text" PrefixText="How secure is your password? "
                                                             PreferredPasswordLength="12" TextStrengthDescriptions="Weak;Medium;Strong" TextStrengthDescriptionStyles="TextStrengthWeak; TextStrengthMedium; TextStrengthStrong"
@@ -200,9 +182,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                     <td></td>
-                                                    <td  >
-                                                        <asp:Button ID="btnLogin" runat="server"  Text="Login" Width="125px" CssClass="action-button"  ></asp:Button>
+                                                    <td></td>
+                                                    <td>
+                                                        <asp:Button ID="btnLogin" runat="server" Text="Login" Width="125px" CssClass="action-button"></asp:Button>
 
                                                     </td>
                                                 </tr>
@@ -250,11 +232,27 @@
                     <br />
                     <br />
                     <span style="font-size: 9pt; font-family: Arial">Best viewed in 1024x768 screen resolution.<br />
-                    </span><font style="font-weight: normal; font-size: 9pt; color: blue; font-family: Arial">
-                    Copyright 2009-2013 Toronto Catholic District School Board, All Rights Reserved.</font>
+                    </span><font style="font-weight: normal; font-size: 9pt; color: blue; font-family: Arial">Copyright 2009-2013 Toronto Catholic District School Board, All Rights Reserved.</font>
                 </td>
             </tr>
         </table>
     </form>
 </body>
 </html>
+<script type="text/jscript">
+    document.getElementById("txtUsername").focus();
+    function getResolution() {
+        try {
+            var screenWidth = screen.width;
+            var screenHeight = screen.height;
+            var elem = document.forms[0].elements['txtResolution'];
+            elem.value = screenWidth + "x" + screenHeight;
+
+            document.getElementById("txtUsername").focus();
+
+        }
+        catch (err) {
+
+        }
+    }
+</script>
