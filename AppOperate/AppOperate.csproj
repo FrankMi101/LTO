@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyBaseClassC">
-      <HintPath>..\..\DLLReferance\MyBaseClassC.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -55,6 +52,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonObj\CommonAction.cs" />
+    <Compile Include="ExecuteAsync\PostingDateExeAsync.cs" />
+    <Compile Include="ExecuteAsync\PostingPositionExeAsync.cs" />
+    <Compile Include="ExecuteAsync\PublishPositionExeAsync.cs" />
     <Compile Include="ExecuteDelegate\DataProcessDelegate.cs" />
     <Compile Include="ExecuteDelegate\GeneralDelegate.cs" />
     <Compile Include="ExecuteDelegate\SpNameParameterDelegate.cs" />
@@ -78,6 +78,7 @@
     <Compile Include="Execute\MultipleSchoolsExe.cs" />
     <Compile Include="Execute\PostingSummaryExe.cs" />
     <Compile Include="Execute\PositionListCheckExe.cs" />
+    <Compile Include="Execute\PostingDateExe.cs" />
     <Compile Include="Execute\PublishPositionExe.cs" />
     <Compile Include="Execute\RequestPostingExe.cs" />
     <Compile Include="Execute\SelectCandidateExe.cs" />
@@ -119,7 +120,7 @@
     <Compile Include="list\SingleTeacher.cs" />
     <Compile Include="list\ApplicantNoticeList.cs" />
     <Compile Include="AssemblingList.cs" />
-    <Compile Include="DataFC.cs" />
+    <Compile Include="DateFC.cs" />
     <Compile Include="DataTools.cs" />
     <Compile Include="EmailNotification.cs" />
     <Compile Include="Factory.cs" />

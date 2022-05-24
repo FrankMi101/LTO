@@ -17,46 +17,27 @@ namespace MyFake
             string typeT = typeof(T).Name;
             switch (typeT)
             {
-                case "NameValueList": return ListItems<T>.DataList(spName, action);
-                case "PositionPublish": return PublishPosting<T>.DataList(spName, action, para);
-                case "LTODefalutDate": return DefaultDate<T>.DataList(spName, action, para);
+                case "NameValueList": return ListItems<T>.ListData(spName, action);
+                case "PositionPublish": return PublishPosting<T>.ListData(spName, action, para);
+                case "RequestPosting": return RequestPosting.ListData<T>(spName, action, para);
+                case "LTODefalutDate": return DefaultDate<T>.ListData(spName, action, para);
                 default:
-                    return ListItems<T>.DataList(spName, action);
+                    return ListItems<T>.ListData(spName, action);
             }
         }
 
         public static T ValueOfT(string type, string spName, object para)
         {
             string action = GetAction(para);
-            string Actions = "Delete, Add, Update,New,";
-
-            if (action == "New")
+            string typeT = GetTypebySpName(spName);
+            switch (typeT)
             {
-                return (T)Convert.ChangeType(0, typeof(T));
+                case "NameValueList": return ListItems<T>.ValueData(spName, action);
+                case "PositionPublish": return PublishPosting<T>.ValueData(spName, action, para);
+                case "RequestPosting": return RequestPosting.ValueData<T>(spName, action, para);
+                 default:
+                    return ListItems<T>.ValueData(spName, action);
             }
-            else if (action == "RePosting")
-            {
-                return (T)Convert.ChangeType(0, typeof(T));
-            }
-            else if (Actions.Contains(action))
-            {
-                if (typeof(T) == typeof(string)) return (T)Convert.ChangeType("Successfully", typeof(T));
-                if (typeof(T) == typeof(int)) return (T)Convert.ChangeType(0, typeof(T));
-                if (typeof(T) == typeof(bool)) return (T)Convert.ChangeType(false, typeof(T));
-                if (typeof(T) == typeof(DateTime)) return (T)Convert.ChangeType(DateTime.Now, typeof(T));
-            }
-            else
-            {
-                switch (action)
-                {
-                    case "Deadline": return PublishPosting<T>.DataValue(spName, action, para);
-                     default:
-                        return (T)Convert.ChangeType("Successfully", typeof(T)); 
-                }
-
-            }
-            return default(T);
-
         }
 
         private static string GetAction(object para)
@@ -65,6 +46,13 @@ namespace MyFake
             if (searchby != "") return searchby;
 
             return GetValueFromObj.Value("Operate", para);
+        }
+        private static string GetTypebySpName(string spName)
+        {
+             if (spName.Contains("PageGeneral")) return "NameValueList";
+            if (spName.Contains("PagePublish")) return "PositionPublish";
+            if (spName.Contains("PageRequest")) return "RequestPosting";
+            return "";
         }
     }
 }

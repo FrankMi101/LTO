@@ -8,8 +8,7 @@ Imports System.Web.Services.Protocols
 Imports System.Web.Script.Services
 Imports AppOperate
 Imports ClassLibrary
-
-
+Imports System.Threading.Tasks
 
 Partial Class RequestPositionDetails2
     Inherits System.Web.UI.Page
@@ -70,8 +69,9 @@ Partial Class RequestPositionDetails2
 
 
             If WorkingProfile.ApplicationType = "POP" Then
-                Me.ddlTeacherReplaced.Visible = False
-                Me.ddlReason.Visible = False
+                RowofTeacherBeingReplaced.Visible = False
+                'Me.ddlTeacherReplaced.Visible = False
+                '  Me.ddlReason.Visible = False
             End If
             ddlType.Enabled = False
 
@@ -108,8 +108,8 @@ Partial Class RequestPositionDetails2
         AssemblingList.SetLists("", Me.ddlType, "ApplicationType", parameter, WorkingProfile.ApplicationType)
         AssemblingList.SetLists("", Me.cblQualification, "Qualification_RequestP", parameter)
         AssemblingList.SetLists("", Me.rblFTE, "FTEList", parameter)
-        '   AssemblingList.SetLists("", Me.ddlPostingCycle, "PostingCycle", parameter)
-        AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
+        ' AssemblingList.SetLists("", Me.ddlPostingCycle, "PostingCycle", parameter)
+        ' AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
         Dim divHeight As String = "80px"
         If Me.cblQualification.Items.Count > 15 Then divHeight = "200px"
         cblQualficationDIV.Style.Add("height", divHeight)
@@ -123,7 +123,8 @@ Partial Class RequestPositionDetails2
         'AssembleListItem.SetLists(Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
 
     End Sub
-    Private Function GetDataSource(ByVal schoolyear As String, ByVal positionId As String) As PositionPublish
+    '   Private   Function GetDataSource(ByVal schoolyear As String, ByVal positionId As String) As  PositionPublish 
+    Private Async Function GetDataSource(ByVal schoolyear As String, ByVal positionId As String) As Task(Of PositionPublish)
 
         'Dim parameter As New ParametersForPosition()
         'With parameter
@@ -147,7 +148,7 @@ Partial Class RequestPositionDetails2
         Dim para = CommonParameter.GetParameters(schoolyear, positionId)
         '  Dim para = New With {.SchoolYear = schoolyear, .PositionID = positionId}
 
-        Dim position = PublishPositionExe(Of PositionPublish).Position(para)(0)
+        ' Dim position = PublishPositionExe(Of PositionPublish).Position(para)(0)
 
         '  Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, "Position") '  CommonExcute.SPNameAndParameters(SPFile, cPage, "Position")
         If User.Identity.Name = "mif" Then
@@ -160,16 +161,19 @@ Partial Class RequestPositionDetails2
             Me.MultipleSchoolimg.Attributes.Add("title", MultipleSchoolsExe.SPName("MultipleSchools"))
 
         End If
-        Return position
+
+        ' Dim position = Await PublishPositionExeAsync(Of PositionPublish).Position(para)
+        ' Return Await position
+        Return Await PublishPositionExeAsync(Of PositionPublish).Position(para)
 
     End Function
-    Protected Sub BindSelectedPositionData(ByVal schoolyear As String, ByVal positionId As String)
+    Protected Async Sub BindSelectedPositionData(ByVal schoolyear As String, ByVal positionId As String)
         Try
             Me.btnUnpublish.Enabled = True
             Me.btndelete.Enabled = True
 
 
-            Dim position = GetDataSource(schoolyear, positionId) '  SinglePosition.PositionByID(parameter)
+            Dim position = Await GetDataSource(schoolyear, positionId) '  SinglePosition.PositionByID(parameter)
 
 
 
@@ -224,8 +228,12 @@ Partial Class RequestPositionDetails2
             AssemblingList.SetValue(Me.ddlPostingCycle, CType(4, String))
             '********************************************************************************
 
+            ' ********** Replace replaceteacherid dropdown list with lable *************************
+            ' AssemblingList.SetValue(ddlTeacherReplaced, BasePage.getMyValue(position.ReplaceTeacherID))
+            hfAutoCompletSelectedID.Value = position.ReplaceTeacherID
+            lblTeacherName.Value = position.ReplaceTeacher
+            '*************************************************************************
 
-            AssemblingList.SetValue(ddlTeacherReplaced, BasePage.getMyValue(position.ReplaceTeacherID))
             AssemblingList.SetValue(ddlReason, BasePage.getMyValue(position.ReplaceReason))
             AssemblingList.SetValue(ddlPrincipal, BasePage.getMyValue(position.PrincipalID))
             Me.hfPositionOwner.Value = BasePage.getMyValue(position.Owner)
@@ -237,6 +245,7 @@ Partial Class RequestPositionDetails2
             hfEndDate.Value = position.EndDate
             ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
             ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
+
             If ViewState("timeTable") = "" Then
                 Me.F100TimeTable.Visible = False
             Else
@@ -289,7 +298,7 @@ Partial Class RequestPositionDetails2
                 btnRecover.Visible = True
                 btndelete.Visible = False
             End If
-
+            '   WorkingProfile.ApplicationType = Me.hfAppType.Value
             SetStartandEndDate()
             '  CheeckAction()
         Catch ex As Exception
@@ -332,10 +341,14 @@ Partial Class RequestPositionDetails2
     End Function
 
     Private Sub SetStartandEndDate()
+        Try
+            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
+            Dim positionType = hfAppType.Value
+            DefaultDate.SetDate(schoolyear, positionType, Me.dateStart, Me.dateEnd, Me.datePublish, Me.dateApplyStart, Me.dateDeadline, hfSchoolyearStartDate, hfSchoolyearEndDate)
 
-        Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-        Dim positionType = WorkingProfile.ApplicationType
-        DefaultDate.SetDate(schoolyear, positionType, Me.dateStart, Me.dateEnd, Me.datePublish, Me.dateApplyStart, Me.dateDeadline, hfSchoolyearStartDate, hfSchoolyearEndDate)
+        Catch ex As Exception
+
+        End Try
 
 
 
@@ -398,13 +411,15 @@ Partial Class RequestPositionDetails2
                 .DateApplyOpen = DateFC.YMD2(Me.dateApplyStart.Value),
                 .DateApplyClose = DateFC.YMD2(Me.dateDeadline.Value),
                 .Comments = Me.TextPostedComment.Text,
-                .ReplaceTeacherID = ddlTeacherReplaced.SelectedValue,
-                .ReplaceTeacher = ddlTeacherReplaced.SelectedItem.Text,
+                .ReplaceTeacherID = hfAutoCompletSelectedID.Value,
+                .ReplaceTeacher = lblTeacherName.Value,
                 .ReplaceReason = ddlReason.SelectedValue,
                 .OtherReason = ddlReason.SelectedItem.Text,
                 .Owner = Me.ddlHRStaff.SelectedValue,
                 .PrincipalID = ddlPrincipal.SelectedValue
            }
+            ' .ReplaceTeacherID = hfAutoCompletSelectedID.Value, '  ddlTeacherReplaced.SelectedValue,
+            ' .ReplaceTeacher = lblTeacherName.Value,             ' ddlTeacherReplaced.SelectedItem.Text,
 
             '   Dim SP As String = CommonExcute.SPNameAndParameters(DataAccesssFile, cPage, action)
 
@@ -630,7 +645,9 @@ Partial Class RequestPositionDetails2
 
         AssemblingList.SetValue(ddlschoolcode, schoolcode)
         AssemblingList.SetValue(ddlSchool, schoolcode)
-        Me.ddlTeacherReplaced.ClearSelection()
+
+        '   Me.ddlTeacherReplaced.ClearSelection()
+
         Me.ddlPositionlevel.ClearSelection()
         Dim parameter As New List2Item()
 
@@ -638,7 +655,9 @@ Partial Class RequestPositionDetails2
             .Para0 = WorkingProfile.SchoolYear
             .Para1 = schoolcode
         End With
-        AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
+
+        '   AssemblingList.SetLists("", Me.ddlTeacherReplaced, "SchoolTeacherList", parameter)
+
         AssemblingList.SetLists("", Me.ddlPositionlevel, "PositionLevel", parameter)
 
         Dim parameter1 As New ParametersForOperation()
@@ -885,16 +904,13 @@ Partial Class RequestPositionDetails2
             eMailFile = Replace(eMailFile, "[Round4ContactStatement]", Round4ContactStatement)
 
             If who = "Union" Then
-                eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", "")
-                eMailFile = Replace(eMailFile, "[PIDSTR]", "")
                 eMailFile = Replace(eMailFile, "[CancelCommentsSTR]", "")
-
             Else
-                eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", Me.ddlTeacherReplaced.SelectedItem.Text)
-                eMailFile = Replace(eMailFile, "[PIDSTR]", Me.ddlTeacherReplaced.SelectedItem.Value)
                 eMailFile = Replace(eMailFile, "[CancelCommentsSTR]", Me.TextPostedComment.Text)
-
             End If
+
+            eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", lblTeacherName.Value) ' Me.ddlTeacherReplaced.SelectedItem.Text)
+            eMailFile = Replace(eMailFile, "[PIDSTR]", hfAutoCompletSelectedID.Value) ' Me.ddlTeacherReplaced.SelectedItem.Value)
 
 
         Catch ex As Exception

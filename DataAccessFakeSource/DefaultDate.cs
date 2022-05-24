@@ -9,7 +9,7 @@ namespace MyFake
 {
     public class DefaultDate<T>
     {
-        public static List<T> DataList(string spName, string action, object para)
+        public static List<T> ListData(string spName, string action, object para)
         {
             switch (action)
             {
@@ -19,7 +19,7 @@ namespace MyFake
             }
             return null;
         }
-        public static T DataValue(string spName, string action, object para)
+        public static T ValueData(string spName, string action, object para)
         {
             switch (action)
             {

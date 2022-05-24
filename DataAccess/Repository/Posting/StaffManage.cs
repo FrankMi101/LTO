@@ -58,6 +58,10 @@ namespace DataAccess.Repository
                     return "dbo.tcdsb_LTO_PageStaffManager_OperationRanking";
                 case "CommentsList":
                     return "dbo.tcdsb_LTO_PageStaffManager_HRComments";
+                case "SecurityRole":
+                    return "dbo.tcdsb_LTO_PageUser_RoleAndPermission";
+                case "UserRole":
+                    return "dbo.tcdsb_LTO_PageUser_Role";
                 default:
                     return action;
             }
@@ -75,6 +79,8 @@ namespace DataAccess.Repository
                 case "Save":            return "@UserID,@CPNum,@Action,@Comments,@IDs,@CommentsDate,@DateOfHire,@Ranking,@Lots";
                 case "SaveRanking":     return "@Operate,@UserID,@CPNum,@DateOfHire,@Ranking,@Lots";
                 case "CommentsList":    return "@UserID,@CPNum,@Action";
+                case "SecurityRole":    return "@UserID, @Type, @Role";
+                case "UserRole":        return "@UserID";
                 default:                return "";
 
             }

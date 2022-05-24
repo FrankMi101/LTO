@@ -463,7 +463,7 @@ Partial Class HiringDetails4th2
             eMailFile = Replace(eMailFile, "{{PositionSchoolSTR}}", Me.TextSchool.Text)
             eMailFile = Replace(eMailFile, "{{RevokedDate}}", _Datetime)
             eMailFile = Replace(eMailFile, "{{PositionOwnerSTR}}", contact)
-            eMailFile = Replace(eMailFile, "{{PostingCycleSTR}}", Me.lblPostingCycle.Text)
+            eMailFile = Replace(eMailFile, "{{PostingCycleSTR}}", "") ' Me.lblPostingCycle.Text)
             eMailFile = Replace(eMailFile, "{{QualificationSTR}}", Me.TextQualification.Text)
 
 
@@ -488,15 +488,15 @@ Partial Class HiringDetails4th2
 
                 Dim payStatus As String = ""
                 '  If ddlPayStatus.SelectedValue <> "9" Then payStatus = ddlPayStatus.SelectedItem.Text
+                absentSection = " <table border = '1' style='width:700px'> <tr> "
+                absentSection += "<td style='text-align:left;'>Absent Teacher:</td><td> " + Me.lblTeacherBeReplaced.Text + " </td>"
+                absentSection += "<td  style='text-align:right;'>Position Number: </td> <td> " + Me.hfPositionNumber.Value + "</td> "
+                absentSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.lblTeacherBeReplacedPersonID.Text + "</td></tr>"
                 If _who = "Staff" Then
-                    absentSection = " <table border = '1' style='width:700px'> <tr> "
-                    absentSection += "<td style='text-align:left;'>Absent Teacher:</td><td> " + Me.lblTeacherBeReplaced.Text + " </td>"
-                    absentSection += "<td  style='text-align:right;'>Position Number: </td> <td> " + Me.hfPositionNumber.Value + "</td> "
-                    absentSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.lblTeacherBeReplacedPersonID.Text + "</td></tr>"
                     absentSection += "<tr><td> Reason for leave: </td> <td colspan='5'>" + Me.lblReasonReplacement.Text + "</td></tr>"
-                    absentSection += "<tr><td> Employee Status: </td> <td colspan='5'>" + payStatus + "</td></tr> </table>"
+                    absentSection += "<tr><td> Employee Status: </td> <td colspan='5'>" + payStatus + "</td></tr>"
                 End If
-
+                absentSection += "</table>"
                 eMailFile = Replace(eMailFile, "{{AbsentTeacherSection}}", absentSection)
 
 

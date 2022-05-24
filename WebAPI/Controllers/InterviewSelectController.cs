@@ -17,18 +17,18 @@ namespace WebAPI.Controllers
     public class InterviewSelectController : ApiController
     {
         private readonly static string _dataSource = DataSource.Type();
-        static IAppServices _action = new AppServices(DBConnection.DBSource, new InterviewResults());
+        private readonly IAppServices _appService = new AppServices(new SelectCandidate(_dataSource));
 
-         
+
 
         [HttpPost]
         [Route("api/AppRoleMatch")]
         public IHttpActionResult Post([FromBody] InterviewResult checkResult)
         {
             if (checkResult.PositionID =="" || checkResult.CPNum == "")
-                return BadRequest("Invalid Check Action"); // return Request.CreateResponse(HttpStatusCode.BadRequest, "Group ID Can not be blank");
+                return BadRequest("Invalid Check Action"); 
 
-            var result = _action.AppOne.CommonAction("Selected", checkResult); 
+            var result = _appService.AppOne.CommonAction("Selected", checkResult); 
 
             return CheckActionResult(result);
 

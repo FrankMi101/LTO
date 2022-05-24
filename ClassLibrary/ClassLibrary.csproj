@@ -50,6 +50,7 @@
     <Compile Include="Applicants\Candidate.cs" />
     <Compile Include="Applicants\CandidateList.cs" />
     <Compile Include="Applicants\CandidateListNotice.cs" />
+    <Compile Include="Applicants\CandidateSelect.cs" />
     <Compile Include="Applicants\ResumeCoverLetter.cs" />
     <Compile Include="DeadlineDate.cs" />
     <Compile Include="EmailContent\EmailBase.cs" />

@@ -121,7 +121,7 @@ Public Class BasePage
     Public Shared Function getMyValue(ByVal _value As Object) As Object
         Try
             If _value = Nothing Then
-
+                _value = ""
             End If
             Return _value
         Catch ex As Exception
@@ -143,6 +143,14 @@ Public Class BasePage
     End Function
     Public Shared Function EmailCheck(ByVal email As String) As String
         Return DataTools.CheckEmail(email)
+    End Function
+
+    Public Shared Function GetValueFromQS(ByRef cPage As Object, ByVal key As String) As String
+        Try
+            Return cPage.Request.QueryString(key)
+        Catch ex As Exception
+            Return ""
+        End Try
     End Function
 End Class
 

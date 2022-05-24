@@ -11,7 +11,7 @@ namespace AppOperate
 {
     public class PostingSummaryExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PostingSummary());
+        private readonly static IAppServices _action = new AppServices( new PostingSummary(DBConnection.DBSource));
 
         public PostingSummaryExe()
         {

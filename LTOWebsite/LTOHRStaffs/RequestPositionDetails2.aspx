@@ -160,6 +160,22 @@
 
                     </td>
                 </tr>
+                <tr id="RowofTeacherBeingReplaced" runat="server">
+                    <td>Teacher being Replaced: </td>
+                    <td colspan="2">
+                        <input id="lblTeacherName" runat="server" value="" autocomplete="off" style="height: 17px; width: 150px" class="inputFiled editArea Edit-Content-Control" required />
+
+                        <input runat="server" id="hfAutoCompletSelectedID" style="width: 80px; background-color: transparent" type="text" readonly="readonly" class="editcellLock" placeholder="teacher ID" title="  " />
+                    </td>
+
+                    <td colspan="2">Reason for Replacement 
+                        <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="65%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
+                    </td>
+
+                </tr>
+                <tr style="height: 15px">
+                    <td colspan="6"></td>
+                </tr>
                 <tr class="editArea">
                     <td colspan="6">
                         <b>Selected Grade, Subject Area and Specific Qualfication on the position</b>
@@ -253,16 +269,16 @@
                     </td>
                 </tr>
 
-                <tr>
+                <tr style="display: none">
                     <td>Teacher being Replaced:
                
                     </td>
                     <td colspan="2">
-                        <asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="100%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
+                        <%--<asp:DropDownList ID="ddlTeacherReplaced" TabIndex="13" runat="server" Width="100%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>--%>
                     </td>
 
                     <td colspan="3">Reason for Replacement 
-                   <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server" Width="60%" CssClass="editcell Edit-Content-Control"></asp:DropDownList>
+                       <%--  <asp:DropDownList ID="ddlReason" TabIndex="13" runat="server"  CssClass="editcell Edit-Content-Control"></asp:DropDownList>--%>
                     </td>
                 </tr>
 
@@ -345,10 +361,10 @@
                         <input runat="server" type="text" id="lblNoticeDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
 
 
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Last Reminder Date:
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  Last Reminder Date:
                          <input runat="server" type="text" id="lblRemainderDate" size="8" readonly="readonly" class="Edit-Content-Control-Readonly" />
-                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Round 
-                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" style="width:20px;" class="Edit-Content-Control-Readonly" />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Round 
+                        <input runat="server" type="text" id="lblPostRound" size="8" readonly="readonly" style="width: 20px;" class="Edit-Content-Control-Readonly" />
                         Posting 
 
                     </td>
@@ -406,6 +422,7 @@
         <asp:HiddenField ID="hfPositionLevel" runat="server" Value="" />
         <asp:HiddenField ID="hfPostingCycle" runat="server" Value="" />
 
+        <asp:HiddenField ID="hfAutoCompletSelectedName" runat="server" Value="" />
 
         <div id="RepostingDIV" style="background-color: aliceblue">
             <div style="text-align: center;">
@@ -418,12 +435,12 @@
                 <br />
                 <br />
                 Posting as:<asp:DropDownList ID="ddlPostingCycle" runat="server">
-               <asp:ListItem Value="1">1st Posting</asp:ListItem>
-    <%--            <asp:ListItem Value="2">2nd Posting</asp:ListItem>
+                    <asp:ListItem Value="1">1st Posting</asp:ListItem>
+                    <%--            <asp:ListItem Value="2">2nd Posting</asp:ListItem>
                     <asp:ListItem Value="3">3rd Posting</asp:ListItem> 
                     <asp:ListItem Value="4" >4th Posting</asp:ListItem> Remove 2nd and 4rd 2022-03-07 Request from HR --%>
-                     <asp:ListItem Value="4" Selected="true">Re Posting</asp:ListItem>
-               </asp:DropDownList>
+                    <asp:ListItem Value="4" Selected="true">Re Posting</asp:ListItem>
+                </asp:DropDownList>
                 <br />
                 <br />
             </div>
@@ -464,6 +481,18 @@
                 </div>
             </div>
         </div>
+
+        <div id="BubbleHelpDIV" class="bubble hide" style="overflow: hidden; border: none; text-align: left; vertical-align: top; padding: 0px">
+            <table>
+                <tr style="height: 100%">
+                    <td style="width: 100%; height: 100%; vertical-align: top; text-align: left">
+                        <iframe id="iframeHelpText" name="iframeHelpText" frameborder="0" src=""
+                            scrolling="no" runat="server" style="font-size: small; font-family: Arial; table-layout: auto; width: 100%; height: 300px;"
+                            allowtransparency="true" atomicselection="true"></iframe>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
 
 </body>
@@ -472,8 +501,8 @@
 
 
 <script type="text/javascript">
-    var actionControl;
-    var OperatePage =
+    var actionControl ="PublishDate";
+     var OperatePage =
     {
         OpenPage: function () { openPageForNewPosting(); },
         LockPage: function () { LockPageWhenPostingComplete(); },
@@ -521,46 +550,16 @@
             InitialPageControls();
 
             $('#datePublish').change(function () {
-                try {
-                    //   $('#dateDeadline').val('2013-12-03');
-                    // $('#btnSave1').click();
-                    actionControl = "PublishDate";
-                    var publishdate = $("#datePublish").val();
-                    var schoolyear = $("#hfSchoolyear").val();
-                    var positiontype = $("#ddlType").val();
-                    $("#dateApplyStart").val(publishdate);
-
-                    // *************** works on developer Computer this is WCF Web services ******************
-                    // var newDate = new LTOPositionDeadLine.GetDeadLineDate;
-                    //  newDate.myDate(schoolyear, publishdate, onSuccess, onFailure);
-
-                    // ****************************************************************************************
-
-                    //***************  Web service Call ******************************************************
-
-                    var deadlinedate = WebService.DeadLineDate(schoolyear, publishdate, onSuccess, onFailure);
-
-                    //*******************************************************************************************
-
-                    //************** Web api call ****************************
-                    // GetDeadLineDateFromWebAPI(publishdate, schoolyear);
-                    // GetDeadLineDateWebAPICall(schoolyear, publishdate, positiontype)
-                    //********************************************************
-                }
-                catch (e) {
-                    window.alert(e.message);
-                }
+                actionControl = "PublishDate";
+                var checkDate = $("#datePublish").val();
+                $("#dateApplyStart").val(checkDate);
+                SetDeadlineDate(checkDate);
             });
+
             $('#dateApplyStart').change(function () {
-                try {
-                    actionControl = "ApplyDate";
-                    var publishdate = $("#dateApplyStart").val();
-                    var schoolyear = $("#hfSchoolyear").val();
-                    var deadlinedate = WebService.DeadLineDate(schoolyear, publishdate, onSuccess, onFailure);
-                }
-                catch (e) {
-                    window.alert(e.message);
-                }
+                actionControl = "ApplyDate";
+                var checkDate = $("#dateApplyStart").val();
+                SetDeadlineDate(checkDate);
             });
 
             $("#btnRequest").click(function (e) {
@@ -570,6 +569,27 @@
                 $("#hdChildFormAction", parent.document).val("ChangeAction");
             });
 
+            $("#lblTeacherName").click(function (ev) {
+                var ev = window.event;
+                var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
+                var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
+
+                ShowSelectTeacherList(vTop, vLeft, "Click");
+            });
+
+            $("#lblTeacherName").keyup(function (e) {
+                var ev = window.event;
+                var vTop = $('#lblTeacherName').offset().top - 10;  // ev.clientY - 20;
+                var vLeft = $('#lblTeacherName').offset().left - 10;  //ev.clientX - 190; var vTop = $('#ddlQualification').offset().top - 20;  // ev.clientY - 20;
+
+                ShowSelectTeacherList(vTop, vLeft, "Keyup");
+            });
+            $("#TextPositionTitle").focus(function (e) {
+                HideSelectTeacherList();
+            });
+            $("#ddlReason").focus(function (e) {
+                HideSelectTeacherList();
+            });
 
 
             $("#rblFTE input").click(function (e) {
@@ -629,16 +649,6 @@
                         return true;
                     } else
                         return false;
-
-
-                    //bootbox.confirm("Are you sure, you want delete this Position ?",function(result) {
-                    //        if (result) {
-                    //            $("#HiddenFieldAction").val("Yes");
-                    //            return true;
-                    //        } else {
-                    //            return false;
-                    //        }
-                    //    });
                 }
             });
 
@@ -708,25 +718,59 @@
                 }
 
             });
-        
+
         });
     }
-    function onSuccess(result) {
-        if (result == "Invalid Date") {
+    function SetDeadlineDate(checkDate) {
+        try {
+            var schoolyear = $("#hfSchoolyear").val();
 
+            // *************** works on developer Computer this is WCF Web services ******************
+            // var newDate = new LTOPositionDeadLine.GetDeadLineDate;
+            //  newDate.myDate(schoolyear, checkDate, onSuccess, onFailure);
+
+            // ****************************************************************************************
+
+            //***************  Web service Call ******************************************************
+
+            var deadlinedate = WebService.DeadLineDate(schoolyear, checkDate, onSuccess, onFailure);
+
+            //*******************************************************************************************
+
+            //************** Web api call ****************************
+            //var positiontype = $("#ddlType").val();
+            // GetDeadLineDateFromWebAPI(publishdate, schoolyear);
+            // GetDeadLineDateWebAPICall(schoolyear, checkDate, positiontype)
+            //********************************************************
+        }
+        catch (e) {
+            window.alert(e.message);
+        }
+
+    }
+    function onSuccess(result) {
+
+        $("#dateDeadline").val(result);
+
+        if (result == "Invalid Date") {
             window.alert(result);
-            if (actionControl == "PublishDate") { $('#datePublish').addClass("InvalidCell"); }
-            $("#dateDeadline").addClass("InvalidCell");
-            $("#dateApplyStart").addClass("InvalidCell");
-            $("#dateDeadline").val(result);
+            if (actionControl == "PublishDate") {
+                $('#datePublish').addClass("InvalidCell");
+            }
+            else
+                $('#dateApplyStart').addClass("InvalidCell");
+
+            $("#dateDeadline").addClass("InvalidCell");         
         }
         else {
-            if (actionControl == "PublishDate") { $('#datePublish').removeClass("InvalidCell"); }
-            $("#dateApplyStart").removeClass("InvalidCell");
+            if (actionControl == "PublishDate") {
+                $('#datePublish').removeClass("InvalidCell");
+            }
+            else {
+                $('#dateApplyStart').removeClass("InvalidCell");
+            }
             $("#dateDeadline").removeClass("InvalidCell");
-            $("#dateDeadline").val(result);
         }
-
     }
     function onFailure(result) {
         window.alert(result);
@@ -821,6 +865,7 @@
         }
 
     }
+
     function InitialDatePickerControl() {
         var value = new Date().toDateString;
         var minD = new Date($("#hfSchoolyearStartDate").val());
@@ -836,7 +881,27 @@
         JDatePicker.Initial($("#dateDeadline"));
     }
 
+    function ShowSelectTeacherList(vTop, vLeft, action) {
+        var searchValue = $("#lblTeacherName").val();
+        var goPage = "../LTOPrincipals/RequestTeachers.aspx?SearchVal=" + searchValue.substring(0, 1);
+        var vHeight = 300;
+        var vWidth = 350;
 
+        $("#iframeHelpText").attr('src', goPage);
+
+        $("#BubbleHelpDIV").css({
+            top: vTop + 32,
+            left: vLeft + 8,
+            height: vHeight,
+            width: vWidth,
+            board: 0
+        })
+        if (action == "Click") { $("#BubbleHelpDIV").fadeToggle("fast"); }
+    }
+
+    function HideSelectTeacherList() {
+        $("#BubbleHelpDIV").hide();
+    }
 
     //function GetDeadLineDateFromWebService(_datepublish) {
     //     var _deadlinedate = "";
@@ -874,23 +939,23 @@
     //        }
     //    });
     //}
-    function GetDeadLineDateWebAPICall( schoolyear,publishdate,positionType) {
+    function GetDeadLineDateWebAPICall(schoolyear, publishdate, positionType) {
         try {
             var para = {
                 Operate: $("#hfAction").val(),
-                UserID: $("#hfUserID").val(), 
+                UserID: $("#hfUserID").val(),
             };
             var uri = "DeadLine";
             var qStr = "/" + schoolyear + "/" + publishdate + "/" + positionType;
 
             var data = WebAPICall.GetDataPassQstr(uri, qStr);
 
-           // var deadlinedate = data[0].ApplyDate;
+            // var deadlinedate = data[0].ApplyDate;
             $("#dateDeadline").val(data[0].ApplyDate);
             $("#dateApplyStart").removeClass("InvalidCell");
             $("#dateDeadline").removeClass("InvalidCell");
-          //  $("#dateDeadline").val(result);
- 
+            //  $("#dateDeadline").val(result);
+
         }
         catch (e) {
             alert(para.Operate + " Submit click something going wrong");

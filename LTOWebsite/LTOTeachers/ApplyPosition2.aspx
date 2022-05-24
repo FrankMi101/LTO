@@ -230,7 +230,6 @@
                     </td>
                 </tr>
 
-
                 <tr>
                     <td>Deadline to Apply:</td>
                     <td colspan="5">
@@ -634,7 +633,7 @@
     function openFileUpload(type, schoolyear, cpnum, positionID) {
         var vTop = 200;
         var vLeft = 100;
-        var vHeight = 200;
+        var vHeight = 250;
         var vWidth = 600;
         var goPage = "FileUpload.aspx?CPNum=" + cpnum + "&PositionID=" + positionID;
         $("#ResumeCoverLetteriFrame").attr('src', goPage);

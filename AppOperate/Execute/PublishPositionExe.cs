@@ -7,7 +7,7 @@ namespace AppOperate
 {
     public class PublishPositionExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PublishPosting()); 
+        private readonly static IAppServices _action = new AppServices(new PublishPosting(DBConnection.DBSource)); 
         public PublishPositionExe()
         {
         }
@@ -144,7 +144,7 @@ namespace AppOperate
 
     public class PublishPositionExe<T>
     {
-         private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PublishPosting());
+         private readonly static IAppServices _action = new AppServices(new PublishPosting(DBConnection.DBSource));
 
         public PublishPositionExe()
         {
@@ -251,7 +251,7 @@ namespace AppOperate
     }
     public class PublishSP
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PublishPosting());
+        private readonly static IAppServices _action = new AppServices( new PublishPosting(DBConnection.DBSource));
 
         public static string Name(string action)
         {

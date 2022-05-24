@@ -1,5 +1,7 @@
 'Imports TCDSB.Student
 
+Imports System.Web.Configuration
+
 Partial Class appheader
     Inherits System.Web.UI.UserControl
 #Region " Web Form Designer Generated Code "
@@ -65,45 +67,32 @@ Partial Class appheader
 
             Dim _Role As String = WorkingProfile.UserRole
             ' WorkingProfile.Permission = Common.UserSecurity.Permission(_userID, _Role)
-
+            Dim vSpaces As String = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"
             Dim _lblStr1 As String = "School Year: " + "<a title ='click on the year to change school year' href='Default_Home.aspx' target='mainTop'>" + WorkingProfile.SchoolYear + "</a>"
-            Dim _lblStr2 As String = "&nbsp;&nbsp;&nbsp;&nbsp;" + " School:  " + "<a title ='click on the school to change school' href='Default_Home.aspx' target='mainTop'>" + WorkingProfile.SchoolCode + "--" + WorkingProfile.SchoolName + "</a>"
+            Dim _lblStr2 As String = vSpaces + " School:  " + "<a title ='click on the school to change school' href='Default_Home.aspx' target='mainTop'>" + WorkingProfile.SchoolCode + "--" + WorkingProfile.SchoolName + "</a>"
             Dim _lblStr4 As String = ""
-            Dim _lblStr5 As String = "&nbsp;&nbsp;&nbsp;&nbsp;" + "  Online Users: " + CType(Application("UsersOnline"), String)
+            Dim _lblStr5 As String = vSpaces + "  Online Users: " + CType(Application("UsersOnline"), String)
             Dim _lblStr6 As String = ""
             Dim _lblStr7 As String = ""
             If Not HttpContext.Current.User.Identity.Name = "mif" Then _lblStr5 = ""
 
             If Me.hfLoginRole.Value = "Design" Or Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
-                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + "<a title= 'click on the role to change the Login Role ' href='Default_role.aspx' target='mainTop'>" + _Role + "</a>"
+                _lblStr4 = vSpaces + _userID + "  Login as: " + "<a title= 'click on the role to change the Login Role ' href='Default_role.aspx' target='mainTop'>" + _Role + "</a>"
             Else
-                _lblStr4 = "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; " + _userID + "  Login as: " + _Role
+                _lblStr4 = vSpaces + _userID + "  Login as: " + _Role
             End If
             If Me.hfLoginRole.Value = "Design" Or Me.hfLoginRole.Value = "Admin" Or Me.hfLoginRole.Value = "HRStaff" Or Me.hfLoginRole.Value = "HRStaff4" Then
-                _lblStr6 = "   &nbsp;&nbsp; &nbsp;&nbsp;" + "<a title= 'click on the link to check the LTO/Roster List' href='Default_CheckList.aspx' target='mainTop'>" + "Check OT" + "</a>"
-                _lblStr7 = "   &nbsp;&nbsp; &nbsp;&nbsp;" + "<a title= 'click on the link to view the LTO/Roster PDF List' href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target='_blank'>" + "LTO Teacher List" + "</a>"
+                _lblStr6 = vSpaces + "<a title= 'click on the link to check the LTO/Roster List' href='Default_CheckList.aspx' target='mainTop'>" + "Check OT" + "</a>"
             End If
+            Dim OTRosterLink = WebConfigurationManager.AppSettings("DocumentLink") + WebConfigurationManager.AppSettings("OTRosterList")
+            Dim OTRosterName = WebConfigurationManager.AppSettings("OTRosterName")
+            _lblStr7 = vSpaces + "<a title= 'click on the link to view the OT Roster PDF List' href='" + OTRosterLink + " ' target='_blank'>" + OTRosterName + "</a>"
             Me.Label1.Text = _lblStr1 & _lblStr2 & _lblStr4 & _lblStr5 + _lblStr6 + _lblStr7
 
         Catch ex As Exception
             ' CommonTCDSB.ShowMsg .Exception(ex, Me.Page, "get User Role Profile ")
         End Try
     End Sub
-    'Private Function getNamebyID(ByVal id As String, ByVal type As String) As String
-    '    Return SetupList.getNamebyID(id, type)
-    'End Function
-
-    'Private Sub mySetup()
-    '    Dim _userID As String = HttpContext.Current.User.Identity.Name
-
-    '    Dim myCtl As Menu = Me.Menu1 ' Infragistics.WebUI.UltraWebNavigator.UltraWebMenu = Me.UltraWebMenu1
-    '    If Right(_userID, 3) = "mif" Then ' (_user = "mif" Or _user = "CEC\mif") Then
-    '        myCtl.Items.Item(12).Enabled = True
-    '    Else
-    '        myCtl.Items.Item(12).Enabled = False
-    '        myCtl.Items.Item(12).Text = ""
-    '    End If
-    'End Sub
 
 
 

@@ -22,20 +22,20 @@
 
         <table>
             <tr>
-                <td style="width:13%;"> </td>
-                <td style ="width:62%; "></td>
-                <td style ="width:25%; "</td>
+                <td style="width:20%;"> </td>
+                <td style ="width:55%;"></td>
+                <td style ="width:25%;"></td>
 
             </tr>
             <tr>
-                <td> </td>
+                <td></td>
                 <td></td>
                 <td></td>
 
             </tr>
 
             <tr>
-                <td>Resume</td>
+                <td>Covering Letter/ Resume</td>
                 <td>
                     <asp:TextBox ID="LabelResumeName" runat="server" ReadOnly="True" Width="100%" Visible="false"></asp:TextBox>
                     <%--<asp:FileUpload ID="FileUpload1" runat="server" ToolTip=" Click to chose Resume file" />--%>
@@ -55,12 +55,17 @@
                 </td>
             </tr>
             <tr>
+                <td colspan="3"> 
+                  <div style="color:red;"> <b>  (please ensure the Cover Letter and Resume are uploaded as ONE document)</b> </div>
+                </td>
+            </tr>
+             <tr>
                 <td colspan="3">&nbsp;
                     <br />
                 </td>
             </tr>
             <tr>
-                <td>Cover Letter</td>
+                <td>Achievements</td>
                 <td>
 
                     <asp:TextBox ID="LabelLetterName" runat="server" ReadOnly="True" Visible="false" Width="100%"></asp:TextBox>
@@ -76,6 +81,11 @@
                         <asp:Button ID="ButtonRemoveLetter" runat="server" Text="Remove" />
                     </div>
 
+                </td>
+            </tr>
+             <tr>
+                <td colspan="3"> 
+                  <div style="color:red;"> (these documents can include certificates, reference letters, etc.) </div>
                 </td>
             </tr>
             <tr>

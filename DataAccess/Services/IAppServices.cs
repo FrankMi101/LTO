@@ -8,31 +8,12 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    public interface IAppServicesS : IDisposable
+
+    public interface IAppServicesAsync : IDisposable
     {
-        IDeadLine AppDeadLine { get; }
-        INameValueList AppNVList { get; }
-        IPageItem PageItem { get; }
-
-        IPublishPosting AppPublishPosting { get; }
-
-        IRequestPosting AppRequestPosting { get; }
-
-        IInterviewResult AppInterview { get; }
-        IApplicants AppApplicants { get; }
-        IApplyPosting AppApplyPosting { get; }
-        IApproveRequest AppApproveRequest { get; }
-        IConfirmHire AppConfirmHire { get; }
-        IGeneralItems AppGeneralItems { get; }
-        IHiredPositions AppHiredPositions { get; }
-        IPositionsCheck AppPositionsCheck { get; }
-        ISelectCandidate AppSelectCandidate { get; }
-        IStaffManage AppStaffManage { get; }
-        IPostingSummary AppPostingSummary { get; }
-
-        IPostingCommon AppPostingOther { get; }
-
+        IAppBaseAsync AppOne { get; }
     }
+
     public interface IAppServices : IDisposable
     {
         IPostingBase AppOne { get; }
@@ -58,4 +39,30 @@ namespace DataAccess
         //IPostingCommon AppPostingOther { get; }
 
     }
+    public interface IAppServicesS : IDisposable
+    {
+        IDeadLine AppDeadLine { get; }
+        INameValueList AppNVList { get; }
+        IPageItem PageItem { get; }
+
+        IPublishPosting AppPublishPosting { get; }
+
+        IRequestPosting AppRequestPosting { get; }
+
+        IInterviewResult AppInterview { get; }
+        IApplicants AppApplicants { get; }
+        IApplyPosting AppApplyPosting { get; }
+        IApproveRequest AppApproveRequest { get; }
+        IConfirmHire AppConfirmHire { get; }
+        IGeneralItems AppGeneralItems { get; }
+        IHiredPositions AppHiredPositions { get; }
+        IPositionsCheck AppPositionsCheck { get; }
+        ISelectCandidate AppSelectCandidate { get; }
+        IStaffManage AppStaffManage { get; }
+        IPostingSummary AppPostingSummary { get; }
+
+        IPostingCommon AppPostingOther { get; }
+
+    }
+
 }

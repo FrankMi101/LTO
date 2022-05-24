@@ -152,14 +152,14 @@
                             </ItemTemplate>
                             <ItemStyle Width="10%" />
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="">
+                        <asp:TemplateField HeaderText="" >
                             <ItemTemplate>
-                                <asp:HyperLink ID="Link7" runat="server" Text='<%# Bind("ApplicantType") %>'>  </asp:HyperLink>
+                                <asp:HyperLink ID="Link7" runat="server"  Text='<%# Bind("ApplicantType") %>'>  </asp:HyperLink>
                             </ItemTemplate>
                             <ItemStyle Width="2%" />
                         </asp:TemplateField>
                         <asp:BoundField DataField="Outcome" HeaderText="Interview Outcome">
-                            <ItemStyle Width="5%" />
+                            <ItemStyle Width="7%" />
                         </asp:BoundField>
                         <asp:BoundField DataField="ApplyDate" HeaderText="Applied Date">
                             <ItemStyle Width="4%" />

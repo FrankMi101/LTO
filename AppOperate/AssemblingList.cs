@@ -338,7 +338,7 @@ namespace AppOperate
         }
         public static void SetLists3(System.Web.UI.WebControls.ListControl myListControl1, System.Web.UI.WebControls.ListControl myListControl2, System.Web.UI.WebControls.ListControl myListControl3, List2Item parameter)
         {
-             List<NameValueList> myListData = ListDataSource("", "SchoolPrincipal", "SchoolPrincipal", parameter);  // GeneralDataAccess.GetListofTypeT<List2Item>(sp, parameter);
+             List<NameValueList> myListData = ListDataSource("", parameter.Operate, "SchoolPrincipal", parameter);  // GeneralDataAccess.GetListofTypeT<List2Item>(sp, parameter);
 
             AssemblingListControl(myListControl1, myListData, "Value", "Name"); // school Code DDL
             AssemblingListControl(myListControl2, myListData, "Value", "Name");  // school Code DDL
@@ -461,6 +461,8 @@ namespace AppOperate
         {
             try
             {
+                myListControl.ClearSelection();
+
                 if (myListControl.Items.Count > 0)
                 {
                     if (value != null)

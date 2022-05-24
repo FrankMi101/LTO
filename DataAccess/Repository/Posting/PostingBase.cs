@@ -134,7 +134,7 @@ namespace DataAccess.Repository
         }
    
 
-        public List<T> CommonList<T>(string action, object parameter)
+        public  List<T> CommonList<T>(string action, object parameter)
         {
             return CommonList<T>(_db, action, parameter);
         }

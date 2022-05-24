@@ -70,6 +70,9 @@
     <Compile Include="ExecuteInterface\PostingRequestTests.cs" />
     <Compile Include="Execute\AllProcessTests.cs" />
     <Compile Include="Execute\PositionListCheckExeTests.cs" />
+    <Compile Include="Execute\PostingDateExeTests_DeadLine.cs" />
+    <Compile Include="Execute\PostingDateExeTests.cs" />
+    <Compile Include="Execute\PublishPositionExeAsyncTests.cs" />
     <Compile Include="Execute\PublishPositionExeTTests.cs" />
     <Compile Include="Execute\StaffManageTests.cs" />
     <Compile Include="Execute\GeneralExeTests.cs" />

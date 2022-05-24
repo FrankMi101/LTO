@@ -53,16 +53,7 @@ Partial Class InterviewTeam
             Dim positionID As String = Page.Request.QueryString("PositionID")
             Dim schoolCode As String = Page.Request.QueryString("SchoolCode")
 
-            Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
-
-            Dim SP As String = CommonExcute.SPNameAndParameters(DataAccessFile, "Publish", "Position")
-            If User.Identity.Name = "mif" Then
-
-                Me.LabelReplaceTeacher.ToolTip = SP
-            End If
-
-            position = CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0)
-
+            GetPosition()
 
             LabelSchool.Text = WorkingProfile.SchoolName
             LabelPositionTitle.Text = position.PositionTitle
@@ -76,7 +67,14 @@ Partial Class InterviewTeam
             Dim userid As String = User.Identity.Name
 
             Dim SPteam As String = CommonExcute.SPNameAndParameters(DataAccessFile, cPage, "TeamMembers")
-            Dim team = CommonExcute(Of InterviewerTeam).GeneralList(SPteam, parameter)(0)
+            Dim para = New With
+            {
+            .Operate = "Page",
+            .UserID = User.Identity.Name,
+            .SchoolYear = schoolyear,
+            .PositionID = positionID
+            }
+            Dim team = CommonExcute(Of InterviewerTeam).GeneralList(SPteam, para)(0)
 
 
             hfUserIDP1.Value = team.Member1ID
@@ -101,7 +99,7 @@ Partial Class InterviewTeam
             '    ListInitial.SelectOption(Me.combobox3, No3Interview)
 
         Catch ex As Exception
-
+            Dim msm = ex.Message
         End Try
     End Sub
 
@@ -141,27 +139,7 @@ Partial Class InterviewTeam
     Private Sub combobox3_ServerChange(sender As Object, e As EventArgs) Handles combobox3.ServerChange
         SaveInterviewSelected(3, hfUserIDP3.Value, "Update")
     End Sub
-    Private Sub SaveInterviewSelected(ByVal sequence As Integer, ByVal interviewUserID As String, ByVal action As String)
-        Dim _UserID As String = HttpContext.Current.User.Identity.Name
-        Dim _Role As String = WorkingProfile.UserRole
-        Dim _SchoolYear As String = WorkingProfile.SchoolYear
-        Dim positionID = Me.hfPositionID.Value
 
-
-        Dim parameter As InterviewerTeamMembers = New InterviewerTeamMembers() ' = CommonParameter.GetParameters(WorkingProfile.SchoolYear, Me.hfPositionID.Value,)
-
-        With parameter
-            .Operate = action
-            .SchoolYear = WorkingProfile.SchoolYear
-            .PositionID = Me.hfPositionID.Value
-            .UserID = User.Identity.Name
-            .Sequence = sequence
-            .MemberID = interviewUserID
-        End With
-        Dim SPteam As String = CommonExcute.SPNameAndParameters(DataAccessFile, cPage, "UpdateMember")
-        Dim result = CommonExcute(Of InterviewerTeamMembers).GeneralValue(SPteam, parameter)(0)
-
-    End Sub
     Protected Sub btnRemoveP2_Click(sender As Object, e As EventArgs) Handles btnRemoveP2.Click
         SaveInterviewSelected(2, hfUserIDP2.Value, "Remove")
         BindData()
@@ -186,6 +164,36 @@ Partial Class InterviewTeam
         SaveInterviewSelected(3, sender.SelectedValue, "Update")
         BindData()
     End Sub
+
+    Private Sub SaveInterviewSelected(ByVal sequence As Integer, ByVal interviewUserID As String, ByVal action As String)
+        Dim _UserID As String = HttpContext.Current.User.Identity.Name
+        Dim _Role As String = WorkingProfile.UserRole
+        Dim _SchoolYear As String = WorkingProfile.SchoolYear
+        Dim positionID = Me.hfPositionID.Value
+
+        '  Dim parameter As InterviewerTeamMembers = New InterviewerTeamMembers() ' = CommonParameter.GetParameters(WorkingProfile.SchoolYear, Me.hfPositionID.Value,)
+        'With Parameter
+        '    .Operate = action
+        '    .UserID = User.Identity.Name
+        '    .SchoolYear = WorkingProfile.SchoolYear
+        '    .PositionID = Me.hfPositionID.Value
+        '    .Sequence = sequence
+        '    .MemberID = interviewUserID
+        'End With
+        Dim Parameter = New With
+            {
+            .Operate = action,
+            .UserID = User.Identity.Name,
+            .SchoolYear = WorkingProfile.SchoolYear,
+            .PositionID = positionID,
+             .Sequence = sequence,
+            .MemberID = interviewUserID
+            }
+        Dim SPteam As String = CommonExcute.SPNameAndParameters(DataAccessFile, cPage, "UpdateMember")
+        Dim result = CommonExcute(Of InterviewerTeamMembers).GeneralValue(SPteam, Parameter)(0)
+
+    End Sub
+
     Protected Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
         '    Dim link As String = "LoadingP.aspx?pID=2&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&SchoolName=" + schoolname + "&appType=" + appType
         If Not ddlInterview1.SelectedValue = "" Then
@@ -231,6 +239,8 @@ Partial Class InterviewTeam
         'If eMailAction = "Request" Then _mSubject = "Position posting Notification"
         'If eMailAction = "Posting" Then _mSubject = "New LTO/POP Position posting Notification"
         'If eMailAction = "Reject" Then _mSubject = "Reject Request Posting Notification"
+
+        GetPosition()
         Try
             Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
             Dim eMailFile As String = getEmailfileHTML(_who, eMailAction, mTemplateFile)
@@ -282,7 +292,7 @@ Partial Class InterviewTeam
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
         Dim positionID As String = Page.Request.QueryString("PositionID")
-        Dim schoolname As String = position.SchoolName
+        Dim schoolname As String = LabelSchool.Text
         Dim appType As String = WorkingProfile.ApplicationType
 
 
@@ -317,5 +327,22 @@ Partial Class InterviewTeam
         Return eMailFile
 
     End Function
+
+    Private Sub GetPosition()
+        Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
+        Dim positionID As String = Page.Request.QueryString("PositionID")
+        Dim schoolCode As String = Page.Request.QueryString("SchoolCode")
+
+        Dim parameter = CommonParameter.GetParameters(schoolyear, positionID)
+
+        Dim SP As String = CommonExcute.SPNameAndParameters(DataAccessFile, "Publish", "Position")
+        position = CommonExcute(Of PositionPublish).GeneralList(SP, parameter)(0)
+
+        If User.Identity.Name = "mif" Then
+            Me.LabelReplaceTeacher.ToolTip = SP
+        End If
+
+
+    End Sub
 End Class
 

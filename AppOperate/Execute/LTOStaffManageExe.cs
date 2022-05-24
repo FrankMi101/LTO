@@ -11,7 +11,7 @@ namespace AppOperate
 {
     public class LTOStaffManageExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new StaffManage());
+        private readonly static IAppServices _action = new AppServices( new StaffManage(DBConnection.DBSource));
 
         public LTOStaffManageExe()
         {

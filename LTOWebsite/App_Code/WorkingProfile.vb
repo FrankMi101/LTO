@@ -163,24 +163,22 @@ Public Class WorkingProfile
 
     Public Shared Property ApplicationType() As String
         Get
-            If HttpContext.Current.Session("ApplicationTypeSessionValue") Is Nothing Then
-                If Not UserID = Nothing Then
-                    HttpContext.Current.Session("ApplicationTypeSessionValue") = UserTrack.TrackInfo(UserID, "ApplicationType")
-                End If
+            If HttpContext.Current.Session("typeapplication1") Is Nothing Then
+                HttpContext.Current.Session("typeapplication1") = UserTrack.TrackInfo(UserID, "ApplicationType")
             End If
 
-            Return HttpContext.Current.Session("ApplicationTypeSessionValue")
+            Return HttpContext.Current.Session("typeapplication1")
         End Get
         Set(ByVal value As String)
             If Not value = Nothing Then
-                If Not value = HttpContext.Current.Session("ApplicationTypeSessionValue") Then
-                    HttpContext.Current.Session("ApplicationTypeSessionValue") = value
+                If Not value = HttpContext.Current.Session("typeapplication1") Then
+                    HttpContext.Current.Session("typeapplication1") = value
                     UserTrack.TrackInfo(UserID, "ApplicationType", value)
                 End If
             End If
-
         End Set
     End Property
+
     Public Shared Property Panel() As String
         Get
             If HttpContext.Current.Session("workingPanel") Is Nothing Then

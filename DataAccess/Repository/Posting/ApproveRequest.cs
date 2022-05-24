@@ -50,7 +50,7 @@ namespace DataAccess.Repository
                 case "Reject":
                     return "dbo.tcdsb_LTO_PageApprove_OperationReject";
                 case "Posting":
-                    return "dbo.tcdsb_LTO_PageApprove_OperationPosting";
+                    return "dbo.tcdsb_LTO_PageApprove_OperationPostingNew";
                 case "Save":
                     return "dbo.tcdsb_LTO_PageApprove_OperationSave";
                 case "PostingNumber":
@@ -65,18 +65,16 @@ namespace DataAccess.Repository
         private string GetParameters(string action)
         {
             string parameters = "@Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments";
-            string parameter2 = ",@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource,@Qualification,@QualificationCode";
-            string parameter3 = ",@PositionLevel,@Qualification,@QualificationCode,@Description,@FTE,@FTEPanel,@StartDate,@EndDate,@Owner,@ReplaceTeacherID";
-            string ParaPosition = "@SchoolYear,@PositionID";
+            string parameter1 = parameters + ",@PositionLevel,@Qualification,@QualificationCode,@Description,@FTE,@FTEPanel,@StartDate,@EndDate,@Owner,@ReplaceTeacherID";
             string search = "@Operate,@UserID,@SchoolYear,@PositionType,@Panel,@Status,@SearchBy,@SearchValue1,@SearchValue2";
 
             switch (action)
             {
-                case "Position":        return ParaPosition;
+                case "Position":        return "@SchoolYear,@PositionID"; 
                 case "Positions":       return search;
                 case "Reject":          return parameters + ",@CPNum";
-                case "Posting":         return parameters + parameter2;
-                case "Save":            return parameters + parameter3;
+                case "Save":            return parameter1;
+                case "Posting":         return parameter1 + ",@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource";
                 case "PostingNumber":   return "@Operate,@PositionID";
 
                 default:                return "";

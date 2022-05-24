@@ -8,6 +8,15 @@
     <title>Add New open Position</title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+    <link href="../JQuery-UI/jquery-ui.css" rel="stylesheet" type="text/css" />
+
+    <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
+    <%--    <script src="../Scripts/angular.min.js" type="text/javascript"></script>--%>
+    <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
+
+
     <style type="text/css">
         body {
             width: 98%;
@@ -20,16 +29,11 @@
         .hideMe {
             display: none;
         }
+
+        .InvalidCell {
+            border: 2px solid red;
+        }
     </style>
-    <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
-    <link href="../JQuery-UI/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
-    <script src="../JQuery-UI/jquery-ui-1.11.4.min.js" type="text/javascript"></script>
-    <script src="../Scripts/CommonDOM.js" type="text/javascript"></script>
-    <%--    <script src="../Scripts/bootstrap.js" type="text/javascript"></script>
-    <script src="../Scripts/bootbox.js" type="text/javascript"></script>--%>
-
-
 
     <script type="text/javascript">
         function CallShowMessage(action, message) {
@@ -273,36 +277,35 @@
 
                         <tr>
 
-                            <td>Assignment Start Date:</td>
+                            <td class="midtitle">Assignment Start Date:</td>
 
                             <td style="text-wrap: none; overflow-wrap: normal">
                                 <input runat="server" type="text" id="dateStart" size="9" class="Edit-Content-Control" />
                             </td>
                             <td style="width: 15px">
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="dateStart" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                             <td style="text-align: right;">Publish Date:</td>
                             <td style="text-wrap: none; overflow-wrap: normal">
                                 <input runat="server" type="text" id="datePublish" size="9" class="Edit-Content-Control" />
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="datePublish" ErrorMessage="*" Font-Size="Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
-
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="datePublish" ErrorMessage="*" Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red"></asp:RequiredFieldValidator>
                             </td>
                         </tr>
-
                         <tr>
 
                             <td class="midtitle">Assignment &nbsp;End Date:</td>
                             <td>
                                 <input runat="server" type="text" id="dateEnd" size="9" class="Edit-Content-Control" />
-
                             </td>
                             <td style="width: 15px"></td>
 
                             <td class="midtitle">
-                                <div>Date to Apply:</div>
-                                <td>
-                                    <input runat="server" type="text" id="dateApplyStart" size="9" class="Edit-Content-Control" />
-                                </td>
+                                <div>Date to Apply: </div>
+                            </td>
+                            <td>
+                                <input runat="server" type="text" id="dateApplyStart" size="9" class="Edit-Content-Control" />
+
+                            </td>
                         </tr>
                         <tr>
                             <td></td>
@@ -331,7 +334,7 @@
                     <asp:Button ID="btnRequest" runat="server" TabIndex="112" Text="Posting" Width="150px" CssClass="disabaledBTCn action-button " />
                     <asp:Button ID="btndelete" runat="server" TabIndex="1113" Text="Delete Request" Width="100px" Visible="false" />
                     <asp:Button ID="btnEmail" runat="server" TabIndex="115" Text="Send Email" Width="100px" Visible="false" />
-                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" BorderStyle="None" BorderWidth="0px"  />
+                    <asp:Button ID="btnSave1" runat="server" TabIndex="116" Text="" Height="0px" Width="0px" BorderStyle="None" BorderWidth="0px" />
                     <asp:Button ID="btnReject" runat="server" TabIndex="112" Text="Reject" Width="100px" />
 
                     <br />
@@ -364,7 +367,7 @@
 </body>
 </html>
 <script type="text/javascript">
-
+    var actionControl = "PublishDate";
     var Qualification;
     var OperatePage = {
         LockPage: function () { LockPageWhenPostingRequested(); },
@@ -405,48 +408,15 @@
             $('#FTECell').show();
         }
         $('#datePublish').change(function () {
-            try {
-                //   $('#dateDeadline').val('2013-12-03');
-                // $('#btnSave1').click();
-                var publishdate = $("#datePublish").val();
-                var schoolyear = $("#hfSchoolyear").val();
-                $("#dateApplyStart").val(publishdate);
-                // *************** works on developer Computer this is WCF Web services ******************
-                //var newDate = new LTOPositionDeadLine.GetDeadLineDate;
-                // newDate.myDate(schoolyear, publishdate, onSuccess, onFailure);
-                // ****************************************************************************************
-                //***************  Web service Call ******************************************************
-                var deadlinedate = WebService.DeadLineDate(schoolyear, publishdate, onSuccess, onFailure); //GetDeadLineDateFromWebService(publishdate);
-
-                //*******************************************************************************************
-                //************** Web api call ****************************
-                // GetDeadLineDateFromWebAPI(publishdate, schoolyear);
-                //********************************************
-                //  $('#btnRequest').addClass("enabaledBTCn");
-
-            }
-            catch (e) {
-                window.alert(e.message);
-            }
+            actionControl = "PublishDate";
+            var checkDate = $("#datePublish").val();
+            $("#dateApplyStart").val(checkDate);
+            SetDeadlineDate(checkDate);
         });
         $('#dateApplyStart').change(function () {
-            try {
-                var publishdate = $("#dateApplyStart").val();
-                var schoolyear = $("#hfSchoolyear").val();
-                var deadlinedate = WebService.DeadLineDate(schoolyear, publishdate, onSuccess, onFailure);
-            }
-            catch (e) {
-                window.alert(e.message);
-            }
+            actionControl = "ApplyDate";
+            SetDeadlineDate($("#dateApplyStart").val());
         });
-
-        function onSuccess(result) {
-            $("#dateDeadline").val(result);
-        }
-        function onFailure(result) {
-            var rDate = $("#datePublish").val();
-            $("#dateDeadline").val(rDate);
-        }
 
         $("#btnRequest").click(function (e) {
             $("#hdChildFormAction", parent.document).val("ChangeAction");
@@ -547,6 +517,66 @@
         });
 
     });
+
+
+    function SetDeadlineDate(checkDate) {
+        try {
+            var schoolyear = $("#hfSchoolyear").val();
+
+            // *************** works on developer Computer this is WCF Web services ******************
+            // var newDate = new LTOPositionDeadLine.GetDeadLineDate;
+            //  newDate.myDate(schoolyear, checkDate, onSuccess, onFailure);
+
+            // ****************************************************************************************
+
+            //***************  Web service Call ******************************************************
+
+            var deadlinedate = WebService.DeadLineDate(schoolyear, checkDate, onSuccess, onFailure);
+
+            //*******************************************************************************************
+
+            //************** Web api call ****************************
+            //var positiontype = $("#ddlType").val();
+            // GetDeadLineDateFromWebAPI(publishdate, schoolyear);
+            // GetDeadLineDateWebAPICall(schoolyear, checkDate, positiontype)
+            //********************************************************
+        }
+        catch (e) {
+            window.alert(e.message);
+        }
+
+    }
+    function onSuccess(result) {
+
+        $("#dateDeadline").val(result);
+
+        if (result == "Invalid Date") {
+            window.alert(result);
+            $("#dateDeadline").addClass("InvalidCell");
+
+            if (actionControl == "PublishDate") {
+                 $('#datePublish').addClass("InvalidCell");
+            }
+            else
+                $('#dateApplyStart').addClass("InvalidCell");
+
+        }
+        else {
+            $("#dateDeadline").removeClass("InvalidCell");
+
+            if (actionControl == "PublishDate") {
+                $('#datePublish').removeClass("InvalidCell");
+            }
+            else {
+                $('#dateApplyStart').removeClass("InvalidCell");
+            }
+        }
+    }
+    function onFailure(result) {
+        window.alert(result);
+    }
+
+
 
     function InitialDatePickerControl() {
         var value = new Date().toDateString;

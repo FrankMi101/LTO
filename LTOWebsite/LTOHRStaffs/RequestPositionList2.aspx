@@ -1,5 +1,5 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="RequestPositionList2.aspx.vb" Inherits="RequestPositionList2"
-    EnableTheming="true" %>
+    EnableTheming="true" Async="true"  %>
 
 
 <!DOCTYPE html>

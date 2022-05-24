@@ -12,7 +12,7 @@ namespace AppOperate
 {
     public class HiredPositionExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new HiredPositions());
+        private readonly static IAppServices _action = new AppServices( new HiredPositions(DBConnection.DBSource));
 
         public HiredPositionExe()
         {

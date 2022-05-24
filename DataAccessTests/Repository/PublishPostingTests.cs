@@ -18,9 +18,10 @@ namespace DataAccess.Repository.Tests
         private readonly string PositionType = "LTO";
         private readonly string UserID = "Tester";
         private int _ids = 0;
-       private readonly   IAppServices _action = new AppServices(DBConnection.DBSource, new PublishPosting());
-       // private readonly IAppServices _action = new AppServices(DBConnection.DBSource);
-        //   private readonly IAppServices _action = new AppServices("Fake");
+
+         private readonly   IAppServices _action = new AppServices( new PublishPosting(DBConnection.DBSource));
+        
+       // private readonly IAppServices _action = new AppServices(new PublishPosting("Fake"));
 
         [TestInitialize]
         public void Setup()
@@ -49,7 +50,7 @@ namespace DataAccess.Repository.Tests
                 Searchby ="School",
                 SearchValue1 ="0290"
             };
-            int expect = 1;
+            int expect = 3;
 
             //Act
             var positions = _action.AppOne.CommonList<PositionListPublish>(action, para);// .AppPublishPosting.CommonList<PositionListPublish>(action, para);
@@ -134,15 +135,15 @@ namespace DataAccess.Repository.Tests
             var para = new
             {
                Operate = "DefaultDate",
-               AppType = PositionType,
+               PositionType,
                 SchoolYear = "20212022",
-                DatePublish = "2022/03/07" 
+            //    PublishDate = "2022/03/07" 
             };
-            string expect = DateFC.YMD(DateTime.Today ,"/");
+            string expect = DateFC.WorkDay(DateTime.Today);
 
             //Act
-            var defaultDate = _action.AppOne.CommonObject<PositionPublish>("DefaultDate", para);
-            var result = defaultDate.DatePublish;
+            var defaultDate = _action.AppOne.CommonObject<LTODefalutDate>("DefaultDate", para);
+            var result = DateFC.YMD(defaultDate.DatePublish, "/");  
 
             //Assert
             Assert.AreEqual(expect, result, $" Publish Posting Position by ID = { result } ");

@@ -7,8 +7,8 @@ namespace AppOperate.Tests
     [TestClass()]
     public class PostingPositionExeTests
     {
-        private DeadlineDate parameterForDeadline = new DeadlineDate() { SchoolYear = "20192020", PublishDate = "2019/11/12", PositionType = "LTO" };
-
+        private DeadlineDate parameterForDeadline = new DeadlineDate() {   SchoolYear = "20192020", PublishDate = "2019/11/12", PositionType = "LTO" };
+        private readonly string  deadline = PublishPositionExe<string>.Deadline( new { Operate="Deadline",PositionType="LTO",SchoolYear = "20192020", PublishDate= "2019/11/12" });
 
         NewPosition request = new NewPosition()
         {
@@ -82,7 +82,7 @@ namespace AppOperate.Tests
             var para = new ParametersForPosition();
 
             //Act
-            string expect = "dbo.tcdsb_LTO_PageApprove_OperationPosting @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@CPNum,@StartDate,@EndDate,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource,@Qualification,@QualificationCode";
+            string expect = "dbo.tcdsb_LTO_PageApprove_OperationPostingNew @Operate,@UserID,@SchoolYear,@SchoolCode,@PositionID,@Comments,@PositionLevel,@Qualification,@QualificationCode,@Description,@FTE,@FTEPanel,@StartDate,@EndDate,@Owner,@ReplaceTeacherID,@DatePublish,@DateApplyOpen,@DateApplyClose,@RequestSource";
             string result = PostingPositionExe.SPName(action,para);
 
             //Assert
@@ -191,7 +191,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = deadline;// PublishPositionExe<string>.Deadline(parameterForDeadline);
             requestPosition.Qualification = "";
             requestPosition.QualificationCode = "";
             requestPosition.FTE = 1.00M;
@@ -252,7 +252,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = deadline; // PublishPositionExe<string>.Deadline(parameterForDeadline);
 
             //Act
             string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting
@@ -289,7 +289,7 @@ namespace AppOperate.Tests
             requestPosition.EndDate = "2020/06/30";
             requestPosition.DatePublish = "2019/11/11";
             requestPosition.DateApplyOpen = "2019/11/12";
-            requestPosition.DateApplyClose = PublishPositionExe<string>.Deadline(parameterForDeadline);
+            requestPosition.DateApplyClose = deadline; // PublishPositionExe<string>.Deadline(parameterForDeadline);
 
             //Act
             string postingPositionId = PostingPositionExe.Posting(requestPosition); // go for posting

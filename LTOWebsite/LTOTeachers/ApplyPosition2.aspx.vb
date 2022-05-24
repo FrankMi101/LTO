@@ -122,18 +122,39 @@ Partial Class ApplyPosition2
             Me.hfPostingcomments.Value = getMyValue(position.Comments)
             Me.hfResumeTitle.Value = getMyValue(position.ResumeTitle)
             Me.LabelUploadFile.Text = getMyValue(position.UploadFile)
+            hfStatus.Value = BasePage.getMyValue(position.CanApply)
+
+            'ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
+            'ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
+            'If ViewState("timeTable") = "" Then
+            '    Me.F100TimeTable.Visible = False
+            '    Me.F100MultipleSchool.Visible = False
+            'Else
+            '    Me.F100TimeTable.InnerHtml = ViewState("timeTable")
+            '    Me.F100MultipleSchool.InnerHtml = ViewState("multiSchool")
+            '    Me.TextPositionDescription.Style.Add("height", "25px")
+            'End If
+
+
 
             ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
             ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
-            hfStatus.Value = BasePage.getMyValue(position.CanApply)
+
             If ViewState("timeTable") = "" Then
                 Me.F100TimeTable.Visible = False
-                Me.F100MultipleSchool.Visible = False
             Else
                 Me.F100TimeTable.InnerHtml = ViewState("timeTable")
+                Me.TextPositionDescription.Style.Add("height", "25px")
+            End If
+
+            If ViewState("multiSchool") = "" Then
+                Me.F100MultipleSchool.Visible = False
+            Else
                 Me.F100MultipleSchool.InnerHtml = ViewState("multiSchool")
                 Me.TextPositionDescription.Style.Add("height", "25px")
             End If
+
+
 
 
             ' Me.btnUpdate.Visible = False
@@ -186,14 +207,17 @@ Partial Class ApplyPosition2
             End If
             Me.LabelNotQualify.Visible = False
             '  LabelNotQualify.Text = "cFTE=" + Me.hfFTECurrent.Value + " pFTE=" + Me.hfFTEPosition.Value + "cDate =" + Me.LabelCurrentAssignmentStartDate.Text + " to " + Me.LabelCurrentAssignmentEndDate.Text + " pDate=" + Me.TextStartDate.Text + " to " + Me.TextEndDate.Text
-            If Me.btnApply.Enabled Then
-                If checkApplybyFTE(Me.hfFTECurrent.Value, Me.LabelCurrentAssignmentStartDate.Text, Me.LabelCurrentAssignmentEndDate.Text, Me.hfFTEPosition.Value, Me.TextStartDate.Text, Me.TextEndDate.Text) = "No" Then
-                    Me.btnApply.Enabled = False
-                    LabelNotQualify.Text = "This Position FTE or Start Date are conflict with your Current Assignment (FTE=" + Me.hfFTECurrent.Value + " Date:" + Me.LabelCurrentAssignmentStartDate.Text + " to " + Me.LabelCurrentAssignmentEndDate.Text + ")"
-                    Me.LabelNotQualify.Visible = True
-                    '  Me.btnApply.Visible = False
-                End If
-            End If
+
+
+            ' No Need check on Server side. it will check on javascript
+            'If Me.btnApply.Enabled Then
+            '    If checkApplybyFTE(Me.hfFTECurrent.Value, Me.LabelCurrentAssignmentStartDate.Text, Me.LabelCurrentAssignmentEndDate.Text, Me.hfFTEPosition.Value, Me.TextStartDate.Text, Me.TextEndDate.Text) = "No" Then
+            '        Me.btnApply.Enabled = False
+            '        LabelNotQualify.Text = "This Position FTE or Start Date are conflict with your Current Assignment (FTE=" + Me.hfFTECurrent.Value + " Date:" + Me.LabelCurrentAssignmentStartDate.Text + " to " + Me.LabelCurrentAssignmentEndDate.Text + ")"
+            '        Me.LabelNotQualify.Visible = True
+            '        '  Me.btnApply.Visible = False
+            '    End If
+            'End If
 
 
         Catch ex As Exception
@@ -385,7 +409,7 @@ Partial Class ApplyPosition2
 
         Try
             eMailFile = Replace(eMailFile, "[PostingNumberSTR]", Me.TextPositionID.Text)
-            eMailFile = Replace(eMailFile, "[PostingRoundSTR]", Me.TextPostingCycle.Text)
+            eMailFile = Replace(eMailFile, "[PostingRoundSTR]", "") 'Me.TextPostingCycle.Text)
             eMailFile = Replace(eMailFile, "[TeacherNameSTR]", teacherName)
             eMailFile = Replace(eMailFile, "[PrincipalNameSTR]", Me.textPrincipal.Text)
             eMailFile = Replace(eMailFile, "[DateTimeSTR]", _Datetime)

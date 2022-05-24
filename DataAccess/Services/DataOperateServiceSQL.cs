@@ -25,6 +25,28 @@ namespace DataAccess
 
 
     }
+    public class DataOperateServiceAsyncSQL : IDataOperateServiceAsync
+    {
+        public async Task<List<T>> ListOfT<T>(string db, string spName, object para)
+        {
+            var myDataAccess = new MyDapper.EasyDataAccessAsync<T>();
+            return await myDataAccess.ListOfT(db, spName, para);
+        }
+
+        public async Task<T> ObjectOfT<T>(string db, string spName, object para)
+        {
+            var myDataAccess = new MyDapper.EasyDataAccessAsync<T>();
+            return await  myDataAccess.ObjectOfT(db, spName, para);
+        }
+        public async Task<T> ValueOfT<T>(string db, string spName, object para)
+        {
+            var myDataAccess = new MyDapper.EasyDataAccessAsync<T>();
+            return await myDataAccess.ValueOfT(db, spName, para);
+        }
+
+
+    }
+
 
     /// <summary>
     /// Data from SQL Server 

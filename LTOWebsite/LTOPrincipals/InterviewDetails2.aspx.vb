@@ -108,7 +108,7 @@ Partial Class InterviewDetails2
             Me.TextAppraisals.InnerHtml = BasePage.getMyValue(position.Appraisal)
             Me.TextRecomendation.Text = BasePage.getMyValue(position.Recommendation)
             Me.dateInterview.Value = BasePage.getMyValue(position.InterviewDate)
-            Me.chbHiring.Checked = IIf(BasePage.getMyValue(position.HiringStatus = "Recommend for Hiring on the Position"), True, False)
+            Me.chbHiring.Checked = IIf(BasePage.getMyValue(position.HiringStatus) = "Recommend for Hiring on the Position", True, False)
             AssemblingList.SetValue(ddlAction, BasePage.getMyValue(position.OutCome))
 
             Me.dateEffective.Value = BasePage.getMyValue(position.EffectiveDate)

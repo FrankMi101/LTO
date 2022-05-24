@@ -11,7 +11,7 @@ namespace AppOperate
 {
     public class PostingPositionExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new ApproveRequest());
+        private readonly static IAppServices _action = new AppServices( new ApproveRequest(DBConnection.DBSource));
 
    
         public static List<PositionListApprove> Positions(object parameter)

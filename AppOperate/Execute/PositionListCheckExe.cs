@@ -7,7 +7,7 @@ namespace AppOperate
 {
     public class PositionListCheckExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new PositionsCheck());
+        private readonly static IAppServices _action = new AppServices( new PositionsCheck(DBConnection.DBSource));
 
         public PositionListCheckExe()
         {

@@ -7,16 +7,16 @@ Partial Class LoadingP
         If Not Page.IsPostBack Then
 
             Me.Page.Response.Expires = 0
-            Dim pID As String = Page.Request.QueryString("pID")
-            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-            Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-            Dim positionID As String = Page.Request.QueryString("PositionID")
-            Dim schoolname As String = Page.Request.QueryString("SchoolName")
-            Dim appType As String = Page.Request.QueryString("appType")
-            Dim interviewS As String = Page.Request.QueryString("interviewS")
-            Dim applyuserID As String = Page.Request.QueryString("ApplyUserID")
-            Dim teacherName As String = Page.Request.QueryString("TeacherName")
-            Dim status As String = Page.Request.QueryString("Status")
+            Dim pID As String = GetValueFromQS("pID") ' Page.Request.QueryString("pID")
+            Dim schoolyear As String = GetValueFromQS("SchoolYear")  ' Page.Request.QueryString("SchoolYear")
+            Dim schoolcode As String = GetValueFromQS("SchoolCode")  'Page.Request.QueryString("SchoolCode")
+            Dim positionID As String = GetValueFromQS("PositionID")  'Page.Request.QueryString("PositionID")
+            Dim schoolname As String = GetValueFromQS("SchoolName")  'Page.Request.QueryString("SchoolName")
+            Dim appType As String = GetValueFromQS("appType")  'Page.Request.QueryString("appType")
+            Dim interviewS As String = GetValueFromQS("interviewS")  'Page.Request.QueryString("interviewS")
+            Dim applyuserID As String = GetValueFromQS("ApplyUserID")  'Page.Request.QueryString("ApplyUserID")
+            Dim teacherName As String = GetValueFromQS("TeacherName")  'Page.Request.QueryString("TeacherName")
+            Dim status As String = GetValueFromQS("Status")  'Page.Request.QueryString("Status")
             Select Case pID
                 Case "1"
                     Me.PageURL.HRef = "RecommendPositionList.aspx"
@@ -51,4 +51,7 @@ Partial Class LoadingP
 
         End If
     End Sub
+    Private Function GetValueFromQS(ByVal key As String) As String
+        Return BasePage.GetValueFromQS(Page, key)
+    End Function
 End Class

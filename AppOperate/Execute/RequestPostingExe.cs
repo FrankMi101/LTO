@@ -11,7 +11,7 @@ namespace AppOperate
 {
     public class RequestPostingExe
     {
-         private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new RequestPosting());
+         private readonly static IAppServices _action = new AppServices(new RequestPosting(DBConnection.DBSource));
 
         public RequestPostingExe()
         {

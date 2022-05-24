@@ -8,7 +8,7 @@ namespace AppOperate
 {
     public class ApplyProcessExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new ApplyPosting() );
+        private readonly static IAppServices _action = new AppServices( new ApplyPosting(DBConnection.DBSource) );
 
         public ApplyProcessExe()
         {

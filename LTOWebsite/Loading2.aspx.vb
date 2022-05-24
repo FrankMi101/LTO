@@ -9,16 +9,23 @@ Partial Class Loading2
         If Not Page.IsPostBack Then
 
             Me.Page.Response.Expires = 0
-            Dim pID As String = Page.Request.QueryString("pID")
-            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-            Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-            Dim positionID As String = Page.Request.QueryString("PositionID")
-            Dim teacherName As String = Page.Request.QueryString("TeacherName")
-            Dim schoolName As String = Page.Request.QueryString("SchoolName")
-            Dim applyuserID As String = Page.Request.QueryString("ApplyUserID")
-            Dim includall As String = Page.Request.QueryString("includAll")
-            Dim interviewS As String = Page.Request.QueryString("interviewS")
-            Dim requestStatus As String = Page.Request.QueryString("RequestStatus")
+
+            Dim pID As String = GetValueFromQS("pID") ' Page.Request.QueryString("pID")
+            Dim schoolyear As String = GetValueFromQS("SchoolYear")  ' Page.Request.QueryString("SchoolYear")
+            Dim schoolcode As String = GetValueFromQS("SchoolCode")  'Page.Request.QueryString("SchoolCode")
+            Dim positionID As String = GetValueFromQS("PositionID")  'Page.Request.QueryString("PositionID")
+            Dim schoolname As String = GetValueFromQS("SchoolName")  'Page.Request.QueryString("SchoolName")
+            Dim appType As String = GetValueFromQS("appType")  'Page.Request.QueryString("appType")
+            Dim interviewS As String = GetValueFromQS("interviewS")  'Page.Request.QueryString("interviewS")
+            Dim applyuserID As String = GetValueFromQS("ApplyUserID")  'Page.Request.QueryString("ApplyUserID")
+            Dim teacherName As String = GetValueFromQS("TeacherName")  'Page.Request.QueryString("TeacherName")
+            Dim status As String = GetValueFromQS("Status")  'Page.Request.QueryString("Status")
+            Dim includall As String = GetValueFromQS("includAll") ' Page.Request.QueryString("includAll")
+            Dim requestStatus As String = GetValueFromQS("RequestStatus") '  Page.Request.QueryString("RequestStatus")
+            Dim source As String = GetValueFromQS("Source") '  Page.Request.QueryString("Source")
+            Dim LTOstatus As String = GetValueFromQS("LTOStatus") '  Page.Request.QueryString("LTOStatus")
+
+
             Try
                 If WebConfigValue.getValuebyKey("SiteClose") = "All" Then
                     pID = "Close"
@@ -77,7 +84,7 @@ Partial Class Loading2
                     Case "LTOTeachers/ApplyPositionList2.aspx"
                         Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&PositionID=" + positionID + "&SchoolCode=" + schoolcode + "&CPNum=" + applyuserID
                     Case "LTOTeachers/NewUserProfile.aspx"
-                        Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&CPNum=" + applyuserID + "&Source=" + Page.Request.QueryString("Source") + "&LTOStatus=" + Page.Request.QueryString("LTOStatus")
+                        Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&CPNum=" + applyuserID + "&Source=" + source + "&LTOStatus=" + LTOstatus
 
                     Case "LTOTeachers/ApplyPositionNotQual.aspx"
                         Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&PositionID=" + positionID + "&SchoolCode=" + schoolcode + "&CPNum=" + applyuserID
@@ -121,4 +128,7 @@ Partial Class Loading2
             End Try
         End If
     End Sub
+    Private Function GetValueFromQS(ByVal key As String) As String
+        Return BasePage.GetValueFromQS(Page, key)
+    End Function
 End Class

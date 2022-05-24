@@ -1,10 +1,14 @@
 ﻿using System;
 using ClassLibrary;
-using System.DirectoryServices; 
+using System.DirectoryServices;
+using DataAccess;
+using DataAccess.Repository;
+
 namespace AppOperate
 {
     public class UserSecurity
     {
+        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new Applicants());
         public static string showLogin(string permission)
         {
             if (permission == "Super" || permission == "Design")
@@ -20,22 +24,20 @@ namespace AppOperate
             return getSecurityRole(userID, "Permission", role);
         }
         private static string getSecurityRole(string userID, string type)
-        {
-            string SP = "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type";
-            var wt = new { UserID = userID, Type = type };
-            return CommonExcute<string>.GeneralValue(SP, wt);
+        { 
+            return getSecurityRole(userID, type,""); 
         }
         private static string getSecurityRole(string userID, string type, string role)
         {
-            string SP = "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type, @Role";
-            var wt = new { UserID = userID, Type = type, Role = role };
-            return CommonExcute<string>.GeneralValue(SP, wt);
+            string SP = "SecurityRole";//  "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type, @Role";
+            var para = new { UserID = userID, Type = type, Role = role };
+             return _action.AppOne.CommonAction(SP, para); // CommonExcute<string>.GeneralValue(SP, wt);
         }
         public static string UserRole(string userID)
         {
-            string SP = "dbo.tcdsb_LTO_PageUser_Role @UserID";
-            var wt = new { UserID = userID};
-            return CommonExcute<string>.GeneralValue(SP, wt);
+            string SP = "UserRole";// "dbo.tcdsb_LTO_PageUser_Role @UserID";
+            var para = new { UserID = userID};
+            return _action.AppOne.CommonAction(SP, para); // CommonExcute<string>.GeneralValue(SP, wt);
         }
         public static bool Authenticate(string domain, string userName, string pwd)
         {

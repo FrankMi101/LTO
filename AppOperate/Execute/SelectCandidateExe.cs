@@ -8,7 +8,7 @@ namespace AppOperate
 {
     public class SelectCandidateExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new SelectCandidate());
+        private readonly static IAppServices _action = new AppServices(new SelectCandidate(DBConnection.DBSource));
 
         public SelectCandidateExe() { }
  

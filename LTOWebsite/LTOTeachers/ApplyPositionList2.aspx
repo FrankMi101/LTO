@@ -106,7 +106,7 @@
                                 </td>
                                 <td>
                                     <a id="A1" runat="server" visible="false" href='#' style="text-decoration: none; color: Gray">Loading.....</a>
-                                    <a id="aLTOTeacherList" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
+                                    <a id="aLTOTeacherList" runat="server" visible="false" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">OT Roster List</a>
 
                                 </td>
                                 <td style="width:30%; text-align: center; text-wrap: avoid">
@@ -406,7 +406,7 @@
     }
     function openApply(schoolyear, schoolcode, positionID, CPNum) {
         var goPage = "Loading2.aspx?pID=LTOTeachers/ApplyPosition2.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&ApplyUserID=" + CPNum; //+ "&SchoolName=" + schoolname;
-        openDetailPage(650, 800, goPage, "Apply Open Position");
+        openDetailPage(600, 800, goPage, "Apply Open Position");
     }
     function openApplyNotQualified(schoolyear, schoolcode, positionID, CPNum) {
         window.alert("You do not currently hold the qualifications for this position.");
@@ -421,7 +421,7 @@
             var vLeft = (screen.width / 2) - (vWidth / 2) - 100;
             var vTop = (screen.height / 2) - (vHeight / 2) - 100;
             $("#PositionDetailFrame", parent.document).attr('src', goPage);
-            $("#PositionDetailFrame", parent.document).attr('scrolling', "no");
+            $("#PositionDetailFrame", parent.document).attr('scrolling', "yes");
 
             $("#popPagetitle", parent.document).text(pTitle);
             $("#hfInvokePageFrom", parent.document).val("LTOTeachers/ApplyPositionList2.aspx");
@@ -446,7 +446,7 @@
     function openFileUpload(type, schoolyear, cpnum, positionID) {
         var vTop = 200;
         var vLeft = 100;
-        var vHeight = 200;
+        var vHeight = 250;
         var vWidth = 600;
         var goPage = "FileUpload.aspx?CPNum=" + cpnum + "&PositionID=" + positionID;
         $("#ResumeCoverLetteriFrame").attr('src', goPage);

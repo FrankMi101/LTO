@@ -19,7 +19,7 @@ namespace DataAccess.Repository
         }
         public override string GetspName(string action)
         {
-            if (action == "") return "dbo.tcdsb_LTO_PagePublish_Deadline";
+            if (action == "") return "dbo.tcdsb_LTO_PagePublish_DeadlineExt";
             return action;
         }
   

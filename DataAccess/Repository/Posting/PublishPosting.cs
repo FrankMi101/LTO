@@ -64,9 +64,9 @@ namespace DataAccess.Repository
                 case "RePosting":
                     return "dbo.tcdsb_LTO_PagePublish_OperationReposting";
                 case "Deadline":
-                    return "dbo.tcdsb_LTO_PagePublish_Deadline";
+                    return "dbo.tcdsb_LTO_PagePublish_DeadlineExt";
                 case "DefaultDate":
-                    return "dbo.tcdsb_LTO_PagePublish_DefaultDate";
+                    return "dbo.tcdsb_LTO_PagePublish_DefaultDateExt";
                 case "PrincipalsEmail":
                     return "dbo.tcdsb_LTO_PagePublish_MultipleSchoolsPrincipalEmail";
                 case "MultipleSChool":
@@ -105,8 +105,8 @@ namespace DataAccess.Repository
                 case "Update": return parameters + parameters2;
                 case "CreateNew":
                 case "New": return parameters;
-                case "Deadline": return "@SchoolYear, @PublishDate, @PositionType";
-                case "DefaultDate": return "@Operate,@AppType,@SchoolYear";// , @DatePublish";
+                case "Deadline": return "@Operate,@PositionType,@SchoolYear,@PublishDate";
+                case "DefaultDate": return "@Operate,@PositionType,@SchoolYear";// , @DatePublish";
                 case "PrincipalsEmail": return "@SchoolYear, @SchoolCode, @PositionID";
                 case "MultipleSChool": return "@UserID, @SchoolYear, @PositionID, @IDs,@SchoolCode,@PositionTitle,@FTE,@Description";
                 case "PostingRounds": return "@SchoolYear, @PositionID";

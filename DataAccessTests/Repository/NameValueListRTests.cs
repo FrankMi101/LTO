@@ -17,8 +17,8 @@ namespace DataAccess.Repository.Tests
         private List2Item parameter = new List2Item() { Operate = "Panel", Para0 = "mif", Para1 = "20192020" };
         private DropDownList myDDLlist = new DropDownList();
  
-          private readonly IAppServices _action = new AppServices(DBConnection.DBSource);
-       // private readonly IAppServices _action = new AppServices("Fake");
+       //   private readonly IAppServices _action = new AppServices(DBConnection.DBSource);
+         private readonly IAppServices _action = new AppServices("Fake");
 
         [TestInitialize]
         public void Setup()

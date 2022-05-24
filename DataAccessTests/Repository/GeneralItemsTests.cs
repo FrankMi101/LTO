@@ -21,8 +21,8 @@ namespace DataAccess.Repository.Tests
         private int _ids = 0;
         private DropDownList myDDLlist = new DropDownList();
 
-        private readonly   IAppServices _action = new AppServices(DBConnection.DBSource, new GeneralItems());
-        //   private readonly IAppServices _action = new AppServices("Fake" , new GeneralItems()));
+       // private readonly   IAppServices _action = new AppServices(new GeneralItems(DBConnection.DBSource));
+            private readonly IAppServices _action = new AppServices( new GeneralItems("Fake"));
 
         [TestInitialize]
         public void Setup()

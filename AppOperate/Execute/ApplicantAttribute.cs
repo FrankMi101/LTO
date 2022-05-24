@@ -11,7 +11,7 @@ namespace AppOperate
 {
    public  class ApplicantAttribute
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new Applicants());
+        private readonly static IAppServices _action = new AppServices( new Applicants(DBConnection.DBSource));
 
         public static string GetSP(string action)
         {

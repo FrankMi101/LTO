@@ -57,6 +57,11 @@ namespace DataAccess.Repository
                     return "dbo.tcdsb_LTO_PageUser_ApplicantResumeCoverLetterRemove" ;
                 case "ResumeCoverLetterName":
                     return "dbo.tcdsb_LTO_PageUser_ApplicantResumeCoverLetterName" ;
+                case "SecurityRole":
+                    return "dbo.tcdsb_LTO_PageUser_RoleAndPermission";
+                case "UserRole":
+                    return "dbo.tcdsb_LTO_PageUser_Role";
+
                 default: return action;
 
             }
@@ -76,6 +81,9 @@ namespace DataAccess.Repository
                 case "ResumeCoverLetterPermission": return parameters3 + ",@SchoolYear,@GrantView";
                 case "ResumeCoverLetterRemove":     return parameters3;
                 case "ResumeCoverLetterName":       return parameters3;
+                case "SecurityRole":                return "@UserID, @Type, @Role";
+                case "UserRole":                    return "@UserID";
+
 
                 default:                            return "";
             }

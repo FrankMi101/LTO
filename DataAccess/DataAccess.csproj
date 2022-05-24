@@ -31,7 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="MyBaseClassC">
+    <Reference Include="MyBaseClassC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLLReferance\MyBaseClassC.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -70,18 +71,34 @@
     <Compile Include="DBConnectionHelper.cs" />
     <Compile Include="GeneralDataAccess.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\PostingAsync\ApplyPostingAsync.cs" />
+    <Compile Include="Repository\PostingAsync\ApproveRequestAsync.cs" />
+    <Compile Include="Repository\PostingAsync\ConfirmHireAsync.cs" />
+    <Compile Include="Repository\PostingAsync\HiredPositionsAsync.cs" />
+    <Compile Include="Repository\PostingAsync\InterviewResultsAsync.cs" />
+    <Compile Include="Repository\PostingAsync\StaffManageAsync.cs" />
+    <Compile Include="Repository\PostingAsync\PublishPostingAsync.cs" />
+    <Compile Include="Repository\PostingAsync\SelectCandidateAsync.cs" />
+    <Compile Include="Repository\PostingAsync\RequestPostingAsync.cs" />
+    <Compile Include="Repository\PostingAsync\GeneralItemsAsync.cs" />
+    <Compile Include="Repository\PostingAsync\IAppBaseAsync.cs" />
     <Compile Include="Repository\IRepostory\IApplicants.cs" />
     <Compile Include="Repository\IRepostory\IApplyPosting.cs" />
     <Compile Include="Repository\IRepostory\IConfirmHire.cs" />
     <Compile Include="Repository\IRepostory\IApproveRequest.cs" />
     <Compile Include="Repository\IRepostory\IHiredPositions.cs" />
     <Compile Include="Repository\IRepostory\IGeneralItems.cs" />
+    <Compile Include="Repository\IRepostory\IAppBase.cs" />
     <Compile Include="Repository\IRepostory\IPostingSummary.cs" />
     <Compile Include="Repository\IRepostory\IPostingCommon.cs" />
+    <Compile Include="Repository\IRepostory\IPostingDate.cs" />
     <Compile Include="Repository\IRepostory\IStaffManage.cs" />
     <Compile Include="Repository\IRepostory\ISelectCandidate.cs" />
     <Compile Include="Repository\IRepostory\IPositionsCheck.cs" />
+    <Compile Include="Repository\PostingAsync\AppBaseAsync.cs" />
+    <Compile Include="Repository\Posting\AppBase.cs" />
     <Compile Include="Repository\Posting\PostingCommon.cs" />
+    <Compile Include="Repository\PostingAsync\PostingDateAsync.cs" />
     <Compile Include="Repository\Posting\PostingSummary.cs" />
     <Compile Include="Repository\Posting\Applicants.cs" />
     <Compile Include="Repository\Posting\HiredPositions.cs" />
@@ -102,6 +119,7 @@
     <Compile Include="Repository\Posting\InterviewResults.cs" />
     <Compile Include="Repository\Posting\PositionsCheck.cs" />
     <Compile Include="Repository\Posting\GeneralItems.cs" />
+    <Compile Include="Repository\Posting\PostingDate.cs" />
     <Compile Include="Repository\Posting\StaffManage.cs" />
     <Compile Include="Repository\Posting\SelectCandidate.cs" />
     <Compile Include="Repository\Posting\ApplyPosting.cs" />

@@ -11,6 +11,13 @@ namespace AppOperate
     {
         public DateFC()
         { }
+        public static string WorkDay(DateTime vDate)
+        {
+            if (vDate.DayOfWeek == DayOfWeek.Saturday) vDate = vDate.AddDays(1);
+            if (vDate.DayOfWeek == DayOfWeek.Sunday) vDate = vDate.AddDays(1);
+
+            return YMD (vDate);
+        }
         public static string Format(DateTime pDate, string pFormat)
         {
             //  string iDate = "05/05/2005";

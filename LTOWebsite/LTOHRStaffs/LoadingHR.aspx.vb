@@ -7,13 +7,14 @@ Partial Class LoadingHR
         If Not Page.IsPostBack Then
 
             Me.Page.Response.Expires = 0
-            Dim pID As String = Page.Request.QueryString("pID")
-            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-            Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-            Dim positionID As String = Page.Request.QueryString("PositionID")
-            Dim schoolname As String = Page.Request.QueryString("SchoolName")
-            Dim postedState As String = Page.Request.QueryString("PostedState")
-            Dim includall As String = Page.Request.QueryString("includAll")
+            Dim pID As String = GetValueFromQS("pID") ' Page.Request.QueryString("pID")
+            Dim schoolyear As String = GetValueFromQS("SchoolYear")  ' Page.Request.QueryString("SchoolYear")
+            Dim schoolcode As String = GetValueFromQS("SchoolCode")  'Page.Request.QueryString("SchoolCode")
+            Dim positionID As String = GetValueFromQS("PositionID")  'Page.Request.QueryString("PositionID")
+            Dim schoolname As String = GetValueFromQS("SchoolName")  'Page.Request.QueryString("SchoolName")
+            Dim postedState As String = GetValueFromQS("PostedState")  'Page.Request.QueryString("PostedState")
+            Dim includall As String = GetValueFromQS("includAll")  'Page.Request.QueryString("includAll")
+
             Select Case pID
                 Case "W"
                     Me.PageURL.HRef = "Welcome.html"'  WelcomePage.aspx"
@@ -51,4 +52,7 @@ Partial Class LoadingHR
 
         End If
     End Sub
+    Private Function GetValueFromQS(ByVal key As String) As String
+        Return BasePage.GetValueFromQS(Page, key)
+    End Function
 End Class

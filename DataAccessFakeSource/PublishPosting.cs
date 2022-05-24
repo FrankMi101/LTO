@@ -9,7 +9,7 @@ namespace MyFake
 {
     public class PublishPosting<T>
     {
-        public static List<T> DataList(string spName, string action, object para)
+        public static List<T> ListData(string spName, string action, object para)
         {
             switch (action)
             {
@@ -21,22 +21,20 @@ namespace MyFake
             }
             return null;
         }
-        public static T DataValue(string spName, string action, object para)
+        public static T ValueData(string spName, string action, object para)
         {
             switch (action)
             {
                 case "PostingCycle": return (T)new object();
-                case "Deadline":
-                    var pDate = GetValueFromObj.Value("PublishDate", para);
-                    if (pDate == "2022/03/06")
-                        return (T)Convert.ChangeType("Invalid Date", typeof(T));
-                    return  (T)Convert.ChangeType("2021/03/09", typeof(T));
-                    break;
+                case "Deadline": return PublishDeadline<T>(para);
+                case "PublishDate": return PublishDate<T>(para);
+                case "PostingDate": return PublishDate<T>(para);
                 default:
-                    break;
+                    return CommonActions.ActionResult<T>(action);
             }
-            return (T)new object();
+            
         }
+ 
 
         private static List<T> PublishPositionbySchool(object para)
         {
@@ -49,10 +47,10 @@ namespace MyFake
                    SchoolCode = GetValueFromObj.Value("SearchValue1",para),
                    PositionType = GetValueFromObj.Value("PositionType",para),
                    Comments ="Unit Test for get Published position"
-               } 
+               }
            };
- 
-            return position.OfType<T>().ToList();  
+
+            return position.OfType<T>().ToList();
         }
         private static List<T> PublishPositionbyByID(object para)
         {
@@ -74,18 +72,47 @@ namespace MyFake
         }
         private static List<T> PublishPositionDefaultDate(object para)
         {
-            var position = new List<LTODefalutDate>()
+            var dDate = new List<LTODefalutDate>()
            { new LTODefalutDate()
                {
                    StartDate = new DateTime(2021, 9, 3),
                    EndDate=  new DateTime(2022, 6, 30),
-                   DatePublish =  DateTime.Today, 
+                   DatePublish =  DateTime.Today,
                    DateApplyOpen = new DateTime(2022, 3, 21),
                    DateApplyClose = new DateTime(2022, 3, 23),
                }
            };
 
-            return position.OfType<T>().ToList();
+            var rList = dDate.OfType<T>().ToList();
+            return rList;
         }
+        private static T PublishDeadline<T>(object para)
+        {
+            var rVal = "";
+            var vDate = DateFC.YMD(GetValueFromObj.Value("PublishDate", para));
+            vDate = vDate.AddDays(2);
+            if (vDate.DayOfWeek == DayOfWeek.Saturday) vDate = vDate.AddDays(1); 
+
+            if (vDate.DayOfWeek == DayOfWeek.Sunday) vDate = vDate.AddDays(1);
+
+            vDate = DateFC.WorkDay(vDate);
+
+            rVal = DateFC.YMD(vDate, "/");
+
+            return (T)Convert.ChangeType(rVal, typeof(T));
+        }
+
+        private static T PublishDate<T>(object para)
+        {
+            var rVal = "";
+            var vDate = DateFC.YMD(GetValueFromObj.Value("PublishDate", para));
+
+            if (vDate.DayOfWeek == DayOfWeek.Saturday) rVal = "Invalid Date";
+            else if (vDate.DayOfWeek == DayOfWeek.Sunday) rVal = "Invalid Date";
+            else   rVal = DateFC.YMD(vDate, "/");
+
+            return (T)Convert.ChangeType(rVal, typeof(T));
+        }
+
     }
 }

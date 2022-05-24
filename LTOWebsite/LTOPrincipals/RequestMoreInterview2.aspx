@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="RequestMoreInterview2.aspx.vb" Inherits="RequestMoreInterview2" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="RequestMoreInterview2.aspx.vb" Inherits="RequestMoreInterview2"  EnableTheming="true"  %>
 
 <!DOCTYPE html>
 
@@ -7,6 +7,8 @@
     <title>Apply Position</title>
     <base target="_self" />
     <meta http-equiv="Pragma" content="No-cache" />
+        <link href="../Styles/DetailsPage.css" rel="stylesheet" type="text/css" />
+
     <style type="text/css">
         body {
             height: 100%;
@@ -92,23 +94,25 @@
 
                 <tr>
                     <td>Posting Number:</td>
-                    <td>
+                    <td style="text-align:left">
                         <asp:HiddenField ID="TextPositionID" runat="server" />
-                        <asp:TextBox ID="TextPostingNum" runat="server" BackColor="Transparent" Height="16px" Width="50px"></asp:TextBox>
-                        <asp:TextBox ID="TextType" runat="server" BackColor="Transparent" Height="16px" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="TextPostingNum" runat="server" BackColor="Transparent" width="70px" ></asp:TextBox>
+                        <asp:TextBox ID="TextType" runat="server" BackColor="Transparent"   Width="25px"  ></asp:TextBox>
 
                     </td>
-                    <td class="midtitle">Status:</td>
+                    <td class="midtitle">
+                        
+                        Status:</td>
                     <td>
-                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="50px"></asp:TextBox>
+                        <asp:TextBox ID="TextStatus" runat="server" BackColor="Transparent" Height="18px" Width="50px"  ></asp:TextBox>
 
                     </td>
                     <td class="midtitle">School Area:</td>
                     <td colspan="2">
-                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px"></asp:TextBox>
+                        <asp:TextBox ID="TextArea" runat="server" BackColor="Transparent" Height="20px" Width="120px" ></asp:TextBox>
                     </td>
                     <td>
-                        <asp:TextBox ID="TextOwner" runat="server" BackColor="Transparent" Height="16px" Width="50px"></asp:TextBox></td>
+                        <asp:TextBox ID="TextOwner" runat="server" BackColor="Transparent" Height="16px" Width="50px"  ></asp:TextBox></td>
 
                 </tr>
 
@@ -185,9 +189,9 @@
                 <tr>
                     <td>Deadline to Apply:</td>
                     <td>
-                        <asp:TextBox ID="TextApplyEndDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox></td>
+                        <asp:TextBox ID="TextApplyEndDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox> </td>
 
-                    <td class="midtitle">Start Date:</td>
+                    <td class="midtitle">StartDate:</td>
                     <td>
                         <asp:TextBox ID="TextStartDate" runat="server" BackColor="Transparent" Width="80px"></asp:TextBox>
 

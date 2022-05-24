@@ -311,7 +311,7 @@ namespace AppOperate.Tests
             var parameter = new
             {
                 Operate = action,
-                AppType = "LTO",
+                PositionType = "LTO",
                 SchoolYear = schoolyear,
                 DatePublish =  "2018/12/10"
             };

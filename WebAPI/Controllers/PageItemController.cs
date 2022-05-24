@@ -17,18 +17,19 @@ namespace WebAPI.Controllers
     {
         private readonly string  _dataSource = DataSource.Type();
         private readonly static string _uri = DataSource.dbSP();
-        static IAppServices _action = new AppServices(DBConnection.DBSource);
+
+        static IAppServices _appService = new AppServices(DBConnection.DBSource);
 
 
         // GET: api/UserGroup
         [HttpGet]
-        [Route("api/PageItem/{Operate}/{category}/{itemCode}/{action}")]
-        public IHttpActionResult Get(string operate, string category, string itemcode,string action)
+        [Route("api/PageItem/{Operate}/{category}/{itemCode}")]
+        public IHttpActionResult Get(string operate, string category, string itemcode)
         {
-            var para = new { Operate = operate, Category = category, ItemCode = itemcode,Action = action };
+            var para = new { Operate = operate, Category = category, ItemCode = itemcode};
 
 
-            var result = _action.PageItem.ValueString(_dataSource, _uri, para);
+            var result = _appService.PageItem.ValueString(_dataSource, _uri, para);
 
 
             return CheckActionResult(result);

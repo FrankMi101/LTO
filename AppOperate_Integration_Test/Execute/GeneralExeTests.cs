@@ -536,7 +536,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "Kurnik,Cassandra";
-            int expect2 = 204;
+            int expect2 = 203;
             string intitalValue = "00045299"; // "kurnikc";
             object datasourceList = GeneralExe.TeachersList(myAnonymousParametere);
             AssemblingList.SetLists(testDDLControl, datasourceList, "CPNum", "TeacherName", intitalValue);
@@ -564,7 +564,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "Kurnik,Cassandra";
-            int expect2 = 204;
+            int expect2 = 203;
             string intitalValue = "00045299"; // "kurnikc";
             object datasourceList = GeneralExe<TeachersListByCategory>.myListOfT(action, myAnonymousParametere);
             AssemblingList.SetLists(testDDLControl, datasourceList, "CPNum", "TeacherName", intitalValue);

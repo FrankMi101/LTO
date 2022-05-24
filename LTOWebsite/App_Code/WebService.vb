@@ -84,10 +84,11 @@ Public Class WebService
             '  Dim myDate As String = TCDSB.Student.PositionDetails.GetDeadlineDate2("mif", schoolyear, datepublish)
 
             Dim SP As String = CommonExcute.SPNameAndParameters("", "Publish", "Deadline")
-            Dim parameter As New DeadlineDate With {
+            Dim parameter = New With {
+                .Operate = "Deadline",
+                .PositionType = WorkingProfile.ApplicationType,
                 .SchoolYear = schoolyear,
-                .PublishDate = datepublish,
-                .PositionType = WorkingProfile.ApplicationType
+                .PublishDate = datepublish
             }
 
             Dim myDate As String = PublishPositionExe(Of DeadlineDate).Deadline(parameter) '  CommonExcute(Of DeadlineDate).GeneralValue(SP, parameter)

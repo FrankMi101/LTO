@@ -17,7 +17,7 @@ namespace WebAPI.Controllers
     public class InterviewOutComeController : ApiController
     {
         private readonly static string _dataSource = DataSource.Type();
-        static IAppServices _action = new AppServices(DBConnection.DBSource, new InterviewResults());
+        private readonly IAppServices _appService = new AppServices(new InterviewResults(_dataSource));
 
         [HttpPost]
         [Route("api/InterviewOutCome")]
@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
             if (checkResult.PositionID == "" || checkResult.CPNum == "")
                 return BadRequest("Invalid Check Action"); // return Request.CreateResponse(HttpStatusCode.BadRequest, "Group ID Can not be blank");
 
-            var result = _action.AppOne.CommonAction("OutCome", checkResult);
+            var result = _appService.AppOne.CommonAction("OutCome", checkResult);
 
             return CheckActionResult(result);
 

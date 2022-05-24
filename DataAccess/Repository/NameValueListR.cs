@@ -25,7 +25,7 @@ namespace DataAccess.Repository
             if (action == "") return "dbo.tcdsb_LTO_PageGeneral_List";
             if (action == "School") return "dbo.tcdsb_LTO_PageGeneral_ListSchools";
             if (action == "SearchList") return "dbo.tcdsb_LTO_PageGeneral_ListSearch";
-            if (action == "SchoolPrincipal") return "dbo.tcdsb_LTO_ListSchoolPrincipalsNew";
+            if (action == "SchoolPrincipal") return "dbo.tcdsb_LTO_PageGeneral_PrincipalList";// "dbo.tcdsb_LTO_ListSchoolPrincipalsNew";
             return action;
         }
      

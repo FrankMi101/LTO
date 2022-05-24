@@ -1,5 +1,6 @@
 ﻿'Imports System.Data
 'Imports System.Data.SqlClient
+Imports System.Threading.Tasks
 Imports AppOperate
 Imports ClassLibrary
 
@@ -170,9 +171,23 @@ Partial Class RequestPositionList2
     End Sub
     Private Sub BindGridData(ByVal goDatabase As Boolean)
         Try
-            Me.GridView1.DataSource = getDataSourceNew(Of PositionListPublish)() '.OfType(Of PositionListPublish)
-            ' Me.GridView1.DataSource = getFilteredDataSetbyLinq() 'this function works
+
+            Me.GridView1.DataSource = getDataSourceNew(Of PositionListPublish)()
             Me.GridView1.DataBind()
+
+        Catch ex As Exception
+            ShowMessage.Exception(ex, Me.Page, "Bind data action")
+        End Try
+    End Sub
+    Private Async Sub BindGridDataAsync(ByVal goDatabase As Boolean)
+        Try
+
+            Await Task.Run(
+              Sub()
+
+                  Me.GridView1.DataSource = getDataSourceNewAsync(Of PositionListPublish)() '.OfType(Of PositionListPublish)
+                  Me.GridView1.DataBind()
+              End Sub)
 
         Catch ex As Exception
             ShowMessage.Exception(ex, Me.Page, "Bind data action")
@@ -266,6 +281,37 @@ Partial Class RequestPositionList2
             Me.btnNewOpen.ToolTip = PublishPositionExe(Of String).SpName("New")
         End If
         Return sList
+    End Function
+    Private Async Function getDataSourceNewAsync(Of T)() As Threading.Tasks.Task(Of List(Of T))
+        Dim searchby As String = Me.ddlSearchby.SelectedValue
+        Dim searchValue1 As String = getSeracherValue() 'Me.ddlSearchbyValue.SelectedValue
+        Dim searchValue2 As String = getSeracherDate2()
+        WorkingProfile.SearchBy = searchby
+        WorkingProfile.SearchByValue = searchValue1
+        WorkingProfile.SearchByValue2 = searchValue2
+
+
+        Dim para = New With
+            {
+            .Operate = "Page",
+            .UserID = User.Identity.Name,
+            .SchoolYear = Me.ddlSchoolYear.SelectedValue,
+            .PositionType = Me.ddlappType.SelectedValue,
+            .Panel = "00",
+            .Status = Me.ddlOpenClose.SelectedValue,
+            .searchby = searchby,
+            .searchValue1 = searchValue1,
+            .searchValue2 = searchValue2
+            }
+        '   Dim para = CommonParameter.GetParameters("Page", User.Identity.Name, Me.ddlSchoolYear.SelectedValue, Me.ddlappType.SelectedValue, "00", Me.ddlOpenClose.SelectedValue, searchby, searchValue1, searchValue2)
+        If User.Identity.Name = "mif" Then
+            Me.lblSuperArea.ToolTip = PublishPositionExe(Of String).SpName("Positions")
+            Me.btnNewOpen.ToolTip = PublishPositionExe(Of String).SpName("New")
+        End If
+
+        'Dim sList = PublishPositionExe(Of T).Positions(para)  ' CommonExcute(Of PositionListPublish).GeneralList(SP, parameters) '  PositionListPublish).GeneralList(SP, parameters)
+        'Return sList
+        Return Await PublishPositionExeAsync(Of T).Positions(para)
     End Function
 
     Private Function getDataSource() As List(Of PositionListPublish) ' 

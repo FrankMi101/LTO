@@ -141,7 +141,7 @@
                     <img src="../images/excel.bmp" />
                     <asp:LinkButton ID="btnExcel" runat="server" Width="170px">Export the List to EXCEL </asp:LinkButton>
 
-                    <a id="A2" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">LTO Teacher List</a>
+                    <a id="A2" visible="false" runat="server" href='https://webapp.tcdsb.org/WebDocuments/Documents/LTO/Long Term Occasional Teachers List.pdf' target="_blank">OT Roster List</a>
                     <asp:HiddenField ID="HiddenFieldUserRole" runat="server" />
                     <asp:HiddenField ID="HiddenFieldPageSource" runat="server" />
 

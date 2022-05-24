@@ -13,10 +13,9 @@ namespace DataAccess.Repository.Tests
     public class RequestPostingTests
     {
          private int _ids = 0;
-        private readonly IAppServices _action = new AppServices(DBConnection.DBSource, new RequestPosting());
-
-      //  private readonly IAppServices _action = new AppServices(DBConnection.DBSource);
-      // private readonly IAppServices _action = new AppServices("Fake");
+       
+        private readonly IAppServices _action = new AppServices( new RequestPosting(DBConnection.DBSource));
+        //  private readonly IAppServices _action = new AppServices(new RequestPosting("Fake"));
 
         [TestMethod()]
         public void RequestPosting_Positions_Action_ReturnAllRequestListbyPara_Test()
@@ -30,7 +29,7 @@ namespace DataAccess.Repository.Tests
                 SchoolYear = "20212022",
                 SchoolCode ="0290"
             };
-            int expect = 15;
+            int expect = 17;
 
             //Act
             var positions = _action.AppOne.CommonList<PositionRequesting>(action, para);
@@ -43,7 +42,7 @@ namespace DataAccess.Repository.Tests
         public void RequestPosting_Position_Action_ReturnPostionbyID_Test()
         {
             //Arrange
-            string action = "Positions";
+            string action = "Position";
             var para = new
             {
                 SchoolYear = "20212022",

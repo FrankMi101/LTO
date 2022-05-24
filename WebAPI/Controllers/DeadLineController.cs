@@ -8,34 +8,46 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using WebAPI.Models; 
+using WebAPI.Models;
 using DataAccess;
+using DataAccess.Repository;
 
 namespace WebAPI.Controllers
 {
-    [AllowAnonymous]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
-    public class DeadLineController : ApiController
+    public class DeadlineController : ApiController
     {
-        private   static string _dataSource = DataSource.Source();
+        private static string _dataSource = DataSource.Source();
         private readonly static string _uri = DataSource.dbSP();
 
-        static IAppServices _action = new AppServices(DBConnection.DBSource); 
- 
- 
-        [HttpGet]
-        [Route("api/DeadLineDate/{SchoolYear}/{PublishDate}/{PositionType}")]
-        public IHttpActionResult Get(string schoolyear, string publishDate, string positionType)
+        private readonly IAppServices _appService = new AppServices(new PostingDate(_dataSource));
+
+
+         public IEnumerable<string> Get()
         {
-            var para = new { SchoolYear = schoolyear, PublishDate = publishDate, PositionType = positionType };
- 
-
-            var result = _action.AppDeadLine.ValueString(_dataSource, _uri, para);
-
-
-            return CheckActionResult(result);
+            return new string[] { "value1", "value2" };
         }
- 
+
+         public IHttpActionResult Get(string Operate, string PositionType, string SchoolYear)
+        {
+            var para = new { Operate, PositionType, SchoolYear };
+
+            var result = _appService.AppOne.CommonObject<LTODefalutDate>(Operate, para);
+
+
+            return CheckGetResult(result);
+        }
+
+         public IHttpActionResult Get(string Operate, string PositionType, string SchoolYear, string PublishDate)
+        {
+            var para = new { Operate, PositionType, SchoolYear, PublishDate };
+
+            var result = _appService.AppOne.CommonAction(Operate, para);
+
+
+            return   CheckActionResult(result);
+        }
+
         private IHttpActionResult CheckActionResult(string result)
         {
             if (result == "Failed")
@@ -47,5 +59,13 @@ namespace WebAPI.Controllers
         {
             return Request.CreateResponse(statusCode, message);
         }
+        private IHttpActionResult CheckGetResult(LTODefalutDate result)
+        {
+            if (result == null)
+                return NotFound();
+            else
+                return Ok(result);
+        }
+
     }
 }

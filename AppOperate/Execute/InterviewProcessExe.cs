@@ -12,7 +12,7 @@ namespace AppOperate
 {
     public class InterviewProcessExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new InterviewResults());
+        private readonly static IAppServices _action = new AppServices( new InterviewResults(DBConnection.DBSource));
 
         public InterviewProcessExe()
         {

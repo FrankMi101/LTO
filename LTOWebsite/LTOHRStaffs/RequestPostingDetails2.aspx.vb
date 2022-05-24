@@ -190,7 +190,7 @@ Partial Class RequestPostingDetails2
             setStartandEndDate()
 
         Catch ex As Exception
-
+            Throw New Exception(ex.Message)
         End Try
     End Sub
     Private Function ConvertFTE(ByVal value As Object) As String
@@ -326,6 +326,13 @@ Partial Class RequestPostingDetails2
                 .RequestSource = Me.TextRequestSource.Text
                 .QualificationCode = hfQualificationCode.Value
                 .Qualification = lblQualification.Value
+
+                .FTE = getFTE()
+                .FTEPanel = ddlFTEPanel.SelectedValue
+                .Owner = ddlHRStaff.SelectedValue
+                .PositionLevel = ddlPositionlevel.SelectedValue
+                .ReplaceTeacherID = ddlTeacherReplaced.SelectedValue
+
             End With
             ' will create a new record in Postiion_Published table  and get PositionID as result
             '   Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
@@ -590,21 +597,23 @@ Partial Class RequestPostingDetails2
             Dim postingnum As String = hfPostingNumber.Value
             If eMailAction = "Reject" Then postingnum = Me.TextRequestID.Text
             eMailFile = Replace(eMailFile, "[PostingNumberSTR]", postingnum)
-            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", "1")
+            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", "")
 
 
             eMailFile = Replace(eMailFile, "[timeTable]", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "[multiSchool]", ViewState("multiSchool"))
 
-            If _who = "Union" Then
-                eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", "")
-                eMailFile = Replace(eMailFile, "[PIDSTR]", "")
+            'If _who = "Union" Then
+            '    eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", Me.ddlTeacherReplaced.SelectedItem.Text)
+            '    eMailFile = Replace(eMailFile, "[PIDSTR]", "")
 
-            Else
-                eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", Me.ddlTeacherReplaced.SelectedItem.Text)
-                eMailFile = Replace(eMailFile, "[PIDSTR]", Me.ddlTeacherReplaced.SelectedItem.Value)
+            'Else
+            '    eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", Me.ddlTeacherReplaced.SelectedItem.Text)
+            '    eMailFile = Replace(eMailFile, "[PIDSTR]", Me.ddlTeacherReplaced.SelectedItem.Value)
 
-            End If
+            'End If
+            eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", Me.ddlTeacherReplaced.SelectedItem.Text)
+            eMailFile = Replace(eMailFile, "[PIDSTR]", Me.ddlTeacherReplaced.SelectedItem.Value)
 
 
         Catch ex As Exception

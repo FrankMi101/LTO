@@ -7,7 +7,7 @@ Partial Class LoadingT
         If Not Page.IsPostBack Then
 
             Me.Page.Response.Expires = 0
-            Dim pID As String = Page.Request.QueryString("pID")
+            Dim pID As String = GetValueFromQS("pID") ' Page.Request.QueryString("pID")
 
             Dim appID As String = WorkingProfile.ApplicationType
 
@@ -38,22 +38,18 @@ Partial Class LoadingT
         Dim cpNum As String = Page.Request.QueryString("CPNum")
         If WebConfigValue.getValuebyKey("SiteClose") = "LTO" Then
             pID = "A"
-
         End If
         If WorkingProfile.UserRole = "New" Then
             Me.PageURL.HRef = "LoadingNotInLTOList.aspx"
         Else
+            Dim schoolyear As String = GetValueFromQS("SchoolYear")  ' Page.Request.QueryString("SchoolYear")
+            Dim schoolcode As String = GetValueFromQS("SchoolCode")  'Page.Request.QueryString("SchoolCode")
+            Dim positionID As String = GetValueFromQS("PositionID")  'Page.Request.QueryString("PositionID")
+            Dim schoolname As String = GetValueFromQS("SchoolName")  'Page.Request.QueryString("SchoolName")
+
             If pID = "1" Then
-                Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-                Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-                Dim positionID As String = Page.Request.QueryString("PositionID")
-                Dim schoolname As String = Page.Request.QueryString("SchoolName")
                 Me.PageURL.HRef = "ApplyPosition.aspx?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&SchoolName=" + schoolname + "&PositionID=" + positionID
             ElseIf pID = "2" Then
-                Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-                Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-                Dim positionID As String = Page.Request.QueryString("PositionID")
-                Dim schoolname As String = Page.Request.QueryString("SchoolName")
                 Me.PageURL.HRef = "SchoolLocationMap.aspx?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&SchoolName=" + schoolname + "&PositionID=" + positionID
             ElseIf pID = "3" Then
                 If WorkingProfile.UserRole = "Pending" Then
@@ -74,4 +70,7 @@ Partial Class LoadingT
         End If
 
     End Sub
+    Private Function GetValueFromQS(ByVal key As String) As String
+        Return BasePage.GetValueFromQS(Page, key)
+    End Function
 End Class

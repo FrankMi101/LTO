@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DataAccess.Repository
 {
@@ -19,6 +20,10 @@ namespace DataAccess.Repository
 
         string SpName(string action, object parameter);
     }
+
+   
+     
+
 
 
     public interface IPostingBase<T>

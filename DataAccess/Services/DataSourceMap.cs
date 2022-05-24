@@ -28,7 +28,26 @@ namespace DataAccess
 
         }
     }
+    public class DataSourceMapAsync
+    {
+        private static readonly string _dbSource = "SQL";
 
+        public static IDataOperateServiceAsync DBSource()
+        {
+            return DBSource(_dbSource);
+        }
+        public static IDataOperateServiceAsync DBSource(string dbSource)
+        {
+            switch (dbSource)
+            {
+                case "SQL":
+                    return new DataOperateServiceAsyncSQL(); 
+                default:
+                    return new DataOperateServiceAsyncSQL();
+            }
+
+        }
+    }
     public class DataSourceMap<T>
     {
         private static readonly string _dbSource = "SQL";

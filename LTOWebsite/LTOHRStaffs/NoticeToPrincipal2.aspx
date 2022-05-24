@@ -213,7 +213,10 @@
                         <div id="interviewCandidate" runat="server" style="height: 100px; width: 100%; overflow: auto; display: block;"></div>
                     </td>
                 </tr>
-
+                <tr><td colspan="2">
+                    <div id="Applicantslist" runat="server" style="height: 20px; width: 100%; overflow: auto; display: none;"></div>
+                    
+                    </td></tr>
                 <tr>
 
                     <td colspan="4" style="text-align: center;">

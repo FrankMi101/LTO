@@ -165,7 +165,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
-    <Compile Include="Controllers\DeadLineController.cs" />
+    <Compile Include="Controllers\DeadlineController.cs" />
     <Compile Include="Controllers\InterviewSelectController.cs" />
     <Compile Include="Controllers\InterviewOutComeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

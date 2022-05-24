@@ -179,11 +179,11 @@
                     <asp:BoundField DataField="EndDate" HeaderText="Assignment End Date">
                         <ItemStyle Width="4%" />
                     </asp:BoundField>
-                    <asp:BoundField DataField="SchoolName" HeaderText="School Name">
+                  <%--  <asp:BoundField DataField="SchoolName" HeaderText="School Name">
                         <ItemStyle Width="12%" />
-                    </asp:BoundField>
+                    </asp:BoundField>--%>
                     <asp:BoundField DataField="PositionTitle" HeaderText="Position Title">
-                        <ItemStyle Width="10%" />
+                        <ItemStyle Width="15%" />
                     </asp:BoundField>
                     <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                         <ItemStyle Width="8%" />
@@ -201,10 +201,10 @@
 
 
                     <asp:BoundField DataField="Description" HeaderText="Position Decription">
-                        <ItemStyle Width="10%" HorizontalAlign="center" />
+                        <ItemStyle Width="15%" HorizontalAlign="center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="Comments" HeaderText="Request Comments">
-                        <ItemStyle Width="8%" HorizontalAlign="center" />
+                        <ItemStyle Width="10%" HorizontalAlign="center" />
                     </asp:BoundField>
                     <asp:BoundField DataField="FTE" HeaderText="BTC">
                         <ItemStyle Width="3%" HorizontalAlign="center" />

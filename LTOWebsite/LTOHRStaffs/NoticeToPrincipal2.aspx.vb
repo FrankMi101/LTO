@@ -102,8 +102,8 @@ Partial Class NoticeToPrincipal2
                 Me.TextPositionDescription.Style.Add("height", "25px")
             End If
 
-            Dim teacherList As String = getTeacherList()
-            Me.interviewCandidate.InnerHtml = teacherList
+            Me.interviewCandidate.InnerHtml = GetTeacherList("InterviewCandidate")
+            Me.Applicantslist.InnerHtml = GetTeacherList("ApplicantsList")
 
 
         Catch ex As Exception
@@ -128,7 +128,7 @@ Partial Class NoticeToPrincipal2
         End Try
 
     End Sub
-    Private Function getTeacherList() As String
+    Private Function GetTeacherList(ByVal action As String) As String
         Try
 
 
@@ -139,7 +139,7 @@ Partial Class NoticeToPrincipal2
 
             Dim parameter As New PositionPublish()
             With parameter
-                .Operate = "InterviewCandidate"
+                .Operate = action
                 .SchoolYear = schoolyear
                 .PositionID = positionID
                 .PositionType = Me.hfPositionType.Value
@@ -151,14 +151,17 @@ Partial Class NoticeToPrincipal2
             End If
             Dim teacherList As List(Of CandidateListNotice) = SelectCandidateExe.NoticeCandidates(parameter) ' SelectCandidateExe.NoticeCandidates(parameter) ' CommonListExecute.NoticeInterviewCandidate(parameter) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
             Dim mySTR As String = ""
-
+            Dim interviewSelectColumn As String = ""
             '  Dim ds As DataSet = PositionDetails.NoticeToPrincipal(userid, schoolyear, positionID)
 
             If IsNothing(teacherList) AndAlso teacherList.Count = 0 Then
                 mySTR = "<H3> No selected interview candidate yet ! </H3> "
             Else
                 Dim x As Integer = 0
-                mySTR = "<table border='1' ><tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td></tr>"
+                interviewSelectColumn = IIf(action = "ApplicantsList", "<td>Selected</td>", "")
+
+                mySTR = "<table border='1' ><tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td>" + interviewSelectColumn + "</tr>"
+
                 Try
                     For Each item In teacherList
                         Dim sName As String = item.TeacherName
@@ -166,7 +169,11 @@ Partial Class NoticeToPrincipal2
                         Dim Email As String = item.Email
                         Dim HiredDate As String = item.HiredDate
                         Dim ApplyDate As String = item.ApplyDate
-                        Dim rStr As String = "<tr><td>" + sName + "</td><td>" + Phone + "</td> <td>" + Email + "</td><td>" + HiredDate + "</td><td>" + ApplyDate + "</td></tr>"
+                        Dim selected As String = item.InterViewSelected
+                        Dim OpenDate As String = item.DateApplyOpen
+                        Dim CloseDate As String = item.DateApplyClose
+                        interviewSelectColumn = IIf(action = "ApplicantsList", "<td>" + selected + " </td>", "")
+                        Dim rStr As String = "<tr><td>" + sName + "</td><td>" + Phone + "</td> <td>" + Email + "</td><td>" + HiredDate + "</td><td>" + ApplyDate + "</td>" + interviewSelectColumn + "</tr>"
                         mySTR = mySTR + rStr
 
                     Next
@@ -226,7 +233,7 @@ Partial Class NoticeToPrincipal2
             .Comments = Me.TextComments.Text
         End With
         Dim result As String = SelectCandidateExe.NoticeUpdate(interviewNotice) ' CommonOperationExcute.InterviewNotice(interviewNotice, "Send Notice ToPrincipal")
-        CreatSaveMessage(result, "Sent interview list email notice to Principal")
+        CreatSaveMessage(result, "Sent interview list email notice To Principal")
         sendemailNotification()
     End Sub
     Private Sub CreatSaveMessage(ByVal strMessage As String, ByVal action As String)
@@ -236,7 +243,7 @@ Partial Class NoticeToPrincipal2
             Dim strScript As String = "CallBackReloadParent(" + """" + action + """,""" + strMessage + """);"
 
 
-            '   window.alert(action + " this position is " + resutl);
+            '   window.alert(action + " this position Is " + resutl);
             '  ***  No Ajax
             ClientScript.RegisterStartupScript(GetType(String), "_savemessagescript", strScript, True)
 
@@ -315,7 +322,7 @@ Partial Class NoticeToPrincipal2
 
     Private Sub SMTPMailCall(ByVal _who As String, ByVal action As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal mSubject As String, ByVal mTemplateFile As String)
         Dim _AditionInfo As String = ""
-        '  Dim _mSubject As String = "Interview Candidate list for " + TextPositionTitle.Text + " Notification"
+        '  Dim _mSubject As String = "Interview Candidate list For " + TextPositionTitle.Text + " Notification"
         Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
         Dim publicFolder As String = WebConfigValue.getValuebyKey("LTOadminFolder")
         _mBcc = _mBcc + publicFolder
@@ -372,46 +379,63 @@ Partial Class NoticeToPrincipal2
         Try
 
             eMailFile = Replace(eMailFile, "[PostingNumberSTR]", Me.TextPostingNum.Text)
-            eMailFile = Replace(eMailFile, "[PrincipalNameSTR]", ddlSchoolPrincipal.SelectedItem.Text)
             eMailFile = Replace(eMailFile, "[DateTimeSTR]", _Datetime)
             eMailFile = Replace(eMailFile, "[SchoolNameSTR]", TextSchool.Text)
             eMailFile = Replace(eMailFile, "[PositionTitleSTR]", TextPositionTitle.Text)
             eMailFile = Replace(eMailFile, "[PositionStartDateSTR]", TextStartDate.Text)
             eMailFile = Replace(eMailFile, "[PositionEndDateSTR]", Me.TextEndDate.Text)
-            eMailFile = Replace(eMailFile, "[InterviewCandidateListSTR]", Me.interviewCandidate.InnerHtml)
             eMailFile = Replace(eMailFile, "[PositionPostedSTR]", Me.TextPostedDate.Text + " (" + Me.lblPostingCycle.Text + ")")
             eMailFile = Replace(eMailFile, "[BTCSTR]", Me.lblFTE.Text)
             eMailFile = Replace(eMailFile, "[PositionDescriptionSTR]", Me.TextPositionDescription.Text)
             eMailFile = Replace(eMailFile, "[PositionOwnerSTR]", contact)
-            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", Me.lblPostingCycle.Text)
+            eMailFile = Replace(eMailFile, "[PostingCycleSTR]", "") ' Me.lblPostingCycle.Text)
             eMailFile = Replace(eMailFile, "[timeTable]", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "[multiSchool]", ViewState("multiSchool"))
-            eMailFile = Replace(eMailFile, "[HRCommentsSTR]", Me.TextComments.Text)
 
             Dim TeacherbeReplaceSection As String = ""
+            Dim HRComments As String = ""
+            Dim GreetingPrinciapl As String = ""
             Dim hrefLink As String = ""
+            Dim PostingOpenDate As String = ""
+            Dim PostingCloseDate As String = ""
+            Dim CanadidateList As String = ""
 
             If _who = "Staff" Then
+                GreetingPrinciapl = "Dear " + ddlSchoolPrincipal.SelectedItem.Text + " :"
+                ' HRComments = "<tr><td>HR Comments: </td><td colspan='5'>" + Me.TextComments.Text + " </td></tr>"
+                CanadidateList = Me.interviewCandidate.InnerHtml
 
-                TeacherbeReplaceSection = " <tr> <td>Teacher be replaced:</td><td> " + Me.TextTeacherReplaced.Text + " </td>"
-                TeacherbeReplaceSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.TextTeacherPersonID.Text + "</td></tr>"
-
-                Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-                Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-                Dim positionID As String = Page.Request.QueryString("PositionID")
-                Dim appType As String = TextType.Text
-                Dim schoolName As String = Replace(TextSchool.Text, "'", "`")
-                Dim mobileSite As String = WebConfigValue.getValuebyKey("MobileSiteGo")
-                hrefLink = "<a href='" + mobileSite + "?pID=InterviewTeam&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&appType=" + appType + "&SchoolName=" + schoolName + "'>" + "Setup Interview team for this job interview" + "</a>"
-
+            Else
+                CanadidateList = Me.Applicantslist.InnerHtml
+                PostingOpenDate = "Posting Open Date:" + Me.TextPostedDate.Text
+                PostingCloseDate = "Posting Close Date:" + Me.TextApplyEndDate.Text
             End If
+
+            TeacherbeReplaceSection = " <tr> <td>Teacher be replaced:</td><td> " + Me.TextTeacherReplaced.Text + " </td>"
+            TeacherbeReplaceSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.TextTeacherPersonID.Text + "</td></tr>"
+
+            eMailFile = Replace(eMailFile, "[PostingOpenDate]", PostingOpenDate)
+            eMailFile = Replace(eMailFile, "[PostingCloseDate]", PostingCloseDate)
+            eMailFile = Replace(eMailFile, "[PrincipalNameSTR]", GreetingPrinciapl)
+            eMailFile = Replace(eMailFile, "[HRCommentsSTR]", HRComments)
             eMailFile = Replace(eMailFile, "[TeacherBeReplacedSTR]", TeacherbeReplaceSection)
+            eMailFile = Replace(eMailFile, "[InterviewCandidateListSTR]", CanadidateList)
             eMailFile = Replace(eMailFile, "[appicationLinkSTR]", hrefLink)
 
         Catch ex As Exception
             eMailFile = ""
         End Try
         Return eMailFile
+
+    End Function
+    Private Function GetLink() As String
+        Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
+        Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
+        Dim positionID As String = Page.Request.QueryString("PositionID")
+        Dim appType As String = TextType.Text
+        Dim schoolName As String = Replace(TextSchool.Text, "'", "`")
+        Dim mobileSite As String = WebConfigValue.getValuebyKey("MobileSiteGo")
+        Return "<a href='" + mobileSite + "?pID=InterviewTeam&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&appType=" + appType + "&SchoolName=" + schoolName + "'>" + "Setup Interview team for this job interview" + "</a>"
 
     End Function
 End Class

@@ -8,7 +8,7 @@ namespace AppOperate
 {
     public class ConfirmHireExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new ConfirmHire());
+        private readonly static IAppServices _action = new AppServices( new ConfirmHire(DBConnection.DBSource));
 
         public ConfirmHireExe()
         {

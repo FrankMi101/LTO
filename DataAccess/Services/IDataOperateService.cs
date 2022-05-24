@@ -26,4 +26,13 @@ namespace DataAccess
  
         T ValueOfT(string db, string spName, object para);
     }
+    public interface IDataOperateServiceAsync
+    {
+
+        Task<List<T>> ListOfT<T>(string db, string spName, object para);
+
+        Task<T> ObjectOfT<T>(string db, string spName, object para);
+
+        Task<T> ValueOfT<T>(string db, string spName, object para);
+    }
 }

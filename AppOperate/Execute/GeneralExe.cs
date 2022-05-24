@@ -10,7 +10,7 @@ namespace AppOperate
 {
     public class GeneralExe
     {
-        private readonly static IAppServices _action = new AppServices(DBConnection.DBSource, new GeneralItems());
+        private readonly static IAppServices _action = new AppServices( new GeneralItems(DBConnection.DBSource));
 
         public GeneralExe()
         {

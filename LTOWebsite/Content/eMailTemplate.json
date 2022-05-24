@@ -70,7 +70,7 @@
 
     {
       "action": "Notice",
-      "Subject": "Interview Candidate list for PositionTitle Notification",
+      "Subject": "Candidate list for PositionTitle Notification",
       "template": "ConfirmInterviewNotificationLTO.htm"
     },
     {

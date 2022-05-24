@@ -9,7 +9,7 @@ namespace MyFake
 {
     public class ListItems<T>
     {
-        public static List<T> DataList(string spName, string action)
+        public static List<T> ListData(string spName, string action)
         {
             switch (action)
             {
@@ -27,15 +27,16 @@ namespace MyFake
             }
             return null;
         }
-        public static T DataValue(string spName, string action)
+        public static T ValueData(string spName, string action)
         {
             switch (action)
             {
                 case "PostingCycle": return (T)new object();
+                case "Deadline": return (T)new object();
+                case "PublishDate": return (T)new object();
                 default:
-                    break;
+                    return CommonActions.ActionResult<T>(action);
             }
-            return (T)new object();
         }
         private static List<T> PostingCycleList()
         {
