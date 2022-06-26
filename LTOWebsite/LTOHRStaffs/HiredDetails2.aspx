@@ -243,7 +243,7 @@
                          <input runat="server" type="text" id="lblEndDate" size="9" disabled="true" />
                     </td>
                     <td style="text-align: left">
-                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true" Visible="false" />
+                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="false" Visible="false" />
                     </td>
                 </tr>
                 <tr>

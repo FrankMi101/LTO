@@ -206,18 +206,6 @@ Partial Class ApplyPosition2
                 End If
             End If
             Me.LabelNotQualify.Visible = False
-            '  LabelNotQualify.Text = "cFTE=" + Me.hfFTECurrent.Value + " pFTE=" + Me.hfFTEPosition.Value + "cDate =" + Me.LabelCurrentAssignmentStartDate.Text + " to " + Me.LabelCurrentAssignmentEndDate.Text + " pDate=" + Me.TextStartDate.Text + " to " + Me.TextEndDate.Text
-
-
-            ' No Need check on Server side. it will check on javascript
-            'If Me.btnApply.Enabled Then
-            '    If checkApplybyFTE(Me.hfFTECurrent.Value, Me.LabelCurrentAssignmentStartDate.Text, Me.LabelCurrentAssignmentEndDate.Text, Me.hfFTEPosition.Value, Me.TextStartDate.Text, Me.TextEndDate.Text) = "No" Then
-            '        Me.btnApply.Enabled = False
-            '        LabelNotQualify.Text = "This Position FTE or Start Date are conflict with your Current Assignment (FTE=" + Me.hfFTECurrent.Value + " Date:" + Me.LabelCurrentAssignmentStartDate.Text + " to " + Me.LabelCurrentAssignmentEndDate.Text + ")"
-            '        Me.LabelNotQualify.Visible = True
-            '        '  Me.btnApply.Visible = False
-            '    End If
-            'End If
 
 
         Catch ex As Exception
@@ -331,52 +319,31 @@ Partial Class ApplyPosition2
 
         ' Dim mTo As String = mTo 'EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
         ' Dim _mCC As String = ""
-        Dim _mFrom As String = WebConfigValue.getValuebyKey("eMailSender")
+        ' Dim appType As String = Me.hfPositionType.Value
+        ' Dim _mFrom As String = email.FromUser(appType)
+        '    SMTPMailCall(action, teacherName, mTo, "", _mFrom)
 
-        '  If action = "Cancel" Then action = "Rescind"
+
+        Dim position = CurrentPosition()
+        Dim userId As String = User.Identity.Name
+        Dim email = New PostingNotification(position)
+
 
         Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text + " " + Me.btnApply.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-        Dim mBody = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
+
+        Dim myEmail As New EmailNotice2()
+
+        myEmail = email.GetEmailNotice(JsonFile, action, "Applicant", userId)
+        myEmail.EmailTo = mTo
+        myEmail.EmailBody = GetEmailBody(action, teacherName, myEmail.EmailBody)
+
+        SMTPMailCall("Applicant", myEmail)
 
 
-        SMTPMailCall(action, teacherName, mTo, "", _mFrom, mSubject, mBody)
     End Sub
 
-
-    Private Sub SMTPMailCall(ByVal action As String, ByVal teacherName As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal mSubject As String, ByVal mBody As String)
-
-        '  Dim _mSubject As String = "Confirmation for " + Me.TextPositionTitle.Text + " " + Me.btnApply.Text 'position application"
-        '   If Me.HiddenFieldApply.Value = "Cancel" Then _mSubject = "Confirmation for " + _assignment + " position withdrow application"
-
+    Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
         Try
-            Dim eMailFile As String = getEmailfileHTML(action, teacherName, mBody)
-
-
-            Dim myEmail As New EmailNotice2()
-            With myEmail
-                .UserID = User.Identity.Name
-                .SchoolYear = paraForApply.SchoolYear
-                .SchoolCode = Page.Request.QueryString("SchoolCode")
-                .PositionType = Me.hfPositionType.Value
-                .PositionID = paraForApply.PositionID
-                .PositionTitle = Me.TextPositionTitle.Text
-                .PostingNum = Me.TextPositionID.Text
-                .NoticePrincipal = teacherName
-                .NoticeFor = "Teacher"
-                .EmailType = action
-                .EmailTo = _mTO
-                .EmailCC = _mCC
-                .EmailBcc = WebConfigValue.getValuebyKey("eMailBCC")
-                .EmailFrom = _mFrom
-                .EmailSubject = mSubject
-                .EmailBody = eMailFile
-                .EmailFormat = "HTML"
-                .Attachment1 = ""
-                .Attachment2 = ""
-                .Attachment3 = ""
-            End With
 
             Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
             Dim result = EmailNotification.SendEmail(myEmail)
@@ -385,27 +352,71 @@ Partial Class ApplyPosition2
 
         End Try
     End Sub
-    Private Function getEmailfileHTML(ByVal action As String, ByVal teacherName As String, ByVal mBodyFile As String) As String
+    'Private Sub SMTPMailCall(ByVal action As String, ByVal teacherName As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String)
+
+
+    '    Try
+    '        Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+    '        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
+    '        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text + " " + Me.btnApply.Text)
+
+
+    '        Dim eMailBody As String = GetEmailBody(action, teacherName)
+
+    '        Dim mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
+    '        Dim publicFolder As String = WebConfigValue.getValuebyKey("LTOadminFolder")
+
+    '        mBcc = mBcc + publicFolder
+
+
+    '        Dim myEmail As New EmailNotice2()
+    '        With myEmail
+    '            .UserID = User.Identity.Name
+    '            .SchoolYear = paraForApply.SchoolYear
+    '            .SchoolCode = Page.Request.QueryString("SchoolCode")
+    '            .PositionType = Me.hfPositionType.Value
+    '            .PositionID = paraForApply.PositionID
+    '            .PositionTitle = Me.TextPositionTitle.Text
+    '            .PostingNum = Me.TextPositionID.Text
+    '            .NoticePrincipal = teacherName
+    '            .NoticeFor = "Teacher"
+    '            .EmailType = action
+    '            .EmailTo = _mTO
+    '            .EmailCC = _mCC
+    '            .EmailBcc = mBcc
+    '            .EmailFrom = _mFrom
+    '            .EmailSubject = mSubject
+    '            .EmailBody = eMailBody
+    '            .EmailFormat = "HTML"
+    '            .Attachment1 = ""
+    '            .Attachment2 = ""
+    '            .Attachment3 = ""
+    '        End With
+
+    '        Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
+    '        Dim result = EmailNotification.SendEmail(myEmail)
+
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
+    Private Function GetEmailBody(ByVal action As String, ByVal teacherName As String, ByVal bodyTemplate As String) As String
 
 
 
         Dim sDate As DateTime = Now()
         Dim _Datetime As String = sDate.ToString
-        'If action = "Cancel" Then
-        '    myHTML = Server.MapPath("..") + "\Template\ConfirmApplyNotificationCancel.htm"
-        'Else
-        '    If Me.hfPositionType.Value = "LTO" Then
-        '        myHTML = Server.MapPath("..") + "\Template\ConfirmApplyNotificationLTO.htm"
-        '    Else
-        '        myHTML = Server.MapPath("..") + "\Template\ConfirmApplyNotificationPOP.htm"
-        '    End If
 
-        'End If
+        'Dim appType As String = Me.hfPositionType.Value
+        'Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+        'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
+        Dim myHtml As String = Server.MapPath("..") + "\Template\" + bodyTemplate
+        Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHtml)
 
-
-
-        Dim myHTML As String = Server.MapPath("..") + "\Template\" + mBodyFile
-        Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHTML)
+        Dim startDateStr As String = " Start date:" + Me.TextStartDate.Text
+        Dim endDateStr As String = ",   End date:" + Me.TextEndDate.Text
+        Dim discription As String = Me.TextPostionLevel.Text + ", " + Me.TextPostionQualification.Text + ", " + Me.TextPositionDescription.Text
+        If Me.hfPositionType.Value = "POP" Then endDateStr = ""
 
         Try
             eMailFile = Replace(eMailFile, "[PostingNumberSTR]", Me.TextPositionID.Text)
@@ -415,8 +426,9 @@ Partial Class ApplyPosition2
             eMailFile = Replace(eMailFile, "[DateTimeSTR]", _Datetime)
             eMailFile = Replace(eMailFile, "[SchoolNameSTR]", Me.TextSchool.Text)
             eMailFile = Replace(eMailFile, "[PositionTitleSTR]", Me.TextPositionTitle.Text)
-            eMailFile = Replace(eMailFile, "[PositionDateSTR]", " Start date:" + Me.TextStartDate.Text + ",   End date:" + Me.TextEndDate.Text)
-            eMailFile = Replace(eMailFile, "[PositionDescriptionSTR]", Me.TextPositionDescription.Text + ";  (" + Me.hfPostingcycle.Value + " posting) ")
+            eMailFile = Replace(eMailFile, "[PositionDateSTR]", startDateStr + endDateStr)
+            eMailFile = Replace(eMailFile, "[PositionDescriptionSTR]", discription) ' + ";  (" + Me.hfPostingcycle.Value + " posting) ")
+            eMailFile = Replace(eMailFile, "[BTCSTR]", GetFte()) ' Me.TextPositionFTE.Text)
 
             eMailFile = Replace(eMailFile, "[timeTable]", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "[multiSchool]", ViewState("multiSchool"))
@@ -428,7 +440,12 @@ Partial Class ApplyPosition2
         Return eMailFile
 
     End Function
-
+    Private Function GetFte() As String
+        Dim sVal = Me.TextFTE.Text
+        Dim fte As String = sVal.ToString() '  (sVal / 100).ToString()
+        If fte = "1" Then fte = "1.00"
+        Return fte
+    End Function
     Private Sub ddlApplicant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlApplicant.SelectedIndexChanged
 
 
@@ -503,7 +520,32 @@ Partial Class ApplyPosition2
         End Try
 
     End Sub
+    Private Function CurrentPosition() As PositionPublish
 
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = hfSchoolyear.Value
+            .SchoolCode = Page.Request.QueryString("SchoolCode")
+            .PositionID = paraForApply.PositionID
+            .PositionType = Me.hfPositionType.Value
+            .PostingNumber = Me.TextPositionID.Text
+            .PositionTitle = Me.TextPositionTitle.Text
+            .PositionLevel = Me.TextPostionLevel.Text
+            .Qualification = Me.TextPostionQualification.Text
+            .QualificationCode = ""
+            .Description = Me.TextPositionDescription.Text
+            .FTE = GetFte()
+            .FTEPanel = ""
+            .StartDate = DateFC.YMD2(Me.TextStartDate.Text)
+            .EndDate = DateFC.YMD2(Me.TextEndDate.Text)
+            .Comments = Me.TextComemnts.Text
+            .PostingCycle = Me.TextPostingCycle.Text
+            .PrincipalName = Me.textPrincipal.Text
+        End With
+
+        Return position
+    End Function
 
 End Class
 

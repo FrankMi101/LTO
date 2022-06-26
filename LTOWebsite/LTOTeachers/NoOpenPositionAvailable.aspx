@@ -41,14 +41,14 @@
                         <h1 style="color: red;">Please visit later </h1>
                     </div>
                     <div id="MessagePOP3" runat="server" visible="false">
-                        <h1 style="color: red;">There are currently no Permanent Open Positions (3rd Posting ) available for viewing.</h1>
+                        <h1 style="color: red;">There are currently no Permanent Open Positions available for viewing.</h1>
                         <br />
                         <br />
                         <h1 style="color: red;">Please visit the LTO/POP site regularly for any new postings available in Round 3 </h1>
 
                     </div>
                     <div id="MessageLTO3" runat="server" visible="false">
-                        <h1 style="color: red;">There currently are no Long Term Occasional Assignments (3rd Posting ) available for viewing.</h1>
+                        <h1 style="color: red;">There currently are no Long Term Occasional Assignments available for viewing.</h1>
                         <br />
                         <br />
                         <h1 style="color: red;">Please visit later </h1>

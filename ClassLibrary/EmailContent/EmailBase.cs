@@ -15,5 +15,8 @@ namespace ClassLibrary
         public string EmailSubject { get; set; }
         public string EmailBody { get; set; }
         public string EmailFormat { get; set; }
+        public string EmailFor { get; set; }
+        public string EmailAction { get; set; }
+ 
     }
 }

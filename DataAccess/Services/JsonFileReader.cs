@@ -405,6 +405,7 @@ public class Contacts
 public class Contact
 {
     public string Userid { get; set; }
+    public string Name { get; set; }
     public string Extention { get; set; }
     public string Email { get; set; }
 }

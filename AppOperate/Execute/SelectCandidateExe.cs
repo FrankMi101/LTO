@@ -11,13 +11,13 @@ namespace AppOperate
         private readonly static IAppServices _action = new AppServices(new SelectCandidate(DBConnection.DBSource));
 
         public SelectCandidateExe() { }
- 
+
         public static List<PositionListPublished> Positions(object parameter)
         {
             string SP = GetSP("Positions");
-            return _action.AppOne.CommonList<PositionListPublished>(SP, parameter); 
+            return _action.AppOne.CommonList<PositionListPublished>(SP, parameter);
 
-           // return CommonExcute<PositionListPublished>.GeneralList(SP, parameter);
+            // return CommonExcute<PositionListPublished>.GeneralList(SP, parameter);
         }
         public static List<PositionPublished> Position(object parameter)
         {
@@ -47,11 +47,54 @@ namespace AppOperate
 
             //           return CommonExcute<CandidateListNotice>.GeneralList(SP, parameter);
         }
+
+        public static string GetCandidateListTable(string Operate, string SchoolYear, string PositionID, string PositionType)
+        {
+            var parameter = new
+            {
+                Operate,
+                SchoolYear,
+                PositionID,
+                PositionType
+            };
+
+            List<CandidateListNotice> list = NoticeCandidates(parameter);
+            string mySTR = "";
+            if (list == null || list.Count == 0)
+                mySTR = "<H3> No selected interview candidate yet ! </H3>";
+            else
+            {
+                try
+                {
+                    string selColumn = Operate == "ApplicantsList" ? "<td>Selected</td>" : "";
+                    mySTR = "<table border='1' ><tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td>" + selColumn + "</tr>";
+
+                    foreach (var item in list)
+                    {
+                        string sName = item.TeacherName.ToString();
+                        string Phone = item.CellPhone.ToString();
+                        string Email = item.Email.ToString();
+                        string HiredDate = item.HiredDate.ToString();
+                        string ApplyDate = item.ApplyDate.ToString();
+                        string selected = item.InterViewSelected.ToString();
+                        selColumn = Operate == "ApplicantsList" ? "<td>" + selected + "</td>" : "";
+                        string rStr = "<tr><td>" + sName + "</td><td>" + Phone + "</td> <td>" + Email + "</td><td>" + HiredDate + "</td><td>" + ApplyDate + "</td>" + selColumn + "</tr>";
+                        mySTR = mySTR + rStr;
+                    }
+                    mySTR = mySTR + "</table>";
+                }
+                catch (System.Exception)
+                {
+                    mySTR = "";
+                }
+            }
+            return mySTR;
+        }
         public static string Save(object parameter)
         {
             string SP = GetSP("Save");
             return _action.AppOne.CommonAction(SP, parameter);
-           // return CommonExcute<string>.GeneralValue(SP, parameter);
+            // return CommonExcute<string>.GeneralValue(SP, parameter);
         }
         public static string NoticeUpdate(object parameter)
         {
@@ -99,11 +142,11 @@ namespace AppOperate
         }
         private static string GetSPInClass(string action, object parameter)
         {
-            return  _action.AppOne.SpName(action, parameter);
+            return _action.AppOne.SpName(action, parameter);
         }
         private static string GetSPFromJsonFile(string action)
         {
-    
+
             return GetSpNameFormJsonFile.SPName(action, "SelectCandidate");
         }
     }

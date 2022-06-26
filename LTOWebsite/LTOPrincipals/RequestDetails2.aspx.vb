@@ -444,20 +444,21 @@ Partial Class RequestDetails2
 
     Protected Sub btnEmail_Click(sender As Object, e As EventArgs) Handles btnEmail.Click
         Try
-            Dim _mForm As String = WebConfigValue.getValuebyKey("eMailSender")
-            Dim _mTO As String = Me.ddlHRStaff.SelectedValue + "@TCDSB.ORG"
-            Dim _mCC As String = User.Identity.Name + "@TCDSB.ORG"
             Dim action = "Request"
-            'If Me.btnRequest.Text = "Call Back" Then action = "CallBack"
+
+            SendRequestPostingNotification(action)
+
+            'Dim _mForm As String = WebConfigValue.getValuebyKey("eMailSender")
+            'Dim _mTO As String = Me.ddlHRStaff.SelectedValue + "@TCDSB.ORG"
+            'Dim _mCC As String = User.Identity.Name + "@TCDSB.ORG"
+            ''If Me.btnRequest.Text = "Call Back" Then action = "CallBack"
 
 
-            Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-            Dim mSubject As String = Replace(mEmailTemplate.Subject, "PositionTitle", Me.TextPositionTitle.Value) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-            Dim mBody = mEmailTemplate.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
+            'Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
+            'Dim mSubject As String = Replace(mEmailTemplate.Subject, "PositionTitle", Me.TextPositionTitle.Value)
+            'Dim mBody = mEmailTemplate.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
 
-
-
-            SMTPMailCall(action, _mTO, _mCC, _mForm, mSubject, mBody)
+            'SMTPMailCall(action, _mTO, _mCC, _mForm, mSubject)
         Catch ex As Exception
             CreateSaveMessage("Failed", "Send Email notification")
         End Try
@@ -479,71 +480,47 @@ Partial Class RequestDetails2
 
     End Sub
 
-    Private Sub SMTPMailCall(ByVal eMailAction As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal mSubject As String, ByVal mTemplateFile As String)
-        Dim _AditionInfo As String = ""
-        'Dim _mSubject As String = "Cancel Posted Position " + Me.TextPositionTitle.Value + " Notification"
-        'If eMailAction = "Cancel" Then _mSubject = "Cancel Posted Position " + Me.TextPositionTitle.Value + " Notification"
-        'If eMailAction = "Remind" Then _mSubject = "Reminder to complete LTO/POP Position hiring process"
-        'If eMailAction = "Repost" Then _mSubject = "Position Reposting Notification"
-        'If eMailAction = "Request" Then _mSubject = "Request New posting Position Notification"
-        'If eMailAction = "CallBack" Then _mSubject = "Notificaiton of Call Back Request New posting"
+    Private Sub SendRequestPostingNotification(ByVal action As String)
         Try
-            Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-            Dim eMailFile As String = getEmailfileHTML(mTemplateFile)
-
+            Dim position = CurrentPosition()
+            Dim email = New PostingNotification(position)
+            Dim userId As String = User.Identity.Name
 
             Dim myEmail As New EmailNotice2()
-            With myEmail
-                .UserID = User.Identity.Name
-                .SchoolYear = hfSchoolyear.Value
-                .SchoolCode = ddlSchool.SelectedValue
-                .PositionType = WorkingProfile.ApplicationType
-                .PositionID = hfIDs.Value
-                .PositionTitle = Me.TextPositionTitle.Value ' Me.TextPositionTitle.Text
-                .PostingNum = Me.TextRequestID.Text
-                .NoticePrincipal = Me.lblPrinciaplName.Text
-                .NoticeFor = "Staff"           ' ' _who
-                .EmailType = eMailAction
-                .EmailTo = _mTO
-                .EmailCC = _mCC
-                .EmailBcc = _mBcc
-                .EmailFrom = _mFrom
-                .EmailSubject = mSubject
-                .EmailBody = eMailFile
-                .EmailFormat = "HTML"
-                .Attachment1 = ""
-                .Attachment2 = ""
-                .Attachment3 = ""
-            End With
+
+            myEmail = email.GetEmailNotice(JsonFile, action, "Staff", userId)
+            myEmail.EmailBody = GetEmailBody(action, myEmail.EmailBody)
+            SMTPMailCall("Staff", myEmail)
 
 
+        Catch ex As Exception
+            CreatSaveMessage("Failed", "Send Email notification")
+        End Try
+
+    End Sub
+    Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
+        Try
 
             Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
+            Dim result = EmailNotification.SendEmail(myEmail)
 
         Catch ex As Exception
 
         End Try
     End Sub
-    Private Function getEmailfileHTML(ByVal mBodyTemplate As String) As String
+    Private Function GetEmailBody(ByVal action As String, ByVal bodyTemplate As String) As String
 
 
         Dim sDate As DateTime = Now()
         Dim _Datetime As String = sDate.ToString
-        'Dim _eMailTemplate As String = "\Template\PostingNotification_Reposting.htm"
-        'If eMailAction = "Cancel" Then _eMailTemplate = "\Template\PostingNotification_Cancel.htm"
-        'If eMailAction = "Request" Then _eMailTemplate = "\Template\PostingNotification_RequestNew.htm"
-        'If eMailAction = "CallBack" Then _eMailTemplate = "\Template\PostingNotification_RequestCallBack.htm"
-        'If eMailAction = "Remind" Then _eMailTemplate = "\Template\ReminderPrincipalToConfirmLTO.htm"
-        'If eMailAction = "Repost" Then _eMailTemplate = "\Template\PostingNotification_Reposting.htm"
+        ' Dim appType As String = ddlType.SelectedValue
 
-
-        Dim myHTML As String = Server.MapPath("..") + "\Template\" + mBodyTemplate
+        '  Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
+        Dim myHTML As String = Server.MapPath("..") + "\Template\" + bodyTemplate
         Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHTML)
 
 
         Try
-
 
             eMailFile = Replace(eMailFile, "[RequestNumberSTR]", Me.TextRequestID.Text)
             eMailFile = Replace(eMailFile, "[HRStaffNameSTR]", Me.ddlHRStaff.SelectedItem.Text)
@@ -569,5 +546,39 @@ Partial Class RequestDetails2
 
 
     End Function
+    Private Function CurrentPosition() As PositionPublish
 
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = hfSchoolyear.Value
+            .SchoolCode = Me.ddlSchool.SelectedValue
+            .PostingNumber = Me.TextRequestID.Text
+            .PositionID = hfIDs.Value
+            .PositionType = ddlType.SelectedValue
+            .PositionTitle = Me.TextPositionTitle.Value
+            .PositionLevel = ddlPositionlevel.SelectedValue
+            .Qualification = Me.lblQualification.Value
+            .QualificationCode = Me.hfQualificationsCode.Value
+            .Description = Me.TextDescription.Text
+            .FTE = getFTE()
+            .FTEPanel = Me.ddlFTEPanel.SelectedValue
+            .StartDate = DateFC.YMD2(Me.dateStart.Value)
+            .EndDate = DateFC.YMD2(Me.dateEnd.Value)
+            .DatePublish = ""
+            .DateApplyOpen = ""
+            .DateApplyClose = ""
+            .Comments = Me.TextComments.Text
+            .ReplaceTeacherID = hfAutoCompletSelectedID.Value
+            .ReplaceTeacher = lblTeacherName.Value
+            .ReplaceReason = ddlReason.SelectedValue
+            .OtherReason = ddlReason.SelectedItem.Text
+            .Owner = Me.ddlHRStaff.SelectedValue
+            .PostingCycle = ""
+            .PrincipalID = hfPrincipalID.Value
+            .PrincipalName = Me.lblPrinciaplName.Text
+        End With
+
+        Return position
+    End Function
 End Class

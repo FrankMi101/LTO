@@ -22,7 +22,7 @@
             <tr style="height:600px">
                 <td>
                   
-                 <h2  style=" color:red;" > This application will not be available until Tuesday, August 11, 2020.</h2>
+                 <h2  style=" color:red;" > This application will not be available until Tuesday, August 24, 2020.</h2>
                 </td>
             </tr>
         </table>

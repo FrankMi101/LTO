@@ -7,24 +7,24 @@ Partial Class EXCELDocument_Print
         'Put user code to initialize the page here
         If Not Page.IsPostBack Then
             Dim userID As String = HttpContext.Current.User.Identity.Name
-            Dim reportName As String = Page.Request.QueryString("repName")
-            Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-            Dim pID As String = Page.Request.QueryString("pID")
-            Dim CPNum As String = Page.Request.QueryString("CPNum")
-            Dim sID As String = Page.Request.QueryString("sID")
-            Dim AppType As String = Page.Request.QueryString("AppType")
-            Dim Panel = Page.Request.QueryString("Panel")
-            Dim openClose = Page.Request.QueryString("OpenClose")
-            Dim SearchBy As String = Page.Request.QueryString("SearchBy")
-            Dim SearchValue1 As String = Page.Request.QueryString("SearchValue1")
-            Dim SearchValue2 As String = Page.Request.QueryString("SearchValue2")
-            If SearchValue2 = "undefined" Then SearchValue2 = "0"
-            Dim IncludeAll As String = Page.Request.QueryString("IncludeAll")
+            Dim reportName As String = GetQueryStrValue("repName")
+            Dim schoolyear As String = GetQueryStrValue("SchoolYear")
+            Dim pID As String = GetQueryStrValue("pID")
+            Dim CPNum As String = GetQueryStrValue("CPNum")
+            Dim sID As String = GetQueryStrValue("sID")
+            Dim AppType As String = GetQueryStrValue("AppType")
+            Dim Panel = GetQueryStrValue("Panel")
+            Dim openClose = GetQueryStrValue("OpenClose")
+            Dim SearchBy As String = GetQueryStrValue("SearchBy")
+            Dim SearchValue1 As String = GetQueryStrValue("SearchValue1")
+            Dim SearchValue2 As String = GetQueryStrValue("SearchValue2")
+            Dim th4Round As String = GetQueryStrValue("th4Round")
+
+            Dim IncludeAll As String = GetQueryStrValue("IncludeAll")
             Dim reportType As String = "NonBlank"
             Dim reportServer As String = WebConfigValue.ReportServer
             Dim reportPath As String = WebConfigValue.ReportPathWS
             Dim reportFormat As String = WebConfigValue.ReportFormat
-            Dim th4Round As String = Page.Request.QueryString("th4Round")
 
 
 
@@ -108,6 +108,17 @@ Partial Class EXCELDocument_Print
 
         End If
     End Sub
+    Private Function GetQueryStrValue(ByVal key As String) As String
+        Try
+
+            Dim rVal As String = Page.Request.QueryString(key)  'BasePage.GetValueFromQS(Page, key)
+            If rVal = "undefined" Then rVal = " "
+            Return rVal
+
+        Catch ex As Exception
+            Return " "
+        End Try
+    End Function
     'Private Function ReportRenderC.GetParameter(ByVal Seq As Integer, ByVal pName As String, ByVal pVAlue As String) As ReportParameter
     '    Dim para1 As ReportParameter = New ReportParameter()
     '    para1.ParaName = pName

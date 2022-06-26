@@ -13,23 +13,34 @@ Partial Class EXCELDocument_Loading
 
 
 
-            Dim ReportName As String = Page.Request.QueryString("rID")
-            Dim Schoolyear As String = Page.Request.QueryString("yID")
-            Dim PositionID As String = Page.Request.QueryString("pID")
-            Dim AppType As String = Page.Request.QueryString("AppType")
-            Dim Panel As String = Page.Request.QueryString("Panel")
-            Dim OpenClose As String = Page.Request.QueryString("OpenClose")
-            Dim SearchBy As String = Page.Request.QueryString("SearchBy")
-            Dim SearchValue1 As String = Page.Request.QueryString("SearchValue1")
-            Dim SearchValue2 As String = Page.Request.QueryString("SearchValue2")
-            Dim CPNum As String = Page.Request.QueryString("CPNum")
-            Dim IncludeAll As String = Page.Request.QueryString("IncludeAll")
-            Dim th4Round As String = Page.Request.QueryString("th4Round")
+            Dim ReportName As String = GetQueryStrValue("rID")
+            Dim Schoolyear As String = GetQueryStrValue("yID")
+            Dim PositionID As String = GetQueryStrValue("pID")
+            Dim AppType As String = GetQueryStrValue("AppType")
+            Dim Panel As String = GetQueryStrValue("Panel")
+            Dim OpenClose As String = GetQueryStrValue("OpenClose")
+            Dim SearchBy As String = GetQueryStrValue("SearchBy")
+            Dim SearchValue1 As String = GetQueryStrValue("SearchValue1")
+            Dim SearchValue2 As String = GetQueryStrValue("SearchValue2")
+            Dim CPNum As String = GetQueryStrValue("CPNum")
+            Dim IncludeAll As String = GetQueryStrValue("IncludeAll")
+            Dim th4Round As String = GetQueryStrValue("th4Round")
 
             Dim ReportLink As String = "EXCELDocument_Print.aspx?repName=" + ReportName + "&schoolYear=" + Schoolyear + "&AppType=" + AppType + "&Panel=" + Panel + "&OpenClose=" + OpenClose + "&SearchBy=" + SearchBy + "&SearchValue1=" + SearchValue1 + "&SearchValue2=" + SearchValue2 + "&IncludeAll=" + IncludeAll + "&pID=" + PositionID + "&th4Round=" + th4Round
             Me.PageURL.HRef = ReportLink
 
         End If
     End Sub
+    Private Function GetQueryStrValue(ByVal key As String) As String
+        Try
+
+            Dim rVal As String = Page.Request.QueryString(key)  'BasePage.GetValueFromQS(Page, key)
+            If rVal = "undefined" Then rVal = " "
+            Return rVal
+
+        Catch ex As Exception
+            Return " "
+        End Try
+    End Function
 End Class
 

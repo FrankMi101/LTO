@@ -24,6 +24,7 @@ Partial Class Loading2
             Dim requestStatus As String = GetValueFromQS("RequestStatus") '  Page.Request.QueryString("RequestStatus")
             Dim source As String = GetValueFromQS("Source") '  Page.Request.QueryString("Source")
             Dim LTOstatus As String = GetValueFromQS("LTOStatus") '  Page.Request.QueryString("LTOStatus")
+            Dim action As String = GetValueFromQS("Action") '  Page.Request.QueryString("LTOStatus")
 
 
             Try
@@ -39,7 +40,7 @@ Partial Class Loading2
                     Case "LTOHRStaffs/RequestPositionDetails.aspx"
                         Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID
                     Case "LTOHRStaffs/RequestPositionDetails2.aspx"
-                        Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID
+                        Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID + "&Action=" + action
                     Case "LTOHRStaffs/RequestPostingDetails.aspx"
                         Me.PageURL.HRef = pID + "?SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&RequestID=" + positionID + "&TeacherName=" + teacherName + "&RequestStatus=" + requestStatus
                     Case "LTOHRStaffs/RequestPostingDetails2.aspx"

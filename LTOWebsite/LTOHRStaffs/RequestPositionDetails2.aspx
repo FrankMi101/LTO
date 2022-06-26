@@ -377,14 +377,13 @@
                                 <td style="width: 80%">
 
                                     <asp:Button ID="btnSave" runat="server" TabIndex="111" Text="Save & Submit" Width="100px" />
+                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="112" Text="Re-Posting" Width="100px" />
+                                    <asp:Button ID="btnPosting" runat="server" TabIndex="113" Text="Posting" Width="100px" />
+                                    <asp:Button ID="btnCancel" runat="server" TabIndex="114" Text="Cancel Posting" Width="104px" />
 
-                                    <asp:Button ID="btnUnpublish" runat="server" TabIndex="112" Text="Cancel Posting" Width="104px" />
+<%--                                    <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />--%>
 
-                                    <asp:Button ID="btnRepublish" runat="server" TabIndex="113" Text="Re-Posting" Width="80px" />
-
-                                    <asp:Button ID="btnReNotice" runat="server" TabIndex="113" Text="Re-Notice" Width="80px" />
-
-                                    <asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />
+                                    <%--<asp:Button ID="btndelete" runat="server" TabIndex="114" Text="Delete Position" Width="100px" />--%>
 
                                     <asp:Button ID="btnEmail" runat="server" TabIndex="105" Text="Send Email" Width="100px" />
 
@@ -407,6 +406,7 @@
             </table>
         </div>
         <asp:HiddenField ID="hfUserID" runat="server" Value="" />
+        <asp:HiddenField ID="hfUserRole" runat="server" Value="" />
         <asp:HiddenField ID="hfIDs" runat="server" Value="0" />
         <asp:HiddenField ID="hfSchoolyear" runat="server" Value="" />
         <asp:HiddenField ID="hfApplicant" runat="server" Value="" />
@@ -664,7 +664,7 @@
             });
 
 
-            $("#btnUnpublish").click(function (e) {
+            $("#btnCancel").click(function (e) {
                 try {
 
                     $("#CancelDIV").css({

@@ -1,44 +1,58 @@
 {
   "ContactStaffs": [
     {
-      "userid": "boreanf",
-      "extention": "Fiorella Borean  Ext. 2321",
-      "email": "Fiorella.Borean@tcdsb.org"
-    },
-    {
       "userid": "frijiom",
+      "name": "Mary Frijio",
       "extention": "Mary Frijio Ext. 2730",
       "email": "Mary.Frijio@tcdsb.org"
     },
     {
+      "userid": "fisherv",
+      "name": "Valerie Fisher",
+      "extention": "Valerie Fisher Ext. 2720",
+      "email": "Valerie.Fisher@tcdsb.org"
+    },
+    {
       "userid": "krasnor",
+      "name": "Rosemarie Krasnovitch",
       "extention": "Rosemarie Krasnovitch  Ext. 2370",
       "email": "Rosemarie.Krasnovitch@tcdsb.org"
     },
     {
       "userid": "difonzm",
+      "name": "Margherita Di Fonzo",
       "extention": "Margherita Di Fonzo  Ext. 2322",
       "email": "Margherita.DiFonzo@tcdsb.org"
     },
     {
       "userid": "angilll",
-      "extention": "Laura Angilletta  Ext. 2370",
+      "name": "Laura Angilletta",
+      "extention": "Laura Angilletta  Ext. 2321",
       "email": "Laura.Angilletta@tcdsb.org"
     },
     {
       "userid": "ruscicj",
-      "extention": "Joanne Ruscica  Ext. 2322",
+      "name": "Joanne Ruscica",
+      "extention": "Joanne Ruscica  Ext. 2368",
       "email": "Joanne.Ruscica@tcdsb.org"
     },
     {
       "userid": "marchem",
+      "name": "Maria Marchetta",
       "extention": "Maria Marchetta Ext. 2664",
       "email": "Maria.Marchetta@tcdsb.org"
     },
     {
       "userid": "malenij",
+      "name": "Jelena Malenica",
       "extention": "Jelena Malenica Ext. 5340",
       "email": "Jelena.Malenica@tcdsb.org"
+    },
+    {
+      "userid": "ramosa",
+      "name": "Angela Ramos",
+      "extention": "Jelena Malenica Ext. 2303",
+      "email": "Angela.Ramos@tcdsb.org"
     }
   ]
   

@@ -62,6 +62,13 @@ namespace AppOperate
             else
             { return "E"; }
         }
+        public static string GetPositionOwner(string owner, string schoolCode, string appType)
+        {
+            if (owner != "") return owner;
+            if (appType == "LTO") return WebConfigValue.getValuebyKey("HRUser_LTO_Default");
+            string panel = DataTools.SchoolPanel(schoolCode);
+            return WebConfigValue.getValuebyKey("HRUser_POP_" + panel + "_Default");
+        }
         public static string CheckEmail(string email)
         {
             try

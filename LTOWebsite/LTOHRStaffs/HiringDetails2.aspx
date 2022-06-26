@@ -138,8 +138,10 @@
                 <tr>
                     <td>Position School:</td>
                     <td colspan="7">
+                      
                         <asp:TextBox ID="TextSchool" runat="server" BackColor="Transparent"  Width="100%"></asp:TextBox>
                     </td>
+                    
                 </tr>
                 <tr>
                     <td>Minimum Qualification:</td>
@@ -254,9 +256,7 @@
                     <td colspan="2" style="text-align: left">
 
 
-                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" CssClass="Edit-Content-Control" />
-                        <br />
-                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true"  CssClass="Edit-Content-Control" />
+                       
                     </td>
                 </tr>
                 <tr>
@@ -266,7 +266,7 @@
                         <asp:CheckBox ID="chbSignatureSignOff" runat="server" Text="Interviewer and Candidate Sign Off Status on H.M. 40 Document" /></td>
                 </tr>
                 <tr>
-                    <td colspan="8" style="text-align: center;">
+                    <td colspan="6" style="text-align: center;">
                         <asp:CheckBox ID="chbNextYear" runat="server" Text="Push to Next Year" ForeColor="Red" AutoPostBack="true" Visible="false" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnSaveHired" runat="server" Text="Confirm Hire" Width="130px" CssClass="action-button" />
@@ -276,6 +276,11 @@
                         <asp:Button ID="btnSubstitute" runat="server" Visible="false" Text="Re-post" Width="100px" title="Write Subetitute comments before click on the button" />
                         &nbsp;  &nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:Button ID="btnGoTo" runat="server" Visible="false" Text="Go to Position" Width="100px" title="Write Replacement comments before click on the button" />
+                    </td>
+                    <td colspan="2">
+                         <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" CssClass="Edit-Content-Control" />
+                        <br />
+                        <asp:CheckBox ID="chbNoticeToUnion" runat="server" Text="Email to Union" Checked="true"  CssClass="Edit-Content-Control" />
                     </td>
                 </tr>
 

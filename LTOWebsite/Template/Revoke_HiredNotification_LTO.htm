@@ -1,8 +1,7 @@
 <!DOCTYPE>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Hired Confirm Notification</title>
-     
+    <title>Revoke Hired Confirm Notification</title>
 </head>
 <body>
 
@@ -15,19 +14,25 @@
             <td>
 
                 <div style="text-align: center">
-                    <h2>Hired Confirm Notification </h2>
+                    <h2>Revoke the Hired Confirmation Notification </h2>
                 </div>
                 <div id="EmailBody">
                     Dear
-                    <span style=" font-weight bolder">{{PrincipalNameSTR}}  </span>
+                    <span style=" font-weight: bolder">{{PrincipalNameSTR}}  </span>
                     <br />
                     <br />
-                    This is to confirm the following:
+                    This email confirm that {{TeacherNameSTR}} ({{TeacherCPNumSTR}}) has been revoked from the {{PositionTitleSTR}} at {{PositionSchoolSTR}} by {{DateTimeSTR}}.
+                    <br />
+                    <br />
+                    Details:
+                    <br />
+
+
                     <table border="1" style="width:700px">
                         <tr>
                             <td style="width:150px">Posting Number:</td>
                             <td style="width:150px">{{PostingNumberSTR}}</td>
-                            <td style="width:150px"></td>
+                            <td style="width:150px"> </td>
                             <td style="width:70px">{{PostingCycleSTR}}</td>
                             <td style="width:80px;text-align:right; ">BTC:</td>
                             <td style="width:100px">{{BTCSTR}}</td>
@@ -66,13 +71,11 @@
                             <td colspan="5"> {{PositionEndDateSTR}} </td>
                         </tr>
 
+                        {{AbsentTeacherSection}}
+
                     </table>
 
-                    {{AbsentTeacherSection}}
-
-
-
-
+                    <br />
                     {{WeeklyScheduleSTR}}
                     <br />
                     {{timeTable}}
@@ -81,24 +84,26 @@
                     <br />
                 </div>
 
-
                 <br />
-                <!--<span style="font-weight:bolder"> {{ConfirmPersonSTR}}</span>-->
-                <br />  Academic Services:
+                <br />
+                <span style="font-weight:bolder"> {{ConfirmPersonSTR}}</span>
+                <br />    Academic Services:<br />
                 <br />
                 <span> {{DateTimeSTR}}</span>
-
                 <br />
                 {{EmailTOSTR}}
                 <br />
                 {{EmailCCSTR}}
                 <br />
                 {{EmailBCCSTR}}
+
             </td>
         </tr>
 
     </table>
- 
+
+
+
 
 </body>
 </html>

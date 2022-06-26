@@ -152,5 +152,6 @@ Public Class BasePage
             Return ""
         End Try
     End Function
+
 End Class
 

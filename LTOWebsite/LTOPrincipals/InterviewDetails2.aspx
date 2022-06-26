@@ -46,6 +46,9 @@
         #formTable {
             width: 99%;
         }
+        .warning {
+            border: 2px solid red; 
+        }
     </style>
     <script src="../Scripts/jQuery/jquery-1.11.2.min.js" type="text/javascript"></script>
 
@@ -276,9 +279,11 @@
                         </table>
                     </td>
                      
-                    <td colspan="3"> <b> <asp:Label ID="LabelStartDate" runat="server" Text=" LTO start date:"></asp:Label></b>
+                    <td colspan="3"> 
+                        <div id="startDateWaring" style="color:red; font-size:medium"></div>
+                        <b> <asp:Label ID="LabelStartDate" runat="server" Text=" LTO start date:"></asp:Label></b>
                         <input runat="server" type="text" id="dateEffective" size="9" class="Edit-Content-Control" />
-                        <%--                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEffective" ErrorMessage="Must input Start Date. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
+<%--                         <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="dateEffective" ErrorMessage="Must input Start Date. " Font-Size="x-Large" SetFocusOnError="true" ForeColor="Red">*</asp:RequiredFieldValidator>--%>
                     </td>
                     <td colspan="3">
                         <img id="helpPrincipal" runat="server" src="../images/HelpS.bmp" title="click to Help" />
@@ -521,7 +526,10 @@
         $("#btnSaveRecommendation").click(function (e) {
             var startdate = $("#dateEffective").val();
             if (startdate == "") {
+                $("#dateEffective").addClass("warning");
+                $("#startDateWaring").html("* must provide a start date");
                 window.alert("Please input the Start Date !");
+
                 e.preventDefault();
                 return false;
             }

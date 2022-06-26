@@ -12,19 +12,15 @@
         </tr>
         <tr>
             <td>
-
-
-
                 <div id="EmailBody">
-                    Dear   <span style="text-decoration: underline; font-weight: bolder">[PrincipalNameSTR]  </span>:
+                    <span style="text-decoration: underline; font-weight: bolder">[PrincipalNameSTR]</span>
                     <br />
 
                     <div>
                         <p>
                             Please be advised that the following information related to the TCDSB Policy on
                             Fair Practice in Hiring and Promotion and Conflict of Interest is being brought
-                            to your immediate attention prior to engaging in interviewing the list of eligible
-                            candidates for the position at your school.
+                            to your immediate attention prior to contacting the list of eligible candidates for the position at your school.
                         </p>
                         <p>
                             <b style="text-decoration:underline ">  TCDSB POLICY REGISTER-FAIR PRACTICE IN HIRING AND PROMOTION H.M.40 </b>
@@ -57,48 +53,67 @@
                         </p>
                     </div>
 
-
                     <div style="text-align: center">
-                        <h2>Interview Candidate List</h2>
+                        <h2> Candidate List </h2>
                     </div>
                     <br />
-                    The following  5 Occasional teachers from the Long Term Occasional Teachers List have applied for the
-                    open position(s) at your school and meet the criteria according to Regulation 274/12 to be interviewed.
-                    Please ensure all candidates listed below are interviewed before a decision is made.
+                    The following Occasional Teachers from the Occasional Teachers Roster have applied for the Long Term Occasional Assignment
+                    at your school and meet the criteria according to Regulation 274/12.
                     <br />
                     <br />
-                    (a)	Have completed a long-term assignment in a school of the board that was at least four months long
-                    and in respect of which the teacher has not received an unsatisfactory evaluation;
-                    <br />
-                    (b)	Have the required qualifications for the position;
-                    <br />
-                    (c)	Have the highest ranking under section 2;(ranking of occasional teachers based on teacher&#146;s seniority as an occasional teacher)
-                    <br />
-                    (d)	Have agreed to be interviewed
+                    Enclosed please find the list of candidates that have applied to the <b>[PositionTitleSTR]</b>.
+                    <b> Interviews are no longer required.</b>   The five most senior applicants shall be contacted and
+                    asked to confirm that they wish to be considered for the position.
+                    <b> The candidate should be able to provide you with an immediate response.</b>
+                    If any of the five applicants indicate that they do not wish to be considered, please reach out to
+                    to Academic Services <b>[PositionOwnerSTR]</b> who will provide you with the next most senior candidate.
+
+                    <br /><br />
+                    Once you have selected a candidate and the candidate has accepted, please enter the LTO Application
+                    and "recommend hire". This will generate pay for the successful candidate.
+
                     <br />
                     <br />
 
-                    Please contact the names of the occasional teachers and arrange for an interview.  Upon completion of your interview,
-                    please submit your recommendation via <span style="font-weight:bolder">
-                        the on-line Permanent Open Positions/LTO Assignment application program.
-                    </span> <br />
+                    <table border="1" style="width:750px">
+                        <tr>
+                            <td style="width:160px">Posting Number:</td>
+                            <td style="width:150px">[PostingNumberSTR]</td>
+                            <td style="width:150px"> </td>
+                            <td style="width:50px">[PostingCycleSTR]</td>
+                            <td style="width:100px;text-align:right;">BTC:</td>
+                            <td style="width:100px">[BTCSTR]</td>
 
-                    * Posting Number:[PostingNumberSTR]  <br />
-                    <!--* Posting Round: [PostingCycleSTR]  <br />-->
-                    * Position Title: [PositionTitleSTR] <br />
-                    * School Name:[SchoolNameSTR]   <br />
-                    * Position Start Date: [PositionStartDateSTR]  <br />
+                        </tr>
+                        <tr><td>Position Title:         </td><td colspan="5">[PositionTitleSTR]       </td></tr>
+                        <tr><td>Position Description:   </td><td colspan="5">[PositionDescriptionSTR] </td></tr>
+                        <tr><td>Position Start Date:    </td><td colspan="5">[PositionStartDateSTR]   </td></tr>
+                        <tr><td>Position End Date:      </td><td colspan="5">[PositionEndDateSTR]     </td></tr>
+                        <tr><td>Position School:        </td><td colspan="5">[SchoolNameSTR]          </td></tr>
 
+                        [HRCommentsSTR]
+                        [TeacherBeReplacedSTR]
+                    </table>
 
+                    <br />
+                    [timeTable]
+                    [multiSchool]
+                    <br />
                 </div>
                 <!-- <div style="text-align: center">
         <h3> Interview Candidate List  </h3>
     </div>-->
                 <div>
+                    [PostingOpenDateSTR]    <br />
+                    [PostingCloseDateSTR]
+                </div>
+                <div>
 
                     [InterviewCandidateListSTR]
 
                 </div>
+
+
                 <br />
                 <br />
                 [appicationLinkSTR]
@@ -107,14 +122,15 @@
                 Academic Services:<br />
                 <br />
                 [DateTimeSTR]<br />
+                <br />
+                <!-- <span style="font-size: 10pt">Note: Please reply back!.</span></td>-->
+                <br />
+                {{EmailTOSTR}}
+                <br />
+                {{EmailCCSTR]}}
 
                 <br />
-                [EmailTOSTR]
-                <br />
-                [EmailCCSTR]
-
-                <br />
-                [EmailBCCSTR]
+                {{EmailBCCSTR}}
             </td>
         </tr>
 

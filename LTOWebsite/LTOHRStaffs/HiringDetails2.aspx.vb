@@ -131,16 +131,6 @@ Partial Class HiringDetails2
                 Me.lblHiredFTE.Visible = True
             End If
 
-            'If chbHiring.Checked Then
-            '    Me.btnSaveHired.Text = "Revoke Confirm Hire"
-            'Else
-            '    Me.btnSaveHired.Text = "Confirm Hire"
-            'End If
-            'If Me.btnSaveHired.Text = "Revoke Confirm Hire" Then
-            '    Me.btnSaveHired.ForeColor = Drawing.Color.Red
-            'Else
-            '    Me.btnSaveHired.ForeColor = Drawing.Color.Black
-            'End If
 
             Dim thisDate As Date = Now()
             Dim thisMonth As Integer
@@ -268,67 +258,59 @@ Partial Class HiringDetails2
         End Try
 
     End Sub
-    Private Function GetCCList() As String
-        Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
-        _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", Me.hfPositionType.Value, lblPostingCycle.Text, Me.TextPositionTitle.Text, hfSchoolCode.Value)
-        _mCC = EmailNotification.CheckCCMailOwner(_mCC, lblPositionOwner.Text, User.Identity.Name)
-        Return _mCC
-    End Function
+
     Private Sub SendConfimeEmailNotification(ByVal action As String)
         Try
-            Dim myEmail As New EmailBase()
-            Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-            ' Dim _mTo As String = getEmailToList()
-            'Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
-            ' _mCC += EmailNotification.GetMultipleSchoolEmail(hfSchoolyear.Value, hfSchoolCode.Value, Me.hfPositionID.Value)
-            '_mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", Me.hfPositionType.Value, lblPostingCycle.Text, Me.TextPositionTitle.Text, hfSchoolCode.Value)
-            '_mCC = EmailNotification.CheckCCMailOwner(_mCC, lblPositionOwner.Text, User.Identity.Name)
-            ' Dim _mFrom As String = EmailNotification.CheckFromMail(Me.hfPositionType.Value) ' WebConfigValue.getValuebyKey("eMailSender") ' EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name) ' _mForm '
 
-            ' Dim mSubject As String = EmailNotification.CheckMailSubject(Me.hfPositionType.Value, Me.hfSchoolCode.Value, myEmailTemple.Subject, Me.TextPositionTitle.Text)  ' Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-            ' Dim mTemplateFile = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
+            Dim position = CurrentPosition()
+            Dim email = New PostingNotification(position)
 
-            With myEmail
-                .EmailTo = getEmailToList()
-                .EmailCC = GetCCList()
-                .EmailFrom = EmailNotification.CheckFromMail(Me.hfPositionType.Value)
-                .EmailSubject = EmailNotification.CheckMailSubject(Me.hfPositionType.Value, Me.hfSchoolCode.Value, myEmailTemple.Subject, Me.TextPositionTitle.Text)
-                .EmailBody = myEmailTemple.Template
-            End With
+            Dim myEmail As New EmailNotice2()
+
             If Me.chbNoticeToPrincipal.Checked Then
-                myEmail.EmailBody = getEmailfileHTML("Staff", myEmailTemple.Template)
-                SMTPMailCall("Staff", action, myEmail)
+                myEmail = email.GetEmailNotice(JsonFile, action, "Principal", User.Identity.Name)
+                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody)
+                SMTPMailCall("Principal", myEmail)
             End If
-            If Me.hfPositionType1.Value = "LTO" And Me.chbNoticeToUnion.Checked Then
-                Dim unioneMail As String = EmailNotification.UnionEmail(hfSchoolCode.Value, hfPositionType.Value)
-                If Not unioneMail = "" Then
-                    myEmail.EmailCC = WebConfigValue.getValuebyKey("eMail_UnionA")
-                    myEmail.EmailTo = unioneMail
-                    myEmail.EmailBody = getEmailfileHTML("Union", myEmailTemple.Template)
-                    SMTPMailCall("Union", action, myEmail)
-                End If
+
+            If Me.chbNoticeToUnion.Checked Then
+                myEmail = email.GetEmailNotice(JsonFile, action, "Union", User.Identity.Name)
+                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody)
+                SMTPMailCall("Union", myEmail)
             End If
+
         Catch ex As Exception
             CreateSaveMessage("Failed", "Send Email notification")
         End Try
 
-
     End Sub
-    Private Function getEmailToList() As String
-        Dim EmailToList As String = ""
-        If Me.chbNoticeToPrincipal.Checked Then
-            EmailToList = EmailNotification.UserProfileByID("TCDSBeMailAddress", hfPrincipalID.Value)
-            EmailToList += EmailNotification.GetMultipleSchoolEmail(hfSchoolyear.Value, hfSchoolCode.Value, Me.hfPositionID.Value)
-            'PositionDetails.NoticeToActingPrincipal(Me.hfSchoolyear.Value, Me.hfSchoolCode.Value, Me.hfPositionID.Value)
-        End If
-        'If Me.chbHiredNoticeToOfficer.Checked Then
-        '    '  Dim officerID As String = PositionDetails.getOfficerProfile("UserID", "School", Me.hfSchoolCode.Value)
-        '    Dim officerID As String = EmailNotification.OfficeUserProfile("UserID", "School", Me.hfSchoolCode.Value)
+    'Private Function getEmailToList() As String
+    '    Dim EmailToList As String = ""
+    '    If Me.chbNoticeToPrincipal.Checked Then
+    '        EmailToList = EmailNotification.UserProfileByID("TCDSBeMailAddress", hfPrincipalID.Value)
+    '        EmailToList += EmailNotification.GetMultipleSchoolEmail(hfSchoolyear.Value, hfSchoolCode.Value, Me.hfPositionID.Value)
+    '        'PositionDetails.NoticeToActingPrincipal(Me.hfSchoolyear.Value, Me.hfSchoolCode.Value, Me.hfPositionID.Value)
+    '    End If
 
-        '    EmailToList = EmailToList + ";" + officerID + "@TCDSB.ORG"
-        'End If
-        Return EmailToList
-    End Function
+    '    Return EmailToList
+    'End Function
+    'Private Function GetCCList() As String
+    '    Dim title As String = Me.TextPositionTitle.Text
+    '    Dim panel As String = DataTools.SchoolPanel(hfSchoolCode.Value)
+    '    Dim appType As String = Me.hfPositionType.Value
+    '    Dim owner As String = lblPositionOwner.Text
+
+    '    Dim _mCC As String = WebConfigValue.getValuebyKey("eMailCC")
+    '    _mCC = EmailNotification.CheckCCMailOwner(_mCC, owner, User.Identity.Name)
+    '    _mCC = EmailNotification.CheckCCMail(_mCC, "Principal", "ConfirmHire", appType, lblPostingCycle.Text, title, panel)
+    '    Return _mCC
+    'End Function
+    'Private Function getUnionNoticeHRFollower() As String
+    '    Dim owner As String = lblPositionOwner.Text
+    '    Dim followUnion As String = WebConfigValue.getValuebyKey("eMail_Union_Follow")
+    '    If followUnion = "Owner" Then Return EmailNotification.CheckCCMailOwner("", owner, User.Identity.Name)
+    '    Return followUnion
+    'End Function
 
     Private Sub sendCongratulateEmailNotification()
         Dim recommendation As String = Me.TextHiredcomments.Text
@@ -345,70 +327,41 @@ Partial Class HiringDetails2
         '  SMTPMailCall("Teacher", Action, _mTo, _mCC, _mFrom, mSubject, mTemplateFile)
     End Sub
 
-    Private Sub SMTPMailCall(ByVal who As String, ByVal action As String, ByVal emailBase As EmailBase)
-        Dim _AditionInfo As String = ""
-
-        emailBase.EmailBcc = WebConfigValue.getValuebyKey("LTOadminFolder")
+    Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
 
         Try
-
-            ' If who = "Union" Then _mTO = CommonTCDSB.Webconfig.getValuebyKey("eMail_Union")
-            '  Dim eMailFile As String = getEmailfileHTML(who, emailBase.EmailBody)
-
-
-            Dim myEmail As New EmailNotice2()
-            With myEmail
-                .UserID = User.Identity.Name
-                .SchoolYear = Me.hfSchoolyear.Value
-                .SchoolCode = Me.hfSchoolCode.Value
-                .PositionType = Me.hfPositionType.Value
-                .PositionID = Me.hfPositionID.Value
-                .PositionTitle = Me.TextPositionTitle.Text
-                .PostingNum = Me.lblPostingNum.Text
-                .NoticePrincipal = Me.hfPrincipalName.Value
-                .NoticeFor = who
-                .EmailType = action
-                .EmailTo = emailBase.EmailTo
-                .EmailCC = emailBase.EmailCC
-                .EmailBcc = emailBase.EmailBcc
-                .EmailFrom = emailBase.EmailFrom
-                .EmailSubject = emailBase.EmailSubject
-                .EmailBody = emailBase.EmailBody
-                .EmailFormat = "HTML"
-                .Attachment1 = ""
-                .Attachment2 = ""
-                .Attachment3 = ""
-            End With
-
-            If who = "Staff" Then
-                Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            End If
-
-            'PositionDetails.SaveConfirmHire_eMailLog(userID, appType, schoolyear, schoolcode, positionID, positionTitle, postingNum, toPrincipal, mailType, _mTO, _mCC, _mFrom, _mSubject, eMailFile)
+            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
             Dim result = EmailNotification.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
+
         Catch ex As Exception
 
         End Try
     End Sub
+    Private Function GetHRContact() As Contact
+        Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+        Dim HRContact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
+        Return HRContact
+    End Function
+    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodayTemplate As String) As String
 
-
-    Private Function getEmailfileHTML(ByVal _who As String, ByVal bodyTemplate As String) As String
-
-        Dim JsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
-        Dim contact As String = WebConfigValue.HRContact(JsonFileHRstaff, Me.lblPositionOwner.Text).Extention
-
+        Dim HRContact = GetHRContact()
+        Dim contact As String = HRContact.Extention
+        Dim name As String = HRContact.Name
 
         Dim sDate As DateTime = Now()
         Dim _Datetime As String = sDate.ToString
 
-        Dim myHTML As String = Server.MapPath("..") + "\Template\" + bodyTemplate
-        Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHTML)
+        'Dim appType As String = Me.hfPositionType.Value
+        'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
+        Dim myHtml As String = Server.MapPath("..") + "\Template\" + bodayTemplate
+        Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHtml)
+
+        Dim cpnum As String = IIf(_who = "Union", "", "(" + Me.lblTeacherPersonID.Text + ")")
 
         Try
-
             eMailFile = Replace(eMailFile, "{{PostingNumberSTR}}", Me.lblPostingNum.Text)
             eMailFile = Replace(eMailFile, "{{TeacherNameSTR}}", Me.TextName.Text)
-            eMailFile = Replace(eMailFile, "{{TeacherCPNumSTR}}", Me.lblTeacherPersonID.Text)
+            eMailFile = Replace(eMailFile, "{{TeacherCPNumSTR}}", cpnum)
             eMailFile = Replace(eMailFile, "{{TeacherOTPrnrSTR}}", Me.lblTeacherOTPrnr.Text)
             eMailFile = Replace(eMailFile, "{{PrincipalNameSTR}}", Me.hfPrincipalName.Value)
             eMailFile = Replace(eMailFile, "{{DateTimeSTR}}", _Datetime)
@@ -416,51 +369,33 @@ Partial Class HiringDetails2
             eMailFile = Replace(eMailFile, "{{PositionTitleSTR}}", TextPositionTitle.Text)
             eMailFile = Replace(eMailFile, "{{PositionStartDateSTR}}", Me.dateEffective.Value)
             eMailFile = Replace(eMailFile, "{{PositionEndDateSTR}}", Me.lblEndDate.Text)
-            eMailFile = Replace(eMailFile, "{{ConfirmPersonSTR}}", Me.hfConfirmUser.Value)
+            eMailFile = Replace(eMailFile, "{{ConfirmPersonSTR}}", name)
             eMailFile = Replace(eMailFile, "{{RevokeReasonSTR}}", Me.TextHiredcomments.Text)
             eMailFile = Replace(eMailFile, "{{PositionSchoolSTR}}", Me.TextSchool.Text)
             eMailFile = Replace(eMailFile, "{{RevokedDate}}", _Datetime)
             eMailFile = Replace(eMailFile, "{{PositionOwnerSTR}}", contact)
             eMailFile = Replace(eMailFile, "{{PostingCycleSTR}}", "") ' Me.lblPostingCycle.Text)
-            eMailFile = Replace(eMailFile, "{{QualificationSTR}}", Me.TextQualification.Text)
+            eMailFile = Replace(eMailFile, "{{QualificationSTR}}", Me.TextPostionLevel.Text + " / " + Me.TextQualification.Text)
 
-            If Len(ViewState("timeTable")) > 10 Then
-                eMailFile = Replace(eMailFile, "{{WeeklyScheduleSTR}}", "Weekly Schedule:")
-            Else
-                eMailFile = Replace(eMailFile, "{{WeeklyScheduleSTR}}", " ")
-            End If
+            Dim weeklySchedule As String = IIf(Len(ViewState("timeTable")) > 10, "Weekly Schedule:", " ")
+            eMailFile = Replace(eMailFile, "{{WeeklyScheduleSTR}}", weeklySchedule)
+
 
             eMailFile = Replace(eMailFile, "{{timeTable}}", ViewState("timeTable"))
             eMailFile = Replace(eMailFile, "{{multiSchool}}", ViewState("multiSchool"))
 
+            Dim absentSection As String = ""
 
             If Me.hfPositionType.Value = "POP" Then
                 eMailFile = Replace(eMailFile, "{{PositionTypeSTR}}", Me.hfPositionType.Value)
-                eMailFile = Replace(eMailFile, "{{PositionTypeSTR2}}", Me.hfPositionType.Value)
+                eMailFile = Replace(eMailFile, "{{PositionTypeSTR2}}", getFullNameOfType())
                 eMailFile = Replace(eMailFile, "{{PositionDescriptionSTR}}", TextDescription.Text)
                 eMailFile = Replace(eMailFile, "{{PositionPostedSTR}}", datePosted.Text)
                 eMailFile = Replace(eMailFile, "{{FormReminderLine}}", getForm(Me.TextName.Text))
-
             Else
-
-                Dim absentSection As String = ""
-
-                Dim payStatus As String = ""
-                If ddlPayStatus.SelectedValue <> "9" Then payStatus = ddlPayStatus.SelectedItem.Text
-
-                absentSection = " <table border = '1' style='width:700px'> <tr> "
-                absentSection += "<td style='text-align:left;'>Absent Teacher:</td><td> " + Me.lblTeacherBeReplaced.Text + " </td>"
-                absentSection += "<td  style='text-align:right;'>Position Number: </td> <td> " + Me.hfPositionNumber.Value + "</td> "
-                absentSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.lblTeacherBeReplacedPersonID.Text + "</td></tr>"
-                If _who = "Staff" Then
-                    absentSection += "<tr><td> Reason for leave: </td> <td colspan='5'>" + Me.lblReasonReplacement.Text + "</td></tr>"
-                    absentSection += "<tr><td> Employee Status: </td> <td colspan='5'>" + payStatus + "</td></tr>"
-                End If
-                absentSection += " </table>"
-
-                eMailFile = Replace(eMailFile, "{{AbsentTeacherSection}}", absentSection)
-
+                absentSection = GetAbsentSection()
             End If
+            eMailFile = Replace(eMailFile, "{{AbsentTeacherSection}}", absentSection)
 
 
         Catch ex As Exception
@@ -469,59 +404,29 @@ Partial Class HiringDetails2
         Return eMailFile
 
     End Function
-    'Private Function getEmailfileHTML2(ByVal _who As String, ByVal bodyTemplate As String) As String
+    Private Function GetAbsentSection() As String
+        Dim absentSection As String = ""
 
-    '    Dim JsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
-    '    Dim contact As String = WebConfigValue.HRContact(JsonFileHRstaff, Me.lblPositionOwner.Text).Extention
+        Dim payStatus As String = ""
+        If ddlPayStatus.SelectedValue <> "9" Then payStatus = ddlPayStatus.SelectedItem.Text
 
+        absentSection = " <table border = '1' style='width:700px'> <tr> "
+        absentSection += "<td style='text-align:left;'>Absent Teacher:</td><td> " + Me.lblTeacherBeReplaced.Text + " </td>"
+        absentSection += "<td  style='text-align:right;'>Position Number: </td> <td> " + Me.hfPositionNumber.Value + "</td> "
+        absentSection += "<td  style='text-align:right;'>PID: </td> <td> " + Me.lblTeacherBeReplacedPersonID.Text + "</td></tr>"
 
-    '    Dim sDate As DateTime = Now()
-    '    Dim _Datetime As String = sDate.ToString
+        absentSection += "<tr><td> Reason for leave: </td> <td colspan='5'>" + Me.lblReasonReplacement.Text + "</td></tr>"
+        absentSection += "<tr><td> Employee Status: </td> <td colspan='5'>" + payStatus + "</td></tr>"
+        absentSection += " </table>"
 
-    '    'Dim _emailTemplateHTM As String = "\Template\ConfirmHiredNotificationPOP.htm"
-    '    'If Me.btnSaveHired.Text = "Revoke Confirm Hire" Then
-    '    '    _emailTemplateHTM = "\Template\ConfirmHiredNotificationPOPRevoke.htm"
-    '    'End If
-
-
-
-    '    Dim myHTML As String = Server.MapPath("..") + "\Template\" + bodyTemplate
-    '    Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHTML)
-    '    Try
-    '        Dim sr As StreamReader = File.OpenText(myHTML)
-    '        Do While sr.Peek() >= 0
-    '            eMailFile = eMailFile + sr.ReadLine()
-    '            '           Console.WriteLine(sr.ReadLine())
-    '        Loop
-    '        sr.Close()
-
-
-    '        eMailFile = Replace(eMailFile, "{{PostingNumberSTR}}", Me.lblPostingNum.Text)
-    '        eMailFile = Replace(eMailFile, "{{TeacherNameSTR}}", Me.TextName.Text)
-    '        eMailFile = Replace(eMailFile, "{{TeacherCPNumSTR}}", Me.lblTeacherPersonID.Text)
-    '        eMailFile = Replace(eMailFile, "{{PositionTypeSTR}}", Me.hfPositionType.Value)
-    '        eMailFile = Replace(eMailFile, "{{PositionTypeSTR2}}", Me.hfPositionType.Value)
-    '        eMailFile = Replace(eMailFile, "{{PrincipalNameSTR}}", Me.hfPrincipalName.Value)
-    '        eMailFile = Replace(eMailFile, "{{DateTimeSTR}}", _Datetime)
-    '        eMailFile = Replace(eMailFile, "{{PositionTitleSTR}}", Me.TextPositionTitle.Text)
-    '        eMailFile = Replace(eMailFile, "{{EffectiveDateSTR}}", Me.dateEffective.Value)
-    '        eMailFile = Replace(eMailFile, "{{PositionEndDateSTR}}", Me.lblEndDate.Text)
-    '        eMailFile = Replace(eMailFile, "{{ConfirmPersonSTR}}", Me.hfConfirmUser.Value)
-    '        eMailFile = Replace(eMailFile, "{{RevokeReasonSTR}}", Me.TextHiredcomments.Text)
-    '        eMailFile = Replace(eMailFile, "{{SchoolNameSTR}}", Me.TextSchool.Text)
-    '        eMailFile = Replace(eMailFile, "{{PositionFTESTR}}", Me.lblPositionFTE.Text)
-    '        eMailFile = Replace(eMailFile, "{{RevokedDate}}", _Datetime)
-    '        eMailFile = Replace(eMailFile, "{{PositionDescriptionSTR}}", TextDescription.Text)
-    '        eMailFile = Replace(eMailFile, "{{PositionPostedSTR}}", datePosted.Text)
-    '        eMailFile = Replace(eMailFile, "{{FormReminderLine}}", getForm(Me.TextName.Text))
-
-    '        eMailFile = Replace(eMailFile, "[PositionOwnerSTR]", contact)
-    '    Catch ex As Exception
-    '        eMailFile = ""
-    '    End Try
-    '    Return eMailFile
-
-    'End Function
+        Return absentSection
+    End Function
+    Private Function getFullNameOfType() As String
+        Dim type As String = Me.hfPositionType.Value
+        Dim typeTitle As String = "Long Term Occasional Assignment"
+        If type = "POP" Then typeTitle = "Permanent Open Position"
+        Return typeTitle
+    End Function
     Private Function getForm(ByVal _teachername As String) As String
         Dim vForm As String = ""
         If Left(Me.hfSchoolCode.Value, 2) = "05" Then
@@ -629,76 +534,6 @@ Partial Class HiringDetails2
 
     End Sub
 
-    'Private Sub SendRepostingNotificationToPrincipal(ByVal positionID As String, ByVal schoolyear As String, ByVal IDs As String, ByVal postingCycle As String)
-
-    '    Dim userid As String = HttpContext.Current.User.Identity.Name
-    '    Try
-    '        Dim _schoolyear, _PositionID, _PositionTitle, _schoolname, _schoolcode, _mTO, _mCC, _PrincipalName, _PrincipalID, _PositionType As String
-    '        Dim _User As String = HttpContext.Current.User.Identity.Name
-    '        _schoolyear = Page.Request.QueryString("SchoolYear")
-    '        _PositionID = Me.hfPositionID.Value
-    '        _PositionTitle = Me.TextPositionTitle.Text
-    '        _schoolname = Me.hfSchoolname.Value
-    '        _schoolcode = Me.hfSchoolCode.Value
-
-    '        _PrincipalName = Me.hfPrincipalNameTo.Value
-    '        _PrincipalID = Me.hfPrincipalID.Value
-
-    '        _PositionType = Me.hfPositionType.Value
-
-    '        Dim _mForm As String = CommonTCDSB.Webconfig.getValuebyKey("eMailSender")
-
-    '        ' get notified principal's ID from original posted position 
-    '        '_PrincipalID = PositionList.PendingConfirmGetPrincipalInfobyID("PrincipalID", _schoolyear, positionID, _schoolcode)
-    '        '_PrincipalName = PositionList.PendingConfirmGetPrincipalInfobyID("PrincipalName", _schoolyear, _PrincipalID)
-
-
-    '        _mTO = AppOperate.EmailNotification.UserProfileByID("TCDSBeMailAddress", _PrincipalID) '  _PrincipalID + "@TCDSB.ORG"
-
-    '        _mCC = AppOperate.EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
-    '        Dim addM As String = ""
-    '        If WorkingProfile.ApplicationType = "LTO" Then
-    '            addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC")
-    '            If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-    '            addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_LTO")
-    '            If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-
-    '        Else
-    '            If Left(_schoolcode, 2) = "05" Then
-    '                addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_POP_S")
-    '                If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-    '            Else
-    '                addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_POP_E")
-    '                If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-    '            End If
-
-    '        End If
-
-    '        If _PositionTitle.IndexOf("French") <> "-1" Then
-    '            addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_French")
-    '            If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-
-    '        End If
-    '        If _PositionTitle.IndexOf("Music") <> "-1" Then
-    '            addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_Music")
-    '            If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-    '        End If
-
-    '        If postingCycle > 3 Then
-    '            addM = CommonTCDSB.Webconfig.getValuebyKey("eMailCC_4th")
-    '            If _mCC.IndexOf(addM) < 0 Then _mCC = _mCC + ";" + addM
-    '            _mCC = Replace(_mCC, ";bessie.gruppuso@tcdsb.org", "")
-    '        End If
-
-    '        SMTPMailCall("Repost", "", _mTO, _mCC, _mForm, _PositionTitle, _PrincipalName, _schoolname, _PositionType)
-    '    Catch ex As Exception
-
-    '    End Try
-
-
-    'End Sub
-
-
     Protected Sub chbNextYear_CheckedChanged(sender As Object, e As EventArgs) Handles chbNextYear.CheckedChanged
         If Me.chbNextYear.Checked Then
             Me.btnSubstitute.Enabled = False
@@ -713,10 +548,48 @@ Partial Class HiringDetails2
 
         End If
     End Sub
-
-
+    Private Function GetOwner() As String
+        Dim schoolcode As String = hfSchoolCode.Value
+        Dim appType As String = hfPositionType.Value
+        Dim owner As String = Me.lblPositionOwner.Text
+        Return DataTools.GetPositionOwner(owner, schoolcode, appType)
+    End Function
     Protected Sub hfSchoolyear_ValueChanged(sender As Object, e As EventArgs) Handles hfSchoolyear.ValueChanged
 
     End Sub
+    Private Function CurrentPosition() As PositionPublish
+
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = Page.Request.QueryString("SchoolYear")
+            .SchoolCode = hfSchoolCode.Value
+            .PostingNumber = Me.lblPostingNum.Text
+            .PositionID = hfPositionID.Value
+            .PositionType = hfPositionType.Value
+            .PositionTitle = Me.TextPositionTitle.Text
+            .PositionLevel = Me.TextPostionLevel.Text
+            .Qualification = Me.TextQualification.Text
+            .QualificationCode = ""
+            .Description = Me.TextDescription.Text
+            .FTE = Me.lblPositionFTE.Text
+            .FTEPanel = ""
+            .StartDate = DateFC.YMD2(Me.dateEffective.Value)
+            .EndDate = DateFC.YMD2(Me.lblEndDate.Text)
+            .DatePublish = ""
+            .DateApplyOpen = ""
+            .DateApplyClose = ""
+            .Comments = Me.TextPostingComments.Text
+            .ReplaceTeacherID = Me.lblTeacherPersonID.Text
+            .ReplaceTeacher = Me.TextName.Text
+            .ReplaceReason = ""
+            .OtherReason = ""
+            .Owner = Me.hfConfirmUser.Value
+            .PostingCycle = Me.lblPostingCycle.Text
+            .PrincipalID = hfPrincipalID.Value
+            .PrincipalName = Me.hfPrincipalName.Value
+        End With
+        Return position
+    End Function
 End Class
 

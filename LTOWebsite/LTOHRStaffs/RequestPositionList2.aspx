@@ -418,19 +418,20 @@
             $("#btnExcel").click(function (e) {
                 var schoolyear = $("#ddlSchoolYear").val();
                 var appType = $("#ddlappType").val();
-                var panel = $("#ddlPanel").val();
+                var panel = "00";// $("#ddlPanel").val();
                 var openClose = $("#ddlOpenClose").val();
                 var searchby = $("#ddlSearchby").val();
                 var searchValue1 = $("#ddlSearchbyValue").val();
                 var searchValue2 = $("#txtSearchBox").val();
                 var th4Round = "0";
+
                 if ($("#cb4Th").prop("checked")) {
                     th4Round = "1";
                 }
 
                 if (searchby == "Title") {
                     searchValue1 = $("#txtSearchBox").val();
-                    searchValue2 = "";
+                    searchValue2 = " ";
                 }
                 if (searchby == "PublishDate" || searchby == "DeadlineDate" || searchby == "PositionStartDate" || searchby == "PositionEndDate") {
                     searchValue1 = $("#datepicker").val();
@@ -507,7 +508,7 @@
             var schoolyear = Publish.SchoolYear; // $("#ddlSchoolYear").val();
             var schoolcode = Publish.SchoolCode;  // $("#ddlschoolcode").val();
             var positionID = result;
-            var goPage = "Loading2.aspx?pID=LTOHRStaffs/RequestPositionDetails2.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID;
+            var goPage = "Loading2.aspx?pID=LTOHRStaffs/RequestPositionDetails2.aspx&SchoolYear=" + schoolyear + "&SchoolCode=" + schoolcode + "&PositionID=" + positionID +"&Action=NewPosting";
 
             openDetailPage(550, 790, goPage, "Add new Publish Position")
         }
