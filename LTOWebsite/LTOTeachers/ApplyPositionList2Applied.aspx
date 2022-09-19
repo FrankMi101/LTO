@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="ApplyPositionList2Applied.aspx.vb" Inherits="ApplyPositionList2Applied" EnableTheming="true" %>
 
-<%@ Register Src="../uc/comment/SearchPosition.ascx" TagName="SearchPosition" TagPrefix="uc1" %>
+<%--<%@ Register Src="../uc/comment/SearchPosition.ascx" TagName="SearchPosition" TagPrefix="uc1" %>--%>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -89,7 +89,7 @@
                                     <asp:HiddenField ID="SearchType" runat="server" />
                                     <asp:HiddenField ID="SearchForListValue1" runat="server" />
                                     <asp:HiddenField ID="SearchForListValue2" runat="server" />
-                                    <uc1:SearchPosition ID="SearchPosition1" runat="server" />
+                                 <%--   <uc1:SearchPosition ID="SearchPosition1" runat="server" />--%>
 
                                 </td>
 
@@ -183,7 +183,10 @@
                                 </ItemTemplate>
                                 <ItemStyle Width="50px" Wrap="False" />
                             </asp:TemplateField>
-                            <asp:BoundField DataField="DateApplyStart" HeaderText="Posting Open">
+                            <asp:BoundField DataField="DateApplied" HeaderText="Apply Date">
+                                <ItemStyle Width="85px" />
+                            </asp:BoundField>
+                              <asp:BoundField DataField="DateApplyStart" HeaderText="Posting Open">
                                 <ItemStyle Width="70px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="DateDeadline" HeaderText="Posting Close">
@@ -201,17 +204,17 @@
                                 <ItemStyle Width="100px" />
                             </asp:BoundField>
                             <asp:BoundField DataField="SchoolName" HeaderText="School">
-                                <ItemStyle Width="13%" />
+                                <ItemStyle Width="12%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="PositionTitle" HeaderText="Position Title" ItemStyle-CssClass="EditTitle">
-                                <ItemStyle Width="12%" />
+                                <ItemStyle Width="11%" />
                             </asp:BoundField>
                             <asp:BoundField DataField="PositionLevel" HeaderText="Division Required">
                                 <ItemStyle Width="10%" />
                             </asp:BoundField>
 
                             <asp:BoundField DataField="Qualification" HeaderText="Qualification" ControlStyle-CssClass="QualificationP" ItemStyle-CssClass="QualificationP">
-                                <ItemStyle Width="12%" />
+                                <ItemStyle Width="11%" />
                             </asp:BoundField>
 
                             <asp:BoundField DataField="Description" HeaderText="Position Description">

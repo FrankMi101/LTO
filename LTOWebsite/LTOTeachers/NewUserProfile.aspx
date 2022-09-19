@@ -172,9 +172,10 @@
                 <tr>
                     <td></td>
                     <td colspan="5" style="text-align: center;">
+                        <asp:Button ID="btnTSL" runat="server" Text="Remove form TSL"  CssClass="myButton" />
                         <asp:Button ID="btnSave" runat="server" Text="Save " Width="100px" CssClass="myButton" />
-                        <asp:Button ID="btnAction" runat="server" Text="Add To LTO List" Width="230px" CssClass="myButton" />
-                        <asp:Button ID="btnAction2" runat="server" Text="Change State" Width="230px" Visible="false" CssClass="myButton" />
+                        <asp:Button ID="btnAction" runat="server" Text="Add To LTO List"  CssClass="myButton" />
+                        <asp:Button ID="btnAction2" runat="server" Text="Change State"   Visible="false" CssClass="myButton" />
 
                         <%-- <input id="btnSave" runat="server" value="Save "class="btn btn-primary" />
                         <input id="btnAction" runat="server" value="Add To LTO List" class="btn btn-primary" onclick="BtnAction_Click()" />

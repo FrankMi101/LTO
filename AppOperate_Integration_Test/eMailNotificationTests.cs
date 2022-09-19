@@ -17,17 +17,44 @@ namespace AppOperate.Tests
     public class eMailNotificationTests
     {
         string schoolyear = "20192020";
-
-        string emailSubjectAndBodyTemplateFile = @"Content\eMailTemplate.json";
-
+         string addressType = "TCDSBeMailAddress";
+        string action = "";
         string pType = "LTO";
         string jsonFile = "eMailTemplate.json";
-
+        string bodyTemplateForTest = "BodyTemplate.htm";
+        string expect = "Successfully, SMTP Server Failed,No Email Recieve";
         // ********************* Very import for testing include read a File *********************
         // For Read Json file for test
         // Must setup the file property [Copy to Output Diractory] to "Copy always"
         // eMailTemplate.json is example
         // ***************************************************************************************
+
+        private PositionPublish position = new PositionPublish();
+
+        
+        [TestInitialize]
+        public void Setup()
+        {
+            // Runs before each test. (Optional)
+            position.UserID = "mif";
+            position.SchoolYear = "20212022";
+            position.SchoolCode = "0205";
+            position.PostingNumber = "2021-303033";
+            position.PositionID = 303033;
+            position.PositionType = "LTO";
+            position.PositionTitle = "Unit Test Posting Position Title";
+            position.StartDate = DateFC.YMD2("2021-09-06");
+            position.EndDate = DateFC.YMD2("2022-06-30");
+            position.DatePublish = "2021-06-10";
+            position.DateApplyOpen = "2021-08-24";
+            position.DateApplyClose = "2021-08-26";
+            position.ReplaceTeacherID = "00054391";
+            position.ReplaceTeacher = "Mr. Replace Teacher";
+            position.Owner = "frijiom";
+            position.PostingCycle = "1";
+            position.PrincipalID = "ciancha";
+            position.PrincipalName = "Antonietta Cianchetti";
+        }
 
         [TestMethod()]
         public void UserProfileByIDTest()
@@ -38,21 +65,14 @@ namespace AppOperate.Tests
             string expect = "Riccardo Agostino";
 
             //Act
-            var result = EmailNotification.UserProfileByID(type, _PrincipalID);
+            var result = EmailNotification.UserProfileByID(type, _PrincipalID, action);
 
             //Assert
             Assert.AreEqual(expect, result, $"  RePosting email notification { result}");
 
-
-
         }
 
-        [TestMethod()]
-        public void GetMultipleSchoolEmailTest()
-        {
-            Assert.Fail();
-        }
-
+       
         [TestMethod()]
         public void SaveEmailNoticeTest()
         {
@@ -83,7 +103,8 @@ namespace AppOperate.Tests
             string expect = "Successfully";
 
             //Act
-            var result = EmailNotification.SaveEmailNotice(testMail);
+            var notice = new EmailNotification();
+            var result = notice.SaveEmailNotice(testMail);
 
 
             //Assert
@@ -121,7 +142,8 @@ namespace AppOperate.Tests
             string expect = "Successfully,Failed,SMTP Server Failed, No Email Recieve";
 
             //Act
-            var result = EmailNotification.SendEmail(testMail);
+            var eNotice = new EmailNotification();
+            var result = eNotice.SendEmail(testMail);
 
 
             //Assert
@@ -130,17 +152,20 @@ namespace AppOperate.Tests
 
         [TestMethod()]
         [DeploymentItem("out//eMailTemplate.json")]
-        public void SubjectTest_PostingLTOPositionEmailNotification_ReturnNewPositionPostingNotification()
+        [DataRow("LTO", "New LTO Position Posting Notification")]
+        [DataRow("POP", "New POP Position Posting Notification")]
+        public void SubjectTest_PostingLTOPositionEmailNotification_ReturnNewPositionPostingNotification(string appType, string subject)
         {
             //Arrange
             string action = "Posting";
-            string expect = "New LTO/POP Position Posting Notification";
+            string expect = subject;
 
             // act
-            string result = EmailNotification.Subject(jsonFile, pType, action);
+            var eNotice = new EmailNotification();
+            string result = eNotice.Subject(jsonFile, appType, action);
 
             // Assert
-            Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
+            Assert.AreEqual(expect, result, $" {appType } {action} email notification subject is {result}");
         }
 
         public static TextReader GetJsonFile(string filename)
@@ -159,85 +184,23 @@ namespace AppOperate.Tests
             }
         }
 
-        //[TestMethod()]
-        //public void SubjectTest_RePostingLTOPositionEmailNotification_ReturnRePostingNotificationSubject()
-        //{
-        //    //Arrange
-        //    string action = "Repost";
-        //    string expect = "Position Reposting Notification";
 
-        //    // act
-        //    string result = EmailNotification.Subject(jsonFile, pType, action);
-
-        //    // Assert
-        //    Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
-        //}
-        //[TestMethod()]
-        //public void SubjectTest_CancelLTOPostingEmailNotification_ReturnCancelNotificationSubject()
-        //{
-        //    //Arrange
-        //    string action = "CancelA";
-        //    string expect = "Cancel Posted PositionTitle Notification";
-
-        //    // act
-        //    string result = EmailNotification.Subject(jsonFile, pType, action);
-
-        //    // Assert
-        //    Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
-        //}
-        //[TestMethod()]
-        //public void SubjectTest_RejectPostingRequestEmailNotification_ReturnRejectNotificationSubject()
-        //{
-        //    //Arrange
-        //    string action = "Reject";
-        //    string expect = "Reject New posting Request Notification";
-        //    // act
-        //    string result = EmailNotification.Subject(jsonFile, pType, action);
-
-        //    // Assert
-        //    Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
-        //}
 
         [TestMethod()]
-        public void EmailSubjectAndTempleByAction_Return_Reject_TempleteFile_Test()
+        [DataRow("LTO", "Reject_PostingNotification_LTO.htm")]
+        [DataRow("POP", "Reject_PostingNotification_POP.htm")]
+        public void EmailSubjectAndTempleByAction_Return_Reject_TempleteFile_Test(string appType, string bodyTemplate)
         {
             //Arrange
             string action = "Reject";
-            string expect = "PostingNotification_Reject.htm";
+            string expect = bodyTemplate;
             // act
-            string result = EmailNotification.Template(jsonFile, pType, action);
+            var eNotice = new EmailNotification();
+            string result = eNotice.Template(jsonFile, appType, action);
 
             // Assert
-            Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
+            Assert.AreEqual(expect, result, $" {appType } {action} email notification subject is {result}");
         }
-
-        //[TestMethod()]
-        //public void EmailSubjectAndTempleByAction_Return_Post_TempleteFile_Test()
-        //{
-        //    //Arrange
-        //    string action = "Posting";
-        //    string expect = "PostingNotification.htm";
-
-        //    // act
-        //    string result = EmailNotification.Template(jsonFile, pType, action);
-
-        //    // Assert
-        //    Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
-        //}
-        //[TestMethod()]
-        //public void EmailSubjectAndTempleByAction_Return_Repost_TempleteFile_Test()
-        //{
-        //    //Arrange
-        //    string action = "Repost";
-        //    string expect = "PostingNotification_Reposting.htm";
-
-        //    // act
-        //    string result = EmailNotification.Template(jsonFile, pType, action);
-
-        //    // Assert
-        //    Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
-        //}
-
 
 
 
@@ -245,39 +208,51 @@ namespace AppOperate.Tests
         [DataRow("Applied", "Confirmation for PositionTitle Notification")]
         [DataRow("CancelA", "Cancel Posted PositionTitle Notification")]
         [DataRow("ConfirmHire", "Confirm for PositionTitle hired Notification")]
-        [DataRow("Notice", "Interview Candidate list for PositionTitle Notification")]
-        [DataRow("Posting", "New LTO/POP Position Posting Notification")]
+        [DataRow("Notice", "Candidate list for PositionTitle Notification")]
+        [DataRow("Posting", "New LTO Position Posting Notification")]
         [DataRow("Repost", "Position Reposting Notification")]
         [DataRow("Reject", "Reject New posting Request Notification")]
-        [DataRow("Revoke", "Revoke Position confirm hired Notification")]
+        [DataRow("Revoke", "Revoke confirm for PositionTitle hired Notification")]
         public void EmailNotification_SubjectTest_byAction__ReturnEmailNotificationSubjectbyAction_Test(string action, string expect)
         {
             //Arrange
+
             // act
-            string result = EmailNotification.Subject(jsonFile, pType, action);
+            var eNotice = new EmailNotification();
+            string result = eNotice.Subject(jsonFile, pType, action);
 
             // Assert
             Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
         }
 
         [TestMethod()]
-        [DataRow("Applied", "ConfirmApplyNotificationLTO.htm")]
-        [DataRow("CancelA", "PostingNotification_CancelA.htm")]
-        [DataRow("ConfirmHire", "ConfirmHiredNotification.htm")]
-        [DataRow("Notice", "ConfirmInterviewNotificationLTO.htm")]
-        [DataRow("Posting", "PostingNotification.htm")]
-        [DataRow("Repost", "PostingNotification_Reposting.htm")]
-        [DataRow("Reject", "PostingNotification_Reject.htm")]
-        [DataRow("Revoke", "ConfirmHiredNotificationRevoke.htm")]
-        public void EmailNotification_TempletTest_ByAction_Return_ActionTempleteFile_Test(string action, string expect)
+        [DataRow("LTO", "Applied", "Apply_NotificationConfirm_LTO.htm")]
+        [DataRow("LTO", "CancelA", "PostingNotification_CancelA.htm")]
+        [DataRow("LTO", "ConfirmHire", "Hired_ConfirmNotification_LTO.htm")]
+        [DataRow("LTO", "Notice", "Notice_CandidateList_LTO.htm")]
+        [DataRow("LTO", "Posting", "Posting_Notification_LTO.htm")]
+        [DataRow("LTO", "Repost", "Posting_Notification_LTO_Reposting.htm")]
+        [DataRow("LTO", "Reject", "Reject_PostingNotification_LTO.htm")]
+        [DataRow("LTO", "Revoke", "Revoke_HiredNotification_LTO.htm")]
+        [DataRow("POP", "Applied", "Apply_NotificationConfirm_POP.htm")]
+        [DataRow("POP", "CancelA", "PostingNotification_CancelA.htm")]
+        [DataRow("POP", "ConfirmHire", "Hired_ConfirmNotification_POP.htm")]
+        [DataRow("POP", "Notice", "Notice_CandidateList_POP.htm")]
+        [DataRow("POP", "Posting", "Posting_Notification_POP.htm")]
+        [DataRow("POP", "Repost", "Posting_Notification_POP_Reposting.htm")]
+        [DataRow("POP", "Reject", "Reject_PostingNotification_POP.htm")]
+        [DataRow("POP", "Revoke", "Revoke_HiredNotification_POP.htm")]
+
+        public void EmailNotification_TempletTest_ByAction_Return_ActionTempleteFile_Test(string appType, string action, string expect)
         {
             //Arrange
 
             // act
-            string result = EmailNotification.Template(jsonFile, pType, action);
+            var eNotice = new EmailNotification();
+            string result = eNotice.Template(jsonFile, appType, action);
 
             // Assert
-            Assert.AreEqual(expect, result, $" {pType } {action} email notification subject is {result}");
+            Assert.AreEqual(expect, result, $" {appType } {action} email notification subject is {result}");
         }
 
     }

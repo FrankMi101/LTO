@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonObj\CommonAction.cs" />
-    <Compile Include="PostingNotification.cs" />
+    <Compile Include="EmailNotification.cs" />
     <Compile Include="ExecuteAsync\PostingDateExeAsync.cs" />
     <Compile Include="ExecuteAsync\PostingPositionExeAsync.cs" />
     <Compile Include="ExecuteAsync\PublishPositionExeAsync.cs" />
@@ -123,7 +123,6 @@
     <Compile Include="AssemblingList.cs" />
     <Compile Include="DateFC.cs" />
     <Compile Include="DataTools.cs" />
-    <Compile Include="EmailNotification.cs" />
     <Compile Include="Factory.cs" />
     <Compile Include="HelpText.cs" />
     <Compile Include="Execute0\IPositionListRepository.cs" />

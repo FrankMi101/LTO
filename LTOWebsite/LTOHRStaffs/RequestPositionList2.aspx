@@ -90,112 +90,113 @@
                 <asp:ServiceReference Path="~/WebServices/WebService.asmx" />
             </Services>
         </asp:ScriptManager>
-        <asp:UpdatePanel ID="UpdatePanel2" runat="server">
-            <ContentTemplate>
-                <table>
-                    <tr>
-                        <td>
-                            <div style="display: inline;">
+         <div class="search-area">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                    <table>
+                        <tr>
+                            <td>
+                                <div style="display: inline;">
 
-                                <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>
-                                <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True" 
-                                    Enabled="true">
-                                </asp:DropDownList>
-                                <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" >
-                                    <asp:ListItem>POP</asp:ListItem>
-                                    <asp:ListItem>LTO</asp:ListItem>
-                                    <asp:ListItem>COP</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:Label ID="lblSuperArea" runat="server" Text="Search by"></asp:Label>
-                                <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True" >
-                                    <%--  <asp:ListItem Selected="True">All</asp:ListItem>
-                                  <asp:ListItem>Area</asp:ListItem>
-                                    <asp:ListItem>School</asp:ListItem>
-                                    <asp:ListItem>Title</asp:ListItem>
-                                    <asp:ListItem>Level</asp:ListItem>
-                                    <asp:ListItem Value="PostingNum">Posting Number</asp:ListItem>
-                                    <asp:ListItem Value="PostingState">Posting State</asp:ListItem>
-                                    <asp:ListItem Value="PostingCycle">Posting Cycle</asp:ListItem>
-                                    <asp:ListItem Value="PublishDate">Publish Date</asp:ListItem>
-                                    <asp:ListItem Value="DeadlineDate">Deadline Date</asp:ListItem>
-                                    <asp:ListItem Value="OpenDate">Posting Open Date</asp:ListItem>
-                                    <asp:ListItem Value="CloseDate">Posting Close Date</asp:ListItem>
-                                    <asp:ListItem Value="PositionStartDate">Position Start Date</asp:ListItem>
-                                    <asp:ListItem Value="PositionEndDate">Position End Date</asp:ListItem>
-                                    <asp:ListItem Value="PositionStatus">Position Status</asp:ListItem>
-                                    <asp:ListItem Value="PendingConfirm">Pending Confirm</asp:ListItem>
-                                    <asp:ListItem>Applicants </asp:ListItem>--%>
-                                </asp:DropDownList>
-
-                                <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="False"  >
-                                </asp:DropDownList>
-                                <asp:TextBox ID="txtSearchBox" runat="server" Width="150px" Visible="false"  ></asp:TextBox>
-
-                                <input runat="server" visible="false" type="text" id="datepicker" size="10" />
-                                <asp:Label ID="DateTo" runat="server" Text="To"></asp:Label>
-                                <input runat="server" visible="false" type="text" id="datepicker2" size="10" />
-                                <%-- <div id="PanelDIV" runat="server" style="display: inline;">
-                                    IN 
-                    
-                                    <asp:DropDownList ID="ddlPanel" runat="server" Width="90px" SkinID="ddlSmall" AutoPostBack="True">
-                                        <asp:ListItem Selected="True" Value="0">All</asp:ListItem>
-                                        <asp:ListItem Value="02">Elementary</asp:ListItem>
-                                        <asp:ListItem Value="05">Secondary</asp:ListItem>
+                                    <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>
+                                    <asp:DropDownList ID="ddlSchoolYear" runat="server" Width="85px" SkinID="ddlSmall" AutoPostBack="True" 
+                                        Enabled="true">
                                     </asp:DropDownList>
-                                </div>--%>
-                                <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="False"  >
-                                    <asp:ListItem>All</asp:ListItem>
-                                    <asp:ListItem Selected="True">Open</asp:ListItem>
-                                    <asp:ListItem>Close</asp:ListItem>
-                                </asp:DropDownList>
+                                    <asp:DropDownList ID="ddlappType" runat="server" Width="55px" Visible="true" SkinID="ddlSmall" AutoPostBack="True" >
+                                        <asp:ListItem>POP</asp:ListItem>
+                                        <asp:ListItem>LTO</asp:ListItem>
+                                        <asp:ListItem>COP</asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:Label ID="lblSuperArea" runat="server" Text="Search by"></asp:Label>
+                                    <asp:DropDownList ID="ddlSearchby" runat="server" Width="120px" SkinID="ddlSmall" Visible="true" AutoPostBack="True" >
+                                        <%--  <asp:ListItem Selected="True">All</asp:ListItem>
+                                      <asp:ListItem>Area</asp:ListItem>
+                                        <asp:ListItem>School</asp:ListItem>
+                                        <asp:ListItem>Title</asp:ListItem>
+                                        <asp:ListItem>Level</asp:ListItem>
+                                        <asp:ListItem Value="PostingNum">Posting Number</asp:ListItem>
+                                        <asp:ListItem Value="PostingState">Posting State</asp:ListItem>
+                                        <asp:ListItem Value="PostingCycle">Posting Cycle</asp:ListItem>
+                                        <asp:ListItem Value="PublishDate">Publish Date</asp:ListItem>
+                                        <asp:ListItem Value="DeadlineDate">Deadline Date</asp:ListItem>
+                                        <asp:ListItem Value="OpenDate">Posting Open Date</asp:ListItem>
+                                        <asp:ListItem Value="CloseDate">Posting Close Date</asp:ListItem>
+                                        <asp:ListItem Value="PositionStartDate">Position Start Date</asp:ListItem>
+                                        <asp:ListItem Value="PositionEndDate">Position End Date</asp:ListItem>
+                                        <asp:ListItem Value="PositionStatus">Position Status</asp:ListItem>
+                                        <asp:ListItem Value="PendingConfirm">Pending Confirm</asp:ListItem>
+                                        <asp:ListItem>Applicants </asp:ListItem>--%>
+                                    </asp:DropDownList>
 
-                                <asp:Button ID="btnSearch" runat="server" Text="Go" />
-                                <asp:CheckBox ID="cb4Th" runat="server" Text="4th Round" />
-                                <asp:Label ID="Labelemail" runat="server" Text="       "></asp:Label>
-                                <asp:Button ID="btnNewOpen" runat="server" Text="Add New Open Position" Width="160px" />
+                                    <asp:DropDownList ID="ddlSearchbyValue" runat="server" Width="150px" SkinID="ddlSmall" Visible="true" AutoPostBack="False"  >
+                                    </asp:DropDownList>
+                                    <asp:TextBox ID="txtSearchBox" runat="server" Width="150px" Visible="false"  ></asp:TextBox>
+
+                                    <input runat="server" visible="false" type="text" id="datepicker" size="10" />
+                                    <asp:Label ID="DateTo" runat="server" Text="To"></asp:Label>
+                                    <input runat="server" visible="false" type="text" id="datepicker2" size="10" />
+                                    <%-- <div id="PanelDIV" runat="server" style="display: inline;">
+                                        IN 
+                    
+                                        <asp:DropDownList ID="ddlPanel" runat="server" Width="90px" SkinID="ddlSmall" AutoPostBack="True">
+                                            <asp:ListItem Selected="True" Value="0">All</asp:ListItem>
+                                            <asp:ListItem Value="02">Elementary</asp:ListItem>
+                                            <asp:ListItem Value="05">Secondary</asp:ListItem>
+                                        </asp:DropDownList>
+                                    </div>--%>
+                                    <asp:DropDownList ID="ddlOpenClose" runat="server" Width="60px" SkinID="ddlSmall" AutoPostBack="False"  >
+                                       <%-- <asp:ListItem>All</asp:ListItem>--%>
+                                        <asp:ListItem Selected="True">Open</asp:ListItem>
+                                        <asp:ListItem>Close</asp:ListItem>
+                                    </asp:DropDownList>
+
+                                    <asp:Button ID="btnSearch" runat="server" Text="Go" />
+                                    <asp:CheckBox ID="cb4Th" runat="server" Text="4th Round" />
+                                    <asp:Label ID="Labelemail" runat="server" Text="       "></asp:Label>
+                                    <asp:Button ID="btnNewOpen" runat="server" Text="Add New Open Position" Width="160px" />
 
 
 
 
 
-                                <asp:HiddenField ID="HiddenFieldUserRole" runat="server" />
-                            </div>
-                        </td>
-                        <td>
-                            <div class="loading">
+                                    <asp:HiddenField ID="HiddenFieldUserRole" runat="server" />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="loading">
 
-                                <asp:UpdateProgress ID="UpdateProgress1" runat="server">
-                                    <ProgressTemplate>
-                                        <img src="../images/indicator.gif" alt="" />
-                                        <b>Searching.....</b>
-                                    </ProgressTemplate>
-                                </asp:UpdateProgress>
+                                    <asp:UpdateProgress ID="UpdateProgress1" runat="server">
+                                        <ProgressTemplate>
+                                            <img src="../images/indicator.gif" alt="" />
+                                            <b>Searching.....</b>
+                                        </ProgressTemplate>
+                                    </asp:UpdateProgress>
 
-                            </div>
-                        </td>
-                        <td>
-                            <div style="display: inline">
-                                <img src="../images/excel.bmp" />
-                                <asp:LinkButton ID="btnExcel" runat="server">Export the List to EXCEL </asp:LinkButton>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: inline">
+                                    <img src="../images/excel.bmp" />
+                                    <asp:LinkButton ID="btnExcel" runat="server">Export the List to EXCEL </asp:LinkButton>
 
-                                <a visible="false" id="emailRemind" runat="server" href="javascript:openRemindPrincipalEmail()">
-                                    <img src="../images/emailTo.png" alt="" title="Reminder the Principal to complete Hiring Process by eMail" style="border-width: 1px; border-color: Purple;" />
-                                    Send Reminder email to Principal
-                                </a>
-                                <asp:HiddenField ID="hfSchoolCode" runat="server" />
-                                <asp:HiddenField ID="hfUserID" runat="server" />
-                            </div>
-                        </td>
-                    </tr>
-                    <tr><td colspan="3">
-                         <asp:Label runat="server" ID="Label1" Font-Size="X-Small" ForeColor="red" Text="* Click on the Edit button to open position details"> </asp:Label>
+                                    <a visible="false" id="emailRemind" runat="server" href="javascript:openRemindPrincipalEmail()">
+                                        <img src="../images/emailTo.png" alt="" title="Reminder the Principal to complete Hiring Process by eMail" style="border-width: 1px; border-color: Purple;" />
+                                        Send Reminder email to Principal
+                                    </a>
+                                    <asp:HiddenField ID="hfSchoolCode" runat="server" />
+                                    <asp:HiddenField ID="hfUserID" runat="server" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr><td colspan="3">
+                             <asp:Label runat="server" ID="Label1" Font-Size="X-Small" ForeColor="red" Text="* Click on the Edit button to open position details"> </asp:Label>
 
-                        </td></tr>
-                </table>
+                            </td></tr>
+                    </table>
 
-            </ContentTemplate>
-        </asp:UpdatePanel>
-
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </div>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
 
@@ -429,7 +430,7 @@
                     th4Round = "1";
                 }
 
-                if (searchby == "Title") {
+                if (searchby == "Title" || searchby == "All") {
                     searchValue1 = $("#txtSearchBox").val();
                     searchValue2 = " ";
                 }
@@ -437,6 +438,10 @@
                     searchValue1 = $("#datepicker").val();
                     searchValue2 = $("#datepicker2").val();
                 }
+
+                if (searchValue1 == undefined) searchValue1 = " ";
+                if (searchValue2 == undefined) searchValue2 = " ";
+
                 var goPage = "../PDFLoading/EXCELDocument_Loading.aspx?rID=PositionList_Publish&yID=" + schoolyear + "&AppType=" + appType + "&Panel=" + panel + "&OpenClose=" + openClose + "&SearchBy=" + searchby + "&SearchValue1=" + searchValue1 + "&SearchValue2=" + searchValue2 + "&th4Round=" + th4Round;
 
                 window.open(goPage, "", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=450 height=300, top=10, left=10");

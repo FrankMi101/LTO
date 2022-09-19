@@ -61,57 +61,33 @@ Partial Class Logon
     End Sub
 
     Private Sub btnLogin_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnLogin.Click
-
-        If AuthenticationMethod() = "NameOnly" Then
-            CheckTestUser("Verified")
-        Else
-            Try
-                Dim auth = UserSecurity.AuthenticateResult(txtDomain.Text, txtUsername.Text, txtPassword.Text)
-                If auth = "true" Then '  LoginIdentify.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then '  Common.LDAP_Authentication.Authenticate(txtDomain.Text, txtUsername.Text, txtPassword.Text) Then
-                    CheckAppRole()
-                Else
-                    CheckTestUser(auth) '"Authentication did not succeed. Check user name and password.")
-                End If
-            Catch ex As Exception
-                Dim excep = ex.Message
-                CheckTestUser(excep) '"Authentication did not succeed. Check user name and password.")
-            End Try
-        End If
-
+        Try
+            Dim auth = UserSecurity.AuthenticateResult(txtDomain.Text, txtUsername.Text, txtPassword.Text)
+            CheckTestUser(auth)
+        Catch ex As Exception
+            Dim excep = ex.Message
+            CheckTestUser(excep)
+        End Try
     End Sub
-    Private Function AuthenticationMethod() As String
-        Dim authMethod As String = WebConfigurationManager.AppSettings("AuthenticateMethod")
-        Dim sName As String = System.Net.Dns.GetHostName()
-        If authMethod = "NameOnly" Then
-            If IsProdutionServer(sName) Then authMethod = "NameOnlyFalse"
-        Else
-            If sName = "0811N0009MC7LC2" And Me.txtUsername.Text = "mif" Then authMethod = "NameOnly"
-        End If
-        Return authMethod
-    End Function
-    Private Function IsProdutionServer(ByVal sName As String) As Boolean
-        Dim appServers As String = WebConfigurationManager.AppSettings("AppServers")
-        If appServers.IndexOf(sName) > -1 Then Return True
-        Return False
-    End Function
+
     Private Sub CheckTestUser(ByVal verifyResult As String)
-        If verifyResult = "Verified" Then
+        If verifyResult = "true" Or verifyResult = "Verified" Then
             CheckAppRole()
         Else
             errorlabel.ForeColor = Drawing.Color.Red
-            errorlabel.Text = verifyResult ' WebConfigurationManager.AppSettings("LoginMessage")
+            errorlabel.Text = verifyResult
         End If
     End Sub
     Private Sub CheckAppRole()
         Try
-            Dim userRole As String = UserSecurity.UserRole(txtUsername.Text) ' CommonTCDSB.UserSecurity.TestUserRole(Me.txtUsername.Text)
+            Dim userRole As String = UserSecurity.UserRole(txtUsername.Text)
             If userRole = "SAP Profile" Then
                 errorlabel.ForeColor = Drawing.Color.Red
-                errorlabel.Text = WebConfigurationManager.AppSettings("NotAuthorize")  ' "Your SAP Profile is not quailified the LTO position!"
+                errorlabel.Text = WebConfigurationManager.AppSettings("NotAuthorize")
 
             ElseIf userRole = "Other" Then
                 errorlabel.ForeColor = Drawing.Color.Red
-                errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP") '"Authentication did not succeed. Check user name and password."
+                errorlabel.Text = WebConfigurationManager.AppSettings("SorryNoP")
             Else
                 CreateAuthTicket(userRole)
             End If
@@ -121,30 +97,26 @@ Partial Class Logon
         End Try
 
     End Sub
+    Private Sub SetWorkProfile(ByVal _role As String)
+        WorkingProfile.UserID = Me.txtUsername.Text
+        WorkingProfile.UserRole = _role
+        WorkingProfile.LoginRole = _role
+        WorkingProfile.LoginStatues("Login") = "OnLine"
+        WorkingProfile.SchoolCode = Nothing
+        WorkingProfile.SchoolName = Nothing
+    End Sub
     Private Sub CreateAuthTicket(ByVal _role As String)
         Try
-
-            WorkingProfile.UserID = Me.txtUsername.Text
-            WorkingProfile.UserRole = _role
-            WorkingProfile.LoginRole = _role
-            WorkingProfile.LoginStatues("Login") = "OnLine"
-            WorkingProfile.SchoolCode = Nothing
-            WorkingProfile.SchoolName = Nothing
+            SetWorkProfile(_role)
             Dim iscookiepersistent As Boolean = chkPersist.Checked
             Dim appID As String = Page.Request.QueryString("appid")
             Dim userid As String = Page.Request.QueryString("userid")
 
-
-
             If appID = Nothing Or appID = "undefined" Then
                 Session("ApplicationEntry") = "NotSP"
-                'Else
-                '    Session("ApplicationTypeSessionValue") = CommonTCDSB.UserTrack. TrackInfo(WorkingProfile.UserID, "ApplicationType")
             Else
                 WorkingProfile.ApplicationType = appID
             End If
-
-            ' WorkingProfile.ApplicationType = "POP"
 
             Dim authTicket As FormsAuthenticationTicket = New FormsAuthenticationTicket(1, txtUsername.Text, DateTime.Now, DateTime.Now.AddMinutes(60), iscookiepersistent, "")
 
@@ -179,7 +151,6 @@ Partial Class Logon
         Dim ip_address, session_id, browser_type, browser_version, screen_resolution As String
         Dim machine_name As String
         Dim transaction_time As DateTime
-        'user_id = HttpContext.Current.User.Identity.Name.ToString
         ip_address = HttpContext.Current.Request.UserHostAddress.ToString
         If ip_address Is Nothing Then
             ip_address = String.Empty
@@ -196,8 +167,7 @@ Partial Class Logon
             machine_name = "localhost"
         Else
             Try
-                '  machine_name = System.Net.Dns.GetHostByAddress(ip_address).HostName.ToString.Substring(0, System.Net.Dns.GetHostByAddress(ip_address).HostName.ToString.IndexOf("."))
-                machine_name = System.Net.Dns.GetHostName() ' (ip_address) '  .GetHostByAddress(ip_address).HostName.ToString.Substring(0, System.Net.Dns.GetHostByAddress(ip_address).HostName.ToString.IndexOf("."))
+                machine_name = System.Net.Dns.GetHostName()
             Catch ex As Exception
                 machine_name = " "
             End Try
@@ -206,10 +176,6 @@ Partial Class Logon
         browser_type = HttpContext.Current.Request.Browser.Type
 
         browser_version = HttpContext.Current.Request.Browser.Version
-        '   CommonTCDSB.UserTrack. LogTraffic(_result, "1", ip_address, _userID, "SLIP", transaction_time, browser_type, browser_version, screen_resolution, "", "", machine_name)
-
-
-
     End Sub
     Private Sub saveEnvrionment(ByVal _Role As String)
         Try
@@ -220,8 +186,6 @@ Partial Class Logon
             Dim machine_name As String = Server.MachineName
             Dim browser_type As String = HttpContext.Current.Request.Browser.Type
             Dim browser_version As String = HttpContext.Current.Request.Browser.Version
-
-            '   LoginIdentify.LoginParameter(txtUsername.Text, ServerName, ScreenSize, _Role, WorkingProfile.SchoolYearCurrent, "OnLine", browser_type)
 
             UserTrack.ActionTrack(txtUsername.Text, ServerName, ScreenSize, _Role, WorkingProfile.SchoolYearCurrent, "OnLine", browser_type)
 
@@ -255,23 +219,6 @@ Partial Class Logon
         End If
 
     End Function
-    'Dim RegexMobile As Regex = New Regex("(iemobile|iphone|ipod|android|nokia|sonyericsson|blackberry|samsung|sec-|windows ce|motorola|mot-|up.b|midp-)", RegexOptions.IgnoreCase|RegexOptions.Compiled)
-    'Private Function checkIsMobuile() As String
-
-    '    Dim Context = New HttpContext.Current
-    '    If Not Context = Nothing Then
-    '        Dim request = Context.Request
-    '        If request.Browser.IsMobileDevice Then
-    '            Return "Mobile"
-    '        Else
-    '            If IsNothing(request.UserAgent) And RegexMobile.IsMatch(request.UserAgent) Then
-    '                Return "Mobile"
-    '            End If
-    '        End If
-
-    '    End If
-    '    Return "PC"
-    'End Function
 
 End Class
 

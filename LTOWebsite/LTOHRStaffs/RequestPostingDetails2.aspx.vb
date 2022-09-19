@@ -17,6 +17,8 @@ Imports ClassLibrary
 Partial Class RequestPostingDetails2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+    Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+
     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile()  ' Server.MapPath("..\Content\DataAccess.json")
     Dim cPage As String = "Approve"
     Protected Sub Page_Error(sender As Object, e As EventArgs) Handles Me.Error
@@ -378,9 +380,10 @@ Partial Class RequestPostingDetails2
 
     Private Sub SendPostingNotification(ByVal action As String)
         Try
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
 
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
 
             Dim userId As String = User.Identity.Name
 
@@ -388,14 +391,14 @@ Partial Class RequestPostingDetails2
 
             If Me.chbNoticeToPrincipal.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Principal", userId)
-                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody)
-                SMTPMailCall("Principal", myEmail)
+                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Principal", myEmail)
             End If
 
             If Me.chbNoticeToUnion.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Union", userId)
-                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody)
-                SMTPMailCall("Union", myEmail)
+                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Union", myEmail)
             End If
         Catch ex As Exception
             CreatSaveMessage("Failed", "Send Email notification")
@@ -403,36 +406,35 @@ Partial Class RequestPostingDetails2
 
     End Sub
 
-    Private Sub SMTPMailCall(ByVal _who As String, ByVal myEmail As EmailNotice2)
-        Dim _AditionInfo As String = ""
+    'Private Sub SMTPMailCall(ByVal _who As String, ByVal myEmail As EmailNotice2)
 
-        Try
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
+    '    Try
+    '        Dim emailNotice = New EmailNotification()
 
-        Catch ex As Exception
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
 
-        End Try
-    End Sub
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
     Private Function GetHRContact() As Contact
         Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
         Dim contact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
         Return contact
     End Function
-    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String) As String
+    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String, ByVal HRContact As Contact) As String
 
-        Dim HRContact = GetHRContact()
+
         Dim contact As String = HRContact.Extention
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now()) '.ToString("yyyy/MM/dd-HH:mm:ss")
         Dim publishDate As String = Me.datePublish.Value
         Dim openDate As String = Me.dateApplyStart.Value
         Dim closeDate As String = Me.dateDeadline.Value
         Dim level As String = ddlPositionlevel.SelectedItem.Text
 
-        'Dim appType As String = hfAppType.Value
-        'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
         Dim myHtml As String = Server.MapPath("..") + "\Template\" + bodyTemplate
         Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHtml)
 
@@ -545,6 +547,7 @@ Partial Class RequestPostingDetails2
             .PostingCycle = "1"
             .PrincipalID = hfPrincipalID.Value
             .PrincipalName = Me.lblPrinciaplName.Text
+            .PostingNumber = hfPostingNumber.Value
         End With
 
         Return position

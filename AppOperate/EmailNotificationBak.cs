@@ -9,52 +9,17 @@ using System.Web.Configuration;
 
 namespace AppOperate
 {
-    public class PostingNotification
+    public class EmailNotificationBak
     {
         private readonly PositionPublish _position;
-        public PostingNotification()
+        public EmailNotificationBak()
         { }
-        public PostingNotification(PositionPublish position)
+
+        public EmailNotificationBak(PositionPublish position)
         {
             _position = position;
         }
 
-        //public EmailBase GetEmail(string jsonFile, string action, string who, string userId)
-        //{
-
-        //    string appType = _position.PositionType;
-        //    string panel = DataTools.SchoolPanel(_position.SchoolCode);
-        //    string title = _position.PositionTitle;
-
-        //    var myEmailTemple = EmailSubjectAndTemple(jsonFile, appType, action);
-        //    string subject = myEmailTemple.Subject;
-        //    var myEmail = new EmailBase()
-        //    {
-        //        EmailFormat = "HTML",
-        //        EmailAction = action,
-        //        EmailFor = who,
-        //        EmailFrom = FromUser(appType),
-        //        EmailBcc = BccUser(appType),
-        //        EmailSubject = MailSubject(appType, panel, subject, title),
-        //    };
-
-        //    if (who == "Staff")
-        //    {
-        //        myEmail.EmailTo = ToUser(action);
-        //        myEmail.EmailCC = CCUser(action, userId, "Staff");
-        //    }
-        //    else if (who == "Union")
-        //    {
-        //        myEmail.EmailTo = UnionEmail(panel, appType);
-        //        myEmail.EmailCC = CCUser(action, userId, "Union");
-        //    }
-        //    else
-        //    {
-        //        myEmail.EmailTo = ApplicantMail(userId);
-        //        myEmail.EmailCC = CCUser(action, userId, "Applicant");
-        //    }
-        //    return myEmail;
-        //}
         public EmailNotice2 GetEmailNotice(string jsonFile, string action, string who, string userId)
         {
 
@@ -92,33 +57,25 @@ namespace AppOperate
 
             //myEmail.EmailTo = ToUser(action,who,panel,userId);
             //myEmail.EmailCC = CCUser(action, userId, who);
-     
+
             return myEmail;
         }
-        //public string ToUser(string action)
-        //{
-        //    string emailToList = "";
 
-        //    // emailToList = UserProfileByID("TCDSBeMailAddress", _position.PrincipalID);
-        //    emailToList = GetMultipleSchoolEmail(_position.SchoolYear, _position.SchoolCode, _position.PositionID);
-
-        //    return emailToList;
-        //}
-        private string ToUser(string action, string who, string panel,string userId)
+        private string ToUser(string action, string who, string panel, string userId)
         {
-            if (who == "Union")     return UnionEmail(panel, _position.PositionType);
-            if (who == "Staff")     return UserProfileByID("TCDSBeMailAddress", _position.Owner);
+            if (who == "Union") return UnionEmail(panel, _position.PositionType);
+            if (who == "Staff") return UserProfileByID("TCDSBeMailAddress", _position.Owner);
             if (who == "Applicant") return ApplicantMail(userId);
             // who ="Principal"
             return GetMultipleSchoolEmail(_position.SchoolYear, _position.SchoolCode, _position.PositionID);
 
         }
         private string CCUser(string action, string who, string panel, string userId)
-        {            
+        {
             string mCC = WebConfigValue.getValuebyKey("eMailCC");
 
-            if (who == "Union")     return UnionFollow(userId);
-            if (who == "Staff")     return UserProfileByID("TCDSBeMailAddress", userId);
+            if (who == "Union") return UnionFollow(userId);
+            if (who == "Staff") return UserProfileByID("TCDSBeMailAddress", userId);
             if (who == "Applicant") return "";
             // who = "Principal"
             mCC = CheckCCMailOwner(mCC, _position.Owner, userId);
@@ -171,39 +128,67 @@ namespace AppOperate
             mCC = mCC.Replace(";;", ";");
             return mCC.ToLower();
         }
-      
-        public string EmailHTMLBody(string eFile)
-        {
-            return JsonFileReader.JsonString(eFile);
-        }
-        public string Subject(string JsonFile, string pType, string action)
-        {
-            return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
-        }
-        public string Subject(TextReader JsonFile, string pType, string action)
-        {
-            return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
-        }
-        public string Template(string JsonFile, string pType, string action)
-        {
-            return EmailSubjectAndTemple(JsonFile, pType, action).Template;  //JsonFileReader.GetTemplate(JsonFile, pType, action);
-        }
-        public EmailTemplateItem EmailSubjectAndTemple(string JsonFile, string pType, string action)
-        {
-            return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
-        }
-        public EmailTemplateItem EmailSubjectAndTemple(TextReader JsonFile, string pType, string action)
-        {
-            return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
-        }
 
-   
         public string MailSubject(string appType, string panel, string subject, string title)
         {
             return subject.Replace("for PositionTitle", appType + " " + panel + " " + title);
 
         }
-        private string GetUnionMail(string panel)
+
+        public static string EmailHTMLBody(string eFile)
+        {
+
+            return JsonFileReader.JsonString(eFile);
+
+        }
+        public static string Subject(string JsonFile, string pType, string action)
+        {
+            return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
+        }
+        public static string Subject(TextReader JsonFile, string pType, string action)
+        {
+            return EmailSubjectAndTemple(JsonFile, pType, action).Subject; // JsonFileReader.GetSubject(JsonFile, pType, action);
+        }
+        public static string Template(string JsonFile, string pType, string action)
+        {
+            return EmailSubjectAndTemple(JsonFile, pType, action).Template;  //JsonFileReader.GetTemplate(JsonFile, pType, action);
+        }
+        public static EmailTemplateItem EmailSubjectAndTemple(string JsonFile, string pType, string action)
+        {
+            return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
+        }
+        public static EmailTemplateItem EmailSubjectAndTemple(TextReader JsonFile, string pType, string action)
+        {
+            return JsonFileReader.GetSubjectAndTemplate(JsonFile, pType, action);
+        }
+
+       
+        public static string CheckFromMail(string appType)
+        {
+
+            if (appType == "POP") return "POP.Admin@tcdsb.org";
+            return "LTO.Admin@tcdsb.org";
+        }
+        public static string CheckMailSubject(string appType, string schoolCode, string subject, string title)
+        {
+            string panel = "";
+            if (schoolCode.Substring(0, 2) == "05")
+            {
+                if (title.IndexOf("Secondary") < 0) panel = "Secondary";
+            }
+            else
+            {
+                if (title.IndexOf("Elementary") < 0) panel = "Elementary";
+            }
+            return subject.Replace("for PositionTitle", appType + " " + panel + " " + title);
+            //appType = "LTO"/"POP"
+            //appAction = "Hired"/ "Interview" / "Post"
+            // mailAction = "Confirm" / "Revoke" / "Reject"
+
+            //  return mailAction + " " + appType + " " + panel + " " + appAction  + " Notification";
+            // return  "Confirm POP Secondary Teacher hired Notification"
+        }
+        private static string GetUnionMail(string panel)
         {
             if (panel == "S") return "eMail_UnionS";
             return "eMail_UnionE";
@@ -252,7 +237,7 @@ namespace AppOperate
             mCC = mCC.Replace(";;", ";");
             return mCC.ToLower();
         }
-        private string AddMail(string mCC, string checkMail)
+        private static string AddMail(string mCC, string checkMail)
         {
             try
             {
@@ -276,7 +261,7 @@ namespace AppOperate
 
 
         }
-        private string AddMail2(string mCC, string addM)
+        private static string AddMail2(string mCC, string addM)
         {
             try
             {
@@ -292,7 +277,7 @@ namespace AppOperate
                 return mCC;
             }
         }
-        private string UserProfileByID(string type, string userID)
+        public static string UserProfileByID(string type, string userID)
         {
             try
             {
@@ -307,7 +292,7 @@ namespace AppOperate
                 return "";
             }
         }
-        public string OfficeUserProfile(string type, string getBy, string byValue)
+        public static string OfficeUserProfile(string type, string getBy, string byValue)
         {
             try
             {
@@ -322,11 +307,11 @@ namespace AppOperate
                 return "";
             }
         }
-        private string GetMultipleSchoolEmail(string schoolYear, string schoolCode, int positionID)
+        public static string GetMultipleSchoolEmail(string schoolYear, string schoolCode, int positionID)
         {
             try
             {
-                String sp = "dbo.tcdsb_LTO_PagePublish_NoticeToPrincipals @SchoolYear,@SchoolCode,@PositionID";
+                String sp = "dbo.tcdsb_LTO_PositionNoticeToPrincipal_multipSchool @SchoolYear,@SchoolCode,@PositionID";
                 ParameterCL parameter = new ParameterCL { SchoolYear = schoolYear, SchoolCode = schoolCode, PositionID = positionID };
                 string result = GeneralDataAccess.TextValue(sp, parameter);
                 return result;
@@ -339,7 +324,7 @@ namespace AppOperate
 
 
         }
-        public string SaveEmailNotice(EmailNotice2 mailItems)
+        public static string SaveEmailNotice(EmailNotice2 mailItems)
         {
             try
             {
@@ -355,7 +340,7 @@ namespace AppOperate
             }
 
         }
-        public string SendEmail(EmailNotice2 mailItems)
+        public static string SendEmail(EmailNotice2 mailItems)
         {
             string result = "Failed";
 
@@ -373,7 +358,6 @@ namespace AppOperate
                 {
                     if (WebConfigValue.eMailGo() == "Test" || WebConfigValue.eMailGo() == "Attack")
                     {
-
                         eMailTo = $"{mailItems.UserID}@tcdsb.org"; // userID + "@tcdsb.org";
                         eMailCC = "frank.mi@tcdsb.org";
                         eMailBcc = "";
@@ -386,41 +370,34 @@ namespace AppOperate
                 }
                 catch (Exception ex)
                 {
-                    var em = ex.Message;
                     result = "SMTP Server Failed";
-
                 }
-                Mailmsg.Dispose();
-
+                finally
+                {
+                    if (Mailmsg != null)
+                    {
+                        Mailmsg.Dispose();
+                    }
+                }
             }
             else
             {
                 result = "No Email Recieve";
             }
-
             return result;
-            //   NotificationeMail("Save", userID, schoolyear, schoolcode, employeeID, noticeType, noticeDate, deadlineDate, deadlineDate, eMailSubject, eMailBody);
-            // string result = AssemblingeMail(eMailTo, eMailCC, eMailBcc, mailItems.EmailFrom, mailItems.EmailSubject, eMailBody, mailItems.EmailFormat);
-
         }
 
-        private string CheckTestBody(string eMailBody, string eMailTo, string eMailCC, string eMailBcc)
+        private static string CheckTestBody(string eMailBody, string eMailTo, string eMailCC, string eMailBcc)
         {
             if (WebConfigValue.eMailGo() == "Test" || WebConfigValue.eMailGo() == "Attack")
             {
                 eMailBody = eMailBody.Replace("{{EmailTOSTR}}", "Email To: " + eMailTo);
                 eMailBody = eMailBody.Replace("{{EmailCCSTR}}", "Email CC: " + eMailCC);
-                eMailBody = eMailBody.Replace("{{EmailBCCSTR}}", "Email BCC: " + eMailBcc);
-                eMailBody = eMailBody.Replace("[EmailTOSTR]", "Email To: " + eMailTo);
-                eMailBody = eMailBody.Replace("[EmailCCSTR]", "Email CC: " + eMailCC);
-                eMailBody = eMailBody.Replace("[EmailBCCSTR]", "Email BCC: " + eMailBcc);
+                eMailBody = eMailBody.Replace("{{EmailBCCSTR}}", "Email BCC: " + eMailBcc); 
 
             }
             else
             {
-                eMailBody = eMailBody.Replace("[EmailTOSTR]", "");
-                eMailBody = eMailBody.Replace("[EmailCCSTR]", "");
-                eMailBody = eMailBody.Replace("[EmailBCCSTR]", "");
                 eMailBody = eMailBody.Replace("{{EmailTOSTR}}", "");
                 eMailBody = eMailBody.Replace("{{EmailCCSTR}}", "");
                 eMailBody = eMailBody.Replace("{{EmailBCCSTR}}", "");
@@ -431,7 +408,7 @@ namespace AppOperate
         }
 
 
-        public string SendEmail(EmailNotice2 mailItems, System.Net.Mail.Attachment iCal)
+        public static string SendEmail(EmailNotice2 mailItems, System.Net.Mail.Attachment iCal)
         {
             try
             {
@@ -448,13 +425,10 @@ namespace AppOperate
         }
 
 
-        private System.Net.Mail.MailMessage GetEmailMsg(string eMailTo, string eMailCC, string eMailBcc, string eMailBody, EmailNotice2 mailItems)
+        private static System.Net.Mail.MailMessage GetEmailMsg(string eMailTo, string eMailCC, string eMailBcc, string eMailBody, EmailNotice2 mailItems)
         {
             try
             {
-                //  System.Net.Mail.SmtpClient myMail = new System.Net.Mail.SmtpClient();
-                //   myMail.Host = WebConfigurationManager.AppSettings["SMTPServer"];
-
                 System.Net.Mail.MailMessage Mailmsg = new System.Net.Mail.MailMessage();
                 Mailmsg.To.Clear();
                 LoopAddress("mailTo", eMailTo, ref Mailmsg);
@@ -480,14 +454,11 @@ namespace AppOperate
                 return null;
             }
         }
-        private System.Net.Mail.MailMessage GetEmailMsg(string eMailTo, string eMailCC, string eMailBcc, string eMailForm, string eMailSubject, string eMailBody, string eMailFormat, string attachement1, string attachement2, string attachement3)
+        private static System.Net.Mail.MailMessage GetEmailMsg(string eMailTo, string eMailCC, string eMailBcc, string eMailForm, string eMailSubject, string eMailBody, string eMailFormat, string attachement1, string attachement2, string attachement3)
         {
-
             try
             {
-                //  System.Net.Mail.SmtpClient myMail = new System.Net.Mail.SmtpClient();
-                //   myMail.Host = WebConfigurationManager.AppSettings["SMTPServer"];
-
+ 
                 System.Net.Mail.MailMessage Mailmsg = new System.Net.Mail.MailMessage();
                 Mailmsg.To.Clear();
                 LoopAddress("mailTo", eMailTo, ref Mailmsg);
@@ -514,7 +485,7 @@ namespace AppOperate
             }
 
         }
-        private void AddAttachments(string atta, ref System.Net.Mail.MailMessage Mailmsg)
+        private static void AddAttachments(string atta, ref System.Net.Mail.MailMessage Mailmsg)
         {
             try
             {
@@ -526,12 +497,12 @@ namespace AppOperate
             }
         }
 
-        private void LoopAddress(string Type, string eMailADD, ref System.Net.Mail.MailMessage Mailmsg)
+        private static void LoopAddress(string Type, string eMailADD, ref System.Net.Mail.MailMessage Mailmsg)
         {
             try
             {
                 if (eMailADD.IndexOf("@") > 0)
-                {
+                {           
                     string[] myArray = eMailADD.Split(';');
                     for (int x = 0; x < myArray.Length; x++)
                     {
@@ -548,7 +519,7 @@ namespace AppOperate
             { }
 
         }
-        private void AddAddress(string addType, string eMailAdd, ref System.Net.Mail.MailMessage mailmsg)
+        private static void AddAddress(string addType, string eMailAdd, ref System.Net.Mail.MailMessage mailmsg)
         {
             try
             {

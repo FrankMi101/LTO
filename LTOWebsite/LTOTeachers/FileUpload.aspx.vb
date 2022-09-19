@@ -42,7 +42,10 @@ Partial Class FileUpload
             RowResumeActionSetup()
             RowLetterActionSetup()
 
-
+            If positionID = "0000" Then
+                chbDefaultResume.Checked = True
+                chbDefaultLetter.Checked = True
+            End If
 
 
         Catch ex As Exception

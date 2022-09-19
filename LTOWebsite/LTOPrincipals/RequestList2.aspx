@@ -247,6 +247,17 @@
               select LTO Request, select Teacher and follow the prompts. 
               
         </div>
+        
+         <div id ="NewDirectiveMessage"  class="bubble hide messageBox" style="color:red">
+             <b>All School Principal:  </b> <br /><br />
+             
+             <b>There is a new directive with the posting process. 
+                 Please contact Valerie Fisher of our Academic Service 
+                 Department at ext.2720 or via email at valerie.fisher@tcdsb.org  </b>
+          
+              
+        </div>
+
     </form>
 </body>
 </html>
@@ -338,7 +349,10 @@
                     else {
                         var requestID = "0";
                         //   WebService.CreateNewPostingRequest("Request", schoolyear, schoolcode, positionType, requestID, onSuccess, onFailure);
-                        WebService.CreateNewPostingRequest("Request", request, onSuccess, onFailure);
+
+                        alert("There is a new directive with the posting process");
+
+                        //WebService.CreateNewPostingRequest("Request", request, onSuccess, onFailure);
                     }
                 }
                 return false;
@@ -351,6 +365,9 @@
                // alert(schoolCode.substring(0, 2));
                 if (schoolCode.substring(0, 2) == '05' )
                     MessageBox = $("#SecondaryMessage");
+
+
+                MessageBox = $("#NewDirectiveMessage");
 
                 vTop = event.currentTarget.offsetTop;
                 vLeft = event.currentTarget.offsetLeft; 

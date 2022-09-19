@@ -87,7 +87,7 @@ var JDatePicker = {
 function InitialJQueryDatePicker(objC, minD, maxD, value) {
     try {
         objC.datepicker({
-            dateFormat: 'yy-mm-dd',
+            dateFormat: 'yy/mm/dd',
             showOn: "button",
             buttonImage: "../images/calendar.gif",
             buttonImageOnly: true,
@@ -109,7 +109,7 @@ function InitialJQueryDatePicker(objC, minD, maxD, value) {
 function InitialJQueryDatePickerInSearchList(objC, value) {
     try {
         objC.datepicker({
-            dateFormat: 'yy-mm-dd',
+            dateFormat: 'yy/mm/dd',
             showOn: "button",
             buttonImage: "../images/calendar.gif",
             buttonImageOnly: true,

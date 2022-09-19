@@ -62,6 +62,11 @@ namespace AppOperate
             else
             { return "E"; }
         }
+        public static Contact GetHRContact(string jsonFile, string owner)
+        {
+           var HRContact = WebConfigValue.HRContact(jsonFile, owner);
+            return HRContact;
+        }
         public static string GetPositionOwner(string owner, string schoolCode, string appType)
         {
             if (owner != "") return owner;
@@ -85,6 +90,18 @@ namespace AppOperate
                 return email;
                // throw ex;
             }
+        }
+        public static bool IsLiveServer()
+        {
+            string sName = System.Net.Dns.GetHostName();
+
+            string liveServers = WebConfigValue.getValuebyKey("AppServers");
+
+            if (liveServers.Contains(sName))
+                return true;
+            return false;
+
+
         }
     }
 }

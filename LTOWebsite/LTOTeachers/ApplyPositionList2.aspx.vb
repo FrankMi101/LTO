@@ -43,12 +43,13 @@ Partial Class ApplyPositionList2
                 CPNum = WorkingProfile.UserCPNum
             End If
             hfAutoCompletSelectedID.Value = CPNum
-
-            If User.Identity.Name = "mif" Then
+            If WorkingProfile.LoginRole = "Admin" Then
                 Me.ddlappType.Visible = True
             Else
                 Me.ddlappType.Visible = False
             End If
+
+
             Dim parameter = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = CPNum}
 
             Dim OTStatus = ApplicantAttribute.OTType(parameter)
@@ -117,9 +118,7 @@ Partial Class ApplyPositionList2
         Dim CPNum As String = hfAutoCompletSelectedID.Value
         Dim parameters = CommonParameter.GetParameters("Get", User.Identity.Name, WorkingProfile.SchoolYear, Me.ddlappType.SelectedValue, searchby, searchValue1, WorkingProfile.UserRole, CPNum)
 
-        '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "Positions")  '  CommonListExecute(Of PositionListApplying).ObjSP("PositionListApplying")
-
-        Dim sList = ApplyProcessExe.Positions(parameters) '   CommonExcute(Of PositionListApplying).GeneralList(SP, parameters) '  CommonListExecute.AllPositionList(Of PositionListApplying)(parameters) '  PostingPublishExe.Positions(parameters) ' .PostingPositions(parameters)
+        Dim sList = ApplyProcessExe.Positions(parameters)
         Me.hfCurrrentAvailableOpenPosition.Value = sList.Count
 
 
@@ -141,16 +140,13 @@ Partial Class ApplyPositionList2
         BindGridData()
     End Sub
 
-
-    'Private Sub ddlApplicant_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlApplicant.SelectedIndexChanged
-    '    WorkingProfile.UserCPNum = ddlApplicant.SelectedValue
-    'End Sub
     Protected Sub btApplicant_Click(sender As Object, e As EventArgs) Handles btApplicant.Click
         WorkingProfile.UserCPNum = hfAutoCompletSelectedID.Value
 
         Dim parameter = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = hfAutoCompletSelectedID.Value}
         Dim OTStatus = ApplicantAttribute.OTType(parameter)
         Dim appType As String = WorkingProfile.ApplicationType
+
         If OTStatus = "Pending" And appType.ToUpper() = "LTO" Then
             Page.Response.Redirect("LoadingPending.aspx")
         Else

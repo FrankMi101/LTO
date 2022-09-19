@@ -9,7 +9,7 @@ Partial Class RequestMoreInterview2
     Dim positionID As String
     Dim myRequestPosting As New PositionRequesting()
     Dim interviewParameter As New InterviewResult()
-
+    Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
             Me.Theme = Session("mytheme")
@@ -270,76 +270,42 @@ Partial Class RequestMoreInterview2
     End Sub
     Private Sub sendemailNotification(ByVal action As String)
 
-        Dim _mTo As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", Me.TextOwner.Text)    'Me.TextOwner.Text + "@TCDSB.ORG" '
-        Dim _mCC As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name) ' ""
-        Dim _mFrom As String = WebConfigValue.getValuebyKey("eMailSender")
-        SMTPMailCall(action, _mTo, _mCC, _mFrom)
-    End Sub
-
-    Private Sub SMTPMailCall(ByVal action As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String)
-        Dim _AditionInfo As String = ""
-        '  Dim _mSubject As String = "Request more Interview Candidate for " + Me.TextPositionTitle.Text
-
-        Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-        Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-        Dim mSubject As String = Replace(mEmailTemplate.Subject, "PositionTitle", Me.TextPositionTitle.Text)  ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-        Dim mBody = mEmailTemplate.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
 
 
-        Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-
-
-
-        Dim eMailFile As String = getEmailfileHTML(action, mBody)
-
+        Dim userID As String = User.Identity.Name
+        Dim position = CurrentPosition()
+        Dim email = New EmailNotification(position)
 
         Dim myEmail As New EmailNotice2()
-        With myEmail
-            .UserID = User.Identity.Name
-            .SchoolYear = schoolyear
-            .SchoolCode = schoolcode
-            .PositionType = Me.TextType.Text
-            .PositionID = positionID
-            .PositionTitle = Me.TextPositionTitle.Text
-            .PostingNum = Me.TextPostingNum.Text
-            .NoticePrincipal = Me.textHRSTaffName.Text
-            .NoticeFor = "Staff"
-            .EmailType = "RequestMore"
-            .EmailTo = _mTO
-            .EmailCC = _mCC
-            .EmailBcc = _mBcc
-            .EmailFrom = _mFrom
-            .EmailSubject = mSubject
-            .EmailBody = eMailFile
-            .EmailFormat = "HTML"
-            .Attachment1 = ""
-            .Attachment2 = ""
-            .Attachment3 = ""
-        End With
 
-
-        Try
-            'If CommonTCDSB.Webconfig.getValuebyKey("eMailTry") = "Test" Then
-            '    _mTO = AppOperate.EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
-            '    _mCC = "mif@tcdsb.org" ' Me.TextOwner.Text + "@TCDSB.ORG" ' "boreanf@tcdsb.org;difonzm@tcdsb.org;frijiom@tcdsb.org; krasnor@tcdsb.org"
-
-            'End If
-            Dim result = EmailNotification.SendEmail(myEmail)
-
-
-        Catch ex As Exception
-
-        End Try
+        myEmail = email.GetEmailNotice(JsonFile, action, "Staff", userID)
+        myEmail.EmailBody = GetEmailBody(action, myEmail.EmailBody)
+        email.SMTPMailCall("Staff", myEmail)
 
     End Sub
-    Private Function getEmailfileHTML(ByVal _who As String, ByVal _mBodyTemplateFile As String) As String
+
+    'Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
+
+    '    Try
+
+    '        Dim emailNotice = New EmailNotification()
+
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
+
+    '    Catch ex As Exception
+
+    '    End Try
+
+    'End Sub
+    Private Function GetEmailBody(ByVal _who As String, ByVal _mBodyTemplateFile As String) As String
 
 
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
-        'myHTML = Server.MapPath("..") + "\Template\RequestMoreInterviewCandidate.htm"
+
         Dim _interviewCount As String = Me.TextCandidateCount.Text
 
         Dim myHTML As String = Server.MapPath("..") + "\Template\" + _mBodyTemplateFile
@@ -387,6 +353,24 @@ Partial Class RequestMoreInterview2
         Return eMailFile
 
     End Function
+    Private Function CurrentPosition() As PositionPublish
 
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = schoolyear
+            .DatePublish = ""
+            .DateApplyOpen = ""
+            .DateApplyClose = ""
+            .PositionID = positionID
+            .PositionTitle = TextPositionTitle.Text
+            .Owner = Me.TextOwner.Text
+            .PositionType = Me.hfPositionType.Value
+            .PostingCycle = Me.TextPostingCycle.Text
+
+        End With
+
+        Return position
+    End Function
 
 End Class

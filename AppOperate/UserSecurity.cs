@@ -24,19 +24,19 @@ namespace AppOperate
             return getSecurityRole(userID, "Permission", role);
         }
         private static string getSecurityRole(string userID, string type)
-        { 
-            return getSecurityRole(userID, type,""); 
+        {
+            return getSecurityRole(userID, type, "");
         }
         private static string getSecurityRole(string userID, string type, string role)
         {
             string SP = "SecurityRole";//  "dbo.tcdsb_LTO_PageUser_RoleAndPermission @UserID, @Type, @Role";
             var para = new { UserID = userID, Type = type, Role = role };
-             return _action.AppOne.CommonAction(SP, para); // CommonExcute<string>.GeneralValue(SP, wt);
+            return _action.AppOne.CommonAction(SP, para); // CommonExcute<string>.GeneralValue(SP, wt);
         }
         public static string UserRole(string userID)
         {
             string SP = "UserRole";// "dbo.tcdsb_LTO_PageUser_Role @UserID";
-            var para = new { UserID = userID};
+            var para = new { UserID = userID };
             return _action.AppOne.CommonAction(SP, para); // CommonExcute<string>.GeneralValue(SP, wt);
         }
         public static bool Authenticate(string domain, string userName, string pwd)
@@ -80,6 +80,8 @@ namespace AppOperate
         {
             try
             {
+                if (AuthenticationMethod() == "NameOnly") return "Verified";
+
                 string _path = WebConfigValue.getValuebyKey("LDAP");
                 string domainAndUsername = domain + "'\'" + userName;
                 DirectoryEntry entry = new DirectoryEntry(_path, userName, pwd);
@@ -100,8 +102,8 @@ namespace AppOperate
                 }
                 catch (Exception ex)
                 {
-                  //  string em = ex.Message;
-                    return "Login Authentication Failed at NativeObject - " + ex.Message; 
+                    //  string em = ex.Message;
+                    return "Login Authentication Failed at Verify Process - " + ex.Message;
 
                 }
 
@@ -122,6 +124,16 @@ namespace AppOperate
             else
                 return cUser.Substring(sIndex + 1, sLeng - sIndex - 1);
         }
-    }
+        private static string AuthenticationMethod()
+        {
+            string authMethod = WebConfigValue.getValuebyKey("AuthenticateMethod");
 
+            if (authMethod == "NameOnly")
+            {
+                if (DataTools.IsLiveServer())
+                    authMethod = "NameOnlyFalse";
+            }
+            return authMethod;
+        }
+    }
 }

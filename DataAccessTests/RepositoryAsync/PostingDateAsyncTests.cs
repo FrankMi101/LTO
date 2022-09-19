@@ -52,7 +52,7 @@ namespace DataAccess.Repository.Tests
             var closeDate = myDate[0].DateApplyClose;
 
             string expect = DateFC.YMD(DateTime.Now, "/", "Y");
-            string result = DateFC.YMD(publishDate, "/", "Y");
+            string result = publishDate; // DateFC.YMD(publishDate, "/", "Y");
 
             //Assert
             Assert.AreEqual(expect, result, $"default publish Date Value  { result}");

@@ -91,6 +91,7 @@ Partial Class NewUserProfile
             Me.LabelSchoolName.Text = BasePage.getMyValue(staff.SchoolName)
             Me.LabelOCTQualification.Text = BasePage.getMyValue(staff.Qualification)
             Me.LabelCurrentStatus.Text = BasePage.getMyValue(staff.OTType)
+            Me.btnTSL.Text = BasePage.getMyValue(staff.TSLAction)
             '  Me.hfSchoolCode.Value = BasePage.getMyValue(staff.)
             Me.TextHRComments.Text = HttpContext.Current.Server.HtmlDecode(BasePage.getMyValue(staff.Comments))
             If LabelTeacherName.Text = "" Then
@@ -127,38 +128,22 @@ Partial Class NewUserProfile
     End Sub
 
     Protected Sub BtnAction_Click(sender As Object, e As EventArgs) Handles btnAction.Click
-        '    Dim result = Applicant.NewUserProfile("Retrieve", userid, cpnum, schoolyear, Action)
-        ' Staff Parameter = New Staff { Operate = operate, userid = userid, cpnum = cpnum, Action = Action };
-        Dim parameter = GetSaveParameters(Me.btnAction.Text) ' As New ClassLibrary.Staff()
-        'With parameter
-        '    .Operate = "Save"
-        '    .UserID = User.Identity.Name
-        '    .CPNum = Page.Request.QueryString("CPNum")
-        '    .Action = Me.btnAction.Text
-        'End With
-
-        Dim result = LTOStaffManageExe.Save(parameter) ' ManageNewStaffs.SaveProfile(parameter)
-        '  Dim result = ManageNewStaffs.SaveProfile("Save", userid, cpnum, Action)
-
-        CreateSaveMessage(result, btnAction.Text)
+        SaveButtonAction(sender.Text) '  Me.btnAction.Text)
     End Sub
     Protected Sub BtnAction2_Click(sender As Object, e As EventArgs) Handles btnAction2.Click
-        Dim parameter = GetSaveParameters(Me.btnAction2.Text) ' As New ClassLibrary.Staff()
-
-        Dim result = LTOStaffManageExe.Save(parameter) ' ManageNewStaffs.SaveProfile(parameter)
-        '  Dim result = ManageNewStaffs.SaveProfile("Save", userid, cpnum, Action)
-
-        CreateSaveMessage(result, btnAction2.Text)
+        SaveButtonAction(sender.Text) '(Me.btnAction2.Text)
     End Sub
     Protected Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim parameter = GetSaveParameters(Me.btnSave.Text) '  As New ClassLibrary.Staff()
-
-        Dim result = LTOStaffManageExe.Save(parameter) ' ManageNewStaffs.SaveProfile(parameter)
-        '  Dim result = ManageNewStaffs.SaveProfile("Save", userid, cpnum, Action)
-
-        CreateSaveMessage(result, btnSave.Text)
+        SaveButtonAction(sender.Text) '(Me.btnSave.Text)
     End Sub
-
+    Protected Sub BtnTSL_Click(sender As Object, e As EventArgs) Handles btnTSL.Click
+        SaveButtonAction(sender.Text) '(Me.btnTSL.Text)
+    End Sub
+    Private Sub SaveButtonAction(ByVal btnText As String)
+        Dim parameter = GetSaveParameters(btnText)
+        Dim result = LTOStaffManageExe.Save(parameter)
+        CreateSaveMessage(result, btnText)
+    End Sub
     Private Function GetSaveParameters(ByVal action As String) As ClassLibrary.HRComments
         Dim parameter As New ClassLibrary.HRComments
         With parameter

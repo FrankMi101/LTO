@@ -21,43 +21,43 @@ namespace AppOperate
         {
             string SP = GetSP("TCDSBStaffs");
             return _action.AppOne.CommonList<Staff>(SP, parameter);
-            // return CommonExcute<Staff>.GeneralList(SP, parameter);
+            
         }
         public static List<HRComments> CommentsList(object parameter)
         {
             string SP = GetSP("CommentsList");
             return _action.AppOne.CommonList<HRComments>(SP, parameter);
-            //            return CommonExcute<HRComments>.GeneralList(SP, parameter);
+            
         }
         public static List<Staff> LTOStaffs(object parameter)
         {
             string SP = GetSP("LTOStaffs");
             return _action.AppOne.CommonList<Staff>(SP, parameter);
-            //           return CommonExcute<Staff>.GeneralList(SP, parameter);
+           
         }
         public static List<Staff> Staff(object parameter)
         {
             string SP = GetSP("Staff");
             return _action.AppOne.CommonList<Staff>(SP, parameter);
-            //           return CommonExcute<Staff>.GeneralList(SP, parameter);
+           
         }
         public static string Save(object parameter)
         {
             string SP = GetSP("Save"); 
             return _action.AppOne.CommonAction(SP, parameter);
-            //            return CommonExcute<string>.GeneralValue(SP, parameter);
+             
         }
         public static string SaveRanking(object parameter)
         {
             string SP = GetSP("SaveRanking");
              return _action.AppOne.CommonAction(SP, parameter);
-            //             return CommonExcute<string>.GeneralValue(SP, parameter);
+             
         }
         public static string ApplicantOTType(object parameter)
         {
             string SP = GetSP("OTType");
              return _action.AppOne.CommonAction(SP, parameter);
-            //            return CommonExcute<string>.GeneralValue(SP, parameter);
+           
         }
         private static string GetSP(string action)
         {

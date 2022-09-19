@@ -16,7 +16,7 @@ namespace AppOperate
             if (vDate.DayOfWeek == DayOfWeek.Saturday) vDate = vDate.AddDays(1);
             if (vDate.DayOfWeek == DayOfWeek.Sunday) vDate = vDate.AddDays(1);
 
-            return YMD (vDate);
+            return YMD(vDate);
         }
         public static string Format(DateTime pDate, string pFormat)
         {
@@ -88,12 +88,40 @@ namespace AppOperate
         }
         public static string YMD(DateTime vDate)
         {
-            return YMDF("/", vDate);
+            try
+            {
+                return YMDF("/", vDate);
+            }
+            catch (Exception)
+            {
+                return vDate.ToString();
+            }
         }
+        public static string YMDHMS(DateTime vDate)
+        {
+            try
+            {
+                return vDate.ToString("yyyy/MM/dd-HH:mm:ss");
+            }
+            catch (Exception)
+            {
+                DateTime now = DateTime.Today;
+                return now.ToString("yyyy/MM/dd-HH:mm:ss");
+            }
 
+
+        }
         public static string YMD(DateTime vDate, string linkStr)
         {
-            return YMDF(linkStr, vDate);
+            try
+            {
+                return YMDF(linkStr, vDate);
+            }
+            catch (Exception)
+            {
+                return vDate.ToString();
+            }
+
         }
         public static string YMD(DateTime vDate, string linkStr, string skipWeekEnd)
         {
@@ -104,6 +132,18 @@ namespace AppOperate
             }
 
             return YMDF(linkStr, vDate);
+        }
+
+        public static string YMD(string vDate, string linkStr, string skipWeekEnd)
+        {
+            DateTime nDate = YMD(vDate);
+            if (skipWeekEnd == "Y")
+            {
+                if (nDate.DayOfWeek == DayOfWeek.Saturday) nDate = nDate.AddDays(1);
+                if (nDate.DayOfWeek == DayOfWeek.Sunday) nDate = nDate.AddDays(1);
+            }
+
+            return YMDF(linkStr, nDate);
         }
 
         private static string YMDF(string linkStr, DateTime vDate)

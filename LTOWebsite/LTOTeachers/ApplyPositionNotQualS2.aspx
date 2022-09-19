@@ -54,20 +54,20 @@
             </tr>
             <tr>
                 <td style="width:10%">Context</td>
-                <td style="width:40%">Minimum Qualification</td>
-                <td style="width:50%">OCT Qualification</td>
+                <td style="width:35%">Minimum Qualification</td>
+                <td style="width:55%">OCT Qualification</td>
             </tr>
             <tr>
                 <td>Qualification <br /> Request:</td>
                 <td>
-                    <asp:TextBox ID="TextPostionQualification" runat="server" Height="70px" TextMode="MultiLine" Width="99%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
+                    <asp:TextBox ID="TextPostionQualification" runat="server" Height="100px" TextMode="MultiLine" Width="99%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
                 <td rowspan="2">
-                    <asp:TextBox ID="TextApplicantQualfication" runat="server" Height="160px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
+                    <asp:TextBox ID="TextApplicantQualfication" runat="server" Height="200px" TextMode="MultiLine" Width="100%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
             </tr>
             <tr>
                 <td>Qualification  <br />  Not Match:</td>
                 <td>
-                    <asp:TextBox ID="NotMatchQual" class="NotQualified" runat="server" Height="80px" TextMode="MultiLine" Width="99%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
+                    <asp:TextBox ID="NotMatchQual" class="NotQualified" runat="server" Height="90px" TextMode="MultiLine" Width="99%" BackColor="Transparent" ReadOnly="true"></asp:TextBox></td>
               
             </tr>
 

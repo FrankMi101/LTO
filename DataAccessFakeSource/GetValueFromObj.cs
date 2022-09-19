@@ -15,12 +15,13 @@ namespace MyFake
         private static string GetActionFromParameter(object obj, string action)
         {
             var myP = PropertiesOfType<string>(obj);
+             return myP.FirstOrDefault(p => p.Key == action).Value;
 
-            foreach (var item in myP)
-            {
-                if (item.Key == action) return item.Value;
-            };
-            return "";
+            //foreach (var item in myP)
+            //{
+            //    if (item.Key == action) return item.Value;
+            //};
+            //return "";
         }
         private static string GetParameterStrFromParameterObj(object obj)
         {

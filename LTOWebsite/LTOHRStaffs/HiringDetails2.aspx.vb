@@ -8,7 +8,8 @@ Imports ClassLibrary
 Partial Class HiringDetails2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-    Dim DataAccessFile As String = ""  'Server.MapPath("..\Content\DataAccess.json")
+    Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+
     Dim cPage As String = "PositionHiring"
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
@@ -85,7 +86,8 @@ Partial Class HiringDetails2
             Me.hfPrincipalID.Value = BasePage.getMyValue(position.PrincipalID)
             Me.hfPrincipalNameTo.Value = BasePage.getMyValue(position.PrincipalName)
             Me.hfPositionType.Value = BasePage.getMyValue(position.PositionType)
-            Me.hfConfirmUser.Value = BasePage.getMyValue(position.OwnerName)
+            Me.hfConfirmUser.Value = BasePage.getMyValue(position.Owner)
+            Me.lblPositionOwner.Text = BasePage.getMyValue(position.OwnerName)
 
             Me.HiredMessage.Text = BasePage.getMyValue(position.HiredPosition)
             Me.lblHiredFTE.Text = BasePage.getMyValue(position.HiredPositionFTE)
@@ -109,7 +111,6 @@ Partial Class HiringDetails2
 
             Me.lblEndDate.Text = BasePage.getMyValue(position.EndDate)
             Me.lblReasonReplacement.Text = BasePage.getMyValue(position.ReplaceReason)
-            Me.lblPositionOwner.Text = BasePage.getMyValue(position.Owner)
             AssemblingList.SetValue(Me.ddlPayStatus, BasePage.getMyValue(position.PayState))
             hfPositionNumber.Value = BasePage.getMyValue(position.PositionNumber)
             ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
@@ -261,22 +262,23 @@ Partial Class HiringDetails2
 
     Private Sub SendConfimeEmailNotification(ByVal action As String)
         Try
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
 
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
 
             Dim myEmail As New EmailNotice2()
 
             If Me.chbNoticeToPrincipal.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Principal", User.Identity.Name)
-                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody)
-                SMTPMailCall("Principal", myEmail)
+                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Principal", myEmail)
             End If
 
             If Me.chbNoticeToUnion.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Union", User.Identity.Name)
-                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody)
-                SMTPMailCall("Union", myEmail)
+                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Union", myEmail)
             End If
 
         Catch ex As Exception
@@ -319,37 +321,30 @@ Partial Class HiringDetails2
         Dim _principalName As String = Me.hfPrincipalName.Value
         Dim _schoolname As String = Me.hfSchoolname.Value
         Dim _Positiontitle As String = Me.TextPositionTitle.Text
-        '  Dim _PositionID As String = Me.hfPositionID.Value
-        Dim _mTo As String = ""
-        Dim _mCC As String = ""
-        Dim _mFrom As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
-        '  SMTPMailCall("Teacher", _mTo, _mCC, _mFrom)
-        '  SMTPMailCall("Teacher", Action, _mTo, _mCC, _mFrom, mSubject, mTemplateFile)
     End Sub
 
-    Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
+    'Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
 
-        Try
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
+    '    Try
+    '        Dim emailNotice = New EmailNotification()
 
-        Catch ex As Exception
+    '        'If String.IsNullOrEmpty(myEmail.EmailCC) Then
+    '        '    myEmail.EmailCC = User.Identity.Name + "@tcdsb.org"
+    '        'End If
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
+    '    Catch ex As Exception
 
-        End Try
-    End Sub
-    Private Function GetHRContact() As Contact
-        Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
-        Dim HRContact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
-        Return HRContact
-    End Function
-    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodayTemplate As String) As String
+    '    End Try
+    'End Sub
 
-        Dim HRContact = GetHRContact()
+    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodayTemplate As String, ByVal HRContact As Contact) As String
+
         Dim contact As String = HRContact.Extention
         Dim name As String = HRContact.Name
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
 
         'Dim appType As String = Me.hfPositionType.Value
         'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
@@ -551,7 +546,7 @@ Partial Class HiringDetails2
     Private Function GetOwner() As String
         Dim schoolcode As String = hfSchoolCode.Value
         Dim appType As String = hfPositionType.Value
-        Dim owner As String = Me.lblPositionOwner.Text
+        Dim owner As String = Me.hfConfirmUser.Value
         Return DataTools.GetPositionOwner(owner, schoolcode, appType)
     End Function
     Protected Sub hfSchoolyear_ValueChanged(sender As Object, e As EventArgs) Handles hfSchoolyear.ValueChanged

@@ -97,7 +97,7 @@
 
         <asp:ScriptManager runat="server">
         </asp:ScriptManager>
-        <div>
+         <div class="search-area">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>

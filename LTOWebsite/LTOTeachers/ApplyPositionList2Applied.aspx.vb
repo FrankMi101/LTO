@@ -68,7 +68,7 @@ Partial Class ApplyPositionList2Applied
                     .Para3 = "%"
                 End With
                 AssemblingList.SetListsObj("", Me.combobox, "Applicant", parameter)
-                AssemblingList.SetObjValue(Me.combobox, WorkingProfile.UserCPNum)
+                '  AssemblingList.SetObjValue(Me.combobox, WorkingProfile.UserCPNum)
                 SearchForListValue1.Value = WorkingProfile.UserCPNum
 
             Else

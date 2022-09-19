@@ -15,7 +15,8 @@
         public string SearchValue { get; set; }
         public string ApplySign { get; set; }
         public string LTOAction { get; set; }
-
+        public string TSL { get; set; }
+        public string TSLAction { get; set; }
         public string TeacherName { get; set; }
         public string SchoolName { get; set; }
         public string OTType { get; set; }

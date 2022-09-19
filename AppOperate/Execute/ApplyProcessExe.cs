@@ -58,7 +58,7 @@ namespace AppOperate
         }
         public static string OCTQualfication(object parameter)
         {
-            string SP = GetSP("OCTQualfication", parameter);
+            string SP = GetSP("OCTQualification", parameter);
             return _action.AppOne.CommonAction(SP, parameter);
             //          return CommonExcute<string>.GeneralValue(SP, parameter);
         }

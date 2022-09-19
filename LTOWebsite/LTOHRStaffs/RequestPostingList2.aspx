@@ -82,7 +82,7 @@
 
         <asp:ScriptManager runat="server">
         </asp:ScriptManager>
-        <div style="display: inline; width: 90%">
+        <div style="display: inline; width: 90%" class="search-area">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <asp:Label ID="Label3" runat="server" Text="School Year: " Visible="false"></asp:Label>

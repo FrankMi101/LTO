@@ -483,14 +483,14 @@ Partial Class RequestDetails2
     Private Sub SendRequestPostingNotification(ByVal action As String)
         Try
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
             Dim userId As String = User.Identity.Name
 
             Dim myEmail As New EmailNotice2()
 
             myEmail = email.GetEmailNotice(JsonFile, action, "Staff", userId)
             myEmail.EmailBody = GetEmailBody(action, myEmail.EmailBody)
-            SMTPMailCall("Staff", myEmail)
+            email.SMTPMailCall("Staff", myEmail)
 
 
         Catch ex As Exception
@@ -498,21 +498,23 @@ Partial Class RequestDetails2
         End Try
 
     End Sub
-    Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
-        Try
+    'Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
+    '    Try
 
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
+    '        Dim emailNotice = New EmailNotification()
 
-        Catch ex As Exception
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
 
-        End Try
-    End Sub
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
     Private Function GetEmailBody(ByVal action As String, ByVal bodyTemplate As String) As String
 
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
         ' Dim appType As String = ddlType.SelectedValue
 
         '  Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)

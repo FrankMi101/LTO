@@ -20,6 +20,7 @@ Partial Class InterviewDetails2
     Dim _InterViewS As String
     Dim cPage As String = "Interview"
     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile() 
+    Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
             Me.Theme = Session("mytheme")
@@ -263,7 +264,7 @@ Partial Class InterviewDetails2
             Me.lblInterviewCount.Text = InterviewProcessExe.InterviewCount(interviewParameter) '  CommonOperationExcute.InterviewOperation(interviewParameter, "InterviewCount") ' PostingInterviewExc.CheckInterviewCount(interviewParameter, _positionID) ', sitionDetails.InterviewCandidateCount(userid, cpnum, _schoolyear, _positionID)
 
             If Me.lblInterviewCount.Text = "0" Then
-                If Me.ddlAction.SelectedItem.Text = "Interviewed" Then
+                If Me.ddlAction.SelectedValue = "6" Then ' .SelectedItem.Text = "Interviewed" Then
                     Me.chbHiring.Enabled = True
                     Me.btnSaveRecommendation.Enabled = True
                     Me.chbHiring.Checked = True
@@ -384,72 +385,44 @@ Partial Class InterviewDetails2
         End Try
 
     End Sub
+
     Private Sub sendemailNotification(ByVal action As String)
-        Dim _mTo As String = Me.hfHROwnerUserID.Value + "@TCDSB.ORG"
-        Dim _mCC As String = Me.hfTeacherUserID.Value + "@TCDSB.ORG"
-        Dim _mFrom As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
-        Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-        Dim mEmailTemplate = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-        Dim mSubject As String = mEmailTemplate.Subject  ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-        Dim mBody = mEmailTemplate.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
-
-
-        SMTPMailCall(action, _mTo, _mCC, _mFrom, mSubject, mBody)
-    End Sub
-
-    Private Sub SMTPMailCall(ByVal eMailAction As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal mSubject As String, ByVal mBodyTemplate As String)
-        Dim _AditionInfo As String = ""
-
-
-
-        Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
         Try
-            Dim eMailFile As String = getEmailfileHTML(eMailAction, mBodyTemplate)
+            Dim position = CurrentPosition()
+            Dim email = New EmailNotification(position)
+            Dim userId As String = User.Identity.Name
+
             Dim myEmail As New EmailNotice2()
-            With myEmail
-                .UserID = User.Identity.Name
-                .SchoolYear = hfSchoolyear.Value
-                .SchoolCode = WorkingProfile.SchoolCode
-                .PositionType = WorkingProfile.ApplicationType
-                .PositionID = hfIDs.Value
-                .PositionTitle = Me.TextPositionTitle.Text
-                .PostingNum = Me.txtPostingNumber.Text
-                .NoticePrincipal = Me.hfPrincipalName.Value
-                .NoticeFor = "Staff"           ' ' _who
-                .EmailType = eMailAction
-                .EmailTo = _mTO
-                .EmailCC = _mCC
-                .EmailBcc = _mBcc
-                .EmailFrom = _mFrom
-                .EmailSubject = mSubject
-                .EmailBody = eMailFile
-                .EmailFormat = "HTML"
-                .Attachment1 = ""
-                .Attachment2 = ""
-                .Attachment3 = ""
-            End With
 
-            EmailNotification.SendEmail(myEmail) '
+            myEmail = email.GetEmailNotice(JsonFile, action, "Staff", userId)
+            myEmail.EmailBody = GetEmailBody(action, myEmail.EmailBody)
+            email.SMTPMailCall("Staff", myEmail)
 
-            '  EmailNotification.SendMail(eMailFile, _mTO, _mCC, _mBcc, _mFrom, _mSubject, "HTML", "Interview List", WorkingProfile.UserRole, Me.hfPositionID.Value)
 
-            ' Dim myAttchment As String = Server.MapPath(".") + "\EmailTemplate\Staff Assignment Information Form.pdf"
-            ' EmailNotification.SendMail(eMailFile, _mTO, _mCC, _mBcc, _mFrom, _mSubject, "HTML", myAttchment)
         Catch ex As Exception
-
+            CreateSaveMessage("Failed", "Send Email notification")
         End Try
+
     End Sub
-    Private Function getEmailfileHTML(ByVal who As String, ByVal mBodyTemplate As String) As String
+    'Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
+    '    Try
+
+    '        Dim emailNotice = New EmailNotification()
+
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
+
+    '    Catch ex As Exception
+
+    '    End Try
+    'End Sub
+
+    Private Function GetEmailBody(ByVal action As String, ByVal mBodyTemplate As String) As String
 
 
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
-        'If eMailAction = "Revoke" Then
-        '    myHTML = Server.MapPath("..") + "\Template\ConfirmHiringNotificationRevoke.htm"
-        'Else
-        '    myHTML = Server.MapPath("..") + "\Template\ConfirmHiringNotification.htm"
-        'End If
+        'Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
 
         Dim myHTML As String = Server.MapPath("..") + "\Template\" + mBodyTemplate
         Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHTML)
@@ -522,7 +495,7 @@ Partial Class InterviewDetails2
 
     Private Sub ddlAction_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlAction.SelectedIndexChanged
         If Me.lblInterviewCount.Text = 1 Then
-            Me.ddlAction.SelectedItem.Text = "Interviewed"
+            Me.ddlAction.SelectedValue = "6" ' .SelectedItem.Text = "Interviewed"
             Me.btnSaveRecommendation.Enabled = True
             '   Me.RequiredFieldValidator2.Enabled = True
             '  btnSave_Click(Me.btnSave, e)
@@ -551,5 +524,22 @@ Partial Class InterviewDetails2
 
 
     End Sub
+    Private Function CurrentPosition() As PositionPublish
+
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = hfSchoolyear.Value
+            .DatePublish = ""
+            .DateApplyOpen = ""
+            .DateApplyClose = ""
+            .Comments = Me.TextComments.Text
+
+            .PostingCycle = ""
+
+        End With
+
+        Return position
+    End Function
 End Class
 

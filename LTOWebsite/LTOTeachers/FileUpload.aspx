@@ -15,6 +15,11 @@
             border: 2px outset #e8e6e6;
             width: 100px;
         }
+        .as-Default {
+            display:none;
+            font-weight: bold;
+                
+        }
     </style>
 </head>
 <body>
@@ -44,6 +49,7 @@
 
                 <td>
                     <asp:Button ID="ButtonUploadResume" runat="server" Text="Upload" />
+                    <asp:CheckBox ID="chbDefaultResume" runat="server" Text=" as default" />
                     <div id="RowResumeAction" runat="server">
                         <%--<a id="VerifyResume" href="#" class="ViewButton">View</a>--%>
                         <asp:Button ID="ButtonViewResume" runat="server" Text="Review" />
@@ -75,6 +81,7 @@
 
                 <td>
                     <asp:Button ID="ButtonUploadLetter" runat="server" Text="Upload" />
+                     <asp:CheckBox ID="chbDefaultLetter" runat="server" Text=" as default" CssClass="as-Default" />
                     <div id="RowLetterAction" runat="server">
                         <%-- <a id="VerifyLetter" href="#" class="ViewButton">View</a>--%>
                         <asp:Button ID="ButtonReviewLetter" runat="server" Text="Review" />

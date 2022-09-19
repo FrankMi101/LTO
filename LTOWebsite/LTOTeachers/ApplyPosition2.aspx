@@ -212,7 +212,7 @@
                     <td colspan="5">
                         <div id="OnBehalf" style="width: 100%;">
 
-                            <asp:DropDownList ID="ddlApplicant" runat="server" Width="200px" Height="25px"></asp:DropDownList>
+                            <asp:DropDownList ID="ddlApplicant" runat="server" AutoPostBack="true" Width="200px" Height="25px"></asp:DropDownList>
                             <asp:Button ID="btnApplyOnBehalf" runat="server" Text="Apply" />
                             <asp:Label ID="LabelApplicant" runat="server" Text=""></asp:Label>
                         </div>
@@ -465,7 +465,7 @@
         "PositionID": $("#hfPositionID").val()
     };
     $(document).ready(function () {
-
+        
         $("#hdChildFormAction", parent.document).val("NoAction");
         $("#btnContinue").prop('disabled', true);
         if ($("#hfPositionType").val() == "LTO" && $("#btnApply").val() == "Apply Position") {
@@ -553,6 +553,7 @@
                         $("#btnApply").click();
                         break;
                     case "2":
+                        $("#hfUsingMostRecentResume").val("Upload");
                         openFileUpload("", parameter.SchoolYear, parameter.CPNum, parameter.PositionID);
                         break;
                     case "3":

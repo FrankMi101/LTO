@@ -8,6 +8,8 @@ Imports ClassLibrary
 Partial Class HiringDetails4th2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+    Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+
     Dim DataAccessFile As String = ""  'Server.MapPath("..\Content\DataAccess.json")
     Dim cPage As String = "PositionHiring"
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
@@ -338,22 +340,23 @@ Partial Class HiringDetails4th2
 
     Private Sub SendConfimeEmailNotification(ByVal action As String)
         Try
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
 
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
 
             Dim myEmail As New EmailNotice2()
 
             If Me.chbNoticeToPrincipal.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Principal", User.Identity.Name)
-                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody)
-                SMTPMailCall("Principal", myEmail)
+                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Principal", myEmail)
             End If
 
             If Me.chbNoticeToUnion.Checked Then
                 myEmail = email.GetEmailNotice(JsonFile, action, "Union", User.Identity.Name)
-                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody)
-                SMTPMailCall("Union", myEmail)
+                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Union", myEmail)
             End If
         Catch ex As Exception
             CreateSaveMessage("Failed", "Send Email notification")
@@ -365,37 +368,30 @@ Partial Class HiringDetails4th2
 
     Private Sub SendCongratulateEmailNotification(ByVal action As String)
 
-        Dim _mTo As String = ""
-        Dim _mCC As String = ""
-        Dim _mFrom As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
+
     End Sub
 
 
-    Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
-        Try
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
+    'Private Sub SMTPMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
+    '    Try
+    '        Dim emailNotice = New EmailNotification()
 
-        Catch ex As Exception
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
 
-        End Try
-    End Sub
-    Private Function GetHRContact() As Contact
-        Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
-        Dim HRContact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
-        Return HRContact
-    End Function
-    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String) As String
+    '    Catch ex As Exception
 
-        Dim HRContact = GetHRContact()
+    '    End Try
+    'End Sub
+
+    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String, ByVal HRContact As Contact) As String
+
+
         Dim contact As String = HRContact.Extention
         Dim name As String = HRContact.Name
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
-
-        'Dim appType As String = Me.hfPositionType.Value
-        'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
         Dim myHtml As String = Server.MapPath("..") + "\Template\" + bodyTemplate
         Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHtml)
 

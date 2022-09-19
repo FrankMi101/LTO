@@ -11,5 +11,6 @@ namespace ClassLibrary
         public string  InterViewSelected { get; set; }
         public string DateApplyOpen { get; set; }
         public string DateApplyClose { get; set; }
+        public new string ApplyDate { get; set; }
     }
 }

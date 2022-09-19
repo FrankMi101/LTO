@@ -366,11 +366,13 @@
             var cpnum = $("#ddlApplicant").val();
             //  window.alert(cellValue + " - "  + positionID + " - " + cpnum);
 
+            var xWidth = 600;
+            var xHeight = 300
             var xTop = mousey; // event.currentTarget.offsetTop;
-            if (xTop > 350) { xTop = mousey - 250 }
-            var xLeft = event.currentTarget.offsetLeft + 70;
+            if (xTop > 350) { xTop = mousey - xHeight }
+            var xLeft = event.currentTarget.offsetLeft + 30;
 
-            openApplicantQualification(cpnum, positionID, xTop, xLeft, 250, 600);
+            openApplicantQualification(cpnum, positionID, xTop, xLeft, xHeight, xWidth);
         });
 
         $('td.ApplyAction').mouseout(function (event) {

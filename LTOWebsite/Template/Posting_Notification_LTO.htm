@@ -4,61 +4,47 @@
     <title>Posting Notification </title>
 </head>
 <body>
-
-
     <table id="tblContent" style="width: 750px; border: outset lightgrey 0pt">
         <tr>
             <td>
                 <div style="text-align: center">
                     <h2> Posting Position Notification </h2>
-
                 </div>
-
             </td>
         </tr>
         <tr>
             <td>
-
                 <div id="EmailBody">
-                    Do Not Reply This Email Please !   <br /> <br />
-
+                    Do Not Reply This Email Please !   <br /><br />
                     Dear   <span style="font-weight: bolder">[PrincipalNameSTR]  </span>:
-                    <br />
-                    <br />
-
-
-
+                    <br /><br />
                     We are in receipt of your LTO Application and have posted the
                     <span style="text-decoration: underline; font-weight: bolder">[PositionTitleSTR] ( [BTCSTR] ) </span>
-
                     assignment as requested.This assignment will be posted for 3 days. On day 4,
                     you will receive a list of candidates. <b>Note: Interviews are no longer required.  </b>
-                    The five most senior applicants shall be contacted and asked to confirm that they wish to be considered for the position.
+                    The five most senior applicants shall be contacted and asked to confirm that they 
+                    wish to be considered for the position.
                     <b> The candidate should be able to provide you with an immediate response. </b>
+                    Occasional Teachers are advised to respond to the principal of their decision 
+                    by 12 noon on the following day that they have been contacted, if Occasional Teachers
+                    do not respond to the principal by 9am, it is understood that the Occasional is 
+                    no longer interested in the assignment.
                     If any of the five applicants indicate that they do not wish to be considered,
-                    please reach out to Academic Services who will provide you with <b> the next most senior candidate.</b>
-
+                    please reach out to Academic Services who will provide you with <b> the next most
+                    senior candidate.</b>
+                    <br /><br />
+                    Once you have selected a candidate and the candidate has accepted, please enter the LTO 
+                    Application and "recommend hire". This will generate pay for the successful candidate.
                     <br />
-
-                    Once you have selected a candidate and the candidate has accepted, please enter the LTO Application and "recommend hire".
-                    This will generate pay for the successful candidate.
-                    <br />
-
                     If you have any questions, please contact [PositionOwnerSTR]
-
-                    <br />
-                    <br />
-
-
+                    <br /><br />
                     <table border="1" style="width:750px">
                         <tr>
                             <td style="width:160px">Posting Number:</td>
                             <td style="width:150px">[PostingNumberSTR]</td>
                             <td style="width:150px"> </td>
-                            <!--<td style="width:80px">[PostingCycleSTR]</td>-->
                             <td style="width:150px;text-align:right;">BTC:</td>
                             <td style="width:150px">[BTCSTR]</td>
-
                         </tr>
                         <tr><td>Position Title:         </td><td colspan="4">[PositionTitleSTR]       </td></tr>
                         <tr><td>Position Division:      </td><td colspan="4">[PositionLevelSTR]       </td></tr>
@@ -77,49 +63,25 @@
                             <td style="text-align:right;">Close Date:</td>
                             <td>[PostingCloseDateSTR] </td>
                         </tr>
-
                         <tr><td>Position School:        </td><td colspan="4">[SchoolNameSTR]          </td></tr>
                         <tr><td>Teacher be replaced:    </td><td colspan="2">[TeacherBeReplacedSTR]   </td> <td>Person ID:</td><td> [PIDSTR] </td></tr>
                     </table>
-
-
                     <br />
                     <br />
                     [timeTable]
                     [multiSchool]
-                    <br />
-
-
-                </div>
-
-
-
-                <br />
-                <br />
-
-                <br />
+                 </div>
+                <br /><br />
                 Academic Services:<br />
-                <br />
-                <br />
+                <br /> <br />
                 [DateTimeSTR]
                 <br />
-                To be published: [PostingPublishDateSTR] <br />
-                <br />
-                <!-- <span style="font-size: 10pt">Note: Please reply back!.</span></td>-->
-                <br />
-                {{EmailTOSTR}}
-                <br />
-                {{EmailCCSTR]}}
-
-                <br />
-                {{EmailBCCSTR}}
+                To be published: [PostingPublishDateSTR] <br /> <br />
+                {{EmailTOSTR}} <br />
+                {{EmailCCSTR}} <br />
+                {{EmailBCCSTR}} <br />
             </td>
         </tr>
-
     </table>
-
-
-
-
 </body>
 </html>

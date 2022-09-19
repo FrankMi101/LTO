@@ -154,7 +154,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 334;
+            int expect2 = 335;
             string intitalValue = "0290";
             object datasourceList = GeneralExe.SchoolList(parameter);
             AssemblingList.SetLists(testDDLControl, datasourceList, "Code", "Name", intitalValue);
@@ -181,7 +181,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 334;
+            int expect2 = 335;
             string intitalValue = "0290";
             object datasourceList = GeneralExe<ListSchool>.myListOfT(spName, parameter);
             AssemblingList.SetLists(testDDLControl, datasourceList, "Code", "Name", intitalValue);
@@ -208,7 +208,7 @@ namespace AppOperate.Tests
 
             // Act
             string expect = "All Saints Catholic School";
-            int expect2 = 334;
+            int expect2 = 335;
             string intitalValue = "0290";
             object datasourceList = GeneralExe<ListSchool>.myListofT_DelegateHelp_Method("Schools", parameter);
 
@@ -307,7 +307,7 @@ namespace AppOperate.Tests
             var closeDate = myDate.DateApplyClose;
 
             string expect = DateFC.YMD(DateTime.Now);
-            string result = DateFC.YMD(publishDate);
+            string result =  publishDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"default publish Date Value  { result}");
@@ -334,7 +334,7 @@ namespace AppOperate.Tests
             var closeDate = myDate.DateApplyClose;
 
             string expect = DateFC.YMD(DateTime.Now);
-            string result = DateFC.YMD(publishDate);
+            string result =  publishDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"default publish Date Value  { result}");
@@ -361,7 +361,7 @@ namespace AppOperate.Tests
             var openDate = myDate.DateApplyOpen;
             var closeDate = myDate.DateApplyClose;
             string expect = "2019/10/10";
-            string result = DateFC.YMD(closeDate);
+            string result =  closeDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"Close date Value  { result} is  based on publish Date { publishDate} ");
@@ -388,7 +388,7 @@ namespace AppOperate.Tests
             var myDate = GeneralExe.StartEndDate(parameter)[0];
             var startDate = myDate.StartDate;
             string expect = expectStartDate;
-            string result = DateFC.YMD(startDate);
+            string result =  startDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"Start date Value  { result} ");
@@ -414,7 +414,7 @@ namespace AppOperate.Tests
             var myDate = GeneralExe<LTODefalutDate>.myListOfT("StartEndDate", parameter)[0];
             var startDate = myDate.StartDate;
             string expect = expectStartDate;
-            string result = DateFC.YMD(startDate);
+            string result =  startDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"Start date Value  { result} ");
@@ -441,7 +441,7 @@ namespace AppOperate.Tests
             var myDate = GeneralExe.StartEndDate(parameter)[0];
             var startDate = myDate.StartDate;
             string expect = expectStartDate;
-            string result = DateFC.YMD(startDate);
+            string result =  startDate ;
 
             //Assert
             Assert.AreEqual(expect, result, $"Start date Value  { result} ");

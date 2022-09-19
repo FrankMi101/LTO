@@ -13,6 +13,8 @@ Imports System.Threading.Tasks
 Partial Class RequestPositionDetails2
     Inherits System.Web.UI.Page
     Dim jsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+    Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+
     ' Dim DataAccesssFile As String = "" ' Server.MapPath("..\Content\DataAccess.json")
     '  Dim SPFile2 As String = Server.MapPath("..\Content\DataAccessSP.json")
     Dim _cPage As String = "Publish"
@@ -473,6 +475,7 @@ Partial Class RequestPositionDetails2
         Dim action As String = "Cancel"
         Try
             Me.HiddenFieldAction.Value = "Yes"
+
             Dim cancelPosting = New PositionPublish()
             With cancelPosting
                 .Operate = action
@@ -517,8 +520,8 @@ Partial Class RequestPositionDetails2
             Dim postingCycle As String = Me.ddlPostingCycle.SelectedValue
 
             Me.lblPostRound.Value = postingCycle
-            Dim rePosting As New PositionPublish()
 
+            Dim rePosting As New PositionPublish()
             With rePosting
                 .Operate = "RePosting"
                 .UserID = User.Identity.Name
@@ -634,18 +637,10 @@ Partial Class RequestPositionDetails2
         Try
 
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
-
-            '  Dim title As String = Me.TextPositionTitle.Text
-            'Dim panel As String = DataTools.SchoolPanel(ddlSchool.SelectedValue)
-            'Dim appType As String = hfAppType.Value
+            Dim email = New EmailNotification(position)
             Dim userId As String = User.Identity.Name
 
-
-            ' Dim myEmailTemple = email.EmailSubjectAndTemple(jsonFile, appType, action)
-            'Dim subject As String = Replace(myEmailTemple.Subject, "PositionTitle", title)
-            'Dim mTemplateFile = myEmailTemple.Template
-            ' Dim mForm As String = WebConfigValue.getValuebyKey("eMailSender")
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
 
             Dim myEmail As New EmailNotice2()
             myEmail = email.GetEmailNotice(jsonFile, action, "Applicant", userId)
@@ -663,10 +658,10 @@ Partial Class RequestPositionDetails2
                 With myEmail
                     .EmailTo = item.MailTo
                     .EmailCC = ""
-                    .EmailBody = GetEmailBody("Applicant", teacherName, action, myEmail.EmailBody)
+                    .EmailBody = GetEmailBody("Applicant", teacherName, action, myEmail.EmailBody, HRContact)
                 End With
 
-                SmtpMailCall("Applicant", myEmail)
+                email.SMTPMailCall("Applicant", myEmail)
             Next
 
         Catch ex As Exception
@@ -721,8 +716,9 @@ Partial Class RequestPositionDetails2
     'End Function
     Private Sub SendPostingNotification(ByVal action As String)
         Try
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
 
             Dim principalName As String = Me.ddlPrincipal.SelectedItem.Text
             Dim userId As String = User.Identity.Name
@@ -731,14 +727,13 @@ Partial Class RequestPositionDetails2
 
             If Me.chbNoticeToPrincipal.Checked Then
                 myEmail = email.GetEmailNotice(jsonFile, action, "Principal", userId)
-                myEmail.EmailBody = GetEmailBody("Principal", principalName, action, myEmail.EmailBody)
-                SmtpMailCall("Principal", myEmail)
+                myEmail.EmailBody = GetEmailBody("Principal", principalName, action, myEmail.EmailBody, HRContact)
+                email.SMTPMailCall("Principal", myEmail)
             End If
 
             If Me.chbNoticeToUnion.Checked Then
                 myEmail = email.GetEmailNotice(jsonFile, action, "Union", userId)
-                myEmail.EmailBody = GetEmailBody("Union", principalName, action, myEmail.EmailBody)
-                SmtpMailCall("Union", myEmail)
+                email.SMTPMailCall("Union", myEmail)
             End If
         Catch ex As Exception
             CreatSaveMessage("Failed", "Send Email notification")
@@ -746,239 +741,22 @@ Partial Class RequestPositionDetails2
 
     End Sub
 
-    'Private Sub SendRepostingNotificationToPrincipal(ByVal action As String)
-
-    '    Try
-    '        Dim position = CurrentPosition()
-    '        Dim principalName As String = Me.ddlPrincipal.SelectedItem.Text
-    '        Dim appType As String = hfAppType.Value
-    '        Dim userId As String = User.Identity.Name
-
-    '        Dim email = New PostingNotification(position)
-
-    '        Dim mForm As String = email.FromUser(appType)
-    '        Dim mTo As String = email.ToUser(action)
-    '        Dim mCc As String = email.CCUser(action, userId, "Staff") '  GetCCList(action)
-
-    '        Dim myEmailTemple = email.EmailSubjectAndTemple(jsonFile, appType, action) '  EmailNotification.EmailSubjectAndTemple(jsonFile, appType, action) ' sAction)
-    '        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", position.PositionTitle)
-    '        Dim mTemplateFile = myEmailTemple.Template
-
-    '        ' Send email notification to school principal if checked on notice to principal checkbox
-
-    '        If Me.chbNoticeToPrincipal.Checked Then
-    '            SmtpMailCall("Staff", action, mTo, mCc, mForm, principalName, mSubject, mTemplateFile)
-
-    '        End If
-
-    '        ' Send email notification to union if checked on notice union checkbox
-    '        ' Regardless LTO or POP Email notification always sperate 
-    '        If Me.chbNoticeToUnion.Checked Then
-    '            Dim unioneMail As String = email.UnionEmail(ddlSchool.SelectedValue, appType)
-    '            If Not unioneMail = "" Then
-    '                mTo = unioneMail
-    '                mCc = email.CCUser(action, userId, "Union")
-    '                SmtpMailCall("Union", action, mTo, mCc, mForm, principalName, mSubject, mTemplateFile)
-    '            End If
-    '        End If
-
-
-    '    Catch ex As Exception
-
-    '    End Try
-
-
-    'End Sub
-    'Private Sub SendRepostingNotificationToPrincipal_old(ByVal action As String)
-
-    '    Try
-    '        Dim position = CurrentPosition()
-    '        Dim principalName As String = ddlPrincipal.SelectedItem.Text
-
-    '        Dim postingCycle As String = Me.lblPostRound.Value
-    '        Dim title As String = Me.TextPositionTitle.Text
-    '        '  Dim panel As String = DataTools.SchoolPanel(Me.ddlSchool.SelectedValue)
-    '        Dim appType As String = Me.ddlType.SelectedValue
-    '        '  Dim _mTO As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", hfPrincipalID.Value)
-
-    '        Dim mForm As String = EmailNotification.CheckFromMail(appType)
-    '        Dim mTo As String = GetEmailToList()
-    '        Dim mCc As String = GetCCList(action)
-
-    '        ' **** LTO posting will send two email notification. 
-    '        ' **** first notificaiton to school principal and HR staff
-    '        ' **** Second email to union people. cc to Mary  email body with out teacher's information.
-    '        ' **** POP posting only send one email notification to Principal, cc to HR staff anf union people
-
-    '        'Dim sAction As String = action
-
-    '        'If action = "Repost" And Me.lblPostRound.Value > 1 Then
-    '        '    sAction = action ' & Me.lblPostRound.Value  no posting round anymore 2022-06-01
-    '        'End If
-
-    '        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(jsonFile, appType, action) ' sAction)
-    '        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", title)
-    '        Dim mTemplateFile = myEmailTemple.Template
-
-    '        ' Send email notification to school principal if checked on notice to principal checkbox
-    '        If Me.chbNoticeToPrincipal.Checked Then
-    '            SmtpMailCall("Staff", action, mTo, mCc, mForm, principalName, mSubject, mTemplateFile)
-
-    '        End If
-
-    '        ' Send email notification to union if checked on notice union checkbox
-    '        ' Regardless LTO or POP Email notification always sperate 
-    '        If Me.chbNoticeToUnion.Checked Then
-    '            Dim unioneMail As String = EmailNotification.UnionEmail(ddlSchool.SelectedValue, appType)
-    '            If Not unioneMail = "" Then
-    '                mTo = unioneMail
-    '                mCc = GetUnionNoticeHRFollower()
-    '                SmtpMailCall("Union", action, mTo, mCc, mForm, principalName, mSubject, mTemplateFile)
-    '            End If
-    '        End If
-
-
-    '    Catch ex As Exception
-
-    '    End Try
-
-
-    'End Sub
-
-    'Private Sub SendEmailNotification(ByVal action As String)
-    '    Try
-
-    '        Dim title As String = Me.TextPositionTitle.Text
-    '        Dim schoolcode As String = Me.ddlSchool.SelectedValue
-    '        Dim panel As String = DataTools.SchoolPanel(schoolcode)
-    '        Dim appType As String = hfAppType.Value
-
-    '        Dim myEmail As New EmailBase()
-    '        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
-
-    '        With myEmail
-    '            .EmailFrom = EmailNotification.CheckFromMail(appType)
-    '            .EmailSubject = EmailNotification.CheckMailSubject(appType, schoolcode, myEmailTemple.Subject, title)
-    '        End With
-
-    '        If Me.chbNoticeToPrincipal.Checked Then
-    '            myEmail.EmailTo = GetEmailToList()
-    '            myEmail.EmailCC = GetCCList(action)
-    '            myEmail.EmailBody = GetEmailfileHtml("Staff", myEmailTemple.Template)
-    '            SmtpMailCall("Staff", action, myEmail)
-    '        End If
-
-    '        If Me.chbNoticeToUnion.Checked Then
-    '            myEmail.EmailTo = EmailNotification.UnionEmail(schoolcode, appType)
-    '            myEmail.EmailCC = getUnionNoticeHRFollower()
-    '            myEmail.EmailBody = GetEmailfileHtml("Union", myEmailTemple.Template)
-    '            If Not myEmail.EmailTo = "" Then SmtpMailCall("Union", action, myEmail)
-    '        End If
-
-
-    '    Catch ex As Exception
-    '        CreateSaveMessage("Failed", "Send Email notification")
-    '    End Try
-
-    'End Sub
-
-    Private Sub SmtpMailCall(ByVal who As String, ByVal myEmail As EmailNotice2)
-
-        Try
-
-            'Dim myEmail As New EmailNotice2()
-            'With myEmail
-            '    .UserID = User.Identity.Name
-            '    .SchoolYear = hfSchoolyear.Value
-            '    .SchoolCode = ddlSchool.SelectedValue
-            '    .PositionType = hfAppType.Value
-            '    .PositionID = hfIDs.Value
-            '    .PositionTitle = Me.TextPositionTitle.Text
-            '    .PostingNum = Me.TextPostingNumber.Text
-            '    .NoticePrincipal = Me.ddlPrincipal.SelectedItem.Text
-            '    .NoticeFor = emailBase.EmailFor
-            '    .EmailType = emailBase.EmailAction
-            '    .EmailTo = emailBase.EmailTo
-            '    .EmailCC = emailBase.EmailCC
-            '    .EmailBcc = emailBase.EmailBcc
-            '    .EmailFrom = emailBase.EmailFrom
-            '    .EmailSubject = emailBase.EmailSubject
-            '    .EmailBody = emailBase.EmailBody
-            '    .EmailFormat = "HTML"
-            '    .Attachment1 = ""
-            '    .Attachment2 = ""
-            '    .Attachment3 = ""
-            'End With
-
-
-            Dim logId As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
-
-        Catch ex As Exception
-
-            Throw New Exception("Mail send failed")
-        End Try
-    End Sub
-    'Private Sub SmtpMailCall(ByVal who As String, ByVal eMailAction As String, ByVal mTo As String, ByVal mCc As String, ByVal mFrom As String, ByVal ToName As String, ByVal mSubject As String, ByVal mTemplateFile As String)
-    '    Dim aditionInfo As String = ""
-
-    '    Try
-    '        ' Dim principalName As String = ddlPrincipal.SelectedItem.Text
-
-    '        Dim eMailFile As String = GetEmailfileHtml(who, ToName, mTemplateFile)
-
-    '        Dim mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-    '        Dim publicFolder As String = WebConfigValue.getValuebyKey("LTOadminFolder")
-    '        If Not who = "Applicant" Then
-    '            mBcc = mBcc + publicFolder
-    '        End If
-
-    '        Dim myEmail As New EmailNotice2()
-    '        With myEmail
-    '            .UserID = User.Identity.Name
-    '            .SchoolYear = hfSchoolyear.Value
-    '            .SchoolCode = ddlSchool.SelectedValue
-    '            .PositionType = hfAppType.Value
-    '            .PositionID = hfIDs.Value
-    '            .PositionTitle = Me.TextPositionTitle.Text
-    '            .PostingNum = Me.TextPostingNumber.Text
-    '            .NoticePrincipal = ToName
-    '            .NoticeFor = who
-    '            .EmailType = eMailAction
-    '            .EmailTo = mTo
-    '            .EmailCC = mCc
-    '            .EmailBcc = mBcc
-    '            .EmailFrom = mFrom
-    '            .EmailSubject = mSubject
-    '            .EmailBody = eMailFile
-    '            .EmailFormat = "HTML"
-    '            .Attachment1 = ""
-    '            .Attachment2 = ""
-    '            .Attachment3 = ""
-    '        End With
-
-
-    '        Dim logId As String = EmailNotification.SaveEmailNotice(myEmail)
-    '        Dim result = EmailNotification.SendEmail(myEmail)
-
-    '    Catch ex As Exception
-
-    '        Throw New Exception("Mail send failed")
-    '    End Try
-    'End Sub
     Private Function GetHRContact() As Contact
         Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
         Dim contact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
         Return contact
     End Function
-    Private Function GetEmailBody(ByVal toWho As String, ByVal ToName As String, ByVal action As String, ByVal bodyFile As String) As String
+    Private Function GetOwner() As String
+        Return DataTools.GetPositionOwner(Me.hfPositionOwner.Value, Me.ddlSchool.SelectedValue, Me.hfAppType.Value)
+    End Function
+    Private Function GetEmailBody(ByVal toWho As String, ByVal ToName As String, ByVal action As String, ByVal bodyFile As String, ByVal HRContact As Contact) As String
 
-        Dim HRContact = GetHRContact()
+
         Dim contact As String = HRContact.Extention
         Dim name As String = HRContact.Name
 
-        Dim sDate As DateTime = Now()
-        Dim datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim datetime As String = DateFC.YMDHMS(Now())
         '
         ' Dim appType As String = hfAppType.Value
         'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(jsonFile, appType, action)
@@ -1056,10 +834,6 @@ Partial Class RequestPositionDetails2
     Private Sub DDLHRStaff_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlHRStaff.SelectedIndexChanged
         Me.hfPositionOwner.Value = ddlHRStaff.SelectedValue
     End Sub
-
-    Private Function GetOwner() As String
-        Return DataTools.GetPositionOwner(Me.hfPositionOwner.Value, Me.ddlSchool.SelectedValue, Me.hfAppType.Value)
-    End Function
 
     Private Function CurrentPosition() As PositionPublish
 

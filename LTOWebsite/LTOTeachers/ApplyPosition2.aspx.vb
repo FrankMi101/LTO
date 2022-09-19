@@ -1,6 +1,4 @@
-﻿'Imports System.Data
-'Imports System.Data.SqlClient
-'Imports System.IO
+﻿
 Imports AppOperate
 Imports ClassLibrary
 'Imports Microsoft.ApplicationInsights.Telemetry.Services
@@ -12,7 +10,8 @@ Partial Class ApplyPosition2
     Dim SPFile As String = SPSource.SPFile() '  WebConfigValue.SPFile() 
     Dim cPage As String = "Applying"
     Dim paraForApply As New ParametersForApply
-    '  Dim paraForPosition As New ParametersForPosition
+
+    Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
 
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
@@ -40,7 +39,7 @@ Partial Class ApplyPosition2
             paraForApply.CPNum = Page.Request.QueryString("CPNum")
             If paraForApply.CPNum = Nothing Then paraForApply.CPNum = WorkingProfile.UserCPNum
             hfUsingMostRecentResume.Value = "No"
-            BindPosition()
+            BindingPosition()
             If WorkingProfile.UserID = "mif" Then
                 Me.OnBehalfRom.Visible = True
                 Dim parameter As New List2Item()
@@ -51,13 +50,9 @@ Partial Class ApplyPosition2
                     .Para2 = WorkingProfile.UserRole
                     .Para3 = "%"
                 End With
-                '  AssembleListItem.SetLists(Me.ddlApplicant, "Applicant", parameter, Page.Request.QueryString("CPNum"))
                 AssemblingList.SetLists("", Me.ddlApplicant, "Applicant", parameter, paraForApply.CPNum)
             End If
 
-            '  Dim parameter1 = New With {Key .SchoolYear = WorkingProfile.SchoolYear, .Type = "Status", .ID = paraForApply.CPNum}
-
-            '  hfStatus.Value = ApplicantAttribute.OTType(parameter1)
             If hfStatus.Value = "LeavePending" Then
                 LabelMessageStatus1.Text = hfStatus.Value
                 LabelMessageStatus2.Text = hfStatus.Value
@@ -66,7 +61,7 @@ Partial Class ApplyPosition2
         End If
 
     End Sub
-    Private Sub BindPosition()
+    Private Sub BindingPosition()
 
         Try
             Dim position = GetApplyForPosition()
@@ -90,7 +85,7 @@ Partial Class ApplyPosition2
             Me.TextSchool.Text = getMyValue(position.SchoolName)
             Me.textPrincipal.Text = getMyValue(position.PrincipalName)
             Me.TextAddress.Text = getMyValue(position.SchoolAddress)
-            Me.textPhonenumber.Text = getMyValue(position.SChoolPhone)
+            Me.textPhonenumber.Text = getMyValue(position.SchoolPhone)
             Me.TextStartTime.Text = getMyValue(position.StartTime)
 
             Me.TextApplyDate.Text = getMyValue(position.ApplyDate)
@@ -124,19 +119,6 @@ Partial Class ApplyPosition2
             Me.LabelUploadFile.Text = getMyValue(position.UploadFile)
             hfStatus.Value = BasePage.getMyValue(position.CanApply)
 
-            'ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
-            'ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
-            'If ViewState("timeTable") = "" Then
-            '    Me.F100TimeTable.Visible = False
-            '    Me.F100MultipleSchool.Visible = False
-            'Else
-            '    Me.F100TimeTable.InnerHtml = ViewState("timeTable")
-            '    Me.F100MultipleSchool.InnerHtml = ViewState("multiSchool")
-            '    Me.TextPositionDescription.Style.Add("height", "25px")
-            'End If
-
-
-
             ViewState("timeTable") = BasePage.getMyValue(position.TimeTable)
             ViewState("multiSchool") = BasePage.getMyValue(position.MultipleSchool)
 
@@ -154,13 +136,8 @@ Partial Class ApplyPosition2
                 Me.TextPositionDescription.Style.Add("height", "25px")
             End If
 
-
-
-
-            ' Me.btnUpdate.Visible = False
-            ' Me.CheckBox1.Visible = False
             Me.LabelApplyDate.Visible = False
-            Me.TextApplyDate.Visible = False '   Me.ApplyedDate.Visible = False
+            Me.TextApplyDate.Visible = False
 
 
             ' ********************* No Need change the Roster *************************************************************************
@@ -182,13 +159,9 @@ Partial Class ApplyPosition2
                 Me.btnApply.Text = "Rescind Application"
                 Me.HiddenFieldApply.Value = "Cancel"
                 Me.btnUpdate.Visible = True
-                '    Me.CheckBox1.Visible = True
                 Me.LabelApplyDate.Visible = True
                 Me.TextApplyDate.Visible = True
-                '  Me.ApplyedDate.Visible = True
-                ' Me.ApplyedDate.InnerHtml = Me.ApplyedDate.InnerHtml + getMyValue(position(15))
             ElseIf Me.HiddenFieldApply.Value = "Cancel" Then
-                '  Me.btnApply.Text = "Cancel Applied"
                 Me.LabelApplyDate.Visible = True
                 Me.LabelApplyDate.Text = "Canceled date:"
                 Me.TextApplyDate.Visible = True
@@ -197,6 +170,7 @@ Partial Class ApplyPosition2
                 Me.HiddenFieldApply.Value = "Applied"
             End If
 
+            ' TOTLE is teacher union role
             If WorkingProfile.UserRole = "TOTL" Then
                 Me.btnApply.Enabled = False
             Else
@@ -215,12 +189,8 @@ Partial Class ApplyPosition2
     End Sub
     Private Function GetApplyForPosition() As PositionApplying
 
-        '  Dim parameter = CommonParameter.GetParameters(paraForPosition.SchoolYear, paraForPosition.PositionID, paraForPosition.CPNum)
-        '   Dim SP As String = CommonListExecute(Of PositionApplying).ObjSP("PositionApplying")
-        '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "Position") ' CommonListExecute(Of PositionApplying).ObjSP("PositionApplying")
-
         If User.Identity.Name = "mif" Then
-            '  Dim SP1 As String = CommonExcute.SPNameAndParameters(SPFile, cPage, "Applied") '  CommonOperationExcute(Of ParametersForApply).ObjSP("ParameterForApply", "Applied")
+
             Me.lblPostingNumber.ToolTip = ApplyProcessExe.SPName("Position")
             Me.btnApply.ToolTip = ApplyProcessExe.SPName("Applied")
 
@@ -254,7 +224,7 @@ Partial Class ApplyPosition2
                 End If
             End If
         End If
-        Return "Yes" ' rVal      -- no need check the assignment start date and FTE in Serverside, Client Javascript will check
+        Return "Yes" ' rVal   -- no need check the assignment start date and FTE in Serverside, Client Javascript will check
     End Function
     Private Function getMyValue(ByVal _value As Object) As Object
         Try
@@ -317,19 +287,11 @@ Partial Class ApplyPosition2
     End Sub
     Private Sub sendemailNotification(ByVal action As String, ByVal teacherName As String, ByVal mTo As String)
 
-        ' Dim mTo As String = mTo 'EmailNotification.UserProfileByID("TCDSBeMailAddress", HttpContext.Current.User.Identity.Name)
-        ' Dim _mCC As String = ""
-        ' Dim appType As String = Me.hfPositionType.Value
-        ' Dim _mFrom As String = email.FromUser(appType)
-        '    SMTPMailCall(action, teacherName, mTo, "", _mFrom)
-
 
         Dim position = CurrentPosition()
         Dim userId As String = User.Identity.Name
-        Dim email = New PostingNotification(position)
+        Dim email = New EmailNotification(position)
 
-
-        Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
 
         Dim myEmail As New EmailNotice2()
 
@@ -337,64 +299,18 @@ Partial Class ApplyPosition2
         myEmail.EmailTo = mTo
         myEmail.EmailBody = GetEmailBody(action, teacherName, myEmail.EmailBody)
 
-        SMTPMailCall("Applicant", myEmail)
+        email.SMTPMailCall("Applicant", myEmail)
 
 
     End Sub
 
-    Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
-        Try
-
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
-    'Private Sub SMTPMailCall(ByVal action As String, ByVal teacherName As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String)
-
-
+    'Private Sub SMTPMailCall(ByVal action As String, ByVal myEmail As EmailNotice2)
     '    Try
-    '        Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-    '        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, WorkingProfile.ApplicationType, action)
-    '        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.TextPositionTitle.Text + " " + Me.btnApply.Text)
 
+    '        Dim emailNotice = New EmailNotification()
 
-    '        Dim eMailBody As String = GetEmailBody(action, teacherName)
-
-    '        Dim mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-    '        Dim publicFolder As String = WebConfigValue.getValuebyKey("LTOadminFolder")
-
-    '        mBcc = mBcc + publicFolder
-
-
-    '        Dim myEmail As New EmailNotice2()
-    '        With myEmail
-    '            .UserID = User.Identity.Name
-    '            .SchoolYear = paraForApply.SchoolYear
-    '            .SchoolCode = Page.Request.QueryString("SchoolCode")
-    '            .PositionType = Me.hfPositionType.Value
-    '            .PositionID = paraForApply.PositionID
-    '            .PositionTitle = Me.TextPositionTitle.Text
-    '            .PostingNum = Me.TextPositionID.Text
-    '            .NoticePrincipal = teacherName
-    '            .NoticeFor = "Teacher"
-    '            .EmailType = action
-    '            .EmailTo = _mTO
-    '            .EmailCC = _mCC
-    '            .EmailBcc = mBcc
-    '            .EmailFrom = _mFrom
-    '            .EmailSubject = mSubject
-    '            .EmailBody = eMailBody
-    '            .EmailFormat = "HTML"
-    '            .Attachment1 = ""
-    '            .Attachment2 = ""
-    '            .Attachment3 = ""
-    '        End With
-
-    '        Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-    '        Dim result = EmailNotification.SendEmail(myEmail)
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
 
     '    Catch ex As Exception
 
@@ -402,14 +318,10 @@ Partial Class ApplyPosition2
     'End Sub
     Private Function GetEmailBody(ByVal action As String, ByVal teacherName As String, ByVal bodyTemplate As String) As String
 
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
 
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
-
-        'Dim appType As String = Me.hfPositionType.Value
-        'Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
-        'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)
         Dim myHtml As String = Server.MapPath("..") + "\Template\" + bodyTemplate
         Dim eMailFile As String = EmailNotification.EmailHTMLBody(myHtml)
 
@@ -450,16 +362,20 @@ Partial Class ApplyPosition2
 
 
         Dim action As String = Me.HiddenFieldApply.Value
-        With paraForApply
-            .Operate = "OCTQualification"
-            .Comments = Me.TextComemnts.Text
-            .SchoolYear = Page.Request.QueryString("SchoolYear")
-            .CPNum = ddlApplicant.SelectedValue ' Page.Request.QueryString("CPNum")
-            .PositionID = Page.Request.QueryString("PositionID")
-            .UserID = User.Identity.Name
-            .Action = Me.HiddenFieldApply.Value
-        End With
-        Dim result = ApplyProcessExe.OCTQualfication(paraForApply) '   CommonOperationExcute.ApplyingOperation(paraForApply, "OCTQualification")
+        Dim operate As String = "OCTQualification"
+        'With paraForApply
+        '    .Operate = operate
+        '    .Comments = Me.TextComemnts.Text
+        '    .SchoolYear = Page.Request.QueryString("SchoolYear")
+        '    .CPNum = ddlApplicant.SelectedValue ' Page.Request.QueryString("CPNum")
+        '    .PositionID = Page.Request.QueryString("PositionID")
+        '    .UserID = User.Identity.Name
+        '    .Action = Me.HiddenFieldApply.Value
+        'End With
+
+        SetApplyParameters(action, Me.ddlApplicant.SelectedValue, operate)
+
+        Dim result = ApplyProcessExe.OCTQualfication(paraForApply)
         Me.TextApplicantQualfication.Text = result
 
         If Left(result, 3) = "Yes" Then
@@ -471,44 +387,45 @@ Partial Class ApplyPosition2
     Private Sub btnApplyOnBehalf_Click(sender As Object, e As EventArgs) Handles btnApplyOnBehalf.Click
         Me.HiddenFieldAction.Value = "Yes"
         Dim action As String = "Applied"
-        With paraForApply
-            .Operate = "AppliedOnBehalf"
-            .Comments = Me.TextComemnts.Text
-            .SchoolYear = Page.Request.QueryString("SchoolYear")
-            .CPNum = Me.ddlApplicant.SelectedValue
-            .PositionID = Page.Request.QueryString("PositionID")
-            .UserID = User.Identity.Name
-            .Action = action
-        End With
-        ' Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
-        ' Dim result = CommonExcute(Of ParametersForApply).GeneralValue(SP, paraForApply) '
+        Dim operate As String = "AppliedOnBehalf"
+        'With paraForApply
+        '    .Operate = operate
+        '    .Comments = Me.TextComemnts.Text
+        '    .SchoolYear = Page.Request.QueryString("SchoolYear")
+        '    .CPNum = Me.ddlApplicant.SelectedValue
+        '    .PositionID = Page.Request.QueryString("PositionID")
+        '    .UserID = User.Identity.Name
+        '    .Action = action
+        'End With
+        SetApplyParameters(action, Me.ddlApplicant.SelectedValue, operate)
 
-        Dim mTo = ApplyProcessExe.Appied(paraForApply) '  CommonExcute(Of ParametersForApply).GeneralValue(SP, paraForApply) ' CommonOperationExcute.ApplyingOperation(paraForApply, action)
-
+        Dim mTo = ApplyProcessExe.Appied(paraForApply)
         sendemailNotification(action, ddlApplicant.SelectedItem.Text, mTo)
 
         CreatSaveMessage(mTo, action)
 
-
     End Sub
+
 
     Protected Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
         Try
             Me.HiddenFieldAction.Value = "Yes"
             Dim action As String = Me.HiddenFieldApply.Value
-            With paraForApply
-                .Operate = action
-                .Action = action
-                .Comments = Me.TextComemnts.Text
-                .SchoolYear = Page.Request.QueryString("SchoolYear")
-                .CPNum = Page.Request.QueryString("CPNum")
-                .PositionID = Page.Request.QueryString("PositionID")
-                .UserID = User.Identity.Name
-                .Document = Me.hfUsingMostRecentResume.Value
-            End With
-            '  Dim usingMostRecent As String = Me.hfUsingMostRecentResume.Value
-            '  Dim SP As String = CommonExcute.SPNameAndParameters(SPFile, cPage, action)
-            Dim result = ApplyProcessExe.Appied(paraForApply) ' CommonExcute(Of ParametersForApply).GeneralValue(SP, paraForApply) '  CommonOperationExcute.ApplyingOperation(paraForApply, action)
+            'With paraForApply
+            '    .Operate = action
+            '    .Action = action
+            '    .Comments = Me.TextComemnts.Text
+            '    .SchoolYear = Page.Request.QueryString("SchoolYear")
+            '    .CPNum = Page.Request.QueryString("CPNum")
+            '    .PositionID = Page.Request.QueryString("PositionID")
+            '    .UserID = User.Identity.Name
+            '    .Document = Me.hfUsingMostRecentResume.Value
+            'End With
+
+            SetApplyParameters(action, Page.Request.QueryString("CPNum"), action)
+            paraForApply.Document = Me.hfUsingMostRecentResume.Value
+
+            Dim result = ApplyProcessExe.Appied(paraForApply)
             If result = "Successfully" Then
                 Dim mTo As String = Me.TexteMail.Text
                 sendemailNotification(action, hfTeacherName.Value, mTo) ' User.Identity.Name + "@tcdsb.org")
@@ -520,6 +437,20 @@ Partial Class ApplyPosition2
         End Try
 
     End Sub
+
+    Private Sub SetApplyParameters(ByVal action As String, ByVal cpNum As String, ByVal operate As String)
+        With paraForApply
+            .Operate = operate
+            .Action = action
+            .Comments = Me.TextComemnts.Text
+            .SchoolYear = Page.Request.QueryString("SchoolYear")
+            .PositionID = Page.Request.QueryString("PositionID")
+            .CPNum = cpNum
+            .UserID = User.Identity.Name
+        End With
+
+    End Sub
+
     Private Function CurrentPosition() As PositionPublish
 
         Dim position = New PositionPublish()

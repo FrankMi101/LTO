@@ -207,88 +207,43 @@ Partial Class InterviewTeam
         End If
 
     End Sub
-    Private Sub sendEmailNoticeLink(ByVal userID As String, ByVal userName As String)
+    Private Sub sendEmailNoticeLink(ByVal ToUserID As String, ByVal TouserName As String)
         Dim action As String = "TeamMember"
         Dim _schoolname As String = LabelSchool.Text
         Dim _Positiontitle As String = LabelPositionTitle.Text
         Dim replaceteacher As String = LabelReplaceTeacher.Text
-        Dim _principalName As String = userName
+        Dim _principalName As String = TouserName
 
-        Dim _mTo As String = EmailNotification.UserProfileByID("TCDSBeMailAddress", userID)  ' + "@TCDSB.ORG"
-        Dim _mCC = EmailNotification.UserProfileByID("TCDSBeMailAddress", User.Identity.Name)
-        Dim _mFrom = WebConfigValue.getValuebyKey("eMailSender")
+        Dim userID As String = User.Identity.Name
+        Dim position = CurrentPosition()
+        Dim email = New EmailNotification(position)
 
+        Dim myEmail As New EmailNotice2()
 
-
-        Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, "LTO", action)
-        Dim mSubject As String = Replace(myEmailTemple.Subject, "PositionTitle", Me.LabelPositionTitle.Text) ' EmailNotification.Subject(JsonFile, WorkingProfile.ApplicationType, "Posting")
-        Dim mTemplateFile = myEmailTemple.Template '  EmailNotification.Template(JsonFile, WorkingProfile.ApplicationType, "Posting")
-
-
-        SMTPMailCall("Staff", action, _mTo, _mCC, _mFrom, mSubject, mTemplateFile, userName)
-
+        myEmail = email.GetEmailNotice(JsonFile, action, "Team", ToUserID)
+        myEmail.EmailBody = GetEmailBody("Team", TouserName, myEmail.EmailBody)
+        email.SMTPMailCall("Team", myEmail)
 
 
     End Sub
-    Private Sub SMTPMailCall(ByVal _who As String, ByVal eMailAction As String, ByVal _mTO As String, ByVal _mCC As String, ByVal _mFrom As String, ByVal mSubject As String, ByVal mTemplateFile As String, ByVal userName As String)
-        Dim _AditionInfo As String = ""
-        'Dim _mSubject As String = "Posted Position From Form 100 " + Me.TextPositionTitle.Text + " Notification"
-        'If eMailAction = "Cancel" Then _mSubject = "Cancel Posted Position " + Me.TextPositionTitle.Text + " Notification"
-        'If eMailAction = "Remind" Then _mSubject = "Reminder to complete LTO/POP Position hiring process"
-        'If eMailAction = "Repost" Then _mSubject = "Position Reposting Notification"
-        'If eMailAction = "Request" Then _mSubject = "Position posting Notification"
-        'If eMailAction = "Posting" Then _mSubject = "New LTO/POP Position posting Notification"
-        'If eMailAction = "Reject" Then _mSubject = "Reject Request Posting Notification"
+    'Private Sub SMTPMailCall(ByVal _who As String, ByVal myEmail As EmailNotice2)
 
-        GetPosition()
-        Try
-            Dim _mBcc As String = WebConfigValue.getValuebyKey("eMailBCC")
-            Dim eMailFile As String = getEmailfileHTML(_who, eMailAction, mTemplateFile)
+    '    Try
+    '        Dim emailNotice As New EmailNotification()
+    '        Dim LogID As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
 
-            Dim publicFolder As String = WebConfigValue.getValuebyKey("LTOadminFolder")
-            _mBcc = _mBcc + publicFolder
+    '    Catch ex As Exception
 
-            Dim myEmail As New EmailNotice2()
-            With myEmail
-                .UserID = User.Identity.Name
-                .SchoolYear = position.SchoolYear
-                .SchoolCode = position.SchoolCode
-                .PositionType = position.PositionType
-                .PositionID = hfPositionID.Value
-                .PositionTitle = Me.LabelPositionTitle.Text
-                .PostingNum = Me.LabelPostingNumber.Text
-                .NoticePrincipal = userName
-                .NoticeFor = _who
-                .EmailType = eMailAction
-                .EmailTo = _mTO
-                .EmailCC = _mCC
-                .EmailBcc = _mBcc
-                .EmailFrom = _mFrom
-                .EmailSubject = mSubject
-                .EmailBody = eMailFile
-                .EmailFormat = "HTML"
-                .Attachment1 = ""
-                .Attachment2 = ""
-                .Attachment3 = ""
-            End With
+    '    End Try
+    'End Sub
 
 
-
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail) ' User.Identity.Name, _mTO, _mCC, _mBcc, _mFrom, _mSubject, eMailFile, "HTML")
-
-        Catch ex As Exception
-
-        End Try
-    End Sub
+    Private Function GetEmailBody(ByVal _who As String, ByVal toName As String, ByVal mTemplateFile As String) As String
 
 
-    Private Function getEmailfileHTML(ByVal _who As String, ByVal eMailAction As String, ByVal mTemplateFile As String) As String
-
-
-
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
         Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
         Dim schoolcode As String = Page.Request.QueryString("SchoolCode")
         Dim positionID As String = Page.Request.QueryString("PositionID")
@@ -302,7 +257,7 @@ Partial Class InterviewTeam
         Try
 
             eMailFile = Replace(eMailFile, "[PostingNumberSTR]", Me.LabelPostingNumber.Text)
-            eMailFile = Replace(eMailFile, "[PrincipalNameSTR]", position.PrincipalName)
+            eMailFile = Replace(eMailFile, "[PrincipalNameSTR]", toName)
             eMailFile = Replace(eMailFile, "[DateTimeSTR]", _Datetime)
             eMailFile = Replace(eMailFile, "[SchoolNameSTR]", schoolname)
             eMailFile = Replace(eMailFile, "[PositionTitleSTR]", LabelPositionTitle.Text)
@@ -344,5 +299,22 @@ Partial Class InterviewTeam
 
 
     End Sub
+    Private Function CurrentPosition() As PositionPublish
+
+        Dim position = New PositionPublish()
+        With position
+            .UserID = User.Identity.Name
+            .SchoolYear = hfSchoolyear.Value
+            .DatePublish = ""
+            .DateApplyOpen = ""
+            .DateApplyClose = ""
+            .Comments = "Interview Team"
+
+            .PostingCycle = ""
+
+        End With
+
+        Return position
+    End Function
 End Class
 

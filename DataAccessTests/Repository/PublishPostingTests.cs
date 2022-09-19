@@ -143,7 +143,7 @@ namespace DataAccess.Repository.Tests
 
             //Act
             var defaultDate = _action.AppOne.CommonObject<LTODefalutDate>("DefaultDate", para);
-            var result = DateFC.YMD(defaultDate.DatePublish, "/");  
+            var result =  defaultDate.DatePublish ;  
 
             //Assert
             Assert.AreEqual(expect, result, $" Publish Posting Position by ID = { result } ");

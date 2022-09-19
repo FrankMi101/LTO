@@ -44,7 +44,7 @@
                         <h1 style="color: red;">There are currently no Permanent Open Positions available for viewing.</h1>
                         <br />
                         <br />
-                        <h1 style="color: red;">Please visit the LTO/POP site regularly for any new postings available in Round 3 </h1>
+                        <h1 style="color: red;">Please visit the LTO/POP site regularly for any new postings available</h1>
 
                     </div>
                     <div id="MessageLTO3" runat="server" visible="false">

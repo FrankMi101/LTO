@@ -76,7 +76,9 @@ table tbody tr:nth-child(odd) {
     border: 1px solid grey;
   /*  background-color: cornsilk;*/
 }
-
+.search-area {
+    margin:5px;
+}
     .Search-Content-Control:hover {
         border-radius: 7px;
         filter: contrast(200%);

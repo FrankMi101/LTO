@@ -432,7 +432,7 @@ namespace AppOperate.Tests
 
              };
             int expect = 1;
-            string expect1 = DateFC.YMD(DateTime.Now);
+            string expect1 = currentSchoolYear.Substring(0, 4) + "/09/03";   
             string expect2 = currentSchoolYear.Substring(4,4) + "/06/28";
             string expect3 = DateFC.YMD(getCloseDate(DateTime.Now.AddDays(2)));
             //Act

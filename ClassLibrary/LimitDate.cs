@@ -19,11 +19,11 @@ namespace ClassLibrary
     }
     public class LTODefalutDate
     {
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public DateTime DatePublish { get; set; }
-        public DateTime DateApplyOpen { get; set; }
-        public DateTime DateApplyClose { get; set; }
-        public DateTime BackDate { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
+        public string DatePublish { get; set; }
+        public string DateApplyOpen { get; set; }
+        public string DateApplyClose { get; set; }
+        public string BackDate { get; set; }
     }
 }

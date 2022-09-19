@@ -358,6 +358,12 @@
                     searchValue1 = $("#datepicker").val();
                     searchValue2 = $("#datepicker2").val();
                 }
+
+
+                if (searchValue1 == undefined) searchValue1 = " ";
+                if (searchValue2 == undefined) searchValue2 = " ";
+
+
                 var goPage = "../PDFLoading/EXCELDocument_Loading.aspx?rID=PositionList_Hired&yID=" + schoolyear + "&AppType=" + appType + "&Panel=" + panel + "&OpenClose=" + openClose + "&SearchBy=" + searchby + "&SearchValue1=" + searchValue1 + "&SearchValue2=" + searchValue2 + "&includeAll=" + includeAll;
 
                 window.open(goPage, "", "toolbar=no,location=no,directories=no,status=no,menubar=no,scrollbars=no,resizable=no,width=450 height=300, top=10, left=10");

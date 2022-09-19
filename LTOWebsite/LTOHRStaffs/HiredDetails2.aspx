@@ -252,7 +252,7 @@
                     <td id="signOffChb" runat="server" colspan="6" style="font-size: small; color: red;">
                         <asp:CheckBox ID="chbSignatureSignOff" runat="server" Visible="false" Text="Interviewer and Candidate Sign Off Status on H.M. 40 Document" /></td>
                     <td>
-                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="false" />
+                        <asp:CheckBox ID="chbNoticeToPrincipal" runat="server" Text="Email to Principal" Checked="true" />
                     </td>
                 </tr>
                 <tr>

@@ -66,9 +66,9 @@ namespace AppOperate
             {
                 try
                 {
+                    string rowTR = "";
                     string selColumn = Operate == "ApplicantsList" ? "<td>Selected</td>" : "";
-                    mySTR = "<table border='1' ><tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td>" + selColumn + "</tr>";
-
+                    string headerTR = "<tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td>" + selColumn + "</tr>";
                     foreach (var item in list)
                     {
                         string sName = item.TeacherName.ToString();
@@ -79,9 +79,9 @@ namespace AppOperate
                         string selected = item.InterViewSelected.ToString();
                         selColumn = Operate == "ApplicantsList" ? "<td>" + selected + "</td>" : "";
                         string rStr = "<tr><td>" + sName + "</td><td>" + Phone + "</td> <td>" + Email + "</td><td>" + HiredDate + "</td><td>" + ApplyDate + "</td>" + selColumn + "</tr>";
-                        mySTR = mySTR + rStr;
+                        rowTR = rowTR + rStr;
                     }
-                    mySTR = mySTR + "</table>";
+                    mySTR = "<table border='1' >" + headerTR + rowTR + " </table>";
                 }
                 catch (System.Exception)
                 {
@@ -90,6 +90,7 @@ namespace AppOperate
             }
             return mySTR;
         }
+       
         public static string Save(object parameter)
         {
             string SP = GetSP("Save");

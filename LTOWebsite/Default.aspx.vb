@@ -64,7 +64,7 @@ Partial Class _Default
         Session("mytheme") = "Theme1"
         Try
             Select Case WorkingProfile.UserRole
-                Case "LTOTeacher", "TOTL", "Roster", "New", "Pending"
+                Case "LTOTeacher", "Roster", "TSL", "New", "TOTL", "Pending"
                     goDefaultList = "LTOTeachers/LoadingT.aspx?pID=3&CPNum=" + cpNum
                 Case "Hired"
                     goDefaultList = "LTOTeachers/LoadingT.aspx?pID=4&CPNum=" + cpNum
@@ -102,7 +102,7 @@ Partial Class _Default
         Dim Path As String = "LTOHRStaffs/LoadingHR.aspx"
         Try
             Select Case WorkingProfile.UserRole
-                Case "LTOTeacher", "TOTL", "Roster", "New", "Pending"
+                Case "LTOTeacher", "Roster", "TSL", "New", "TOTL", "Pending"
                     Path = "LTOTeachers/LoadingT.aspx"
                     SetMyListAttribut(Me.li_Menu0, Me.Menu0, "", "", False)
                     SetMyListAttribut(Me.li_Menu1, Me.Menu1, "Available Open Position", Path + "?pID=3", True)

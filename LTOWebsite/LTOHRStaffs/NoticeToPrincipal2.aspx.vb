@@ -7,6 +7,8 @@ Imports ClassLibrary
 Partial Class NoticeToPrincipal2
     Inherits System.Web.UI.Page
     Dim JsonFile As String = Server.MapPath("..\Content\eMailTemplate.json")
+    Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
+
     Private Sub Page_PreInit(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.PreInit
         If Not Session("mytheme") Is Nothing Then
             Me.Theme = Session("mytheme")
@@ -128,67 +130,7 @@ Partial Class NoticeToPrincipal2
         End Try
 
     End Sub
-    'Private Function GetTeacherList(ByVal action As String) As String
-    '    Try
 
-
-    '        Dim schoolyear As String = Page.Request.QueryString("SchoolYear")
-    '        Dim positionID As String = Page.Request.QueryString("PositionID")
-    '        Dim userid As String = HttpContext.Current.User.Identity.Name
-
-
-    '        Dim parameter As New PositionPublish()
-    '        With parameter
-    '            .Operate = action
-    '            .SchoolYear = schoolyear
-    '            .PositionID = positionID
-    '            .PositionType = Me.hfPositionType.Value
-    '        End With
-
-    '        If User.Identity.Name = "mif" Then
-    '            '   Dim SP As String = CommonListExecute(Of CandidateListNotice).ObjSP("CandidateListNotice")
-    '            Me.lblInterviewCandidates.ToolTip = SelectCandidateExe.SPName("NoticeCandidates")
-    '        End If
-    '        Dim teacherList As List(Of CandidateListNotice) = SelectCandidateExe.NoticeCandidates(parameter) ' SelectCandidateExe.NoticeCandidates(parameter) ' CommonListExecute.NoticeInterviewCandidate(parameter) '  PostingPublishExe.Position(parameter) '  SinglePosition.PostingPosition(parameter) '.PositionByID(parameter)
-    '        Dim mySTR As String = ""
-    '        Dim interviewSelectColumn As String = ""
-    '        '  Dim ds As DataSet = PositionDetails.NoticeToPrincipal(userid, schoolyear, positionID)
-
-    '        If IsNothing(teacherList) AndAlso teacherList.Count = 0 Then
-    '            mySTR = "<H3> No selected interview candidate yet ! </H3> "
-    '        Else
-    '            Dim x As Integer = 0
-    '            interviewSelectColumn = IIf(action = "ApplicantsList", "<td>Selected</td>", "")
-
-    '            mySTR = "<table border='1' ><tr><td>Teacher Name</td><td>Phone Number</td> <td>Email</td><td>Hired Date</td><td>Applied Date</td>" + interviewSelectColumn + "</tr>"
-
-    '            Try
-    '                For Each item In teacherList
-    '                    Dim sName As String = item.TeacherName
-    '                    Dim Phone As String = item.CellPhone
-    '                    Dim Email As String = item.Email
-    '                    Dim HiredDate As String = item.HiredDate
-    '                    Dim ApplyDate As String = item.ApplyDate
-    '                    Dim selected As String = item.InterViewSelected
-    '                    Dim OpenDate As String = item.DateApplyOpen
-    '                    Dim CloseDate As String = item.DateApplyClose
-    '                    interviewSelectColumn = IIf(action = "ApplicantsList", "<td>" + selected + " </td>", "")
-    '                    Dim rStr As String = "<tr><td>" + sName + "</td><td>" + Phone + "</td> <td>" + Email + "</td><td>" + HiredDate + "</td><td>" + ApplyDate + "</td>" + interviewSelectColumn + "</tr>"
-    '                    mySTR = mySTR + rStr
-
-    '                Next
-    '                mySTR = mySTR + "</table>"
-
-    '            Catch ex As Exception
-    '                Return ""
-    '            End Try
-    '        End If
-
-    '        Return mySTR
-    '    Catch ex As Exception
-    '        Return "Failed"
-    '    End Try
-    'End Function
     Private Function getMyValue(ByVal _value As Object) As Object
         Try
             If _value = Nothing Then
@@ -252,9 +194,10 @@ Partial Class NoticeToPrincipal2
     Private Sub SendinterviewNotification(ByVal action As String)
         Try
 
+            Dim HRContact = DataTools.GetHRContact(jsonFileHRstaff, GetOwner())
 
             Dim position = CurrentPosition()
-            Dim email = New PostingNotification(position)
+            Dim email = New EmailNotification(position)
 
             Dim userId As String = User.Identity.Name
 
@@ -265,9 +208,9 @@ Partial Class NoticeToPrincipal2
                 myEmail = email.GetEmailNotice(JsonFile, action, "Principal", userId)
                 myEmail.Attachment1 = Server.MapPath("..") + "\Template\HM40.pdf"
                 myEmail.Attachment2 = Server.MapPath("..") + "\Template\HM31.pdf"
-                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody)
+                myEmail.EmailBody = GetEmailBody("Principal", action, myEmail.EmailBody, HRContact)
 
-                SMTPMailCall("Principal", myEmail)
+                email.SMTPMailCall("Principal", myEmail)
             End If
 
             If Me.chbNoticeToUnion.Checked Then
@@ -275,36 +218,40 @@ Partial Class NoticeToPrincipal2
                 myEmail = email.GetEmailNotice(JsonFile, action, "Union", userId)
                 myEmail.Attachment1 = Server.MapPath("..") + "\Template\HM40.pdf"
                 myEmail.Attachment2 = Server.MapPath("..") + "\Template\HM31.pdf"
-                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody)
+                myEmail.EmailBody = GetEmailBody("Union", action, myEmail.EmailBody, HRContact)
 
-                SMTPMailCall("Union", myEmail)
+                email.SMTPMailCall("Union", myEmail)
             End If
         Catch ex As Exception
             CreatSaveMessage("Failed", "Send Email notification")
         End Try
 
     End Sub
-    Private Sub SMTPMailCall(ByVal _who As String, ByVal myEmail As EmailNotice2)
-        Try
+    'Private Sub SMTPMailCall(ByVal _who As String, ByVal myEmail As EmailNotice2)
+    '    Try
+    '        Dim emailNotice = New EmailNotification()
+    '        'If String.IsNullOrEmpty(myEmail.EmailCC) Then
+    '        '    myEmail.EmailCC = User.Identity.Name + "@tcdsb.org"
+    '        'End If
+    '        Dim logId As String = emailNotice.SaveEmailNotice(myEmail)
+    '        Dim result = emailNotice.SendEmail(myEmail)
 
-            Dim LogID As String = EmailNotification.SaveEmailNotice(myEmail)
-            Dim result = EmailNotification.SendEmail(myEmail)
-        Catch ex As Exception
-            Throw New Exception("Mail send failed")
-        End Try
-    End Sub
+    '    Catch ex As Exception
+    '        Throw New Exception("Mail send failed")
+    '    End Try
+    'End Sub
     Private Function GetHRContact() As Contact
         Dim jsonFileHRstaff As String = Server.MapPath("..\Content\HRStaff.json")
         Dim contact = WebConfigValue.HRContact(jsonFileHRstaff, GetOwner())
         Return contact
     End Function
-    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String) As String
+    Private Function GetEmailBody(ByVal _who As String, ByVal action As String, ByVal bodyTemplate As String, ByVal HRContact As Contact) As String
 
-        Dim HRContact = GetHRContact()
+
         Dim contact As String = HRContact.Extention
 
-        Dim sDate As DateTime = Now()
-        Dim _Datetime As String = sDate.ToString
+        ' Dim sDate As DateTime = Now()
+        Dim _Datetime As String = DateFC.YMDHMS(Now())
         Dim appType As String = hfPositionType.Value
 
         'Dim myEmailTemple = EmailNotification.EmailSubjectAndTemple(JsonFile, appType, action)

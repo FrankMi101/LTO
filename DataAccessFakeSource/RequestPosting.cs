@@ -72,11 +72,11 @@ namespace MyFake
             var position = new List<LTODefalutDate>()
            { new LTODefalutDate()
                {
-                   StartDate = new DateTime(2021, 9, 3),
-                   EndDate=  new DateTime(2022, 6, 30),
-                   DatePublish =  DateTime.Today, 
-                   DateApplyOpen = new DateTime(2022, 3, 21),
-                   DateApplyClose = new DateTime(2022, 3, 23),
+                   StartDate = DateFC.YMD( new DateTime(2021, 9, 3)),
+                   EndDate=   DateFC.YMD( new DateTime(2022, 6, 30)),
+                   DatePublish =  DateFC.YMD(  DateTime.Today), 
+                   DateApplyOpen =  DateFC.YMD( new DateTime(2022, 3, 21)),
+                   DateApplyClose =  DateFC.YMD( new DateTime(2022, 3, 23)),
                }
            };
 
